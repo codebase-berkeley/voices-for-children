@@ -1,8 +1,6 @@
 "use client";
-
 import React from "react";
 import FlipCard from "./flipcard.js";
-
 
 const experience = [
   {
