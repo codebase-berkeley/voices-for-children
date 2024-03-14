@@ -1,4 +1,4 @@
-.card {
+/* .card {
     position: relative;
     width: 300px;
     height: 200px;
@@ -27,4 +27,4 @@
 
 .card.flipped {
     transform: rotateY(180deg);
-}
+} */
