@@ -23,8 +23,7 @@ function Inventory () {
                     <button>create</button>
                 </div>
             </div>
-            <table className=""
-
+            <table className=""></table>
         </div>
     )
 }
