@@ -1,26 +1,21 @@
 "use client";
-import React, { useState } from "react";
-import dynamic from 'next/dynamic';
-
-const ReactCardFlip = dynamic(() => import('react-card-flip'), { ssr: false });
-// import ReactCardFlip from "react-card-flip";
+import React from "react";
+import { useState } from "react";
+import ReactCardFlip from "react-card-flip";
 import "./flipcard.css";
-
-const FlipCard = ({ imageUrl, name, description }) => {
+export default function FlipCard(props) {
   const [isFlipped, setIsFlipped] = useState(false);
+  console.log(isFlipped);
 
   const handleClick = () => {
-    console.log("inside handliClick");
+    console.log("inside handliClick anthony");
     console.log(isFlipped);
     setIsFlipped(!isFlipped);
   };
 
   return (
-    <div className="experience-card">
-      <ReactCardFlip
-        isFlipped={isFlipped}
-        flipDirection="vertical"
-      >
+    <div>
+      <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
         {/* Front side */}
         <div
           className="card-front"
@@ -29,20 +24,14 @@ const FlipCard = ({ imageUrl, name, description }) => {
             cursor: "pointer",
           }}
         >
-          <img
-            src={imageUrl}
-            alt={name}
-            className="flipIMG"
-          />
+          <h1>colin</h1>
+          {/* <img src={props.imageUrl} className="flipIMG" /> */}
         </div>
         {/* Back side */}
         <div className="card-back" onClick={handleClick}>
-          <h4>{name}</h4>
-          <p className="description">{description}</p>
+          <p className="description">{props.description}</p>
         </div>
       </ReactCardFlip>
     </div>
   );
-};
-
-export default FlipCard;
+}

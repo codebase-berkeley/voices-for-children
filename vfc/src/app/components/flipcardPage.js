@@ -11,10 +11,11 @@ const experience = [
   {
     imageUrl: "CSK2022BigGroup.jpg",
     name: "CS Kickstart",
-    description: "director of inclusion - planning a super fun program for freshmen",
+    description:
+      "director of inclusion - planning a super fun program for freshmen",
   },
   {
-    imageUrl: "eecs.jpg", 
+    imageUrl: "eecs.jpg",
     name: "CS61B",
     description: "data structures ai",
   },
@@ -22,10 +23,11 @@ const experience = [
     imageUrl: "cal.jpg",
     name: "RCSA",
     description: "web dev committee",
-  }
+  },
 ];
 
 function MultipleFlipCards() {
+  
   return (
     <div className="app">
       <div className="exp-container">
