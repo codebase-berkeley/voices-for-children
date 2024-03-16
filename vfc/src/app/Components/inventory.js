@@ -1,29 +1,39 @@
+import { Rowdies } from 'next/font/google';
 import './inventory.css';
+import InventoryEntry from './inventoryentry';
 
-function Inventory () {
+function Inventory() {
     return (
         <div className='overallPage'>
-            <div className="in-kind-header-box">
-                <div className="in-kind-text">
-                    <p className="title">In-Kind Donation</p>
+            <div className = "search-wrapper">
+                <div className="search">
+                    {/* <input>Search</input> */}
                 </div>
-                <div className="tabs">
-                    <button className="inventory"></button>
-                    <button className="donation-log"></button>
-                </div>
-            </div>
-            <div className="search-box">
-                <div className="search"></div>
-                    <input id="search-bar">search</input>
-                <div className="filter"></div>
-                    <button>fitler</button>
-                <div className="sort"></div>
-                    <button>sort</button>
-                <div className="create">
-                    <button>create</button>
+                <div> 
+                    
                 </div>
             </div>
-            <table className=""></table>
+            <div className="inventory-wrapper">
+                <table className="">
+                    <thead>
+                        <tr>
+                            <th className="inv-col-head">Donor</th>
+                            <th className="inv-col-head">Items Donated</th>
+                            <th className="inv-col-head">Item Type</th>
+                            <th className="inv-col-head">Amount</th>
+                            <th className="inv-col-head">Date Donated</th>
+                            <th className="inv-col-head">Thanked</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* <tb></tb> */}
+                         <InventoryEntry donor = "surbhisaadhvilakshminarayannanakila" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4adsfajdflasdflajdslfkjadklfjasdkfjadlskfjaldjfadlksjfa" />
+                    </tbody>
+                    
+                </table>
+            </div>
         </div>
     )
 }
+
+export default Inventory;
