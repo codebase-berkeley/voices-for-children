@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.in-kind-header-box {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    background-color: red;
+}
+
+.in-kind-text {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    background-color: blue;
+}
+
+.search-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-box > :first-child {
+    margin-right: auto;
+  }
