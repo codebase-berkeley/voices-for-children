@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import "./top.css";
+import Inventory from "./inventory";
 
 function Top() {
   const [buttonId, setButtonId] = useState("Donation_log");
