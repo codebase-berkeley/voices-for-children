@@ -8,13 +8,16 @@ function EntryPopup () {
                 <h1 className="create-new-text">New Donation</h1>
             </div>
             <form>
-                <input type="text" placeholder="Donation Name"></input>
-                <input type="text" placeholder="Donor"></input>
-                <input type="text" placeholder="Donation Type"></input>
-                <input type="text" placeholder="Amount"></input>
-                <input type="text" placeholder="Date"></input>
+                <input type="text" placeholder="Donation Name" id="name"></input>
+                <input type="text" placeholder="Donor" id="donor"></input>
+                <div className="form-container">
+                    <input type="text" placeholder="Donation Type" id="type"></input>
+                    <input type="text" placeholder="Amount" id="amt"></input>
+                    <input type="date" placeholder="Date" id="date"></input>
+                </div>
                 <span className="popup-text">Description</span>
-                <input type="text" placeholder="Thank you details, item usage, etc."></input>
+                <input type="text" placeholder="Thank you details, item usage, etc." id="desc"></input>
+                <input type="submit" id = "submit"></input>
             </form>
         </div>
     )

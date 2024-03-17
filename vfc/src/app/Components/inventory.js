@@ -1,6 +1,7 @@
 import { Rowdies } from 'next/font/google';
 import './inventory.css';
 import InventoryEntry from './inventoryentry';
+import {Link} from "react-router-dom";
 
 function Inventory() {
     return (
@@ -22,7 +23,9 @@ function Inventory() {
                             <option value="sort">option1</option>
                         </select>
                     </div>
-                    <button id="create-new">Create New</button>
+                    <Link style={{ textDecoration: "none" }} to="/create-new"> 
+                        <button id="create-new">Create New</button>
+                    </Link>
                 </div>
             </div>
             <div className="inventory-wrapper">

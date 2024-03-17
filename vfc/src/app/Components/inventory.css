@@ -39,7 +39,6 @@
 .search-wrapper {
     display: flex;
     flex-direction: row;
-    margin-top: 30vw;
     width: 75vw;
     height: 20vw;
     align-items: center;
