@@ -1,9 +1,17 @@
+"use client";
 import { Rowdies } from 'next/font/google';
 import './inventory.css';
 import InventoryEntry from './inventoryentry';
 import {Link} from "react-router-dom";
+import EntryPopup from './entrypopup';
+import { useState } from 'react';
 
 function Inventory() {
+    const [visible, setVisible] = useState(false);
+    function show() {
+        setVisible(true);
+        console.log(visible, "f")
+    }
     return (
         <div className='inventory-page'>
             <div className = "search-wrapper">
@@ -23,7 +31,8 @@ function Inventory() {
                             <option value="sort">option1</option>
                         </select>
                     </div>
-                        <button id="create-new">Create New</button>
+                        <button id="create-new" onClick={show}>Create New</button>
+                        {visible && <EntryPopup />}
                 </div>
             </div>
             <div className="inventory-wrapper">
