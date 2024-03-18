@@ -1,8 +1,10 @@
 "use client";
-import Inventory from "./components/inventory";
-import Top from "./components/top";
+import Image from "next/image";
+import Inventory from "./Components/inventory";
+import InventoryEntry from "./Components/inventoryentry";
+import Top from "./Components/top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import EntryPopup from "./components/entrypopup";
+import EntryPopup from "./Components/entrypopup";
 
 export default function Home() {
   return (
