@@ -27,7 +27,6 @@ function EntryPopup ({ onClose }) {
                     </form>
                 </div>  
         )
- 
 }
 
 export default EntryPopup;

@@ -1,3 +1,7 @@
+.App {
+    background-color: white;
+}
+
 .inventory-page {
     display: flex;
     flex-direction: column;
@@ -22,7 +26,7 @@
 }
 
 #search {
-    background-color: #E3E6E2;
+    background-color: lightgray;
     border-radius: 20px;
     width: 25vw;
     height: 2.5vw;
@@ -45,14 +49,18 @@
     margin-right: 30px;
 }
 
+.filter-by {
+    font-size: 1rem; 
+}
+
 select {
-    background-color: #E3E6E2;
+    background-color: lightgray;
     color: black;
     border-radius: 26px;
     width: 10vw;
     height: 2.5vw;
     margin-left: 1vw;
-    font-size: 13px;
+    font-size: 1vw;
     padding: 10px;
     font-style: italic;
 }
@@ -65,8 +73,14 @@ select {
     width: 10vw;
     height: 2.5vw;
     margin-left: 1vw;
-    font-size: 13px;
-    border: none;
+    font-size: 1vw;
+}
+
+@media screen and (max-width: 768px) {
+    #create-new {
+        font-size: 2vw;
+        width: 15%; 
+    }
 }
 
 /* Inventory Table Header */

@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import "./top.css";
-import Inventory from "./inventory";
 import { Link } from "react-router-dom";
 
 function Top() {
@@ -16,18 +15,17 @@ function Top() {
       <div className="nav">
         <ul>
           <li>
-            <div className="icon"></div>
+            <img
+              src="voices-for-children-logo-color.png"
+              alt="Voices for Children Logo"
+            />
           </li>
         </ul>
       </div>
       <div className="inventoryContainer">
         <h1 className="name">In-Kind Donation</h1>
         <div className="flipSwitch">
-          <Link
-            className = "link"
-            style={{ textDecoration: "none" }}
-            to="/"
-          > 
+          <Link className="link" style={{ textDecoration: "none" }} to="/">
             <button
               id={buttonId === "Inventory" ? "clicked" : null}
               onClick={() => handleClick("Inventory")}
@@ -36,7 +34,7 @@ function Top() {
             </button>
           </Link>
           <Link
-            className = "link"
+            className="link"
             style={{ textDecoration: "none" }}
             to="/donation_log"
           >
