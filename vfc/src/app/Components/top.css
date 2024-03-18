@@ -35,14 +35,14 @@ li {
     width: 100%;
     height: auto;
     display: flex;
-    padding: 50px;
+    padding: 20px;
     flex-direction: column;
 }
 
 .name {
     font-size: 40px;
     font-weight: bolder;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .flipSwitch {

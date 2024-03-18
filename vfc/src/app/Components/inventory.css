@@ -1,25 +1,24 @@
 .inventory-page {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    max-width: 75vw;
-    margin-left: 12.5vw;
 }
 
 /* Search Bar */
 .search-wrapper {
-    background-color: red;
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100vw;
-    align-items: center;
-    margin-bottom: 0;
+    height: auto;
+    justify-content: center;
 }
 
-.search {
-    width: 50%
+.filterContainer {
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-content: flex-end;
+    padding: 10px;
 }
 
 #search {
@@ -39,10 +38,10 @@
 /* Filter Boxes */
 
 .filter-wrappers {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    margin-left: 5vw;
+    justify-content: flex-end;
 }
 
 select {
@@ -70,26 +69,29 @@ select {
 }
 
 /* Inventory Table Header */
+.inventory-wrapper {
+    width: 100%;
+}
+
 .inventory-header {
     display: flex;
-    justify-content: left;
+    justify-content: space-around;
     flex-direction: row;
     border-top: solid .1vh #8E8787;
     border-bottom: solid .1vh #8E8787;
-    width: 75vw;    
     height: 10vh;
     background-color: white;
     color: black;
     overflow: hidden;
-    margin-top: 0;
+    /* margin-top: 0; */
 }
 
 .inv-col-head {
     display: flex;
     flex-wrap: nowrap;
-    margin-left: 3vw;
-    opacity: default;
-    width: 10vw;
-    font-style: bold;
+    /* margin-left: 3vw; */
+    /* opacity: default; */
+    /* width: 10vw; */
+    /* font-style: bold; */
     align-items: center;
 }
