@@ -23,9 +23,7 @@ function Inventory() {
                             <option value="sort">option1</option>
                         </select>
                     </div>
-                    <Link style={{ textDecoration: "none" }} to="/create-new"> 
                         <button id="create-new">Create New</button>
-                    </Link>
                 </div>
             </div>
             <div className="inventory-wrapper">
