@@ -1,6 +1,8 @@
 import { Rowdies } from 'next/font/google';
 import './entrypopup.css';
 
+import { useState } from 'react';
+
 function EntryPopup () {
     const [visible, setVisible] = useState(true);
     function hide() {
