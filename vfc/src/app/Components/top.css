@@ -35,7 +35,7 @@ li {
     width: 100%;
     height: auto;
     display: flex;
-    padding: 20px;
+    padding: 30px;
     flex-direction: column;
 }
 
