@@ -5,6 +5,7 @@ import InventoryEntry from "./Components/inventoryentry";
 import Top from "./Components/top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EntryPopup from "./Components/entrypopup";
+import Donation from "./components/donation";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
         <Top  />
         <Routes>
           <Route path="/" element={<Inventory />} />
-          {/* <Route path="/donation_log" element={<Inventory />} /> */}
+          <Route path="/donation_log" element={<Donation />} />
         </Routes>
       </Router>
     </div>
