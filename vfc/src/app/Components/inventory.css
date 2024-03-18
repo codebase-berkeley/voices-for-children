@@ -22,7 +22,7 @@
 }
 
 #search {
-    background-color: #E3E6E2;
+    background-color: white;
     border-radius: 20px;
     width: 25vw;
     height: 2.5vw;
@@ -46,7 +46,7 @@
 }
 
 select {
-    background-color: #E3E6E2;
+    background-color: white;
     color: black;
     border-radius: 26px;
     width: 10vw;
