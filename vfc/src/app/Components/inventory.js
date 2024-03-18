@@ -7,11 +7,19 @@ import EntryPopup from "./entrypopup.js";
 import { useState } from "react";
 
 function Inventory() {
-  const [visible, setVisible] = useState(false);
-  function show() {
-    setVisible(true);
-    console.log(visible, "f");
-  }
+  // const [seen, setSeen] = useState(false);
+  // async function show() {
+  //     console.log("calling show");
+  //     setSeen(!seen);
+  //     console.log(seen, "from inventory")
+  // }
+
+  const [popupVisible, setPopupVisible] = useState(false);
+
+  const togglePopup = () => {
+    setPopupVisible(!popupVisible);
+  };
+
   return (
     <div className="inventory-page">
       <div className="search-wrapper">
@@ -34,7 +42,7 @@ function Inventory() {
                 <option value="sort">option1</option>
               </select>
             </div>
-            <button id="create-new" onClick={show}>
+            <button id="create-new" onClick={togglePopup}>
               Create New
             </button>
           </div>
@@ -106,7 +114,10 @@ function Inventory() {
             date="march 4"
           />
         </div>
-        <div className="create-form">{visible && <EntryPopup />}</div>
+        <div className="create-form">
+          {popupVisible && <EntryPopup onClose={togglePopup} />}
+          {/* {seen && <EntryPopup  />} */}
+        </div>
       </div>
     </div>
   );

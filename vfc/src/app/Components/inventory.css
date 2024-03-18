@@ -113,6 +113,8 @@ select {
 }
 
 .table-form {
+    display: flex;
+    flex-direction: row;
     padding: 30px;
     width: 100%;
 }
