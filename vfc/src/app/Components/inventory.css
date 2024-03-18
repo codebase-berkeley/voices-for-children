@@ -95,3 +95,9 @@ select {
     /* font-style: bold; */
     align-items: center;
 }
+
+.table-form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}

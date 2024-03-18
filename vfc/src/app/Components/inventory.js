@@ -3,7 +3,7 @@ import { Rowdies } from 'next/font/google';
 import './inventory.css';
 import InventoryEntry from './inventoryentry';
 import {Link} from "react-router-dom";
-// import EntryPopup from './entrypopup.js';
+import EntryPopup from './entrypopup.js';
 import { useState } from 'react';
 
 function Inventory() {
@@ -46,6 +46,10 @@ function Inventory() {
                         <h2 className="inv-col-head">Date Donated</h2>
                         <h2 className="inv-col-head">Thanked</h2>
                     </div>
+                    <InventoryEntry donor = "surbhu" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4"/>
+                    <InventoryEntry donor = "surbhu" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4"/>
+                    <InventoryEntry donor = "surbhu" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4"/>
+                    <InventoryEntry donor = "surbhu" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4"/>
                     <InventoryEntry donor = "surbhu" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4"/>
                     <InventoryEntry donor = "surbhu" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4"/>
                 </div>
