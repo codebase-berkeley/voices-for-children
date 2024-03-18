@@ -6,23 +6,39 @@ const experience = [
   {
     imageUrl: "codebase.jpg",
     name: "Codebase",
-    description: "mentored software developer - voices for children nonprofit",
+    description: "mentored",
+    location: "berkeley",
+    phone: "123-4567-8900",
+    email: "cindysanchez@berkeley.edu",
+    donor: "donor name",
   },
   {
     imageUrl: "CSK2022BigGroup.jpg",
     name: "CS Kickstart",
     description:
-      "director of inclusion - planning a super fun program for freshmen",
+      "director of inclusion",
+    location: "berkeley",
+    phone: "123-4567-8900",
+    email: "cindysanchez@berkeley.edu",
+    donor: "donor name",
   },
   {
     imageUrl: "eecs.jpg",
     name: "CS61B",
     description: "data structures ai",
+    location: "berkeley",
+    phone: "123-4567-8900",
+    email: "cindysanchez@berkeley.edu",
+    donor: "donor name",
   },
   {
     imageUrl: "cal.jpg",
-    name: "RCSA",
+    name: "TEST",
     description: "web dev committee",
+    location: "berkeley",
+    phone: "123-4567-8900",
+    email: "cindysanchez@berkeley.edu",
+    donor: "donor name",
   },
 ];
 
@@ -37,6 +53,10 @@ function MultipleFlipCards() {
             imageUrl={exp.imageUrl}
             name={exp.name}
             description={exp.description}
+            location={exp.location}
+            phone={exp.phone}
+            email={exp.email}
+            donor={exp.donor}
           />
         ))}
       </div>
