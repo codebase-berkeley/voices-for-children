@@ -46,7 +46,7 @@ function Inventory() {
                         <h2 className="inv-col-head">Date Donated</h2>
                         <h2 className="inv-col-head">Thanked</h2>
                     </div>
-                    <InventoryEntry donor = "surbhu" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4"/>
+                    <InventoryEntry donor = "surbhu" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4" thanked = "Thanked"/>
                     <InventoryEntry donor = "surbhu" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4"/>
                     <InventoryEntry donor = "surbhu" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4"/>
                     <InventoryEntry donor = "surbhu" item_donated = "crocs" item_type = "shoes" amount = "5" date = "march 4"/>
