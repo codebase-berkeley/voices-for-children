@@ -38,7 +38,7 @@ function Top() {
           <Link
             className = "link"
             style={{ textDecoration: "none" }}
-            to="/inventory"
+            to="/donation_log"
           >
             <button
               id={buttonId === "Donation_log" ? "clicked" : null}

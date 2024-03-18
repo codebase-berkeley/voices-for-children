@@ -4,8 +4,6 @@
 
 .bigContainer {
     width: 100%;
-    height: 100vh;
-    background-color: red;
 }
 
 .nav {
@@ -34,9 +32,8 @@ li {
 }
 
 .inventoryContainer {
-    background-color: green;
     width: 100%;
-    height: calc(100vh - 50px);
+    height: auto;
     display: flex;
     padding: 50px;
     flex-direction: column;
