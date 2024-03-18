@@ -9,49 +9,31 @@
   gap: 20px;
 
 }
-.experience-card {
-  width: 300px;
-  height: 200px;
-  /* width: 50%;
-  height: 50%; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.5s;
-  flex-shrink: 1;
-}
 
 /* Setting common size for all cards */
 .card-back, .card-front {
-  min-width: 15vw;
-  min-height: 30vh;
+  width: 20vw;
+  height: 40vh;
 }
 
 .card-back {
   /* border: 1px solid #ccc; */
-  width: 15vw;
-  height: 10vh;
   border-radius: 10px;
   padding: 10px;
   font-size: 10px;
+  background-color: white;
+  color: black;
 }
 
 .card-front {
   /* border: 1px solid #ccc; */
-  background-color: #A1C3D2;
-  width: 15vw;
-  height: 10vh;
+  background: linear-gradient(0deg, white 40%, #A1C3D2 40%);
   border-radius: 10px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
-.card-back
 
 .flipIMG {
   width: 15vw;
@@ -68,16 +50,13 @@
   height: 220px;
 } */
 
-#butt {
-  width: 50vw;
-  height: 50vh;
-}
 
 /* Stuff regarding the front of the card */
 .top {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding-top: 5vh;
 }
 
 .title {
@@ -85,4 +64,24 @@
   text-align: center;
   color: black;
   font-weight: bold;
+  padding-bottom: 3vh;
+}
+
+.bottom {
+  min-height: 10vh;
+  padding-top: 11vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5vh;
+}
+
+.bottom-top-row, .bottom-bottom-row {
+  display: flex;
+  color: black;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.bottom-bottom-row {
+  margin-top: 2vh;
 }

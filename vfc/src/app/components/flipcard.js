@@ -29,8 +29,13 @@ export default function FlipCard(props) {
             <div className="title">{props.name}</div>
         </div>
         <div className="bottom">
-          <div className="bottom-top-row"></div>
-          <div className="bottom-bottom-row"></div>
+          <div className="bottom-top-row">
+            <div>Location: {props.location}</div>
+            <div>Date: {props.date}</div>
+          </div>
+          <div className="bottom-bottom-row">
+            <div>Email: {props.email}</div>
+          </div>
         </div>
           {/* <img src={props.imageUrl} className="flipIMG" /> */}
         </div>
@@ -39,30 +44,31 @@ export default function FlipCard(props) {
           <p className="description">{props.description}</p>
           <div className="location">
             <div className="location-container">
-              <img></img>
+              <img src={props.locationImage} className="card-back-icons"></img>
               {props.location}
             </div>
           </div>
           <div className="phone-numbers">
             <div className="phone-container">
-              <img></img>
+              <img src={props.phoneImage} className="card-back-icons"></img>
               {props.phone}
             </div>
           </div>
           <div className="email-addresses">
             <div className="email-container">
-              <img></img>
+              <img src={props.emailImage} className="card-back-icons"></img>
               {props.email}
             </div>
           </div>
           <div className="donor-company">
             <div className="donor-container">
-              <img></img>
+              {/* <img src={props.donorImage} className="card-back-icons"></img> */}
               {props.donor}
             </div>
           </div>
         </div>
       </ReactCardFlip>
+ 
     </div>
   );
 }
