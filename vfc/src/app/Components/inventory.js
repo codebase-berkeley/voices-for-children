@@ -52,22 +52,22 @@ function Inventory() {
         <div className="inventory-wrapper">
           <div className="inventory-header">
             <div className="box">
-              <h2 className="inv-col-head">Donor</h2>
+              <h2 id="title" className="inv-col-head">Donor</h2>
             </div>
             <div className="box">
-              <h2 className="inv-col-head">Items Donated</h2>
+              <h2 id="title" className="inv-col-head">Items Donated</h2>
             </div>
             <div className="box">
-              <h2 className="inv-col-head">Item Type</h2>
+              <h2 id="title" className="inv-col-head">Item Type</h2>
             </div>
             <div className="box">
-              <h2 className="inv-col-head">Amount</h2>
+              <h2 id="title" className="inv-col-head">Amount</h2>
             </div>
             <div className="box">
-              <h2 className="inv-col-head">Date Donated</h2>
+              <h2 id="title" className="inv-col-head">Date Donated</h2>
             </div>
             <div className="box">
-              <h2 className="inv-col-head">Thanked</h2>
+              <h2 id="title" className="inv-col-head">Thanked</h2>
             </div>
           </div>
           <InventoryEntry
@@ -76,7 +76,7 @@ function Inventory() {
             item_type="shoes"
             amount="5"
             date="march 4"
-            thanked="Thanked"
+            thanked="Thanked. dohohhlahdlahsldhalshdlahsldhasldhlkashdlhasldhlashdlahsldhlashdklashkldhasklhd"
           />
           <InventoryEntry
             donor="surbhu"

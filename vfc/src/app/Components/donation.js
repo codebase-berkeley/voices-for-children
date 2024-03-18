@@ -41,16 +41,16 @@ function Donation() {
         <div className="inventory-wrapper">
           <div className="inventory-header">
             <div className="box">
-              <h2 className="inv-col-head">Name</h2>
+              <h2 id='title' className="inv-col-head">Name</h2>
             </div>
             <div className="box">
-              <h2 className="inv-col-head">Type</h2>
+              <h2 id='title' className="inv-col-head">Type</h2>
             </div>
             <div className="box">
-              <h2 className="inv-col-head">Amount</h2>
+              <h2 id='title' className="inv-col-head">Amount</h2>
             </div>
             <div className="box">
-              <h2 className="inv-col-head">In Stock</h2>
+              <h2 id='title' className="inv-col-head">In Stock</h2>
             </div>
           </div>
           <DonationEntry
