@@ -1,8 +1,14 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import "./flipcard.css";
+// Images:
+import emailIcon from "/public/assets/emailIcon.png";
+import locationIcon from "/public/assets/locationIcon.png";
+import calendarIcon from "/public/assets/calendarIcon.png";
+
 export default function FlipCard(props) {
   // Takes in props: email, poc name, phone number
   const [isFlipped, setIsFlipped] = useState(false);
@@ -14,6 +20,7 @@ export default function FlipCard(props) {
     setIsFlipped(!isFlipped);
   };
 
+  console.log("hi colin", emailIcon);
   return (
     <div>
       <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
@@ -30,10 +37,13 @@ export default function FlipCard(props) {
         </div>
         <div className="bottom">
           <div className="bottom-top-row">
+            <Image src={locationIcon} className='locationIcon'/>
             <div>Location: {props.location}</div>
+            <Image src={calendarIcon} className='calendarIcon' />
             <div>Date: {props.date}</div>
           </div>
           <div className="bottom-bottom-row">
+            <Image src={emailIcon} alt="Email Icon" className='emailIcon'/>
             <div>Email: {props.email}</div>
           </div>
         </div>
@@ -41,7 +51,7 @@ export default function FlipCard(props) {
         </div>
         {/* Back side */}
         <div className="card-back" onClick={handleClick}>
-          <p className="description">{props.description}</p>
+          {/* <p className="description">{props.description}</p> */}
           <div className="location">
             <div className="location-container">
               <img src={props.locationImage} className="card-back-icons"></img>

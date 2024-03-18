@@ -1,57 +1,56 @@
 "use client";
 import React from "react";
 import FlipCard from "./flipcard.js";
-// import cal from "../assets/cal.jpg"
+// import locationIcon from "../assets/location.png"
 
 const experience = [
   {
     name: "Codebase",
-    description: "mentored",
-    locationImage: "location.png",
+    // description: "mentored",
+    locationImage: "vfc/src/app/assets/codebase.jpg",
     location: "berkeley",
-    phoneImage: "phone.png",
+    phoneImage: "vfc/src/app/assets/phone.png",
     phone: "123-4567-8900",
-    emailImage: "email.png",
+    emailImage: "vfc/src/app/assets/email.png",
     email: "cindysanchez@berkeley.edu",
-    donorImage: "donor.png",
+    // donorImage: "donor.png",
     donor: "donor name",
-    imageUrl: "codebase.jpg",
+    date: "04/20/1969",
   },
   {
     name: "CS Kickstart",
-    description:
-      "director of inclusion",
-    locationImage: "location.png",
-    location: "berkeley",
-    phoneImage: "phone.png",
-    phone: "123-4567-8900",
-    emailImage: "email.png",
-    email: "cindysanchez@berkeley.edu",
-    donorImage: "donor.png",
-    donor: "donor name",
+    // description: "director of inclusion",
+      locationImage: "vfc/src/app/assets/codebase.jpg",
+      location: "berkeley",
+      phoneImage: "vfc/src/app/assets/phone.png",
+      phone: "123-4567-8900",
+      emailImage: "vfc/src/app/assets/email.png",
+      email: "cindysanchez@berkeley.edu",
+      // donorImage: "donor.png",
+      donor: "donor name",
   },
   {
     name: "CS61B",
-    description: "data structures ai",
-    locationImage: "location.png",
+    // description: "data structures ai",
+    locationImage: "vfc/src/app/assets/codebase.jpg",
     location: "berkeley",
-    phoneImage: "phone.png",
+    phoneImage: "vfc/src/app/assets/phone.png",
     phone: "123-4567-8900",
-    emailImage: "email.png",
+    emailImage: "vfc/src/app/assets/email.png",
     email: "cindysanchez@berkeley.edu",
-    donorImage: "donor.png",
+    // donorImage: "donor.png",
     donor: "donor name",
   },
   {
     name: "TEST",
-    description: "web dev committee",
-    locationImage: "location.png",
+    // description: "web dev committee",
+    locationImage: "vfc/src/app/assets/location.png",
     location: "berkeley",
-    phoneImage: "phone.png",
+    phoneImage: "vfc/src/app/assets/phone.png",
     phone: "123-4567-8900",
-    emailImage: "email.png",
+    emailImage: "vfc/src/app/assets/email.png",
     email: "cindysanchez@berkeley.edu",
-    donorImage: "donor.png",
+    // donorImage: "donor.png",
     donor: "donor name",
   },
 ];
@@ -66,7 +65,7 @@ function MultipleFlipCards() {
             key={index}
             // imageUrl={exp.imageUrl}
             name={exp.name}
-            description={exp.description}
+            // description={exp.description}
             location={exp.location}
             phone={exp.phone}
             email={exp.email}
@@ -74,7 +73,8 @@ function MultipleFlipCards() {
             locationImage={exp.locationImage}
             phoneImage={exp.phoneImage}
             emailImage={exp.emailImage}
-            donorImage={exp.donorImage}
+            date = {exp.date}
+            // donorImage={exp.donorImage}
           />
         ))}
       </div>

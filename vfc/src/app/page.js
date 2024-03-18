@@ -6,6 +6,7 @@ import React from "react";
 import Card from "./components/test";
 import ReactCardFlip from "react-card-flip";
 import FlipCard from "./components/flipcard";
+import emailIcon from "/public/assets/codebase.jpg";
 
 export default function Home() {
   var mock = {

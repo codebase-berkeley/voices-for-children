@@ -85,3 +85,19 @@
 .bottom-bottom-row {
   margin-top: 2vh;
 }
+
+.emailIcon {
+  max-height: 2vh;
+  max-width: 3vh;
+  margin-top: 0.25vh;
+}
+
+.locationIcon {
+  max-width: 1.5vh;
+  max-height: 2vh;
+}
+
+.calendarIcon {
+  max-width: 2vh;
+  max-height: 2vh;
+}
