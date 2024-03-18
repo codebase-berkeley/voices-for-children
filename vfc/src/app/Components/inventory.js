@@ -9,7 +9,7 @@ import { useState } from 'react';
 function Inventory() {
     const [visible, setVisible] = useState(false);
     function show() {
-        setVisible(!visible);
+        setVisible(true);
         console.log(visible, "f")
     }
     return (
