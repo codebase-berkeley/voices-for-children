@@ -2,10 +2,15 @@ import { Rowdies } from 'next/font/google';
 import './entrypopup.css';
 
 function EntryPopup () {
+    const [visible, setVisible] = useState(true);
+    function hide() {
+        setVisible(false);
+    }
     return (
         <div className="popup">
             <div className="create-new-bar">
                 <h1 className="create-new-text">New Donation</h1>
+                <img src="./apple-touch-icon.png" onClick={hide} ></img>
             </div>
             <form>
                 <input type="text" placeholder="Donation Name" id="name"></input>
