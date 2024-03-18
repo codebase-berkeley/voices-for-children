@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.column {
+    margin-bottom: 5vh;
+}
+
+.apply-button-rounded {
+    border-radius: 4vh;
+}
+
+.apply-button {
+    padding: 2vh 4vh;
+  font-size: 1.2vh;
+  color: white;
+  background-color: rgba(168, 168, 182, 0.6);
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.5s ease;
+}
+
+.apply-button:hover {
+    background-color: rgba(71, 71, 78, 0.6);
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    margin-right: 2vh;
+    font-size: 2.2vh;
+     font-family: 'Inter', sans-serif;
+     font-weight: 300;
+     align-items: center;
+     justify-content: center;
+    
+}
+
+
+.sidebar-page {
+    margin-left: 4vh;
+}
+
+.dropdowns {
+    margin-top: 10vh;
+}
+
+
+.logo {
+    margin-top: 2vh;
+}
+
+.list {
+    margin-top: 1vh;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    list-style-type: none; /* This removes the bullet points */
+  padding-left: 0;
+  font-size: 1.7vh;
+  margin-left: 3vh;
+}
+
+
+.apply-button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    padding: 1vh 2vh;
+    font-size: 2vh;
+}
+
+h5 {
+    margin-left: 1.5vh;
+}
+   
+
