@@ -1,12 +1,19 @@
-import Image from "next/image";
-import Inventory from "./Components/inventory";
-import InventoryEntry from "./Components/inventoryentry";
+"use client";
+import Inventory from "./components/inventory";
 import Top from "./components/top";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import EntryPopup from "./components/entrypopup";
 
 export default function Home() {
   return (
-    // <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div className="App">
+      <Router>
         <Top  />
-    // </main>
+        <Routes>
+          <Route path="/" element={<Inventory />} />
+          {/* <Route path="/donation_log" element={<Inventory />} /> */}
+        </Routes>
+      </Router>
+    </div>
   );
 }

@@ -2,12 +2,12 @@
     display: flex;
     justify-content: left;
     flex-direction: row;
-    border-top: solid .3vh #8E8787;
-    border-bottom: solid .3vh #8E8787;
+    border-top: solid .1vh #8E8787;
+    border-bottom: solid .1vh #8E8787;
     width: 75vw;    
     height: 10vh;
     background-color: rgb(124 194 203 / 18%);
-    padding-top: 2%;
+    align-items: center;
     overflow: hidden;
     
 }

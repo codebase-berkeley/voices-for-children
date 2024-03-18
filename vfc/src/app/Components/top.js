@@ -1,9 +1,11 @@
 "use client";
 import { useState } from "react";
 import "./top.css";
+import Inventory from "./inventory";
+import { Link } from "react-router-dom";
 
 function Top() {
-  const [buttonId, setButtonId] = useState("Donation_log");
+  const [buttonId, setButtonId] = useState("Inventory");
 
   const handleClick = (newId) => {
     setButtonId(newId);
@@ -21,18 +23,30 @@ function Top() {
       <div className="inventoryContainer">
         <h1 className="name">In-Kind Donation</h1>
         <div className="flipSwitch">
-          <button
-            id={buttonId === "Donation_log" ? "clicked" : null}
-            onClick={() => handleClick("Donation_log")}
+          <Link
+            className = "link"
+            style={{ textDecoration: "none" }}
+            to="/"
+          > 
+            <button
+              id={buttonId === "Inventory" ? "clicked" : null}
+              onClick={() => handleClick("Inventory")}
+            >
+              Inventory
+            </button>
+          </Link>
+          <Link
+            className = "link"
+            style={{ textDecoration: "none" }}
+            to="/inventory"
           >
-            Inventory
-          </button>
-          <button
-            id={buttonId === "Inventory" ? "clicked" : null}
-            onClick={() => handleClick("Inventory")}
-          >
-            Donation Log
-          </button>
+            <button
+              id={buttonId === "Donation_log" ? "clicked" : null}
+              onClick={() => handleClick("Donation_log")}
+            >
+              Donation Log
+            </button>
+          </Link>
         </div>
       </div>
     </div>
