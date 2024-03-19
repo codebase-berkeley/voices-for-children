@@ -3,8 +3,14 @@
 }
 
 #title {
-    font-size: larger;
+    font-size: 1.5vw;
     font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+    #title {
+        font-size: 2vw;
+    }
 }
 
 .inventory-page {
@@ -33,7 +39,7 @@
 #search {
     background-color: lightgray;
     border-radius: 20px;
-    width: 25vw;
+    width: 50vw;
     height: 2.5vw;
     padding: 10px;
 }
@@ -65,7 +71,7 @@ select {
     width: 10vw;
     height: 2.5vw;
     margin-left: 1vw;
-    font-size: 1vw;
+    font-size: 15px;
     padding: 10px;
     font-style: italic;
 }
