@@ -15,10 +15,14 @@ function Top() {
       <div className="nav">
         <ul>
           <li>
-            <img
-              src="voices-for-children-logo-color.png"
-              alt="Voices for Children Logo"
-            />
+            <Link className="link" style={{ textDecoration: "none" }} to="/">
+              <img
+                style={{ textDecoration: "none" , display: 'block'}}
+                onClick={() => handleClick("Inventory")}
+                src="voices-for-children-logo-color.png"
+                alt="Voices for Children Logo"
+              />
+            </Link>
           </li>
         </ul>
       </div>

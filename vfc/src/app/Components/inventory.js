@@ -84,6 +84,7 @@ function Inventory() {
             item_type="shoes"
             amount="5"
             date="march 4"
+            thanked="Thanked. dohohhlahdlahsldhalshdlahsldhasldhlkashdlhasldhlashdlahsldhlashdklashkldhasklhd"
           />
           <InventoryEntry
             donor="surbhu"
@@ -91,6 +92,7 @@ function Inventory() {
             item_type="shoes"
             amount="5"
             date="march 4"
+            thanked="Thanked. dohohhlahdlahsldhalshdlahsldhasldhlkashdlhasldhlashdlahsldhlashdklashkldhasklhd"
           />
           <InventoryEntry
             donor="surbhu"
@@ -98,6 +100,7 @@ function Inventory() {
             item_type="shoes"
             amount="5"
             date="march 4"
+            thanked="Thanked. dohohhlahdlahsldhalshdlahsldhasldhlkashdlhasldhlashdlahsldhlashdklashkldhasklhd"
           />
           <InventoryEntry
             donor="surbhu"
@@ -105,6 +108,7 @@ function Inventory() {
             item_type="shoes"
             amount="5"
             date="march 4"
+            thanked="Thanked. dohohhlahdlahsldhalshdlahsldhasldhlkashdlhasldhlashdlahsldhlashdklashkldhasklhd"
           />
           <InventoryEntry
             donor="surbhu"
@@ -112,6 +116,7 @@ function Inventory() {
             item_type="shoes"
             amount="5"
             date="march 4"
+            thanked="Thanked"
           />
         </div>
         <div className="create-form">
