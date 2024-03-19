@@ -14,6 +14,9 @@
 .card-back, .card-front {
   width: 20vw;
   height: 40vh;
+  border: 2px solid black;  
+  padding: 10px;  
+  border-radius: 5px;
 }
 
 .card-back {
@@ -23,6 +26,11 @@
   font-size: 10px;
   background-color: white;
   color: black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  justify-content: space-between;
 }
 
 .card-front {
@@ -41,9 +49,9 @@
   border-radius: 10px;
 }
 
-.description {
+/* .description {
   font-size: 10px;
-}
+} */
 
 /* .experience-card:hover{
   width: 320px;
@@ -90,14 +98,33 @@
   max-height: 2vh;
   max-width: 3vh;
   margin-top: 0.25vh;
+  margin-right: 0.5vh;
 }
 
-.locationIcon {
+.locationIcon, .pocIcon {
   max-width: 1.5vh;
   max-height: 2vh;
+  margin-right: 0.5vh;
+  
 }
 
-.calendarIcon {
+.calendarIcon, .phoneIcon {
   max-width: 2vh;
   max-height: 2vh;
+  margin-right: 0.5vh;
+}
+
+.contact-info-back {
+  font-size: small;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+.location-container,
+.phone-container,
+.email-container,
+.poc-container {
+  display: flex;
+  /* align-items: center;  */
 }
