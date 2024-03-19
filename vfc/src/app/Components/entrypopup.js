@@ -10,8 +10,8 @@ function EntryPopup ({ onClose }) {
         return (
                 <div className="popup">
                     <div className="create-new-bar">
-                        <h1 className="create-new-text">New Donation</h1>
-                        <button onClick={handlePopupClose}><img src="../public/apple-touch-icon.png" alt="x img"></img></button>
+                        <b><h1 className="create-new-text">New Donation</h1></b>
+                        <button id="x" onClick={handlePopupClose}><img src="apple-touch-icon.png" alt="x img"></img></button>
                     </div>
                     <form>
                         <input type="text" placeholder="Donation Name" id="name"></input>
@@ -21,9 +21,11 @@ function EntryPopup ({ onClose }) {
                             <input type="text" placeholder="Amount" id="amt"></input>
                             <input type="date" placeholder="Date" id="date"></input>
                         </div>
-                        <span className="popup-text">Description</span>
-                        <input type="text" placeholder="Thank you details, item usage, etc." id="desc"></input>
-                        <input type="submit" id = "submit"></input>
+                        <div className="desc-container">
+                            <span className="popup-text">Description</span>
+                            <input type="text" placeholder="Thank you details, item usage, etc." id="desc"></input>
+                            <div className="submit"><input type="submit" id = "submit"></input></div>
+                        </div>
                     </form>
                 </div>  
         )

@@ -79,6 +79,8 @@ select {
     height: 2.5vw;
     margin-left: 1vw;
     font-size: 1vw;
+    padding: 0;
+    border: none;
 }
 
 @media screen and (max-width: 768px) {

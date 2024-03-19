@@ -31,9 +31,6 @@ function Donation() {
                 <option value="sort">option1</option>
               </select>
             </div>
-            <button id="create-new" onClick={show}>
-              Create New
-            </button>
           </div>
         </div>
       </div>
