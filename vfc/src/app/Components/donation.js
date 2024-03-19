@@ -51,10 +51,10 @@ function Donation() {
             </div>
           </div>
           <DonationEntry
-            name="surbhu"
-            type="tickets"
+            name="Codebase"
+            type="Tickets"
             amount="30"
-            instock="YES!"
+            instock="Yes"
           />
         </div>
         <div className="create-form">{visible && <EntryPopup />}</div>

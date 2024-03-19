@@ -71,52 +71,52 @@ function Inventory() {
             </div>
           </div>
           <InventoryEntry
-            donor="surbhu"
-            item_donated="crocs"
-            item_type="shoes"
+            donor="Codebase"
+            item_donated="Cal x Stanford Tickets"
+            item_type="Tickets"
             amount="5"
-            date="march 4"
-            thanked="Thanked. dohohhlahdlahsldhalshdlahsldhasldhlkashdlhasldhlashdlahsldhlashdklashkldhasklhd"
+            date="March 4"
+            thanked="Thanked. Thanked at banquet on 3/4"
           />
           <InventoryEntry
-            donor="surbhu"
-            item_donated="crocs"
-            item_type="shoes"
+            donor="Codebase"
+            item_donated="Cal x Stanford Tickets"
+            item_type="Tickets"
             amount="5"
-            date="march 4"
-            thanked="Thanked. dohohhlahdlahsldhalshdlahsldhasldhlkashdlhasldhlashdlahsldhlashdklashkldhasklhd"
+            date="March 4"
+            thanked="Thanked. Thanked at banquet on 3/4"
           />
           <InventoryEntry
-            donor="surbhu"
-            item_donated="crocs"
-            item_type="shoes"
+            donor="Codebase"
+            item_donated="Cal x Stanford Tickets"
+            item_type="Tickets"
             amount="5"
-            date="march 4"
-            thanked="Thanked. dohohhlahdlahsldhalshdlahsldhasldhlkashdlhasldhlashdlahsldhlashdklashkldhasklhd"
+            date="March 4"
+            thanked="Thanked. Thanked at banquet on 3/4"
           />
           <InventoryEntry
-            donor="surbhu"
-            item_donated="crocs"
-            item_type="shoes"
+            donor="Codebase"
+            item_donated="Cal x Stanford Tickets"
+            item_type="Tickets"
             amount="5"
-            date="march 4"
-            thanked="Thanked. dohohhlahdlahsldhalshdlahsldhasldhlkashdlhasldhlashdlahsldhlashdklashkldhasklhd"
+            date="March 4"
+            thanked="Thanked. Thanked at banquet on 3/4"
           />
           <InventoryEntry
-            donor="surbhu"
-            item_donated="crocs"
-            item_type="shoes"
+            donor="Codebase"
+            item_donated="Cal x Stanford Tickets"
+            item_type="Tickets"
             amount="5"
-            date="march 4"
-            thanked="Thanked. dohohhlahdlahsldhalshdlahsldhasldhlkashdlhasldhlashdlahsldhlashdklashkldhasklhd"
+            date="March 4"
+            thanked="Thanked. Thanked at banquet on 3/4"
           />
           <InventoryEntry
-            donor="surbhu"
-            item_donated="crocs"
-            item_type="shoes"
+            donor="Codebase"
+            item_donated="Cal x Stanford Tickets"
+            item_type="Tickets"
             amount="5"
-            date="march 4"
-            thanked="Thanked"
+            date="March 4"
+            thanked="Thanked. Thanked at banquet on 3/4"
           />
         </div>
         <div className="create-form">
