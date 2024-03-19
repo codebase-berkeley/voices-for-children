@@ -11,7 +11,9 @@ function EntryPopup ({ onClose }) {
                 <div className="popup">
                     <div className="create-new-bar">
                         <b><h1 className="create-new-text">New Donation</h1></b>
-                        <button id="x" onClick={handlePopupClose}><img src="apple-touch-icon.png" alt="x img"></img></button>
+                        <div className="close">
+                            <button id="x" onClick={handlePopupClose}><img src="apple-touch-icon.png" alt="x img"></img></button>
+                        </div>
                     </div>
                     <form>
                         <input type="text" placeholder="Donation Name" id="name"></input>

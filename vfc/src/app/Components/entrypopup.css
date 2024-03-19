@@ -17,10 +17,10 @@
     height: 3vh;
     border-radius: 15px;
     background-color: #D9D9D9;
-    margin-right: 4px;
     padding: 4px;
     width: 100%;
-    margin-top: 3px;
+    margin: 3px;
+    margin-top: 5px;
 }
 
 #amt {
@@ -86,39 +86,52 @@
     flex-direction: row;
 }
 
-form::placeholder {
-    size: 2px;
+input::placeholder {
+    size: 8px;
     opacity: 85%;
     font-style: italic;
 }
 
-.create-new.bar {
+.create-new-bar {
     display: flex;
     flex-direction: row;
-    height: 20vh;
+    align-items: center;
+    margin-bottom: 5px;
 }
 
 #x {
     border-bottom: none;
     color: none;
     object-fit: cover;
-    transform: scale(0.15);
     border-bottom: none;
     color: none;
     padding: none;
-    margin: none;
+    margin-right: none;
+}
+
+.close {
+    margin: 0;
+    height: 5vh;
+    width: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: right;
 }
 
 .create-new-text {
     font-size: 23px;
     font-style: normal;
     margin-top: 3px;
+    margin-right: 5vw;
+    margin-left: 3px;
 }
 
 .desc-container {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    margin-top: 4px;
+    margin-left: 3px;
 }
 
 #submit {
@@ -131,4 +144,5 @@ form::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2vh;
 }
