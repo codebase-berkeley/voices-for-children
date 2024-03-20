@@ -4,6 +4,8 @@ import React from "react";
 import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import "./flipcard.css";
+import Modal from "./modal";
+
 // Images:
 import emailIcon from "/public/assets/emailIcon.png";
 import locationIcon from "/public/assets/locationIcon.png";
@@ -13,19 +15,16 @@ import pocIcon from "/public/assets/point-of-contact.png";
 
 export default function FlipCard(props) {
   // Takes in props: email, poc name, phone number
-  const [isFlipped, setIsFlipped] = useState(false);
-  console.log(isFlipped);
+  const [isOpen, setIsOpen] = useState(false);
+  // console.log(isFlipped);
 
   const handleClick = () => {
-    console.log("inside handliClick anthony");
-    console.log(isFlipped);
-    setIsFlipped(!isFlipped);
+    setIsOpen(!isOpen);
+    console.log(isOpen);
   };
-
-  console.log("hi colin", emailIcon);
   return (
     <div>
-      <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+      <ReactCardFlip>
         {/* Front side */}
         <div
           className="card-front"
@@ -52,7 +51,7 @@ export default function FlipCard(props) {
           {/* <img src={props.imageUrl} className="flipIMG" /> */}
         </div>
         {/* Back side */}
-        <div className="card-back" onClick={handleClick}>
+        <div className="card-back">
           {/* <p className="description">{props.description}</p> */}
           <div className="contact-info-back">{props.name}'s Contact Information</div>
           <hr/>
@@ -74,7 +73,15 @@ export default function FlipCard(props) {
           </div>
         </div>
       </ReactCardFlip>
- 
+      <Modal 
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        company={props.name} 
+        location={props.cityState} 
+        date={props.date} 
+        email={props.email}
+        poc={props.poc}
+      />
     </div>
   );
 }

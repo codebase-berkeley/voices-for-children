@@ -1,0 +1,58 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2vh;
+}
+
+.company {
+    margin-top: 2vh;
+    text-align: center;
+    font-weight: bold;
+}
+
+.middle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.poc, .email, .phone-number, .date {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.address {
+    margin-top: 2vh;
+}
+
+.modal-top {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button {
+    background-color: #808080;
+    border-radius: 4px;
+    padding: 0.5vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 2vw;
+    height: 100%;
+
+}

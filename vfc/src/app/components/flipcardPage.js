@@ -13,7 +13,7 @@ const experience = [
     emailImage: "vfc/src/app/assets/email.png",
     email: "cindy@berkeley.edu",
     poc: "Cindy Sanchez",
-    date: "04/20/1969",
+    date: "05/06/2005",
   },
   {
     name: "LEGO",
