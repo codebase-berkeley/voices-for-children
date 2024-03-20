@@ -8,7 +8,7 @@ import ReactCardFlip from "react-card-flip";
 import FlipCard from "./components/flipcard";
 import emailIcon from "/public/assets/codebase.jpg";
 import Modal from "./components/modal";
-import Dropdown from "../components/dropdown.js"
+import MainComPart from "./components/maincompart.js"
 
 export default function Home() {
   var mock = {
@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div class = "Dropdown">
-      <Dropdown />
+      <MainComPart />
     </div>
   );
 }

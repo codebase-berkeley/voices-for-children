@@ -1,13 +1,10 @@
 "use client"
 import React, { useState } from 'react'; 
-import "../components/dropdown.css"
-import vfclogo from "../assets/vfclogo.png";
-import random from "../assets/random.png";
-import Image from 'next/image';
+import "./maincompart.css"
 
 
 
-function Dropdown() {
+function MainComPart() {
 
         
     const [currFilters, setCurrFilters] = useState([])    
@@ -151,7 +148,7 @@ function Dropdown() {
 
      {/* end of ALL filter */}
 
-     
+     {/* This is where all the cards go */}
      <div class = "main-card-box">
         <div class = "card-box-top">
                 {isDisplayed && (
@@ -166,8 +163,10 @@ function Dropdown() {
                         </button>
                 ))}
                 </div>
-                )}    
+                )}  
         </div>
+
+        <div>Hello world!</div>
      </div>
      
  
@@ -180,4 +179,4 @@ function Dropdown() {
 }
 
 
-export default Dropdown;
+export default MainComPart;

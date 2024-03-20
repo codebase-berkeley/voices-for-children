@@ -103,7 +103,7 @@ h5 {
 
 .main-card-box {
     margin-left: 4vw;
-    /* background-color: aqua; */
+    background-color: aqua;
     width: 62vw;
 
     border: 2px black solid;
@@ -112,7 +112,7 @@ h5 {
 }
    
 .card-box-top {
-    /* background-color: blueviolet; */
+    background-color: green;
 
 
 }
