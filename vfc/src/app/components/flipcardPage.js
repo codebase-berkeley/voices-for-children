@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import FlipCard from "./flipcard.js";
+import Modal from "./modal.js";
 
 const experience = [
   {
@@ -62,9 +63,7 @@ function MultipleFlipCards() {
         {experience.map((exp, index) => (
           <FlipCard
             key={index}
-            // imageUrl={exp.imageUrl}
             name={exp.name}
-            // description={exp.description}
             location={exp.location}
             cityState={exp.cityState}
             phone={exp.phone}
@@ -74,7 +73,6 @@ function MultipleFlipCards() {
             phoneImage={exp.phoneImage}
             emailImage={exp.emailImage}
             date = {exp.date}
-            // donorImage={exp.donorImage}
           />
         ))}
       </div>
