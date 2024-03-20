@@ -46,7 +46,7 @@
     justify-content: center;
 }
 
-button {
+.exit-button {
     background-color: #808080;
     border-radius: 4px;
     padding: 0.5vw;

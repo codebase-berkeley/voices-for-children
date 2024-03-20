@@ -16,7 +16,7 @@ export default function Popup({isOpen, setIsOpen, props}) {
             <div className="container">
             <div className='modal-top'>
                 <div className='company'>CONTACT INFO</div>
-                <button onClick={handleClick}>X</button>
+                <div className='exit-button'onClick={handleClick}>X</div>
             </div>
             <div className='middle'>
                 <div className='left'>
