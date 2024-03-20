@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.all-filters {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2vw;
+    width: 25vw;
+    /* background-color: blue;     */
+}
+
+.each-filter {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+
+.apply-button-rounded {
+    border-radius: 4vh;
+}
+
+.apply-button {
+  padding: 2vh 4vh;
+  font-size: 1.2vh;
+  color: white;
+  background-color: rgba(168, 168, 182, 0.6);
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.5s ease;
+}
+
+.apply-button:hover {
+    background-color: rgba(71, 71, 78, 0.6);
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    margin-right: 2vh;
+    font-size: 2.2vh;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    align-items: center;
+    
+    /* justify-content: center;  */
+}
+
+
+
+.top-of-page {
+    display: flex;
+    /* background-color: red; */
+    flex-direction: column;
+    margin-left: 2vh;
+    margin-right: 2vh;
+
+}
+
+.bottom-of-page {
+    display: flex;
+    flex-direction: row;
+    /* background-color: yellow; */
+    margin-top: 3vh;
+    margin-left: 2vh;
+    margin-right: 2vh; 
+    height: 100vh;
+}
+
+
+.logo {
+    margin-top: 2vh;
+}
+
+.list {
+    margin-top: 1vh;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    list-style-type: none; /* This removes the bullet points */
+    padding-left: 0;
+    font-size: 1.7vh;
+    margin-left: 3vh;
+}
+
+
+.apply-button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    padding: 1vh 2vh;
+    font-size: 2vh;
+}
+
+h5 {
+    justify-content: right;
+    margin-left: 1.5vh;
+}
+
+
+.page {
+    flex: display;
+    flex-direction: row;
+
+}
+
+
+.main-card-box {
+    margin-left: 4vw;
+    /* background-color: aqua; */
+    width: 62vw;
+
+    border: 2px black solid;
+    border-radius: 2%;
+    
+}
+   
+.card-box-top {
+    /* background-color: blueviolet; */
+
+
+}
+
+.small-filter-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    margin: 2px;
+    font-size: 16px;
+    border: 0.2px solid #a0a0a0;
+    border-radius: 20px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+.close-icon {
+    /* Styles for the 'x' icon */
+    margin-left: 10px;
+    color: #000000;
+    cursor: pointer;
+  }
+
+
