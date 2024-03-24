@@ -5,7 +5,7 @@ import InventoryEntry from "./Components/inventoryentry";
 import Top from "./Components/top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EntryPopup from "./Components/entrypopup";
-import Donation from "./components/donation";
+import Donation from "./Components/donation";
 
 export default function Home() {
   return (

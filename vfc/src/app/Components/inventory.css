@@ -1,5 +1,6 @@
 .App {
     background-color: white;
+    color: black;
 }
 
 #title {
@@ -131,3 +132,5 @@ select {
     padding: 30px;
     width: 100%;
 }
+
+
