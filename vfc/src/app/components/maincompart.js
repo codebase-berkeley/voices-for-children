@@ -38,6 +38,7 @@ function MainComPart() {
             // If the checkbox is unchecked, remove its value from the currFilters array
             setCurrFilters(currFilters.filter((item) => item !== e.target.value));
         }
+        console.log(currFilters);
     }
 
     //removes filter when it is clicked in the card box area
@@ -190,7 +191,7 @@ function MainComPart() {
         </div>
 
          {/*this is where the cards will go */}            
-        <MultipleFlipCards input={inputText}/>
+        <MultipleFlipCards input={inputText} filters={currFilters}/>
 
         
      </div>

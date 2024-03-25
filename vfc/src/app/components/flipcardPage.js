@@ -3,76 +3,39 @@ import {React, useState} from "react";
 import FlipCard from "./flipcard.js";
 import Modal from "./modal.js";
 import data from "./rawdata.json"
-
-// const cardData = [
-//   {
-//     name: "Codebase",
-//     locationImage: "vfc/src/app/assets/codebase.jpg",
-//     location: "University Avenue and, Oxford St, Berkeley, CA 94720",
-//     cityState: "Berkeley, CA",
-//     phoneImage: "vfc/src/app/assets/phone.png",
-//     phone: "(123)4567-8900",
-//     emailImage: "vfc/src/app/assets/email.png",
-//     email: "cindy@berkeley.edu",
-//     poc: "Cindy Sanchez",
-//     date: "05/06/2005",
-//   },
-//   {
-//     name: "LEGO",
-//       locationImage: "vfc/src/app/assets/codebase.jpg",
-//       location: "1 Dr Carlton B Goodlett Pl, San Francisco, CA 94102",
-//       cityState: "San Francisco, CA",
-//       phoneImage: "vfc/src/app/assets/phone.png",
-//       phone: "(123)4567-8900",
-//       emailImage: "vfc/src/app/assets/email.png",
-//       email: "colin@berkeley.edu",
-//       poc: "Colin O'Brien",
-//       date: "01/01/2000",
-//   },
-//   {
-//     name: "COMPANY",
-//     locationImage: "vfc/src/app/assets/codebase.jpg",
-//     location: "Street Avenue and, ABC St, Oakland, CA 00000",
-//     cityState: "Berkeley, CA",
-//     phoneImage: "vfc/src/app/assets/phone.png",
-//     phone: "(123)4567-8900",
-//     emailImage: "vfc/src/app/assets/email.png",
-//     email: "angie@berkeley.edu",
-//     poc: "Angie Zhu",
-//     date: "12/12/2012",
-//   },
-//   {
-//     name: "LONGER COMPANY NAME",
-//     locationImage: "vfc/src/app/assets/location.png",
-//     location: "Street Avenue and, ABC St, San Jose, CA 00000",
-//     cityState: "Berkeley, CA",
-//     phoneImage: "vfc/src/app/assets/phone.png",
-//     phone: "123-4567-8900",
-//     emailImage: "vfc/src/app/assets/email.png",
-//     email: "kinton@berkeley.edu",
-//     phone: "(123)4567-8900",
-//     poc: "Kinton Duong",
-//     date: "10/10/2010",
-//   },
-// ];
+import { Andada_Pro } from "next/font/google/index.js";
 
 function MultipleFlipCards(props) {
   
-  //create the group of cards that are filters through it
+  // Filters through data from filters checked
   const filteredData = data.filter(card => {
+    // If there are no filters selected, show everything
+    if (props.filters.length == 0) {
+      return true;
+    // Else return all items that have an attribute present in the currFilter array
+    } else {
+      return(
+        props.filters.includes(card.giftType) ||
+        props.filters.includes(card.location) ||
+        props.filters.includes(card.date)
+        );
+    }
+  })
+  // Filters through data by searching
+  const searchedData = filteredData.filter(card => {
     //if nothing in the input, return everything 
     if (props.input == "") {
       return true;
     } else {
       //only return cards that match the name 
-      return card.name.toLowerCase().includes(props.input)
+      return card.name.toLowerCase().includes(props.input);
     }
   });
 
   return (
     <div className="app">
       <div className="card-container">
-        {filteredData.map((card, index) => (
+        {searchedData.map((card, index) => (
           <FlipCard
             key={index}
             name={card.name}
@@ -85,6 +48,7 @@ function MultipleFlipCards(props) {
             phoneImage={card.phoneImage}
             emailImage={card.emailImage}
             date = {card.date}
+            giftType = {card.giftType}
           />
         ))}
       </div>

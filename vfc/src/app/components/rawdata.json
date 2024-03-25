@@ -9,7 +9,8 @@
       "emailImage": "vfc/src/app/assets/email.png",
       "email": "cindy@berkeley.edu",
       "poc": "Cindy Sanchez",
-      "date": "05/06/2005"
+      "date": "05/06/2005",
+      "giftType": "Money"
     },
     {
       "name": "LEGO",
@@ -21,7 +22,8 @@
         "emailImage": "vfc/src/app/assets/email.png",
         "email": "colin@berkeley.edu",
         "poc": "Colin O'Brien",
-        "date": "01/01/2000"
+        "date": "01/01/2000",
+        "giftType": "Toys"
     },
     {
       "name": "COMPANY",
@@ -33,7 +35,8 @@
       "emailImage": "vfc/src/app/assets/email.png",
       "email": "angie@berkeley.edu",
       "poc": "Angie Zhu",
-      "date": "12/12/2012"
+      "date": "12/12/2012",
+      "giftType": "Toys"
     },
     {
       "name": "LONGER COMPANY NAME",
@@ -45,6 +48,7 @@
       "email": "kinton@berkeley.edu",
       "phone": "(123)4567-8900",
       "poc": "Kinton Duong",
-      "date": "10/10/2010"
+      "date": "10/10/2010",
+      "giftType": "Toys"
     }
   ]
