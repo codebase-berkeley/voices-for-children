@@ -30,17 +30,25 @@
 
 .middle {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    text-align: left;
 }
 
-.poc, .email, .phone-number, .date {
+.poc, .email, .phone-number, .date-joined{
     margin-top: 2vh;
     margin-bottom: 2vh;
+    margin-left: .5vh;
+}
+
+.gifts {
+    margin-left: .5vh;
 }
 
 .address {
     margin-top: 2vh;
+    margin-left: .5vh;
+
 }
 
 .modal-top {
