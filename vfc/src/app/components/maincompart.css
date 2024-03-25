@@ -49,11 +49,19 @@
 .top-of-page {
     display: flex;
     /* background-color: red; */
-    flex-direction: column;
+    flex-direction: row;
     margin-left: 2vh;
     margin-right: 2vh;
 
 }
+.searchbar {
+    /* background-color: green; */
+    float: right;
+    position: absolute;
+    right: 2vh;
+    top: 2vh;
+}
+
 
 .bottom-of-page {
     display: flex;

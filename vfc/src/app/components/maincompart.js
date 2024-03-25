@@ -2,12 +2,14 @@
 import React, { useState } from 'react'; 
 import "./maincompart.css"
 import MultipleFlipCards from './flipcardPage';
+import TextField from "@mui/material/TextField";
+// import Data from "./rawdata";
 
 
 
 function MainComPart() {
 
-        
+   //checkbox filters     
     const [currFilters, setCurrFilters] = useState([])    
     const [isOpen, setIsOpen] = useState(false)
     const [isOpen1, setIsOpen1] = useState(false)
@@ -16,6 +18,16 @@ function MainComPart() {
     const date = ['December 2023', 'November 2023', 'October 2023', 'September 2023', 'August 2023', 'July 2023', 'June 2023', 'May 2023', 'April 2023' ];
     const giftType = ['Toys', 'Food', 'Money', 'Alochol', 'Weed']
     const [isDisplayed, setIsDisplayed] = useState(false);
+    const [inputText, setInputText] = useState("");
+
+
+      //handles search bar input
+      let inputHandler = (e) => {
+         //convert input to lowercase
+         var lowercase = e.target.value.toLowerCase();
+         setInputText(lowercase);
+      }
+
     //adds the filters to a list to be applied and displayed on the screen top
     
     function handleChange(e) {
@@ -57,6 +69,14 @@ function MainComPart() {
                 />
                 
 
+        </div>
+        <div class="searchbar">
+        <TextField
+          id="outlined-basic"
+          onChange={inputHandler}
+          variant="outlined"
+          label="Search"
+        />
         </div>
         </div>
 
@@ -101,7 +121,7 @@ function MainComPart() {
              {!isOpen1 ? 
                  <img src = "https://static.thenounproject.com/png/551749-200.png" style = {{width: '1.7vh', height: '1.2vh'}} /> 
                  : <img src = "https://static.thenounproject.com/png/1240272-200.png" style = {{width: '1.7vh', height: '1.2vh'}} />
-               } <h5>Month  /  Year</h5>
+               } <h5>Month / Year</h5>
              </button>
 
              {isOpen1 && (
@@ -168,13 +188,13 @@ function MainComPart() {
                 </div>
                 )}  
         </div>
+
          {/*this is where the cards will go */}            
-        <MultipleFlipCards />
+        <MultipleFlipCards input={inputText}/>
 
         
      </div>
      
- 
      
      </div>
      {/* end bottom of page */}
