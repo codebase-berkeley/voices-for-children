@@ -26,8 +26,9 @@ export default function Popup({isOpen, setIsOpen, props}) {
                     <div className='date-joined'>DATE JOINED</div>
                 </div>
                 <div className='gifts'>GIFTS</div>
-            </div>
+            
             <div className='address'>ADDRESS</div>
+            </div>
             </div>
         </div>
     );
