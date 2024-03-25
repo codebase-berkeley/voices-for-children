@@ -117,15 +117,16 @@ h5 {
     border: 2px black solid;
     border-radius: 2%;
     padding: 1vw;
-    flex-direction: row;
+    flex-direction: column;
     
 }
    
-.card-box-top {
+/* .card-box-top {
     background-color: purple;
-
-
 }
+ */
+
+
 
 .small-filter-button {
     display: inline-flex;
