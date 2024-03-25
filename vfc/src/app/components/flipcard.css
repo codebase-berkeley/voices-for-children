@@ -2,7 +2,7 @@
   text-align: center;
   padding: 20px;
 }
-.exp-container {
+.card-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

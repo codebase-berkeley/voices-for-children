@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'; 
 import "./maincompart.css"
+import MultipleFlipCards from './flipcardPage';
 
 
 
@@ -36,6 +37,9 @@ function MainComPart() {
      const showFilters = () => {
         setIsDisplayed(!isDisplayed);
      } 
+
+   
+
 
     return (
       
@@ -148,7 +152,6 @@ function MainComPart() {
 
      {/* end of ALL filter */}
 
-     {/* This is where all the cards go */}
      <div class = "main-card-box">
         <div class = "card-box-top">
                 {isDisplayed && (
@@ -157,7 +160,7 @@ function MainComPart() {
                         <button
                         key={index}
                         class="small-filter-button"
-                        onClick={() => removeFilter(filter)}
+                        onClick={() => removeFilter(filter)} 
                         >
                         {filter} <span class="close-icon">x</span>
                         </button>
@@ -165,8 +168,10 @@ function MainComPart() {
                 </div>
                 )}  
         </div>
+         {/*this is where the cards will go */}            
+        <MultipleFlipCards />
 
-        <div>Hello world!</div>
+        
      </div>
      
  

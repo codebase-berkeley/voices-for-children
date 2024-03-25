@@ -3,8 +3,8 @@
 .all-filters {
     display: flex;
     flex-direction: column;
-    margin-left: 2vw;
-    width: 25vw;
+    margin-left: 1vw;
+    width: 10vw;
     /* background-color: blue;     */
 }
 
@@ -103,16 +103,18 @@ h5 {
 
 .main-card-box {
     margin-left: 4vw;
-    background-color: aqua;
-    width: 62vw;
-
+    /* background-color: aqua; */
+    width: 70vw;
+    display: flex;
     border: 2px black solid;
     border-radius: 2%;
+    padding: 1vw;
+    flex-direction: row;
     
 }
    
 .card-box-top {
-    background-color: green;
+    background-color: purple;
 
 
 }

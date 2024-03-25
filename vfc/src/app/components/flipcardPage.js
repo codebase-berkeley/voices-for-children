@@ -3,7 +3,7 @@ import React from "react";
 import FlipCard from "./flipcard.js";
 import Modal from "./modal.js";
 
-const experience = [
+const cardData = [
   {
     name: "Codebase",
     locationImage: "vfc/src/app/assets/codebase.jpg",
@@ -59,20 +59,20 @@ function MultipleFlipCards() {
   
   return (
     <div className="app">
-      <div className="exp-container">
-        {experience.map((exp, index) => (
+      <div className="card-container">
+        {cardData.map((card, index) => (
           <FlipCard
             key={index}
-            name={exp.name}
-            location={exp.location}
-            cityState={exp.cityState}
-            phone={exp.phone}
-            email={exp.email}
-            poc={exp.poc}
-            locationImage={exp.locationImage}
-            phoneImage={exp.phoneImage}
-            emailImage={exp.emailImage}
-            date = {exp.date}
+            name={card.name}
+            location={card.location}
+            cityState={card.cityState}
+            phone={card.phone}
+            email={card.email}
+            poc={card.poc}
+            locationImage={card.locationImage}
+            phoneImage={card.phoneImage}
+            emailImage={card.emailImage}
+            date = {card.date}
           />
         ))}
       </div>

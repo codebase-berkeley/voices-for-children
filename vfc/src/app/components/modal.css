@@ -1,3 +1,4 @@
+/* DO NOT TOUCH IF YOU WANT POP UPS TO WORK!!!! */
 .overlay {
     position: fixed;
     top: 0;
@@ -7,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 999999999;
 }
 .container {
     background-color: white;
@@ -16,6 +18,8 @@
     flex-direction: column;
     margin-bottom: 2vh;
     border: solid black;
+    width: 40vw;
+    height: 40vw;
 }
 
 .company {

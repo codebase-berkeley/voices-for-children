@@ -22,6 +22,7 @@ export default function FlipCard(props) {
     setIsOpen(!isOpen);
     console.log(isOpen);
   };
+  
   return (
     <div>
       <ReactCardFlip>
