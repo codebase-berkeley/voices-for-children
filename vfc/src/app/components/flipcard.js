@@ -14,7 +14,7 @@ import phoneIcon from "/public/assets/phoneIcon.png";
 import pocIcon from "/public/assets/point-of-contact.png";
 
 export default function FlipCard(props) {
-  // Takes in props: email, poc name, phone number
+  // Takes in props: email, poc name, phone number test
   const [isOpen, setIsOpen] = useState(false);
   // console.log(isFlipped);
 
