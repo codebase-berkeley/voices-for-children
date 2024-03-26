@@ -1,13 +1,19 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
 .app {
   text-align: center;
   padding: 20px;
 }
+
 .card-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-
 }
 
 /* Setting common size for all cards */
@@ -15,12 +21,11 @@
   width: 20vw;
   height: 40vh;
   border: 2px solid black;  
-  padding: 10px;  
   border-radius: 5px;
 }
 
-.card-back {
-  /* border: 1px solid #ccc; */
+/* .card-back {
+  border: 1px solid #ccc;
   border-radius: 10px;
   padding: 10px;
   font-size: 10px;
@@ -28,89 +33,92 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
   justify-content: space-between;
-}
+} */
 
 .card-front {
-  /* border: 1px solid #ccc; */
-  background: linear-gradient(0deg, white 40%, #A1C3D2 40%);
   border-radius: 10px;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
+/* 
 .flipIMG {
   width: 15vw;
   height: 10vh;
   border-radius: 10px;
-}
-
-/* .description {
-  font-size: 10px;
-} */
-
-/* .experience-card:hover{
-  width: 320px;
-  height: 220px;
 } */
 
 
 /* Stuff regarding the front of the card */
 .top {
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
   display: flex;
+  flex: 60%;
   justify-content: center;
   flex-direction: column;
-  padding-top: 5vh;
 }
 
 .title {
+  backdrop-filter: blur(1px);
   font-size: large;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);  
   color: black;
   font-weight: bold;
   padding-bottom: 3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3vh 0;
 }
 
 .bottom {
+  flex: 40%;
   min-height: 10vh;
-  padding-top: 11vh;
   display: flex;
   flex-direction: column;
-  font-size: 1.5vh;
+  justify-content: center;
+  font-size: 0.8vw;
 }
 
 .bottom-top-row, .bottom-bottom-row {
   display: flex;
   color: black;
   flex-direction: row;
+  justify-content: center;
+}
+
+.bottom-top-row {
+  display: flex;
   justify-content: space-around;
+  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .bottom-bottom-row {
   margin-top: 2vh;
+  justify-content: space-around;
+  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .emailIcon {
   max-height: 2vh;
   max-width: 3vh;
-  margin-top: 0.25vh;
-  margin-right: 0.5vh;
 }
 
 .locationIcon, .pocIcon {
   max-width: 1.5vh;
   max-height: 2vh;
-  margin-right: 0.5vh;
-  
 }
 
 .calendarIcon, .phoneIcon {
   max-width: 2vh;
   max-height: 2vh;
-  margin-right: 0.5vh;
 }
 
 .contact-info-back {
@@ -126,4 +134,9 @@
 .poc-container {
   display: flex;
   /* align-items: center;  */
+}
+
+.iconWrapper {
+  display: flex;
+  gap: 10px;
 }

@@ -186,7 +186,7 @@ export default function NewPopup({
                 ></input>
               </div>
               <div className="form-group">
-                <label for="locationImage">(OPTIONAL) Location Image: </label>
+                <label for="locationImage">(OPTIONAL) Company Image: </label>
                 <input
                   type="file"
                   id="locationImage"
