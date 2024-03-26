@@ -146,4 +146,34 @@ h5 {
     cursor: pointer;
   }
 
+.createNewContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.createNew {
+    /* padding: 0.5em 1em; */
+    display: inline-block;
+    width: 50px;
+    height: 40px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.createNew:hover {
+    background-color: #45a049;
+}
+
 

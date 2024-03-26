@@ -1,0 +1,215 @@
+* {
+    box-sizing: border-box;
+}
+
+.newOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999999999;
+}
+
+.newContainer {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    margin-bottom: 2vh;
+    border: solid black;
+    width: 40vw;
+    height: 40vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerTop {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    height: auto;
+}
+
+.x {
+    position: absolute;
+    width: 80px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    border-radius: 0px 8px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.x:hover {
+    background-color: red;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.newTitle {
+    padding-top: 20px;
+}
+
+.inputs {
+    height: 100%;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.companyName {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.contacts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#phone  {
+    margin-left: 70px;
+}
+
+#email {
+    width: 300px;
+}
+
+#location {
+    width: 300px;
+}
+
+#cityState {
+    width: 300px;
+}
+
+#date {
+    margin-left: 70px;
+}
+
+.address {
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+}
+
+/* .giftImage {
+    background-color: red;
+    flex-direction: column;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+input {
+    border: 1px black solid;
+}
+
+.giftImage {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#locationImage {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border: 2px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#submitButton {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  /* Hover effect */
+  #submitButton:hover {
+    background-color: #45a049;
+  }
+  
+  /* Pressed effect */
+  #submitButton:active {
+    transform: translateY(2px);
+  }
+  
+  /* Optional: Add more styles to make it look even cooler */
+  #submitButton::before {
+    font-family: 'Font Awesome 5 Free'; /* Assuming you're using Font Awesome */
+    margin-right: 10px;
+  }
+  
+  #submitButton.secondary {
+    background-color: #3498db;
+  }
+  
+  #submitButton.secondary:hover {
+    background-color: #2980b9;
+  }
+  
+  #submitButton.danger {
+    background-color: #e74c3c;
+  }
+  
+  #submitButton.danger:hover {
+    background-color: #c0392b;
+  }

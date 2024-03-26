@@ -9,6 +9,7 @@ import FlipCard from "./components/flipcard";
 import emailIcon from "/public/assets/codebase.jpg";
 import Modal from "./components/modal";
 import MainComPart from "./components/maincompart.js"
+import newPopup from "./components/newPopup";
 
 export default function Home() {
   var mock = {

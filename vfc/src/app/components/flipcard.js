@@ -70,7 +70,7 @@ export default function FlipCard(props) {
           </div>
           <div className="poc-container">
           <Image src={pocIcon} className="pocIcon"/>
-            <div>Point of Contact: {props.poc }</div>
+            <div>Point of Contact: {props.poc}</div>
           </div>
         </div>
       </ReactCardFlip>

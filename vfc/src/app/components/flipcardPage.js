@@ -2,13 +2,15 @@
 import {React, useState} from "react";
 import FlipCard from "./flipcard.js";
 import Modal from "./modal.js";
-import data from "./rawdata.json"
+import rawdata from "./rawdata.json"
 import { Andada_Pro } from "next/font/google/index.js";
 
 function MultipleFlipCards(props) {
+  // const [data, setData] = useState(rawdata);
+  
   
   // Filters through data from filters checked
-  const filteredData = data.filter(card => {
+  const filteredData = props.data.filter(card => {
     // If there are no filters selected, show everything
     if (props.filters.length == 0) {
       return true;
@@ -45,8 +47,8 @@ function MultipleFlipCards(props) {
             email={card.email}
             poc={card.poc}
             locationImage={card.locationImage}
-            phoneImage={card.phoneImage}
-            emailImage={card.emailImage}
+            // phoneImage={card.phoneImage}
+            // emailImage={card.emailImage}
             date = {card.date}
             giftType = {card.giftType}
           />
