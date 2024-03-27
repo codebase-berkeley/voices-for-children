@@ -130,7 +130,7 @@ export default function NewPopup({
                   Phone Number:
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   id="phone"
                   name="phone"
                   placeholder="Enter Phone Number"
