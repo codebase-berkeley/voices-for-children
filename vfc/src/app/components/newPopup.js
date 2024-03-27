@@ -65,10 +65,15 @@ export default function NewPopup({
     const locImg = event.target.locationImage.files[0];
 
     if (locImg) {
+      // Read and process the file
       reader.onloadend = () => {
-        newCard.locationImage = reader.result; // if loc img uploaded, change loc img
+        newCard.locationImage = reader.result; // If image uploaded, change location image
       };
       reader.readAsDataURL(locImg);
+    } else {
+      // Handle the case where no image is provided
+      // For example, you could set a default image or take appropriate action
+      newCard.locationImage = "/assets/aqua.jpg"; // Set a default image path
     }
 
     console.log(newCard);
@@ -79,8 +84,8 @@ export default function NewPopup({
 
   const today = new Date();
   const year = today.getFullYear() + 100;
-  const month = String(today.getMonth() + 1).padStart(2, '0'); // Ensure two digits for month
-  const day = String(today.getDate()).padStart(2, '0'); // Ensure two digits for day
+  const month = String(today.getMonth() + 1).padStart(2, "0"); // Ensure two digits for month
+  const day = String(today.getDate()).padStart(2, "0"); // Ensure two digits for day
   const maxDate = `${year}-${month}-${day}`;
 
   return (
@@ -149,7 +154,13 @@ export default function NewPopup({
                 <label id="date" for="date">
                   Date:
                 </label>
-                <input type="date" id="date" name="date" max={maxDate} required></input>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  max={maxDate}
+                  required
+                ></input>
               </div>
 
               <div className="form-group">
@@ -162,16 +173,16 @@ export default function NewPopup({
                   required
                 ></input>
               </div>
-
               <div className="form-group">
-                <label for="address">City/State (ex. San Jose, CA): </label>
-                <input
-                  type="text"
-                  id="cityState"
-                  name="cityState"
-                  placeholder="Enter Company City and State"
-                  required
-                ></input>
+                <label htmlFor="cityState">
+                  City/State (ex. San Jose, CA):{" "}
+                </label>
+                <select id="cityState" name="cityState" required>
+                  <option value="">Select City/State</option>
+                  <option value="San Jose, CA">San Jose, CA</option>
+                  <option value="San Diego, CA">San Diego, CA</option>
+                  {/* Add more options as needed */}
+                </select>
               </div>
             </div>
             <div className="giftImage">

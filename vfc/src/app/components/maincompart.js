@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import "./maincompart.css";
 import MultipleFlipCards from "./flipcardPage";
 import TextField from "@mui/material/TextField";
 import NewPopup from "./newPopup";
-import rawdata from "./rawdata.json"
+import rawdata from "./rawdata.json";
 
 // import Data from "./rawdata";
 
@@ -26,10 +26,18 @@ function MainComPart() {
     "May 2023",
     "April 2023",
   ];
-  const giftType = ["Toys", "Food", "Money", "Alochol", "Weed"];
+
+  const [data, setData] = useState(rawdata);
+  const [giftType, setGiftTypes] = useState([]);
+
+  useEffect(() => {
+    // Extract unique gift types from the data
+    const uniqueGiftTypes = [...new Set(data.map((item) => item.giftType))];
+    setGiftTypes(uniqueGiftTypes);
+  }, [data]);
+
   const [isDisplayed, setIsDisplayed] = useState(false);
   const [inputText, setInputText] = useState("");
-  const [data, setData] = useState(rawdata);
 
   //handles search bar input
   let inputHandler = (e) => {
@@ -43,10 +51,12 @@ function MainComPart() {
   function handleChange(e) {
     if (e.target.checked) {
       // If the checkbox is checked, add its value to the currFilters array
-      setCurrFilters([...currFilters, e.target.value]);
+      setCurrFilters([...currFilters, e.target.value.toLowerCase()]);
     } else {
       // If the checkbox is unchecked, remove its value from the currFilters array
-      setCurrFilters(currFilters.filter((item) => item !== e.target.value));
+      setCurrFilters(
+        currFilters.filter((item) => item !== e.target.value.toLowerCase())
+      );
     }
     console.log(currFilters);
   }
@@ -66,6 +76,15 @@ function MainComPart() {
     setnewIsOpen(!newIsOpen);
     console.log(newIsOpen);
   }
+
+  //function to normalize words   Ex. juSTIN --> Justin
+  const normalizeWord = (sentence) => {
+    const words = sentence.split(' ');
+    const capitalizedWords = words.map(word => {
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    });
+    return capitalizedWords.join(' ');
+  };
 
   return (
     <div>
@@ -126,7 +145,7 @@ function MainComPart() {
                       htmlFor={`location-${index}`}
                       style={{ marginLeft: "8px" }}
                     >
-                      {location}
+                      {normalizeWord(location)}
                     </label>
                   </div>
                 ))}
@@ -206,7 +225,7 @@ function MainComPart() {
                       htmlFor={`location-${index}`}
                       style={{ marginLeft: "8px" }}
                     >
-                      {giftType}
+                      {normalizeWord(giftType)}
                     </label>
                   </div>
                 ))}
@@ -249,9 +268,19 @@ function MainComPart() {
           </div>
 
           {/*this is where the cards will go */}
-          <MultipleFlipCards input={inputText} filters={currFilters} data={data}/>
+          <MultipleFlipCards
+            input={inputText}
+            filters={currFilters}
+            data={data}
+          />
           {newIsOpen ? (
-            <NewPopup newIsOpen={newIsOpen} setnewIsOpen={setnewIsOpen} prevData={data} setData={setData}/>
+            <NewPopup
+              newIsOpen={newIsOpen}
+              setnewIsOpen={setnewIsOpen}
+              prevData={data}
+              setData={setData}
+              giftType={giftType}
+            />
           ) : (
             <></>
           )}
