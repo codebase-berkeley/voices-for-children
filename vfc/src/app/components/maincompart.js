@@ -32,7 +32,7 @@ function MainComPart() {
 
   useEffect(() => {
     // Extract unique gift types from the data
-    const uniqueGiftTypes = [...new Set(data.map((item) => item.giftType))];
+    const uniqueGiftTypes = [...new Set(data.map((item) => normalizeWord(item.giftType)))];
     setGiftTypes(uniqueGiftTypes);
   }, [data]);
 
