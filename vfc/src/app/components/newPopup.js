@@ -68,18 +68,17 @@ export default function NewPopup({
       // Read and process the file
       reader.onloadend = () => {
         newCard.locationImage = reader.result; // If image uploaded, change location image
+        setData((prevData) => [...prevData, newCard]);
+        setnewIsOpen(false);
       };
       reader.readAsDataURL(locImg);
     } else {
       // Handle the case where no image is provided
-      // For example, you could set a default image or take appropriate action
       newCard.locationImage = "/assets/aqua.jpg"; // Set a default image path
+      setData((prevData) => [...prevData, newCard]);
+      setnewIsOpen(false);
     }
-
     console.log(newCard);
-
-    setData((prevData) => [...prevData, newCard]);
-    setnewIsOpen(false);
   };
 
   const today = new Date();
