@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 function EntryPopup ({ onClose }) {
         const handlePopupClose = () => {
-            onClose(); // Call the onClose function passed from Inventory to close the popup
+            onClose(); // Call the onClose function passed from Inventory to close the popup test
         };
         return (
                 <div className="popup">

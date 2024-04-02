@@ -87,7 +87,7 @@
 }
 
 input::placeholder {
-    size: 8px;
+    font-size: 12px;
     opacity: 85%;
     font-style: italic;
 }
