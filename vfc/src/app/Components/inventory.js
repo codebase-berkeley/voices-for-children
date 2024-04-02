@@ -10,6 +10,7 @@ function Inventory() {
   const [popupVisible, setPopupVisible] = useState(false);
   const [sortBy, setSortBy] = useState(""); 
   const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('');
   const [originalData, setOriginalData] = useState([
     {
       donor: "Codebase",
@@ -87,7 +88,7 @@ function Inventory() {
     if (event.target.value === '') {
       setInventoryData([...originalData]);
     } else {
-    const filteredData = inventoryData.filter(item => {
+      const filteredData = originalData.filter(item => {
       return (
         item.donor.toLowerCase().includes(event.target.value.toLowerCase()) ||
         item.item_donated.toLowerCase().includes(event.target.value.toLowerCase()) ||
@@ -96,6 +97,21 @@ function Inventory() {
     });
     setInventoryData(filteredData);
   }
+  };
+
+  const handleFilter = (event) => {
+    const selectedFilter = event.target.value;
+    setFilter(selectedFilter);
+    if (selectedFilter === '') {
+      setInventoryData([...originalData]);
+    } else {
+      const filteredData = inventoryData.filter(item => {
+        return (
+          item.item_type.toLowerCase().includes(selectedFilter.toLowerCase())
+        );
+      });
+      setInventoryData(filteredData);
+    }
   };
 
   return (
@@ -113,9 +129,12 @@ function Inventory() {
           </div>
           <div className="filter-wrappers">
             <div className="filter-by">
-              <select name="filter-by" id="filter" placeholder="Filter By">
-                <option value="">Filter By</option>
-                <option value="sort">option1</option>
+              <select value={filter} name="filter-by" id="filter" placeholder="Filter By" onChange={(e) => handleFilter(e)}>
+              <option value="">Filter By</option>
+                <option value="Tickets">Tickets</option>
+                <option value="Toys">Toys</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Other">Other</option>
               </select>
             </div>
             <div className="sort-by">
