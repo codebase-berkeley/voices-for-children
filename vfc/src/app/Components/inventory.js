@@ -50,6 +50,7 @@ function Inventory() {
     thanked: "Thanked. Thanked at banquet on 3/4",}
 
   ]);
+  
   // const [seen, setSeen] = useState(false);
   // async function show() {
   //     console.log("calling show");
@@ -82,10 +83,12 @@ function Inventory() {
     setInventoryData(sortedData);
   };
 
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+  }
 
   const handleSearch = (event) => {
-    setSearch(event.target.value);
-    if (event.target.value === '') {
+    if (search === '') {
       setInventoryData([...originalData]);
     } else {
       const filteredData = originalData.filter(item => {
@@ -95,10 +98,12 @@ function Inventory() {
         item.item_type.toLowerCase().includes(event.target.value.toLowerCase())
       );
     });
+    console.log('Key pressed:');
     setInventoryData(filteredData);
   }
   };
 
+  const
   const handleFilter = (event) => {
     const selectedFilter = event.target.value;
     setFilter(selectedFilter);
@@ -114,11 +119,14 @@ function Inventory() {
     }
   };
 
+
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      handleSearch();
-    }
-  };
+        event.preventDefault();
+        handleSearch(event);
+  }
+
+};
 
   return (
     <div className="inventory-page">
@@ -128,7 +136,8 @@ function Inventory() {
             <form>
               <input type="text"  
               value={search} 
-                onKeyPress={(e) => handleKeyPress(e)} 
+                onChange={handleChange}
+                onKeyPress={(e) => handleKeyPress(e)}
               placeholder="Search..." 
               id="search"></input>
             </form>
