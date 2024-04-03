@@ -41,9 +41,13 @@ function MainComPart() {
 
   //handles search bar input
   let inputHandler = (e) => {
-    //convert input to lowercase
-    var lowercase = e.target.value.toLowerCase();
-    setInputText(lowercase);
+    if (e.key === 'Enter') {
+      // Convert input to lowercase
+      var lowercase = e.target.value.toLowerCase();
+      setInputText(lowercase);
+      // Perform search with the lowercase value
+      console.log('Search triggered with:', lowercase);
+    }
   };
 
   //adds the filters to a list to be applied and displayed on the screen top
@@ -104,7 +108,7 @@ function MainComPart() {
         <div class="searchbar">
           <TextField
             id="outlined-basic"
-            onChange={inputHandler}
+            onKeyPress={inputHandler}
             variant="outlined"
             label="Search"
           />
