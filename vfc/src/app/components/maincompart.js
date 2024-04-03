@@ -96,9 +96,21 @@ function MainComPart() {
 
   const sortBy = (event) => {
     setSelectedValue(event.target.value);
-  };
 
-  const 
+    if (event.target.value === 'az') {
+      const sortedByName = [...data].sort((a, b) => a.name.localeCompare(b.name));
+      setData(sortedByName);
+    } else if (event.target.value === 'old') {
+      const sortedByDate = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
+      setData(sortedByDate);
+    } else if (event.target.value === 'new') {
+      const sortedByDate = [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
+      setData(sortedByDate);
+    } else if (event.target.value === 'za') {
+      const sortedByName = [...data].sort((a, b) => b.name.localeCompare(a.name));
+      setData(sortedByName);
+    }
+  };
 
   return (
     <div>
