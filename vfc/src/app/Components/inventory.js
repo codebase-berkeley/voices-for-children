@@ -8,7 +8,7 @@ import { useState } from "react";
 
 function Inventory() {
   const [popupVisible, setPopupVisible] = useState(false);
-  const [sortBy, setSortBy] = useState(""); 
+  const [sortBy, setSortBy] = useState(''); 
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('');
   var currSearchKey = null;
@@ -92,6 +92,11 @@ function Inventory() {
 
   const handleChange = (event) => {
     setSearch(event.target.value);
+
+    if (event.target.value === '') {
+    setInventoryData([...originalData]); 
+  }
+  
   }
 
   const handleSearch = (event) => {
@@ -138,9 +143,9 @@ function Inventory() {
     if (event.key === 'Enter') {
         event.preventDefault();
         handleSearch(event);
-  }
+    }
 
-};
+  };
 
   return (
     <div className="inventory-page">
@@ -151,7 +156,7 @@ function Inventory() {
               <input type="text"  
               value={search} 
                 onChange={handleChange}
-                onKeyPress={(e) => handleKeyPress(e)}
+                onKeyPress={(e) => handleKeyPress(e)} 
               placeholder="Search..." 
               id="search"></input>
             </form>
