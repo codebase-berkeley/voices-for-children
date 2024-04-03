@@ -73,6 +73,11 @@ function Inventory() {
     const selectedOption = event.target.value;
     setSortBy(selectedOption);
 
+    if (selectedOption === "") {
+        setInventoryData([...originalData]);
+        return;
+    }
+
     const sortedData = [...inventoryData].sort((a, b) => {
       if (selectedOption === "amount") {
         return a.amount - b.amount;
@@ -84,8 +89,7 @@ function Inventory() {
         return a.item_type.localeCompare(b.item_type);
       } else if (selectedOption === "item_donated") {
         return a.item_donated.localeCompare(b.item_donated);
-      } 
-      return 0;
+      }
     });
     setInventoryData(sortedData);
   };
@@ -98,14 +102,13 @@ function Inventory() {
         item.item_type.toLowerCase().includes(currentFilter.toLowerCase())
       );
     }
-  
-    if (currentSearch) {
-      filteredData = filteredData.filter(item =>
-        item.donor.toLowerCase().includes(currentSearch.toLowerCase()) ||
-        item.item_donated.toLowerCase().includes(currentSearch.toLowerCase()) ||
-        item.item_type.toLowerCase().includes(currentSearch.toLowerCase())
-      );
-    }
+        if (currentSearch) {
+            filteredData = filteredData.filter(item =>
+              item.donor.toLowerCase().includes(currentSearch.toLowerCase()) ||
+              item.item_donated.toLowerCase().includes(currentSearch.toLowerCase()) ||
+              item.item_type.toLowerCase().includes(currentSearch.toLowerCase())
+            );
+}
   
     setInventoryData(filteredData);
   };
