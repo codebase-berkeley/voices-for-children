@@ -114,6 +114,12 @@ function Inventory() {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="inventory-page">
       <div className="search-wrapper">
@@ -122,7 +128,7 @@ function Inventory() {
             <form>
               <input type="text"  
               value={search} 
-                onChange={(e) => handleSearch(e)} 
+                onKeyPress={(e) => handleKeyPress(e)} 
               placeholder="Search..." 
               id="search"></input>
             </form>
