@@ -94,6 +94,8 @@ function MainComPart() {
     setSelectedValue(event.target.value);
   };
 
+  const 
+
   return (
     <div>
       {/* top of page */}
@@ -255,11 +257,12 @@ function MainComPart() {
 
         <div class="main-card-box">
           <div className="createNewContainer">
-            <select value={selectedValue} onChange={sortBy}>
+            <select className="sortBy" value={selectedValue} onChange={sortBy}>
               <option value="">Sort By</option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
+              <option value="az">A - Z</option>
+              <option value="za">Z - A</option>
+              <option value="old">Oldest - Newest</option>
+              <option value="new">Newest - Oldest</option>
             </select>
             <button className="createNew" onClick={handleNewChange}>
               +
