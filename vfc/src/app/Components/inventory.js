@@ -90,14 +90,41 @@ function Inventory() {
     setInventoryData(sortedData);
   };
 
-  const handleChange = (event) => {
-    setSearch(event.target.value);
-
-    if (event.target.value === '') {
-    setInventoryData([...originalData]); 
-  }
+  const applyFilters = (currentSearch, currentFilter) => {
+    let filteredData = [...originalData];
   
-  }
+    if (currentFilter) {
+      filteredData = filteredData.filter(item =>
+        item.item_type.toLowerCase().includes(currentFilter.toLowerCase())
+      );
+    }
+  
+    if (currentSearch) {
+      filteredData = filteredData.filter(item =>
+        item.donor.toLowerCase().includes(currentSearch.toLowerCase()) ||
+        item.item_donated.toLowerCase().includes(currentSearch.toLowerCase()) ||
+        item.item_type.toLowerCase().includes(currentSearch.toLowerCase())
+      );
+    }
+  
+    setInventoryData(filteredData);
+  };
+  
+
+  // const handleChange = (event) => {
+  //   setSearch(event.target.value);
+  //   applyFilters();
+
+  //   if (event.target.value === '') {
+  //   setInventoryData([...originalData]); 
+  // }
+  
+  // }
+  const handleChange = (event) => {
+    const newSearch = event.target.value;
+    setSearch(newSearch);
+    applyFilters(newSearch, filter);
+  };
 
   const handleSearch = (event) => {
     currSearch[event.target.value] = event;
@@ -117,27 +144,12 @@ function Inventory() {
   }
   };
 
-  const handleFilter = (event) => {
-    const selectedFilter = event.target.value;
-    setFilter(selectedFilter);
-    if (selectedFilter === '') {
-      setInventoryData([...originalData]);
-    } else {
-      const filteredData = originalData.filter(item => {
-        return (
-          item.item_type.toLowerCase().includes(selectedFilter.toLowerCase())
-        );
-      });
-      setInventoryData(filteredData);
-      if (lastEvent != null) {
-        handleSearch(lastEvent);
-      }
-      // if (lastSearch != null & currSearch[lastSearch] != null) {
-      //   handleSearch(currSearch[lastSearch]);
-      // }
-    }
-  };
 
+  const handleFilter = (event) => {
+  const newFilter = event.target.value;
+  setFilter(newFilter);
+  applyFilters(search, newFilter);
+};
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
