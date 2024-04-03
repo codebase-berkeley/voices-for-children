@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./maincompart.css";
 import MultipleFlipCards from "./flipcardPage";
 import TextField from "@mui/material/TextField";
@@ -32,7 +32,9 @@ function MainComPart() {
 
   useEffect(() => {
     // Extract unique gift types from the data
-    const uniqueGiftTypes = [...new Set(data.map((item) => normalizeWord(item.giftType)))];
+    const uniqueGiftTypes = [
+      ...new Set(data.map((item) => normalizeWord(item.giftType))),
+    ];
     setGiftTypes(uniqueGiftTypes);
   }, [data]);
 
@@ -79,11 +81,17 @@ function MainComPart() {
 
   //function to normalize words   Ex. juSTIN --> Justin
   const normalizeWord = (sentence) => {
-    const words = sentence.split(' ');
-    const capitalizedWords = words.map(word => {
+    const words = sentence.split(" ");
+    const capitalizedWords = words.map((word) => {
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
     });
-    return capitalizedWords.join(' ');
+    return capitalizedWords.join(" ");
+  };
+
+  const [selectedValue, setSelectedValue] = useState('');
+
+  const sortBy = (event) => {
+    setSelectedValue(event.target.value);
   };
 
   return (
@@ -247,6 +255,12 @@ function MainComPart() {
 
         <div class="main-card-box">
           <div className="createNewContainer">
+            <select value={selectedValue} onChange={sortBy}>
+              <option value="">Sort By</option>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select>
             <button className="createNew" onClick={handleNewChange}>
               +
             </button>
