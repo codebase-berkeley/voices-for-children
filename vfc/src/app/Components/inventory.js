@@ -84,7 +84,7 @@ function Inventory() {
         return a.item_type.localeCompare(b.item_type);
       } else if (selectedOption === "item_donated") {
         return a.item_donated.localeCompare(b.item_donated);
-      }
+      } 
       return 0;
     });
     setInventoryData(sortedData);
@@ -95,6 +95,7 @@ function Inventory() {
 
     if (event.target.value === '') {
     setInventoryData([...originalData]); 
+    
   }
   
   }
