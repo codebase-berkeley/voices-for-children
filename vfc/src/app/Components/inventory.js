@@ -103,9 +103,9 @@ function Inventory() {
     } else {
       const filteredData = originalData.filter(item => {
       return (
-        item.donor.toLowerCase().includes(event.target.value.toLowerCase()) ||
-        item.item_donated.toLowerCase().includes(event.target.value.toLowerCase()) ||
-        item.item_type.toLowerCase().includes(event.target.value.toLowerCase())
+        item.donor.toLowerCase().includes(search.toLowerCase()) ||
+        item.item_donated.toLowerCase().includes(search.toLowerCase()) ||
+        item.item_type.toLowerCase().includes(search.toLowerCase())
       );
     });
     setInventoryData(filteredData);
