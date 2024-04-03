@@ -11,6 +11,13 @@ function Inventory() {
   const [sortBy, setSortBy] = useState(""); 
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('');
+  var currSearchKey = null;
+  var currSearchObject = null;
+  var lastSearch = null;
+  var currSearch = {
+    [currSearchKey]: currSearchObject
+  };
+  var lastEvent = null;
   const [originalData, setOriginalData] = useState([
     {
       donor: "Codebase",
@@ -88,6 +95,9 @@ function Inventory() {
   }
 
   const handleSearch = (event) => {
+    currSearch[event.target.value] = event;
+    lastSearch = event.target.value;
+    lastEvent = event;
     if (search === '') {
       setInventoryData([...originalData]);
     } else {
@@ -98,12 +108,10 @@ function Inventory() {
         item.item_type.toLowerCase().includes(event.target.value.toLowerCase())
       );
     });
-    console.log('Key pressed:');
     setInventoryData(filteredData);
   }
   };
 
-  const
   const handleFilter = (event) => {
     const selectedFilter = event.target.value;
     setFilter(selectedFilter);
@@ -116,6 +124,12 @@ function Inventory() {
         );
       });
       setInventoryData(filteredData);
+      if (lastEvent != null) {
+        handleSearch(lastEvent);
+      }
+      // if (lastSearch != null & currSearch[lastSearch] != null) {
+      //   handleSearch(currSearch[lastSearch]);
+      // }
     }
   };
 
