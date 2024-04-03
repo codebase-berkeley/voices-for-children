@@ -105,7 +105,7 @@ function Inventory() {
     if (selectedFilter === '') {
       setInventoryData([...originalData]);
     } else {
-      const filteredData = inventoryData.filter(item => {
+      const filteredData = originalData.filter(item => {
         return (
           item.item_type.toLowerCase().includes(selectedFilter.toLowerCase())
         );
@@ -130,7 +130,7 @@ function Inventory() {
           <div className="filter-wrappers">
             <div className="filter-by">
               <select value={filter} name="filter-by" id="filter" placeholder="Filter By" onChange={(e) => handleFilter(e)}>
-              <option value="">Filter By</option>
+              <option value="">All Categories</option>
                 <option value="Tickets">Tickets</option>
                 <option value="Toys">Toys</option>
                 <option value="Electronics">Electronics</option>
