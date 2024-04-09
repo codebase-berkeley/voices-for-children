@@ -94,8 +94,7 @@ function Donation() {
         if (currentSearch) {
             filteredData = filteredData.filter(item =>
               item.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
-              item.item_type.toLowerCase().includes(currentSearch.toLowerCase()) ||
-              item.date.toLowerCase().includes(currentSearch.toLowerCase())
+              item.item_type.toLowerCase().includes(currentSearch.toLowerCase())
             );
 }
   
