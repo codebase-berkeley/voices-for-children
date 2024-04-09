@@ -35,7 +35,7 @@ function MainComPart() {
     const uniqueGiftTypes = [
       ...new Set(data.map((item) => normalizeWord(item.giftType))),
     ];
-    setGiftTypes(uniqueGiftTypes);
+    setGiftTypes(uniqueGiftTypes.sort());
   }, [data]);
 
   const [isDisplayed, setIsDisplayed] = useState(false);
