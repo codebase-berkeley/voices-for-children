@@ -14,7 +14,7 @@ function MainComPart() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
-  const locations = ["San Diego", "other one"];
+  const locations = ["San Diego", "Riverside"];
   const date = [
     "December 2023",
     "November 2023",
