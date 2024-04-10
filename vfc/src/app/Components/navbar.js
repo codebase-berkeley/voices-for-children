@@ -7,7 +7,7 @@ export default function Navbar() {
     <div class="navbarTop">
       <ul className="navbarTip">
         <li>
-          <Link className="link" style={{ textDecoration: "none" }} to="/home">
+          <Link className="link" style={{ textDecoration: "none" }} to="/">
             <img
               src="https://www.speakupnow.org/wp-content/uploads/2021/05/voices-for-children-logo-color.png"
               alt="My Image Description"
