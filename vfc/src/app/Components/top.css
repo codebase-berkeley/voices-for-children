@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.bigContainer {
+    width: 100%;
+}
+
+.nav {
+    height: 50px; 
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+}
+
+li {
+    margin-top: 30px;
+
+}
+
+img {
+    height: 100%;
+    width: 10vw;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    margin: 10px;
+}
+
+.inventoryContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+}
+
+.name {
+    font-size: 40px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.flipSwitch {
+    display: flex;
+    position: relative;
+}
+
+button {
+    font-size: 20px;
+    font-weight: bold;
+    color: gray;
+    padding-right: 20px;
+    border-bottom: 3px rgba(128, 128, 128, 0.5) solid;
+}
+
+button:hover {
+    border-color: black;
+    color: black; 
+    font-weight: bold; 
+}
+
+#clicked {
+    color: black;
+    border-bottom: 3px black solid;
+}

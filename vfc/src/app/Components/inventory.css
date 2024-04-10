@@ -1,0 +1,138 @@
+.App {
+    background-color: white;
+    color: black;
+}
+
+
+
+#title {
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+    #title {
+        font-size: 2vw;
+    }
+}
+
+.inventory-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Search Bar */
+.search-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+}
+
+.filterContainer {
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-content: flex-end;
+    margin-left: 30px;
+}
+
+#search {
+    background-color: lightgray;
+    border-radius: 20px;
+    width: 50vw;
+    height: 2.5vw;
+    padding: 10px;
+}
+
+#search::placeholder {
+    font-size: 13px;
+    opacity: 85%;
+    font-style: italic;
+}
+
+/* Filter Boxes */
+
+.filter-wrappers {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
+
+.filter-by {
+    font-size: 1rem; 
+}
+
+select {
+    background-color: lightgray;
+    color: black;
+    border-radius: 26px;
+    width: 10vw;
+    height: 2.5vw;
+    margin-left: 1vw;
+    font-size: 15px;
+    padding: 10px;
+    font-style: italic;
+}
+
+/* Create New Button */
+#create-new {
+    border-radius: 26px;
+    background-color: #7CC2CB;
+    color: white;
+    width: 10vw;
+    height: 2.5vw;
+    margin-left: 1vw;
+    font-size: 1vw;
+    padding: 0;
+    border: none;
+}
+
+@media screen and (max-width: 768px) {
+    #create-new {
+        font-size: 2vw;
+        width: 15%; 
+    }
+}
+
+/* Inventory Table Header */
+.inventory-wrapper {
+    width: 100%;
+}
+
+.inventory-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    flex-direction: row;
+    border-top: solid .1vh #8E8787;
+    border-bottom: solid .1vh #8E8787;
+    height: 10vh;
+    background-color: white;
+    color: black;
+    overflow: hidden;
+    /* margin-top: 0; */
+}
+
+.inv-col-head {
+    display: flex;
+    flex-wrap: nowrap;
+    /* margin-left: 3vw; */
+    /* opacity: default; */
+    /* width: 10vw; */
+    font-style: bolder;
+    align-items: center;
+}
+
+.table-form {
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+    width: 100%;
+}
+
+

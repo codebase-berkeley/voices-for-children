@@ -1,0 +1,148 @@
+.popup {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    background-color: white;
+    height: 50vh;
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    box-shadow: 3px 3px 3px 3px #D9D9D9;
+    align-items: left;
+    justify-content: left;
+    margin-left: 3vw;
+    padding: 2%;
+}
+
+#name {
+    height: 3vh;
+    border-radius: 15px;
+    background-color: #D9D9D9;
+    padding: 4px;
+    width: 100%;
+    margin: 3px;
+    margin-top: 5px;
+}
+
+#amt {
+    border-radius: 15px;
+    background-color: #D9D9D9;
+    width: 20%;
+    height: 3vh;
+    margin: 3px;
+    padding: 4px;
+}
+
+#submit {
+    border-radius: 10%;
+    background-color: #7CC2CB;
+    color: white;
+    font-style: bold;
+    margin: 3px;
+    padding: 2px;
+}
+
+#date {
+    border-radius: 15px;
+    background-color: #D9D9D9;
+    width: 40%;
+    height: 3vh;
+    margin: 3px;
+    padding: 4px;
+}
+
+#donor {
+    height: 3vh;
+    border-radius: 15px;
+    background-color: #D9D9D9;
+    margin-right: 4px;
+    padding: 4px;
+    width: 100%;
+    margin: 3px;
+    margin-top: 3px;
+}
+
+#type {
+    border-radius: 15px;
+    background-color: #D9D9D9;
+    width: 40%;
+    height: 3vh;
+    margin: 3px;
+    padding: 4px;
+}
+
+#desc {
+    border-radius: 15px;
+    background-color: #D9D9D9;
+    width: 100%;
+    height: 20vh;
+    margin: 3px;
+    padding: 4px;
+    overflow: scroll;
+    align-items: top;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+}
+
+input::placeholder {
+    font-size: 12px;
+    opacity: 85%;
+    font-style: italic;
+}
+
+.create-new-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#x {
+    border-bottom: none;
+    color: none;
+    object-fit: cover;
+    border-bottom: none;
+    color: none;
+    padding: none;
+    margin-right: none;
+}
+
+.close {
+    margin: 0;
+    height: 5vh;
+    width: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.create-new-text {
+    font-size: 23px;
+    font-style: normal;
+    margin-top: 3px;
+    margin-right: 5vw;
+    margin-left: 3px;
+}
+
+.desc-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-top: 4px;
+    margin-left: 3px;
+}
+
+#submit {
+    margin: 3px;
+    width: 8vw;
+    border-radius: 15px;
+}
+
+.submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vh;
+}

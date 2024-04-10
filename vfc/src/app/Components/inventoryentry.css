@@ -1,0 +1,51 @@
+.entry-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    border-top: solid .1vh #8E8787;
+    border-bottom: solid .1vh #8E8787;
+    height: 10vh;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.box {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tooltip {
+    position: absolute;
+    /* top: -10px; */
+    /* left: 50%; */
+    margin-bottom: 200px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none;
+    z-index: 2;
+    white-space: pre-line;
+    width: auto;
+    height: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.box:hover .tooltip {
+    display: block;
+  }
+
+.entry {
+    display: flex;
+    align-items: center; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
