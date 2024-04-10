@@ -34,6 +34,7 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
           <div className="modalAddress">Address : {props.location}</div>
           <div className="cityState">City/State : {props.cityState}</div>
           <div className="exitHere">
+            <button className="LEAVE">Edit</button>
             <button onClick={handleClick} className="LEAVE">Exit Here</button>
           </div>
         </div>
