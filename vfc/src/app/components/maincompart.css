@@ -151,6 +151,7 @@ h5 {
 .createNewContainer {
     display: flex;
     justify-content: flex-end;
+    gap: 30px;
 }
 
 .createNew {
@@ -182,4 +183,8 @@ h5 {
     width: 100%;
 }
 
+.sortBy {
+    border: 1px black solid;
+    border-radius: 5%;
+}
 

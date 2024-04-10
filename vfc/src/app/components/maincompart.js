@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./maincompart.css";
 import MultipleFlipCards from "./flipcardPage";
 import TextField from "@mui/material/TextField";
@@ -40,15 +40,15 @@ function MainComPart() {
   ];
   
 
-
-
   const [data, setData] = useState(rawdata);
   const [giftType, setGiftTypes] = useState([]);
 
   useEffect(() => {
     // Extract unique gift types from the data
-    const uniqueGiftTypes = [...new Set(data.map((item) => normalizeWord(item.giftType)))];
-    setGiftTypes(uniqueGiftTypes);
+    const uniqueGiftTypes = [
+      ...new Set(data.map((item) => normalizeWord(item.giftType))),
+    ];
+    setGiftTypes(uniqueGiftTypes.sort());
   }, [data]);
 
   const [isDisplayed, setIsDisplayed] = useState(false);
@@ -98,11 +98,31 @@ function MainComPart() {
 
   //function to normalize words   Ex. juSTIN --> Justin
   const normalizeWord = (sentence) => {
-    const words = sentence.split(' ');
-    const capitalizedWords = words.map(word => {
+    const words = sentence.split(" ");
+    const capitalizedWords = words.map((word) => {
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
     });
-    return capitalizedWords.join(' ');
+    return capitalizedWords.join(" ");
+  };
+
+  const [selectedValue, setSelectedValue] = useState('');
+
+  const sortBy = (event) => {
+    setSelectedValue(event.target.value);
+
+    if (event.target.value === 'az') {
+      const sortedByName = [...data].sort((a, b) => a.name.localeCompare(b.name));
+      setData(sortedByName);
+    } else if (event.target.value === 'old') {
+      const sortedByDate = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
+      setData(sortedByDate);
+    } else if (event.target.value === 'new') {
+      const sortedByDate = [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
+      setData(sortedByDate);
+    } else if (event.target.value === 'za') {
+      const sortedByName = [...data].sort((a, b) => b.name.localeCompare(a.name));
+      setData(sortedByName);
+    }
   };
 
   return (
@@ -306,6 +326,13 @@ function MainComPart() {
 
         <div class="main-card-box">
           <div className="createNewContainer">
+            <select className="sortBy" value={selectedValue} onChange={sortBy}>
+              <option value="">Sort By</option>
+              <option value="az">A - Z</option>
+              <option value="za">Z - A</option>
+              <option value="old">Oldest - Newest</option>
+              <option value="new">Newest - Oldest</option>
+            </select>
             <button className="createNew" onClick={handleNewChange}>
               +
             </button>

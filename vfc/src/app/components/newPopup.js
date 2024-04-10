@@ -174,11 +174,11 @@ export default function NewPopup({
               </div>
               <div className="form-group">
                 <label htmlFor="cityState">
-                  City/State (ex. San Jose, CA):{" "}
+                  City/State:{" "}
                 </label>
                 <select id="cityState" name="cityState" required>
                   <option value="">Select City/State</option>
-                  <option value="San Jose, CA">San Jose, CA</option>
+                  <option value="Riverside, CA">Riverside, CA</option>
                   <option value="San Diego, CA">San Diego, CA</option>
                   {/* Add more options as needed */}
                 </select>

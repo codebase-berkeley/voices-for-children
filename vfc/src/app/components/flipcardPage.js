@@ -6,7 +6,6 @@ import rawdata from "./rawdata.json";
 import { Andada_Pro } from "next/font/google/index.js";
 
 function MultipleFlipCards(props) {
-  // const [data, setData] = useState(rawdata);
 
   const formatDate = (dateString) => {
     let date = new Date(dateString);
