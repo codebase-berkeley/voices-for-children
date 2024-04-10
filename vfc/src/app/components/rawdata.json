@@ -24,12 +24,13 @@
         "link": "www.google.com"
 
     },
+
     {
       "name": "COMPANY",
       "locationImage": "vfc/src/app/assets/codebase.jpg",
       "location": "Street Avenue and, ABC St, Oakland, CA 00000",
       "cityState": "Berkeley, CA",
-      "phone": "(123)4567-8900",
+      "phone": "(123)567-8900",
       "email": "angie@berkeley.edu",
       "poc": "Angie Zhu",
       "date": "12/12/2012",
@@ -111,5 +112,4 @@
       "giftType": "Money",
       "link": "www.google.com"
     }
-
   ]

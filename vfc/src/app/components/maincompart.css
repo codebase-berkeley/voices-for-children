@@ -4,14 +4,24 @@
     display: flex;
     flex-direction: column;
     margin-left: 1vw;
-    width: 12vw;
+    width: 10vw;
     /* background-color: blue;     */
 }
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .all-filters {
+    width: 15vw; /* Adjust width for smaller screens */
+  }
+}
+
+
 
 .each-filter {
     display: flex;
     flex-direction: column;
     margin-bottom: 3vh;
+    column-count: 2;
 }
 
 .apply-button-rounded {
@@ -91,6 +101,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    column-gap: 10px;
 }
 
 
@@ -184,7 +195,7 @@ h5 {
 }
 
 .listItem {
-    width: 50%;
+    width: 100%;
 }
 
 .sortBy {
