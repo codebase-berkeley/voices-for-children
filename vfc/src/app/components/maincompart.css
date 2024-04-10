@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 1vw;
-    width: 10vw;
+    width: 12vw;
     /* background-color: blue;     */
 }
 
@@ -82,11 +82,15 @@
     margin-top: 1vh;
     font-family: 'Inter', sans-serif;
     font-weight: 300;
-    list-style-type: none; /* This removes the bullet points */
+    list-style-type: none;
     padding-left: 0;
     font-size: 1.7vh;
-    margin-left: 3vh;
+    /* margin-left: 3vh; */
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 
@@ -179,8 +183,8 @@ h5 {
     background-color: #45a049;
 }
 
-#listItem {
-    width: 100%;
+.listItem {
+    width: 50%;
 }
 
 .sortBy {

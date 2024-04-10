@@ -15,15 +15,16 @@ function MainComPart() {
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
-  const locations = ["San Diego", "other one"];
-  const year = [
-    "2019", 
-    "2020", 
-    "2021", 
-    "2022", 
-    "2023", 
-    "2024"
-  ];
+  const locations = ["San Diego", "Riverside"];
+
+  const currentYear = new Date().getFullYear();
+  const year = [];
+  for (let i = 2000; i <= currentYear; i++) {
+    year.push(i.toString());
+  }
+
+  console.log(year);
+
   const month = [
     "January", 
     "Feburary",
