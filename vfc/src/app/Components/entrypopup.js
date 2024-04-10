@@ -16,12 +16,12 @@ function EntryPopup ({ onClose }) {
                         </div>
                     </div>
                     <form>
-                        <input type="text" placeholder="Donation Name" id="name"></input>
+                        <input type="text" placeholder="Donation Name" id="names"></input>
                         <input type="text" placeholder="Donor" id="donor"></input>
                         <div className="form-container">
                             <input type="text" placeholder="Donation Type" id="type"></input>
                             <input type="text" placeholder="Amount" id="amt"></input>
-                            <input type="date" placeholder="Date" id="date"></input>
+                            <input type="date" placeholder="Date" id="dates"></input>
                         </div>
                         <div className="desc-container">
                             <span className="popup-text">Description</span>

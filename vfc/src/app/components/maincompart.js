@@ -5,6 +5,8 @@ import MultipleFlipCards from "./flipcardPage";
 import TextField from "@mui/material/TextField";
 import NewPopup from "./newPopup";
 import rawdata from "./rawdata.json";
+import Navbar from "./navbar";
+import { Nav } from "react-bootstrap";
 
 // import Data from "./rawdata";
 
@@ -26,7 +28,7 @@ function MainComPart() {
   console.log(year);
 
   const month = [
-    "January", 
+    "January",
     "Feburary",
     "March",
     "April",
@@ -37,9 +39,8 @@ function MainComPart() {
     "September",
     "October",
     "November",
-    "December"
+    "December",
   ];
-  
 
   const [data, setData] = useState(rawdata);
   const [giftType, setGiftTypes] = useState([]);
@@ -57,12 +58,12 @@ function MainComPart() {
 
   //handles search bar input
   let inputHandler = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       // Convert input to lowercase
       var lowercase = e.target.value.toLowerCase();
       setInputText(lowercase);
       // Perform search with the lowercase value
-      console.log('Search triggered with:', lowercase);
+      console.log("Search triggered with:", lowercase);
     }
   };
 
@@ -106,22 +107,30 @@ function MainComPart() {
     return capitalizedWords.join(" ");
   };
 
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState("");
 
   const sortBy = (event) => {
     setSelectedValue(event.target.value);
 
-    if (event.target.value === 'az') {
-      const sortedByName = [...data].sort((a, b) => a.name.localeCompare(b.name));
+    if (event.target.value === "az") {
+      const sortedByName = [...data].sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
       setData(sortedByName);
-    } else if (event.target.value === 'old') {
-      const sortedByDate = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
+    } else if (event.target.value === "old") {
+      const sortedByDate = [...data].sort(
+        (a, b) => new Date(a.date) - new Date(b.date)
+      );
       setData(sortedByDate);
-    } else if (event.target.value === 'new') {
-      const sortedByDate = [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else if (event.target.value === "new") {
+      const sortedByDate = [...data].sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      );
       setData(sortedByDate);
-    } else if (event.target.value === 'za') {
-      const sortedByName = [...data].sort((a, b) => b.name.localeCompare(a.name));
+    } else if (event.target.value === "za") {
+      const sortedByName = [...data].sort((a, b) =>
+        b.name.localeCompare(a.name)
+      );
       setData(sortedByName);
     }
   };
@@ -129,24 +138,17 @@ function MainComPart() {
   return (
     <div>
       {/* top of page */}
-      <div class="top-of-page">
-        <div class="logo">
-          <img
-            src="https://www.speakupnow.org/wp-content/uploads/2021/05/voices-for-children-logo-color.png"
-            alt="My Image Description"
-            style={{
-              display: "flex",
-              width: "20vh",
-              height: "auto",
-            }}
-          />
-        </div>
+      <Navbar />
+      <div className="SEARCH">
         <div class="searchbar">
           <TextField
             id="outlined-basic"
-            onKeyPress={inputHandler}
+            onKeyDown={inputHandler}
             variant="outlined"
             label="Search"
+            InputLabelProps={{
+              sx: { color: "black", "&.Mui-focused": { color: "black" } },
+            }}
           />
         </div>
       </div>
@@ -315,10 +317,10 @@ function MainComPart() {
           {/* end of filter */}
 
           <div>
-            <button class="apply-button" onClick={showFilters}>
+            {/* <button class="apply-button" onClick={showFilters}>
               {" "}
               Show Filters{" "}
-            </button>
+            </button> */}
             {/* {isDisplayed && currFilters} */}
           </div>
         </div>

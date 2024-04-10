@@ -1,5 +1,5 @@
 .App {
-    background-color: white;
+    /* background-color: white; */
     color: black;
 }
 
@@ -67,7 +67,7 @@
     font-size: 1rem; 
 }
 
-select {
+.SELECT {
     background-color: lightgray;
     color: black;
     border-radius: 26px;
@@ -86,7 +86,6 @@ select {
     color: white;
     width: 10vw;
     height: 2.5vw;
-    margin-left: 1vw;
     font-size: 1vw;
     padding: 0;
     border: none;

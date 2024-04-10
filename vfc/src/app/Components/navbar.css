@@ -1,0 +1,30 @@
+.navbarTop {
+    top: 0;
+    width: 100%;
+    /* border-bottom: 2px black solid; */
+}
+
+.navbarTop > *:first-child {
+    margin-right: auto; 
+}
+
+.navbarTop .navbarTip {
+    width: 100%;
+    display: flex;
+    /* background-color: red; */
+    margin-bottom: 20px;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+}
+
+.navbarTop .navbarTip li {
+    margin: 0 10px; /* Adjust margin as needed */
+    list-style: none; /* Removes default list styles */
+}
+
+.navbarTop .navbarTip .routers {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+  }

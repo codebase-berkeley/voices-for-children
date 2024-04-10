@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "./top.css";
 import { Link } from "react-router-dom";
+import Navbar from "./navbar";
 
 function Top() {
   const [buttonId, setButtonId] = useState("Inventory");
@@ -10,27 +11,16 @@ function Top() {
     setButtonId(newId);
   };
 
+  console.log(buttonId);
+
   return (
     <div className="bigContainer">
-      <div className="nav">
-        <ul>
-          <li>
-            <Link className="link" style={{ textDecoration: "none" }} to="/">
-              <img
-                style={{ textDecoration: "none" , display: 'block'}}
-                onClick={() => handleClick("Inventory")}
-                src="voices-for-children-logo-color.png"
-                alt="Voices for Children Logo"
-              />
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <Navbar></Navbar>
       <div className="inventoryContainer">
         <h1 className="name">In-Kind Donation</h1>
         <div className="flipSwitch">
-          <Link className="link" style={{ textDecoration: "none" }} to="/">
-            <button
+          <Link className="link" style={{ textDecoration: "none" }} to="/home">
+            <button className="BUTTON"
               id={buttonId === "Inventory" ? "clicked" : null}
               onClick={() => handleClick("Inventory")}
             >
@@ -42,7 +32,7 @@ function Top() {
             style={{ textDecoration: "none" }}
             to="/donation_log"
           >
-            <button
+            <button className="BUTTON"
               id={buttonId === "Donation_log" ? "clicked" : null}
               onClick={() => handleClick("Donation_log")}
             >

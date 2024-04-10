@@ -1,5 +1,5 @@
 /* DO NOT TOUCH IF YOU WANT POP UPS TO WORK!!!! */
-.overlay {
+.loloverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,7 +10,7 @@
     justify-content: center;
     z-index: 9998;
 }
-.container {
+.lolcontainer {
     background-color: white;
     color: black;
     border-radius: 10px;

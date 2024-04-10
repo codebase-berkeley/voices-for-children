@@ -15,8 +15,8 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
   }, []);
 
   return (
-    <div className="overlay">
-      <div className="container">
+    <div className="loloverlay">
+      <div className="lolcontainer">
         <div className="modal-top">
           <div className="exit-button" onClick={handleClick}>
             X

@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    background-color: white;
 }
 
 .bigContainer {
@@ -56,7 +55,7 @@ img {
     position: relative;
 }
 
-button {
+.BUTTON {
     font-size: 20px;
     font-weight: bold;
     color: gray;
@@ -64,7 +63,7 @@ button {
     border-bottom: 3px rgba(128, 128, 128, 0.5) solid;
 }
 
-button:hover {
+.BUTTON:hover {
     border-color: black;
     color: black; 
     font-weight: bold; 
