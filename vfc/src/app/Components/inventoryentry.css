@@ -2,11 +2,11 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    border-top: solid .1vh #8E8787;
-    border-bottom: solid .1vh #8E8787;
+    /* border-top: solid .01vh #8E8787; */
+    border-bottom: solid .01vh #8E8787;
     height: 10vh;
     overflow: hidden;
-    padding: 0 20px;
+    background-color: rgb(124 194 203 / 50%);
 }
 
 .box {
@@ -40,6 +40,7 @@
 
 .box:hover .tooltip {
     display: block;
+    padding: 3px;
   }
 
 .entry {

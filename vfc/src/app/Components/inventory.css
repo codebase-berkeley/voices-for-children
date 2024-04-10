@@ -6,7 +6,7 @@
 
 
 #title {
-    font-size: 1.5vw;
+    font-size: 1vw;
     font-weight: 600;
 }
 
@@ -19,7 +19,7 @@
 .inventory-page {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    width: 85vw;
 }
 
 /* Search Bar */
@@ -42,7 +42,7 @@
 #search {
     background-color: lightgray;
     border-radius: 20px;
-    width: 50vw;
+    width: 20vw;
     height: 2.5vw;
     padding: 10px;
 }
@@ -74,7 +74,7 @@ select {
     width: 10vw;
     height: 2.5vw;
     margin-left: 1vw;
-    font-size: 15px;
+    font-size: 13px;
     padding: 10px;
     font-style: italic;
 }
@@ -90,6 +90,7 @@ select {
     font-size: 1vw;
     padding: 0;
     border: none;
+    font-size: 13px;
 }
 
 @media screen and (max-width: 768px) {
@@ -106,15 +107,15 @@ select {
 
 .inventory-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     padding: 0 20px;
     flex-direction: row;
-    border-top: solid .1vh #8E8787;
-    border-bottom: solid .1vh #8E8787;
-    height: 10vh;
+    border-bottom: solid .01vh #8E8787;
+    height: 5vh;
     background-color: white;
     color: black;
     overflow: hidden;
+    align-items: left;
     /* margin-top: 0; */
 }
 
@@ -126,6 +127,7 @@ select {
     /* width: 10vw; */
     font-style: bolder;
     align-items: center;
+    size: 10px;
 }
 
 .table-form {
@@ -133,6 +135,11 @@ select {
     flex-direction: row;
     padding: 30px;
     width: 100%;
+}
+
+.box {
+    opacity: 80%;
+    font-size: 1vw;
 }
 
 

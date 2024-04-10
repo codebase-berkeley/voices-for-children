@@ -67,14 +67,19 @@ function Donation() {
     if (selectedOption === "") {
         setDonationData([...originalData]);
         return;
-    }
+  }
 
     const sortedData = [...donationData].sort((a, b) => {
       if (selectedOption === "amount") {
         return a.amount - b.amount;
-      }  else if (selectedOption === "name") {
+      } else if (selectedOption === "sort_AZ") {
+        console.log('ascending');
         return a.name.localeCompare(b.name);
+      } else if (selectedOption === "sort_ZA") {
+        console.log('descending');
+        return b.name.localeCompare(a.name);
       } else if (selectedOption === "item_type") {
+        console.log('item type');
         return a.item_type.localeCompare(b.item_type);
       } else if (selectedOption === "stock") {
         return a.stock.localeCompare(b.stock);
@@ -155,7 +160,7 @@ function Donation() {
       <div className="search-wrapper">
         <div className="filterContainer">
           <div className="search">
-          <form>
+            <form>
               <input type="text"  
               value={search} 
                 onChange={handleChange}
@@ -177,7 +182,8 @@ function Donation() {
             <div className="sort-by">
             <select name="sort-by" id="sort" onChange={handleSort}>
                 <option value="">Sort By</option>
-                <option value="sort">Name</option>
+                <option value="sort_AZ">A-Z</option>
+                <option value="sort_ZA">Z-A</option>
                 <option value="item_type">Item Type</option>
               <option value="amount">Amount</option>
               <option value="stock">In Stock</option>
@@ -203,13 +209,13 @@ function Donation() {
             </div>
           </div>
           {donationData.map((item, index) => (
-            <DonationEntry
+          <DonationEntry
               key={index}
               name={item.name}
               item_type={item.item_type}
               amount={item.amount}
               stock={item.stock}
-            />
+          />
           ))}
         </div>
       </div>

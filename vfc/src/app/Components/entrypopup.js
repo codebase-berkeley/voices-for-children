@@ -16,16 +16,16 @@ function EntryPopup ({ onClose }) {
                         </div>
                     </div>
                     <form>
-                        <input type="text" placeholder="Donation Name" id="name"></input>
-                        <input type="text" placeholder="Donor" id="donor"></input>
+                        <input type="text" placeholder="Donation Name" id="name" required></input>
+                        <input type="text" placeholder="Donor" id="donor" required></input>
                         <div className="form-container">
-                            <input type="text" placeholder="Donation Type" id="type"></input>
-                            <input type="text" placeholder="Amount" id="amt"></input>
-                            <input type="date" placeholder="Date" id="date"></input>
+                            <input type="text" placeholder="Donation Type" id="type" required></input>
+                            <input type="text" placeholder="Amount" id="amt" required></input>
+                            <input type="date" placeholder="Date" id="date" required></input>
                         </div>
                         <div className="desc-container">
                             <span className="popup-text">Description</span>
-                            <input type="text" placeholder="Thank you details, item usage, etc." id="desc"></input>
+                            <input type="text" placeholder="Thank you details, item usage, etc." id="desc" required></input>
                             <div className="submit"><input type="submit" id = "submit"></input></div>
                         </div>
                     </form>
