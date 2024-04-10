@@ -14,18 +14,33 @@ function MainComPart() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
+  const [isOpen3, setIsOpen3] = useState(false);
   const locations = ["San Diego", "other one"];
-  const date = [
-    "December 2023",
-    "November 2023",
-    "October 2023",
-    "September 2023",
-    "August 2023",
-    "July 2023",
-    "June 2023",
-    "May 2023",
-    "April 2023",
+  const year = [
+    "2019", 
+    "2020", 
+    "2021", 
+    "2022", 
+    "2023", 
+    "2024"
   ];
+  const month = [
+    "January", 
+    "Feburary",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  
+
+
 
   const [data, setData] = useState(rawdata);
   const [giftType, setGiftTypes] = useState([]);
@@ -172,15 +187,15 @@ function MainComPart() {
                   style={{ width: "1.7vh", height: "1.2vh" }}
                 />
               )}{" "}
-              <h5>Month / Year</h5>
+              <h5>Year</h5>
             </button>
 
             {isOpen1 && (
               <div class="list">
-                {date.map((date, index) => (
+                {year.map((year, index) => (
                   <div key={index} className="list-item">
                     <input
-                      value={`${date}`}
+                      value={`${year}`}
                       type="checkbox"
                       id={`location-${index}`}
                       onChange={handleChange}
@@ -189,7 +204,7 @@ function MainComPart() {
                       htmlFor={`location-${index}`}
                       style={{ marginLeft: "8px" }}
                     >
-                      {date}
+                      {year}
                     </label>
                   </div>
                 ))}
@@ -201,7 +216,47 @@ function MainComPart() {
           {/* start of filter */}
           <div class="each-filter">
             <button onClick={() => setIsOpen2((prev) => !prev)} class="button">
-              {!isOpen2 ? (
+              {!isOpen1 ? (
+                <img
+                  src="https://static.thenounproject.com/png/551749-200.png"
+                  style={{ width: "1.7vh", height: "1.2vh" }}
+                />
+              ) : (
+                <img
+                  src="https://static.thenounproject.com/png/1240272-200.png"
+                  style={{ width: "1.7vh", height: "1.2vh" }}
+                />
+              )}{" "}
+              <h5>Month</h5>
+            </button>
+
+            {isOpen2 && (
+              <div class="list">
+                {month.map((month, index) => (
+                  <div key={index} className="list-item">
+                    <input
+                      value={`${month}`}
+                      type="checkbox"
+                      id={`location-${index}`}
+                      onChange={handleChange}
+                    />
+                    <label
+                      htmlFor={`location-${index}`}
+                      style={{ marginLeft: "8px" }}
+                    >
+                      {month}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          {/* end of filter */}
+
+          {/* start of filter */}
+          <div class="each-filter">
+            <button onClick={() => setIsOpen3((prev) => !prev)} class="button">
+              {!isOpen3 ? (
                 <img
                   src="https://static.thenounproject.com/png/551749-200.png"
                   style={{ width: "1.7vh", height: "1.2vh" }}
@@ -215,7 +270,7 @@ function MainComPart() {
               <h5>Gift Type</h5>
             </button>
 
-            {isOpen2 && (
+            {isOpen3 && (
               <div class="list">
                 {giftType.map((giftType, index) => (
                   <div key={index} className="list-item">
