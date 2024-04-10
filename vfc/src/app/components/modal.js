@@ -33,6 +33,7 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
           <div className="gifts">Gifts : {props.giftType}</div>
           <div className="modalAddress">Address : {props.location}</div>
           <div className="cityState">City/State : {props.cityState}</div>
+          <div className="Ticket Log Link">Ticket Log Link : <a href={"http://" + props.link} target="_blank" rel="noopener noreferrer">{props.link}</a></div>
           <div className="exitHere">
             <button className="LEAVE">Edit</button>
             <button onClick={handleClick} className="LEAVE">Exit Here</button>

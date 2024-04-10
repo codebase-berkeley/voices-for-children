@@ -218,11 +218,11 @@ function MainComPart() {
                     <input
                       value={`${year}`}
                       type="checkbox"
-                      id={`location-${index}`}
+                      id={`year-${index}`}
                       onChange={handleChange}
                     />
                     <label
-                      htmlFor={`location-${index}`}
+                      htmlFor={`year-${index}`}
                       style={{ marginLeft: "8px" }}
                     >
                       {year}
@@ -237,7 +237,7 @@ function MainComPart() {
           {/* start of filter */}
           <div class="each-filter">
             <button onClick={() => setIsOpen2((prev) => !prev)} class="button">
-              {!isOpen1 ? (
+              {!isOpen2 ? (
                 <img
                   src="https://static.thenounproject.com/png/551749-200.png"
                   style={{ width: "1.7vh", height: "1.2vh" }}
@@ -258,11 +258,11 @@ function MainComPart() {
                     <input
                       value={`${month}`}
                       type="checkbox"
-                      id={`location-${index}`}
+                      id={`month-${index}`}
                       onChange={handleChange}
                     />
                     <label
-                      htmlFor={`location-${index}`}
+                      htmlFor={`month-${index}`}
                       style={{ marginLeft: "8px" }}
                     >
                       {month}
@@ -298,11 +298,11 @@ function MainComPart() {
                     <input
                       value={`${giftType}`}
                       type="checkbox"
-                      id={`location-${index}&nbsp;`}
+                      id={`giftType-${index}&nbsp;`}
                       onChange={handleChange}
                     />
                     <label
-                      htmlFor={`location-${index}`}
+                      htmlFor={`giftType-${index}`}
                       style={{ marginLeft: "8px" }}
                     >
                       {normalizeWord(giftType)}
