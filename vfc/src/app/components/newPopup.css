@@ -20,10 +20,11 @@
     border-radius: 10px;
     margin-bottom: 2vh;
     border: solid black;
-    width: 40vw;
-    height: 40vw;
+    width: 50vw;
+    height: 50vw;
     display: flex;
     flex-direction: column;
+    overflow: auto; 
 }
 
 .containerTop {
@@ -67,6 +68,22 @@
 .inputs {
     height: 100%;
     padding: 20px;
+    overflow-wrap: break-word; /* Add this line to allow word wrapping */
+}
+
+.inputs input,
+.inputs select {
+    max-width: 100%; /* Adjust as needed */
+}
+
+
+/* Apply specific styling for smaller screens */
+@media screen and (max-width: 768px) {
+    /* Example adjustments for smaller screens */
+    .inputs input,
+    .inputs select {
+        font-size: 14px;
+    }
 }
 
 .form-group {

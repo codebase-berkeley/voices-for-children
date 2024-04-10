@@ -8,7 +8,8 @@
       "email": "cindy@berkeley.edu",
       "poc": "Cindy Sanchez",
       "date": "05/06/2005",
-      "giftType": "Money"
+      "giftType": "Money",
+      "link": "www.google.com"
     },
     {
       "name": "LEGO",
@@ -19,7 +20,9 @@
         "email": "colin@berkeley.edu",
         "poc": "Colin O'Brien",
         "date": "01/01/2000",
-        "giftType": "Toys"
+        "giftType": "Toys",
+        "link": "www.google.com"
+
     },
     {
       "name": "COMPANY",
@@ -30,7 +33,9 @@
       "email": "angie@berkeley.edu",
       "poc": "Angie Zhu",
       "date": "12/12/2012",
-      "giftType": "Toys"
+      "giftType": "Toys",
+      "link": "www.google.com"
+
     },
     {
       "name": "LONGER COMPANY NAME",
@@ -41,7 +46,9 @@
       "phone": "(123)4567-8900",
       "poc": "Kinton Duong",
       "date": "10/10/2010",
-      "giftType": "Toys"
+      "giftType": "Toys",
+      "link": "www.google.com"
+
     },
     {
       "name": "Codebase",
@@ -52,7 +59,9 @@
       "email": "cindy@berkeley.edu",
       "poc": "Cindy Sanchez",
       "date": "05/06/2005",
-      "giftType": "Money"
+      "giftType": "Money",
+      "link": "www.google.com"
+
     },
     {
       "name": "Codebase",
@@ -63,7 +72,8 @@
       "email": "cindy@berkeley.edu",
       "poc": "Cindy Sanchez",
       "date": "05/06/2005",
-      "giftType": "Money"
+      "giftType": "Money",
+      "link": "www.google.com"
     },
     {
       "name": "Codebase",
@@ -74,7 +84,8 @@
       "email": "cindy@berkeley.edu",
       "poc": "Cindy Sanchez",
       "date": "05/06/2005",
-      "giftType": "Money"
+      "giftType": "Money",
+      "link": "www.google.com"
     }, 
     {
       "name": "Codebase",
@@ -85,7 +96,8 @@
       "email": "cindy@berkeley.edu",
       "poc": "Cindy Sanchez",
       "date": "05/06/2005",
-      "giftType": "Money"
+      "giftType": "Money",
+      "link": "www.google.com"
     },
     {
       "name": "Codebase",
@@ -96,7 +108,8 @@
       "email": "cindy@berkeley.edu",
       "poc": "Cindy Sanchez",
       "date": "05/06/2005",
-      "giftType": "Money"
+      "giftType": "Money",
+      "link": "www.google.com"
     }
 
   ]

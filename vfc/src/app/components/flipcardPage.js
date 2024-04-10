@@ -61,6 +61,7 @@ function MultipleFlipCards(props) {
             // emailImage={card.emailImage}
             date={card.date}
             giftType={card.giftType}
+            link={card.link}
           />
         ))}
       </div>

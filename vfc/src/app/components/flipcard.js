@@ -95,6 +95,7 @@ export default function FlipCard(props) {
         email={props.email}
         poc={props.poc}
         phone = {props.phone}
+        link = {props.link}
       />
     </div>
   );
