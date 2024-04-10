@@ -16,7 +16,6 @@ import Top from "./Components/top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EntryPopup from "./Components/entrypopup";
 import Donation from "./Components/donation";
-import Donations from "./Donations.js";
 
 export default function Home() {
   var mock = {

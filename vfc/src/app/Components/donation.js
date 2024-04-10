@@ -3,6 +3,8 @@ import { useState } from "react";
 import DonationEntry from "./donationEntry";
 import EntryPopup from "./entrypopup.js";
 import Top from "./top";
+import Navbar from "./navbar";
+import { Link } from "react-router-dom";
 
 function Donation() {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -148,9 +150,50 @@ function Donation() {
     }
   };
 
+  const [buttonId, setButtonId] = useState("Donation_log");
+
+  const handleClick = (newId) => {
+    setButtonId(newId);
+  };
+
+  console.log(buttonId);
+
   return (
     <div>
-      <Top></Top>
+      <div className="bigContainer">
+        <Navbar buttonId={buttonId} setButtonId={setButtonId}></Navbar>
+        <div className="inventoryContainer">
+          <h1 className="name">In-Kind Donation</h1>
+          <div className="flipSwitch">
+            <Link
+              className="link"
+              style={{ textDecoration: "none" }}
+              to="/home"
+            >
+              <button
+                className="BUTTON"
+                id={buttonId === "Inventory" ? "clicked" : null}
+                onClick={() => handleClick("Inventory")}
+              >
+                Inventory
+              </button>
+            </Link>
+            <Link
+              className="link"
+              style={{ textDecoration: "none" }}
+              to="/donation_log"
+            >
+              <button
+                className="BUTTON"
+                id={buttonId === "Donation_log" ? "clicked" : null}
+                onClick={() => handleClick("Donation_log")}
+              >
+                Donation Log
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
       <div className="inventory-page">
         <div className="search-wrapper">
           <div className="filterContainer">

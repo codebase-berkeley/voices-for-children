@@ -4,7 +4,7 @@ import "./top.css";
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 
-function Top() {
+function Top(props) {
   const [buttonId, setButtonId] = useState("Inventory");
 
   const handleClick = (newId) => {
@@ -15,12 +15,13 @@ function Top() {
 
   return (
     <div className="bigContainer">
-      <Navbar></Navbar>
+      <Navbar buttonId={buttonId} setButtonId={setButtonId}></Navbar>
       <div className="inventoryContainer">
         <h1 className="name">In-Kind Donation</h1>
         <div className="flipSwitch">
           <Link className="link" style={{ textDecoration: "none" }} to="/home">
-            <button className="BUTTON"
+            <button
+              className="BUTTON"
               id={buttonId === "Inventory" ? "clicked" : null}
               onClick={() => handleClick("Inventory")}
             >
@@ -32,7 +33,8 @@ function Top() {
             style={{ textDecoration: "none" }}
             to="/donation_log"
           >
-            <button className="BUTTON"
+            <button
+              className="BUTTON"
               id={buttonId === "Donation_log" ? "clicked" : null}
               onClick={() => handleClick("Donation_log")}
             >
