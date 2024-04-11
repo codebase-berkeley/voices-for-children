@@ -138,20 +138,7 @@ function MainComPart() {
   return (
     <div>
       {/* top of page */}
-      <Navbar />
-      <div className="SEARCH">
-        <div class="searchbar">
-          <TextField
-            id="outlined-basic"
-            onKeyDown={inputHandler}
-            variant="outlined"
-            label="Search"
-            InputLabelProps={{
-              sx: { color: "black", "&.Mui-focused": { color: "black" } },
-            }}
-          />
-        </div>
-      </div>
+      <Navbar onCommunity={true} />
       {/* bottom of page */}
       <div class="bottom-of-page">
         {/* side bar of ALL filters */}
@@ -329,6 +316,19 @@ function MainComPart() {
 
         <div class="main-card-box">
           <div className="createNewContainer">
+            <div className="SEARCH">
+              <div class="searchbar">
+                <TextField
+                  id="outlined-basic"
+                  onKeyDown={inputHandler}
+                  variant="outlined"
+                  label="Search"
+                  InputLabelProps={{
+                    sx: { color: "black", "&.Mui-focused": { color: "black" } },
+                  }}
+                />
+              </div>
+            </div>
             <select className="sortBy" value={selectedValue} onChange={sortBy}>
               <option value="">Sort By</option>
               <option value="az">A - Z</option>

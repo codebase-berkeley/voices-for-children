@@ -1,6 +1,7 @@
 .navbarTop {
     top: 0;
     width: 100%;
+    justify-content: space-between;
     /* border-bottom: 2px black solid; */
 }
 
@@ -11,20 +12,28 @@
 .navbarTop .navbarTip {
     width: 100%;
     display: flex;
-    /* background-color: red; */
-    margin-bottom: 20px;
-    justify-content: center;
     padding: 10px;
     align-items: center;
+    background-color: yellow;
+    justify-content: space-between;
 }
 
-.navbarTop .navbarTip li {
-    margin: 0 10px; /* Adjust margin as needed */
-    list-style: none; /* Removes default list styles */
+.clists {
+    margin: 0 10px;
+    list-style: none;
 }
 
-.navbarTop .navbarTip .routers {
-    width: 100%;
+.voices-for-children-logo {
+    width: 150px;
+    height: auto;
+}
+
+.navbar-things {
     display: flex;
-    gap: 40px;
-  }
+    gap: 30px;
+    width: 500px;
+}
+
+#goBlue {
+    border-bottom: 2px black solid;
+}

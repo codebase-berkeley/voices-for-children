@@ -4,18 +4,18 @@ import "./top.css";
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 
-function Top(props) {
+function Top() {
   const [buttonId, setButtonId] = useState("Inventory");
 
   const handleClick = (newId) => {
     setButtonId(newId);
   };
 
-  console.log(buttonId);
+  const navbarStyle = "donation";
 
   return (
     <div className="bigContainer">
-      <Navbar buttonId={buttonId} setButtonId={setButtonId}></Navbar>
+      <Navbar onCommunity={false}></Navbar>
       <div className="inventoryContainer">
         <h1 className="name">In-Kind Donation</h1>
         <div className="flipSwitch">
