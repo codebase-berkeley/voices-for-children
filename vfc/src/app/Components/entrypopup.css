@@ -87,9 +87,7 @@
 }
 
 input::placeholder {
-    font-size: 12px;
-    opacity: 85%;
-    font-style: italic;
+    font-size: 15px;
 }
 
 .create-new-bar {

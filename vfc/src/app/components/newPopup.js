@@ -38,7 +38,7 @@ export default function NewPopup({
       : "";
 
     const newCard = {
-      name: event.target.name.value,
+      name: event.target.companyName.value,
       locationImage: "vfc/src/app/assets/justinchen.jpg",
       location: event.target.location.value,
       cityState: event.target.cityState.value,
@@ -47,6 +47,7 @@ export default function NewPopup({
       poc: event.target.poc.value,
       date: formattedDate,
       giftType: event.target.giftType.value,
+      link: event.target.link.value
     };
 
     // const newCard = {
@@ -60,6 +61,8 @@ export default function NewPopup({
     //   date: event.target.date.value,
     //   giftType: event.target.giftType.value,
     // };
+
+    console.log(newCard);
 
     const reader = new FileReader();
     const locImg = event.target.locationImage.files[0];
@@ -108,7 +111,7 @@ export default function NewPopup({
                   <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="companyName"
                     placeholder="Enter Company Name"
                     required
                   ></input>
@@ -146,7 +149,7 @@ export default function NewPopup({
                 <input
                   type="email"
                   id="name"
-                  name="name"
+                  name="email"
                   placeholder="Enter Email"
                   required
                 ></input>
@@ -160,7 +163,7 @@ export default function NewPopup({
                 <input
                   type="date"
                   id="date"
-                  name="name"
+                  name="date"
                   max={maxDate}
                   required
                 ></input>
@@ -191,21 +194,32 @@ export default function NewPopup({
                 <input
                   type="text"
                   id="name"
-                  name="name"
+                  name="giftType"
                   placeholder="Enter gift type"
                   required
                 ></input>
               </div>
             </div>
-            <div className="form-group">
-              <label for="locationImage">(OPTIONAL) Company Image: </label>
-              <input
-                type="file"
-                id="locationImage"
-                name="locationImage"
-              ></input>
+            <div className="row5">
+              <div className="form-group">
+                <label for="locationImage">Log Link</label>
+                <input
+                  type="url"
+                  id="name"
+                  name="link"
+                  placeholder="https://example.com"
+                  required
+                ></input>
+              </div>
+              <div className="form-group">
+                <label for="locationImage">(OPTIONAL) Company Image: </label>
+                <input
+                  type="file"
+                  id="locationImage"
+                  name="locationImage"
+                ></input>
+              </div>
             </div>
-
             <div className="buttonContainer">
               <button id="submitButton" type="submit">
                 Submit
