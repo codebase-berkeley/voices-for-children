@@ -272,7 +272,3 @@ h5 {
   ::-webkit-scrollbar-thumb:hover {
     background-color: #66ccff; /* Slightly lighter blue on hover */
   }
-
-  .MuiTextField-root {
-    width: 500px;
-}
