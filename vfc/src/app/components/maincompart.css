@@ -84,7 +84,6 @@
 .bottom-of-page {
     display: flex;
     flex-direction: row;
-    /* background-color: yellow; */
     margin-top: 3vh;
     margin-left: 2vh;
     margin-right: 2vh; 

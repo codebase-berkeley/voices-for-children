@@ -100,38 +100,41 @@ export default function NewPopup({
         </div>
         <div className="inputs">
           {/* <form action="submit_contact_form.php"> */}
-          <form onSubmit={submitForm}>
-            <div className="companyName">
-              <div className="form-group">
-                <label for="name">Company Name: </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Enter Company Name"
-                  required
-                ></input>
+          <form className="allInputs" onSubmit={submitForm}>
+            <div className="row1">
+              <div className="companyName">
+                <div className="form-group">
+                  <label for="name">Company Name: </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter Company Name"
+                    required
+                  ></input>
+                </div>
+              </div>
+              <div className="contacts">
+                <div className="form-group">
+                  <label for="poc">POC: </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="poc"
+                    placeholder="Enter POC Name"
+                    required
+                  ></input>
+                </div>
               </div>
             </div>
-            <div className="contacts">
-              <div className="form-group">
-                <label for="poc">Point of Contact: </label>
-                <input
-                  type="text"
-                  id="poc"
-                  name="poc"
-                  placeholder="Enter POC Name"
-                  required
-                ></input>
-              </div>
-
+            <div className="row2">
               <div className="form-group">
                 <label id="phone" for="phone">
                   Phone Number:
                 </label>
                 <input
                   type="number"
-                  id="phone"
+                  id="name"
                   name="phone"
                   placeholder="Enter Phone Number"
                   required
@@ -142,13 +145,14 @@ export default function NewPopup({
                 <label for="email">Email: </label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
+                  id="name"
+                  name="name"
                   placeholder="Enter Email"
                   required
                 ></input>
               </div>
-
+            </div>
+            <div className="row3">
               <div className="form-group">
                 <label id="date" for="date">
                   Date:
@@ -156,26 +160,25 @@ export default function NewPopup({
                 <input
                   type="date"
                   id="date"
-                  name="date"
+                  name="name"
                   max={maxDate}
                   required
                 ></input>
               </div>
-
               <div className="form-group">
                 <label for="address">Address: </label>
                 <input
                   type="text"
-                  id="location"
+                  id="name"
                   name="location"
                   placeholder="Enter Company Address"
                   required
                 ></input>
               </div>
+            </div>
+            <div className="row4">
               <div className="form-group">
-                <label htmlFor="cityState">
-                  City/State:{" "}
-                </label>
+                <label htmlFor="cityState">City/State: </label>
                 <select id="cityState" name="cityState" required>
                   <option value="">Select City/State</option>
                   <option value="Riverside, CA">Riverside, CA</option>
@@ -183,27 +186,26 @@ export default function NewPopup({
                   {/* Add more options as needed */}
                 </select>
               </div>
-            </div>
-            <div className="giftImage">
               <div className="form-group">
                 <label for="giftType">Gift Type: </label>
                 <input
                   type="text"
-                  id="giftType"
-                  name="giftType"
+                  id="name"
+                  name="name"
                   placeholder="Enter gift type"
                   required
                 ></input>
               </div>
-              <div className="form-group">
-                <label for="locationImage">(OPTIONAL) Company Image: </label>
-                <input
-                  type="file"
-                  id="locationImage"
-                  name="locationImage"
-                ></input>
-              </div>
             </div>
+            <div className="form-group">
+              <label for="locationImage">(OPTIONAL) Company Image: </label>
+              <input
+                type="file"
+                id="locationImage"
+                name="locationImage"
+              ></input>
+            </div>
+
             <div className="buttonContainer">
               <button id="submitButton" type="submit">
                 Submit
