@@ -5,6 +5,7 @@ import EntryPopup from "./entrypopup.js";
 import Top from "./top";
 import Navbar from "./navbar";
 import { Link } from "react-router-dom";
+import TextField from "@mui/material/TextField";
 
 function Donation() {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -199,14 +200,29 @@ function Donation() {
           <div className="filterContainer">
             <div className="search">
               <form>
-                <input
+                {/* <input
                   type="text"
                   value={search}
                   onChange={handleChange}
                   onKeyPress={(e) => handleKeyPress(e)}
                   placeholder="Search..."
                   id="search"
-                ></input>
+                ></input> */}
+                <div className="searchbar">
+                  <TextField
+                    id="outlined-basic"
+                    onChange={handleChange}
+                    onKeyDown={(e) => handleKeyPress(e)}
+                    variant="outlined"
+                    label="Search"
+                    InputLabelProps={{
+                      sx: {
+                        color: "black",
+                        "&.Mui-focused": { color: "black" },
+                      },
+                    }}
+                  />
+                </div>
               </form>
             </div>
             <div className="filter-wrappers">
@@ -214,7 +230,8 @@ function Donation() {
                 <select
                   value={filter}
                   name="filter-by"
-                  id="filter"
+                  // id="filter"
+                  className="SELECT"
                   placeholder="Filter By"
                   onChange={(e) => handleFilter(e)}
                 >
@@ -226,7 +243,7 @@ function Donation() {
                 </select>
               </div>
               <div className="sort-by">
-                <select name="sort-by" id="sort" onChange={handleSort}>
+                <select name="sort-by" className="SELECT" onChange={handleSort}>
                   <option value="">Sort By</option>
                   <option value="sort">Name</option>
                   <option value="item_type">Item Type</option>

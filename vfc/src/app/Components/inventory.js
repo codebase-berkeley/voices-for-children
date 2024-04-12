@@ -7,6 +7,7 @@ import EntryPopup from "./entrypopup.js";
 import { useState } from "react";
 import Navbar from "./navbar";
 import Top from "./top";
+import TextField from "@mui/material/TextField";
 
 function Inventory() {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -178,14 +179,29 @@ function Inventory() {
           <div className="filterContainer">
             <div className="search">
               <form>
-                <input
+                {/* <input
                   type="text"
                   value={search}
                   onChange={handleChange}
                   onKeyPress={(e) => handleKeyPress(e)}
                   placeholder="Search..."
                   id="search"
-                ></input>
+                ></input> */}
+                <div className="searchbar">
+                  <TextField
+                    id="outlined-basic"
+                    onChange={handleChange}
+                    onKeyDown={(e) => handleKeyPress(e)}
+                    variant="outlined"
+                    label="Search"
+                    InputLabelProps={{
+                      sx: {
+                        color: "black",
+                        "&.Mui-focused": { color: "black" },
+                      },
+                    }}
+                  />
+                </div>
               </form>
             </div>
             <div className="filter-wrappers">

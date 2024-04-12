@@ -67,7 +67,7 @@
     font-size: 1rem; 
 }
 
-.SELECT {
+/* .SELECT {
     background-color: lightgray;
     color: black;
     border-radius: 26px;
@@ -77,6 +77,42 @@
     font-size: 15px;
     padding: 10px;
     font-style: italic;
+} */
+
+.SELECT {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 12vw;
+    height: 55px;
+    padding: 5px;
+    background-color: white; 
+    color: black; 
+    font-size: 14px;
+    cursor: pointer; 
+    margin-left: 20px;
+}
+
+/* Style for when the dropdown is open */
+.SELECT:focus,
+.SELECT:hover {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+}
+
+/* Style for dropdown options */
+.SELECT option {
+    background-color: white; /* Background color */
+    color: black; /* Text color */
+    font-size: 14px; /* Font size */
+}
+
+/* Style for dropdown arrow */
+.SELECT::after {
+    content: "\25BC"; /* Unicode character for downward arrow */
+    position: absolute;
+    /* right: 10px; */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* Create New Button */
@@ -90,6 +126,44 @@
     padding: 0;
     border: none;
 }
+
+#create-new {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 12vw;
+    height: 55px;
+    padding: 5px;
+    background-color: aqua; 
+    color: black; 
+    font-size: 14px;
+    cursor: pointer; 
+    margin-left: 20px;
+}
+
+/* Style for when the dropdown is open */
+#create-new:focus,
+#create-new:hover {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+}
+
+/* Style for dropdown options */
+#create-new option {
+    background-color: white; /* Background color */
+    color: black; /* Text color */
+    font-size: 14px; /* Font size */
+}
+
+/* Style for dropdown arrow */
+#create-new::after {
+    content: "\25BC"; /* Unicode character for downward arrow */
+    position: absolute;
+    /* right: 10px; */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
 
 @media screen and (max-width: 768px) {
     #create-new {
@@ -132,6 +206,10 @@
     flex-direction: row;
     padding: 30px;
     width: 100%;
+}
+
+.MuiTextField-root {
+    width: 500px;
 }
 
 
