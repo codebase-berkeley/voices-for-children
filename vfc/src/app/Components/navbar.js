@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Nav } from "react-bootstrap";
+import { useRouter } from "next/router";
 
 export default function Navbar(props) {
   const [navbar, setNavbar] = useState("community");
@@ -28,13 +29,9 @@ export default function Navbar(props) {
                 id={props.onCommunity ? "goBlue" : ""}
                 onClick={() => setNavbar("community")}
               >
-                {/* <p
-                id={navbar === "community" ? "goBlue" : ""}
-                onClick={() => setNavbar("community")}
-              > */}
                 Community Partnerships
               </p>
-            </Link>
+            </Link>          
           </li>
           <li className="lists">
             <Link
