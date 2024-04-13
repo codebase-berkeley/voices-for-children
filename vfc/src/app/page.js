@@ -8,14 +8,14 @@ import ReactCardFlip from "react-card-flip";
 import FlipCard from "./components/flipcard";
 import emailIcon from "/public/assets/codebase.jpg";
 import Modal from "./components/modal";
-import MainComPart from "./components/maincompart.js";
+import MainComPart from "./pages/community_partnerships.js";
 import newPopup from "./components/newPopup";
-import Inventory from "./Components/inventory";
+import Inventory from "./pages/inventory";
 import InventoryEntry from "./Components/inventoryentry";
 import Top from "./Components/top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EntryPopup from "./Components/entrypopup";
-import Donation from "./Components/donation";
+import Donation from "./pages/donation";
 
 export default function Home() {
   var mock = {

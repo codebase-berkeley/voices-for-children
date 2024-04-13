@@ -1,12 +1,12 @@
 "use client";
 import { Rowdies } from "next/font/google";
 import "./inventory.css";
-import InventoryEntry from "./inventoryentry";
+import InventoryEntry from "../Components/inventoryentry";
 // import { Link } from "react-router-dom";
-import EntryPopup from "./entrypopup.js";
+import EntryPopup from "../Components/entrypopup.js";
 import { useState } from "react";
-import Navbar from "./navbar";
-import Top from "./top";
+import Navbar from "../Components/navbar";
+import Top from "../Components/top";
 import TextField from "@mui/material/TextField";
 
 function Inventory() {

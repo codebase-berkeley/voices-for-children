@@ -1,11 +1,13 @@
 import "./donation.css";
 import { useState } from "react";
-import DonationEntry from "./donationEntry";
-import EntryPopup from "./entrypopup.js";
-import Top from "./top";
-import Navbar from "./navbar";
+import DonationEntry from "../Components/donationEntry";
+import EntryPopup from "../Components/entrypopup.js";
+import Top from "../Components/top";
+import Navbar from "../Components/navbar";
 import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
+import handler from "./api/hello";
 
 function Donation() {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -18,6 +20,17 @@ function Donation() {
   var currSearch = {
     [currSearchKey]: currSearchObject,
   };
+
+  // console.log("HITTING ENDPOINT");
+  // axios
+  //   .get("./api/hello")
+  //   .then((response) => console.log("hello api response", response.data))
+  //   .catch((error) => console.error("Error fetching data:", error));
+
+  fetch("../pages/api/hello").then((response) => {
+    console.log("hello api response", response.data);
+  });
+
   var lastEvent = null;
   const [originalData, setOriginalData] = useState([
     {

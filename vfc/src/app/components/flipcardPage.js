@@ -2,16 +2,15 @@
 import { React, useState } from "react";
 import FlipCard from "./flipcard.js";
 import Modal from "./modal.js";
-import rawdata from "./rawdata.json";
+// import rawdata from "./rawdata.json";
 import { Andada_Pro } from "next/font/google/index.js";
 
 function MultipleFlipCards(props) {
-
   const formatDate = (dateString) => {
     let date = new Date(dateString);
-    const options = {month: 'long', year: 'numeric'}
-    return date.toLocaleDateString('en-US', options);
-  } 
+    const options = { month: "long", year: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+  };
 
   // Filters through data from filters checked
   const filteredData = props.data.filter((card) => {
@@ -28,9 +27,7 @@ function MultipleFlipCards(props) {
         props.filters.every((filter) =>
           card.cityState.toLowerCase().includes(filter.toLowerCase())
         ) ||
-        props.filters.every((filter) => 
-          newDate.includes(filter.toLowerCase())
-        )
+        props.filters.every((filter) => newDate.includes(filter.toLowerCase()))
       );
     }
   });
