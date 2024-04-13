@@ -1,12 +1,14 @@
+"use client";
 import Image from "next/image";
-import LoginPage from "./Components/loginpage";
+import LoginPage from "../Components/loginpage";
+import {Route, Router} from 'React-router-dom';
 
 export default function Home() {
   return (
-    <Router>
       <div>
-      <Route path="fc/src/Components/loginpage" component={LoginPage}/>
+        <LoginPage/>
+      {/* <Route path="/loginpage" component={LoginPage}/> */}
       </div>
-    </Router>
+
   );
 }
