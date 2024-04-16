@@ -16,6 +16,7 @@ import Top from "./Components/top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EntryPopup from "./Components/entrypopup";
 import Donation from "./pages/donation";
+import LoginPage from "./pages/loginpage";
 
 export default function Home() {
   var mock = {
@@ -26,8 +27,10 @@ export default function Home() {
 
   return (
     <div className="Dropdown">
+      {/* <LoginPage/> */}
       <Router>
         <Routes>
+          <Route path = "/l" element = {<LoginPage />} />
           <Route path="/" element={<MainComPart />} />
           <Route path="/home" element={<Inventory />} />
           <Route path="/donation_log" element={<Donation />} />

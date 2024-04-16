@@ -23,6 +23,20 @@ export default function Navbar(props) {
           </Link>
         </li>
         <div className="navbar-things">
+
+        <li className="clist">
+            <Link className="link" style={{ textDecoration: "none" }} to="/l">
+              <p
+                id={props.onCommunity ? "goBlue" : ""}
+                onClick={() => setNavbar("community")}
+              >
+                Login Page
+              </p>
+            </Link>          
+          </li>
+          
+
+
           <li className="clist">
             <Link className="link" style={{ textDecoration: "none" }} to="/">
               <p
