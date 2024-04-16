@@ -1,15 +1,16 @@
-"use client";
-import { Rowdies } from "next/font/google";
-import "./inventory.css";
-import InventoryEntry from "../Components/inventoryentry";
+import "./donation.css";
+import { useState, useEffect } from "react";
+import DonationEntry from "../app/Components/donationEntry";
+import EntryPopup from "../app/Components/entrypopup.js";
+import Top from "../app/Components/top";
+import Navbar from "../app/Components/navbar";
 // import { Link } from "react-router-dom";
-import EntryPopup from "../Components/entrypopup.js";
-import { useState } from "react";
-import Navbar from "../Components/navbar";
-import Top from "../Components/top";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
+import handler from "./api/hello";
+import Link from 'next/link';
 
-function Inventory() {
+function Donation() {
   const [popupVisible, setPopupVisible] = useState(false);
   const [sortBy, setSortBy] = useState("");
   const [search, setSearch] = useState("");
@@ -20,50 +21,66 @@ function Inventory() {
   var currSearch = {
     [currSearchKey]: currSearchObject,
   };
+
+  // console.log("HITTING ENDPOINT");
+  // axios
+  //   .get("./api/hello")
+  //   .then((response) => console.log("hello api response", response.data))
+  //   .catch((error) => console.error("Error fetching data:", error));
+
+  useEffect(() => {
+
+    const getReq = async () => {
+      const response = await fetch('/api/hello')
+      .then((response) => {
+        const a = response.json();
+        console.log("adasdasasd")
+        console.log(a)
+      })
+      .then((data) => {
+        console.log(data)
+        console.log("hello api response", data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+
+    }
+    getReq();
+    
+  }, []); // The empty dependency array ensures it only runs once after the initial render
+
   var lastEvent = null;
   const [originalData, setOriginalData] = useState([
     {
-      donor: "Codebase",
-      item_donated: "Cal x Auburn Football",
+      name: "Codebase",
       item_type: "Tickets",
-      amount: 3,
-      date: "3/4/2024",
-      thanked: "Thanked. Thanked at banquet on 3/4",
+      amount: "30",
+      stock: "Yes",
     },
     {
-      donor: "Kinton Duong",
-      item_donated: "Cal x USC Basketball",
+      name: "John Doe",
       item_type: "Tickets",
-      amount: 4,
-      date: "3/4/2024",
-      thanked: "Thanked. Thanked at banquet on 3/4",
+      amount: "10",
+      stock: "No",
     },
-
     {
-      donor: "Codebase",
-      item_donated: "Stuffed Teddy Bear",
+      name: "John Doe",
       item_type: "Toys",
-      amount: 2,
-      date: "2/6/2024",
-      thanked: "Thanked. Thanked at banquet on 3/4",
+      amount: "100",
+      stock: "Yes",
     },
-
     {
-      donor: "John Doe",
-      item_donated: "Cal x Stanford Tickets",
-      item_type: "Tickets",
-      amount: 1,
-      date: "12/24/2023",
-      thanked: "Thanked. Thanked at banquet on 3/4",
-    },
-
-    {
-      donor: "John Doe",
-      item_donated: "2020 Macbook Pro",
+      name: "Codebase",
       item_type: "Electronics",
-      amount: 5,
-      date: "1/9/2024",
-      thanked: "Thanked. Thanked at banquet on 3/4",
+      amount: "10",
+      stock: "No",
+    },
+    {
+      name: "Kinton Duong",
+      item_type: "Tickets",
+      amount: "40",
+      stock: "No",
     },
   ]);
 
@@ -74,7 +91,7 @@ function Inventory() {
   //     console.log(seen, "from inventory")
   // }
 
-  const [inventoryData, setInventoryData] = useState([...originalData]);
+  const [donationData, setDonationData] = useState([...originalData]);
   const togglePopup = () => {
     setPopupVisible(!popupVisible);
   };
@@ -83,24 +100,22 @@ function Inventory() {
     setSortBy(selectedOption);
 
     if (selectedOption === "") {
-      setInventoryData([...originalData]);
+      setDonationData([...originalData]);
       return;
     }
 
-    const sortedData = [...inventoryData].sort((a, b) => {
+    const sortedData = [...donationData].sort((a, b) => {
       if (selectedOption === "amount") {
         return a.amount - b.amount;
-      } else if (selectedOption === "date") {
-        return new Date(a.date) - new Date(b.date);
-      } else if (selectedOption === "donor") {
-        return a.donor.localeCompare(b.donor);
+      } else if (selectedOption === "name") {
+        return a.name.localeCompare(b.name);
       } else if (selectedOption === "item_type") {
         return a.item_type.localeCompare(b.item_type);
-      } else if (selectedOption === "item_donated") {
-        return a.item_donated.localeCompare(b.item_donated);
+      } else if (selectedOption === "stock") {
+        return a.stock.localeCompare(b.stock);
       }
     });
-    setInventoryData(sortedData);
+    setDonationData(sortedData);
   };
 
   const applyFilters = (currentSearch, currentFilter) => {
@@ -114,15 +129,12 @@ function Inventory() {
     if (currentSearch) {
       filteredData = filteredData.filter(
         (item) =>
-          item.donor.toLowerCase().includes(currentSearch.toLowerCase()) ||
-          item.item_donated
-            .toLowerCase()
-            .includes(currentSearch.toLowerCase()) ||
+          item.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
           item.item_type.toLowerCase().includes(currentSearch.toLowerCase())
       );
     }
 
-    setInventoryData(filteredData);
+    setDonationData(filteredData);
   };
 
   // const handleChange = (event) => {
@@ -145,16 +157,16 @@ function Inventory() {
     lastSearch = event.target.value;
     lastEvent = event;
     if (search === "") {
-      setInventoryData([...originalData]);
+      setDonationData([...originalData]);
     } else {
       const filteredData = originalData.filter((item) => {
         return (
-          item.donor.toLowerCase().includes(search.toLowerCase()) ||
-          item.item_donated.toLowerCase().includes(search.toLowerCase()) ||
+          item.name.toLowerCase().includes(search.toLowerCase()) ||
+          item.amount.toLowerCase().includes(search.toLowerCase()) ||
           item.item_type.toLowerCase().includes(search.toLowerCase())
         );
       });
-      setInventoryData(filteredData);
+      setDonationData(filteredData);
     }
   };
 
@@ -171,9 +183,50 @@ function Inventory() {
     }
   };
 
+  const [buttonId, setButtonId] = useState("Donation_log");
+
+  const handleClick = (newId) => {
+    setButtonId(newId);
+  };
+  console.log("yo")
+  console.log(buttonId);
+
   return (
     <div>
-      <Top></Top>
+      <div className="bigContainer">
+        <Navbar buttonId={buttonId} setButtonId={setButtonId}></Navbar>
+        <div className="inventoryContainer">
+          <h1 className="name">In-Kind Donation</h1>
+          <div className="flipSwitch">
+            {/* <Link
+              className="link"
+              style={{ textDecoration: "none" }}
+              to="/home"
+            >
+              <button
+                className="BUTTON"
+                id={buttonId === "Inventory" ? "clicked" : null}
+                onClick={() => handleClick("Inventory")}
+              >
+                Inventory
+              </button>
+            </Link>
+            <Link
+              className="link"
+              style={{ textDecoration: "none" }}
+              to="/donation_log"
+            >
+              <button
+                className="BUTTON"
+                id={buttonId === "Donation_log" ? "clicked" : null}
+                onClick={() => handleClick("Donation_log")}
+              >
+                Donation Log
+              </button>
+            </Link> */}
+          </div>
+        </div>
+      </div>
       <div className="inventory-page">
         <div className="search-wrapper">
           <div className="filterContainer">
@@ -207,14 +260,14 @@ function Inventory() {
             <div className="filter-wrappers">
               <div className="filter-by">
                 <select
-                  className="SELECT"
                   value={filter}
                   name="filter-by"
-                  id="filter"
+                  // id="filter"
+                  className="SELECT"
                   placeholder="Filter By"
                   onChange={(e) => handleFilter(e)}
                 >
-                  <option value="">All Categories</option>
+                  <option value="">Filter By</option>
                   <option value="Tickets">Tickets</option>
                   <option value="Toys">Toys</option>
                   <option value="Electronics">Electronics</option>
@@ -222,23 +275,14 @@ function Inventory() {
                 </select>
               </div>
               <div className="sort-by">
-                <select
-                  className="SELECT"
-                  name="sort-by"
-                  id="sort"
-                  onChange={handleSort}
-                >
+                <select name="sort-by" className="SELECT" onChange={handleSort}>
                   <option value="">Sort By</option>
-                  <option value="donor">Donor</option>
-                  <option value="item_donated">Items Donated</option>
+                  <option value="sort">Name</option>
                   <option value="item_type">Item Type</option>
                   <option value="amount">Amount</option>
-                  <option value="date">Date Donated</option>
+                  <option value="stock">In Stock</option>
                 </select>
               </div>
-              <button id="create-new" onClick={togglePopup}>
-                Create New
-              </button>
             </div>
           </div>
         </div>
@@ -247,17 +291,12 @@ function Inventory() {
             <div className="inventory-header">
               <div className="box">
                 <h2 id="title" className="inv-col-head">
-                  Donor
+                  Name
                 </h2>
               </div>
               <div className="box">
                 <h2 id="title" className="inv-col-head">
-                  Items Donated
-                </h2>
-              </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Item Type
+                  Type
                 </h2>
               </div>
               <div className="box">
@@ -267,31 +306,19 @@ function Inventory() {
               </div>
               <div className="box">
                 <h2 id="title" className="inv-col-head">
-                  Date Donated
-                </h2>
-              </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Thanked
+                  In Stock
                 </h2>
               </div>
             </div>
-
-            {inventoryData.map((item, index) => (
-              <InventoryEntry
+            {donationData.map((item, index) => (
+              <DonationEntry
                 key={index}
-                donor={item.donor}
-                item_donated={item.item_donated}
+                name={item.name}
                 item_type={item.item_type}
                 amount={item.amount}
-                date={item.date}
-                thanked={item.thanked}
+                stock={item.stock}
               />
             ))}
-          </div>
-          <div className="create-form">
-            {popupVisible && <EntryPopup onClose={togglePopup} />}
-            {/* {seen && <EntryPopup  />} */}
           </div>
         </div>
       </div>
@@ -299,4 +326,4 @@ function Inventory() {
   );
 }
 
-export default Inventory;
+export default Donation;
