@@ -96,6 +96,7 @@ export default function FlipCard(props) {
         poc={props.poc}
         phone = {props.phone}
         link = {props.link}
+        locationImage = {props.locationImage}
       />
     </div>
   );
