@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "./community_partnerships.css";
-import MultipleFlipCards from "../Components/flipcardPage";
+import MultipleFlipCards from "../app/Components/flipcardPage";
 import TextField from "@mui/material/TextField";
-import NewPopup from "../Components/newPopup";
+import NewPopup from "../app/Components/newPopup";
 import rawdata from "./rawdata.json";
-import Navbar from "../Components/navbar";
+import Navbar from "../app/Components/navbar";
 import { Nav } from "react-bootstrap";
 
 // import Data from "./rawdata";
