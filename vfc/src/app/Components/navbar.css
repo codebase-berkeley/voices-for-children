@@ -74,3 +74,8 @@
     transform: scale(0);
   }
 
+.link{
+  font-family: 'Inter', sans-serif;
+  color: black;
+}
+

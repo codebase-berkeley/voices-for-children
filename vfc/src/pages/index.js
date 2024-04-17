@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import "./community_partnerships.css";
+import "./index.css";
 import MultipleFlipCards from "../app/Components/flipcardPage";
 import TextField from "@mui/material/TextField";
 import NewPopup from "../app/Components/newPopup";
@@ -145,7 +145,7 @@ function MainComPart() {
         <div class="all-filters">
           {/* start of filter */}
           <div class="each-filter">
-            <button onClick={() => setIsOpen((prev) => !prev)} class="button">
+            <button onClick={() => setIsOpen((prev) => !prev)} className="dropdown">
               {!isOpen ? (
                 <img
                   src="https://static.thenounproject.com/png/551749-200.png"

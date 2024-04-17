@@ -47,7 +47,7 @@
     background-color: rgba(71, 71, 78, 0.6);
 }
 
-.button {
+.dropdown {
     display: flex;
     flex-direction: row;
     margin-right: 2vh;
