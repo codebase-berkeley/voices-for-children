@@ -36,7 +36,7 @@ export default function FlipCard(props) {
             cursor: "pointer",
           }}
         >
-          <div className="top" style={{ backgroundImage: `url(${image})` }}>
+          <div className="top" style={{ backgroundImage: `url(${image})`}}>
             <div className="title">{props.name}</div>
           </div>
           <div className="bottom">

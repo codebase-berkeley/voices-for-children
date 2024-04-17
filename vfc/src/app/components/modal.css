@@ -11,7 +11,7 @@
     z-index: 9998;
     background-color: rgba(0, 0, 0, 0.6);
 }
-.lolcontainer {
+.container {
     background-color: white;
     color: black;
     border-radius: 10px;
@@ -21,6 +21,8 @@
     border: solid black;
     width: 40vw;
     height: 40vw;
+    object-fit: contain;
+
 }
 
 .company {
@@ -42,7 +44,7 @@
     height: 80%;
     gap: 2vh;
     border-radius: 10px;
-    background-color: rgba(158, 198, 221, 0.6);
+    background-color: rgba(158, 198, 221);
 }
 
 .contactInfo {
