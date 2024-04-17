@@ -16,4 +16,16 @@ INSERT INTO players(name, score) VALUES ('player 1', 0);
 
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO root;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO root;
-GRANT ALL PRIVILEGES ON DATABASE portal TO root;
+GRANT ALL PRIVILEGES ON DATABASE vfc TO root;
+
+
+CREATE TABLE inkindDonations
+(
+  donor VARCHAR(80),
+  itemsDonated VARCHAR(100),
+  itemType VARCHAR(80),
+  amount INTEGER,
+  dateDonated DATE,
+  thanked VARCHAR(200)
+
+);

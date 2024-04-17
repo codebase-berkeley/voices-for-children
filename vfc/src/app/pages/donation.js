@@ -27,10 +27,27 @@ function Donation() {
   //   .then((response) => console.log("hello api response", response.data))
   //   .catch((error) => console.error("Error fetching data:", error));
 
-  fetch("../pages/api/hello").then((response) => {
-    console.log("hello api response", response.data);
-  });
+  // fetch("../pages/api/hello").then((response) => {
+  //   console.log("hello api response", response.data);
+  // });
 
+    async function fetchDonations() {
+      const response = await fetch('/api/donation');
+      console.log("inside fetch donations");
+      if (!response.ok) {
+          throw new Error('Failed to fetch donations');
+      }
+      const data = await response.json();
+    
+      return data;
+  }
+
+  // Use this function in your component to get donation data
+  fetchDonations().then(donations => {
+      console.log(donations); // Process your donations data here
+  }).catch(error => {
+      console.error('There was an issue fetching the donations:', error);
+  });
   var lastEvent = null;
   const [originalData, setOriginalData] = useState([
     {
