@@ -30,8 +30,8 @@ export default function Home() {
       {/* <LoginPage/> */}
       <Router>
         <Routes>
+        <Route path="/" element={<MainComPart />} />
           <Route path = "/l" element = {<LoginPage />} />
-          <Route path="/" element={<MainComPart />} />
           <Route path="/home" element={<Inventory />} />
           <Route path="/donation_log" element={<Donation />} />
         </Routes>
