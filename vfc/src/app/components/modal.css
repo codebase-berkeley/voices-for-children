@@ -83,9 +83,6 @@
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Use cubic-bezier for smoother animation */
   }
   
-  .LEAVE:hover::before {
-    transform: translateX(0);
-  }
   
   @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
