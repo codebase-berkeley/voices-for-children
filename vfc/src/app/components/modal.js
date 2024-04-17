@@ -23,20 +23,29 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
           </div>
         </div>
         <div className="titleContainer">
-          <div className="company">CONTACT INFO : {props.company}</div>
+          {/* <div className="company">CONTACT INFO : {props.company}</div> */}
         </div>
         <div className="middle">
-          <div className="poc">Point of Contact : {props.poc}</div>
-          <div className="email">Email : {props.email}</div>
-          <div className="phone-number">Phone Number : {props.phone}</div>
-          <div className="date-joined">Date Joined : {props.date}</div>
-          <div className="gifts">Gifts : {props.giftType}</div>
-          <div className="modalAddress">Address : {props.location}</div>
-          <div className="cityState">City/State : {props.cityState}</div>
-          <div className="Ticket Log Link">Ticket Log Link : <a id="logLink" href={"http://" + props.link} target="_blank" rel="noopener noreferrer">{props.link}</a></div>
-          <div className="exitHere">
-            <button className="LEAVE">Edit</button>
-            <button onClick={handleClick} className="LEAVE">Exit Here</button>
+          <div className="company">{props.company}</div>
+          <div className="contactInfo">
+            <div className="halfDivider">
+              <div className="poc"><b>Point of Contact :</b> {props.poc}</div>
+              <div className="email"><b>Email :</b> {props.email}</div>
+              <div className="phone-number"><b>Phone Number :</b> {props.phone}</div>
+              <div className="date-joined"><b>Date Joined :</b> {props.date}</div>
+              <div className="gifts"><b>Gifts :</b> {props.giftType}</div>
+            </div>
+            <div className="halfDivider">
+              <div className="modalAddress"><b>Address :</b> {props.location}</div>
+              <div className="cityState"><b>City/State :</b> {props.cityState}</div>
+              <div className="Ticket Log Link"><b>Ticket Log Link :</b> <a id="logLink" href={"http://" + props.link} target="_blank" rel="noopener noreferrer">{props.link}</a></div>
+            </div>
+            </div>
+          <div className="placeHolder">
+            <div className="exitHere">
+              <button className="LEAVE">Edit</button>
+              <button onClick={handleClick} className="LEAVE">Exit</button>
+            </div>
           </div>
         </div>
       </div>
