@@ -1,7 +1,7 @@
 [
     {
       "name": "Codebase",
-      "locationImage": "vfc/src/app/assets/codebase.jpg",
+      "locationImage": "/assets/cal.jpg",
       "location": "University Avenue and, Oxford St, Berkeley, CA 94720",
       "cityState": "Berkeley, CA",
       "phone": "(123)4567-8900",
@@ -13,7 +13,7 @@
     },
     {
       "name": "LEGO",
-        "locationImage": "vfc/src/app/assets/codebase.jpg",
+        "locationImage": "/assets/blue.jpg",
         "location": "1 Dr Carlton B Goodlett Pl, San Francisco, CA 94102",
         "cityState": "San Francisco, CA",
         "phone": "(123)4567-8900",
@@ -27,7 +27,7 @@
 
     {
       "name": "COMPANY",
-      "locationImage": "vfc/src/app/assets/codebase.jpg",
+      "locationImage": "/assets/blue.jpg",
       "location": "Street Avenue and, ABC St, Oakland, CA 00000",
       "cityState": "Berkeley, CA",
       "phone": "(123)567-8900",
@@ -40,7 +40,7 @@
     },
     {
       "name": "LONGER COMPANY NAME",
-      "locationImage": "vfc/src/app/assets/location.png",
+      "locationImage": "/assets/blue.jpg",
       "location": "Street Avenue and, ABC St, San Jose, CA 00000",
       "cityState": "Berkeley, CA",
       "email": "kinton@berkeley.edu",
@@ -53,7 +53,7 @@
     },
     {
       "name": "Codebase",
-      "locationImage": "vfc/src/app/assets/codebase.jpg",
+      "locationImage": "/assets/cal.jpg",
       "location": "University Avenue and, Oxford St, Berkeley, CA 94720",
       "cityState": "Berkeley, CA",
       "phone": "(123)4567-8900",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Codebase",
-      "locationImage": "vfc/src/app/assets/codebase.jpg",
+      "locationImage": "/assets/cal.jpg",
       "location": "University Avenue and, Oxford St, Berkeley, CA 94720",
       "cityState": "Berkeley, CA",
       "phone": "(123)4567-8900",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Codebase",
-      "locationImage": "vfc/src/app/assets/codebase.jpg",
+      "locationImage": "/assets/cal.jpg",
       "location": "University Avenue and, Oxford St, Berkeley, CA 94720",
       "cityState": "Berkeley, CA",
       "phone": "(123)4567-8900",
@@ -90,7 +90,7 @@
     }, 
     {
       "name": "Codebase",
-      "locationImage": "vfc/src/app/assets/codebase.jpg",
+      "locationImage": "/assets/cal.jpg",
       "location": "University Avenue and, Oxford St, Berkeley, CA 94720",
       "cityState": "Berkeley, CA",
       "phone": "(123)4567-8900",
@@ -102,7 +102,7 @@
     },
     {
       "name": "Codebase",
-      "locationImage": "vfc/src/app/assets/codebase.jpg",
+      "locationImage": "/assets/cal.jpg",
       "location": "University Avenue and, Oxford St, Berkeley, CA 94720",
       "cityState": "Berkeley, CA",
       "phone": "(123)4567-8900",

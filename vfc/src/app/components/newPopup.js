@@ -104,120 +104,128 @@ export default function NewPopup({
         <div className="inputs">
           {/* <form action="submit_contact_form.php"> */}
           <form className="allInputs" onSubmit={submitForm}>
-            <div className="row1">
-              <div className="companyName">
+            <div className='columns'>
+              <div className = 'col1'>
+                <div className="companyName">
+                    <div className="form-group">
+                      <label for="name"><b>Company Name: </b></label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="companyName"
+                        placeholder="Enter Company Name"
+                        required
+                      ></input>
+                    </div>
+                </div>
+
                 <div className="form-group">
-                  <label for="name">Company Name: </label>
+                  <label id="phone" for="phone">
+                    <b>Phone Number:</b>
+                  </label>
                   <input
-                    type="text"
+                    type="number"
                     id="name"
-                    name="companyName"
-                    placeholder="Enter Company Name"
+                    name="phone"
+                    placeholder="Enter Phone Number"
                     required
                   ></input>
                 </div>
-              </div>
-              <div className="contacts">
+
                 <div className="form-group">
-                  <label for="poc">POC: </label>
+                  <label id="date" for="date">
+                    Date:
+                  </label>
                   <input
-                    type="text"
-                    id="name"
-                    name="poc"
-                    placeholder="Enter POC Name"
+                    type="date"
+                    id="date"
+                    name="date"
+                    max={maxDate}
                     required
                   ></input>
                 </div>
-              </div>
-            </div>
-            <div className="row2">
-              <div className="form-group">
-                <label id="phone" for="phone">
-                  Phone Number:
-                </label>
-                <input
-                  type="number"
-                  id="name"
-                  name="phone"
-                  placeholder="Enter Phone Number"
-                  required
-                ></input>
+                
+                <div className="form-group">
+                  <label htmlFor="cityState"><b>City/State: </b></label>
+                  <select id="cityState" name="cityState" required>
+                    <option value="">Select City/State</option>
+                    <option value="Riverside, CA">Riverside, CA</option>
+                    <option value="San Diego, CA">San Diego, CA</option>
+                    {/* Add more options as needed */}
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label for="locationImage"><b>Log Link</b></label>
+                  <input
+                    type="url"
+                    id="name"
+                    name="link"
+                    placeholder="https://example.com"
+                    required
+                  ></input>
+                </div>
+
               </div>
 
-              <div className="form-group">
-                <label for="email">Email: </label>
-                <input
-                  type="email"
-                  id="name"
-                  name="email"
-                  placeholder="Enter Email"
-                  required
-                ></input>
-              </div>
-            </div>
-            <div className="row3">
-              <div className="form-group">
-                <label id="date" for="date">
-                  Date:
-                </label>
-                <input
-                  type="date"
-                  id="date"
-                  name="date"
-                  max={maxDate}
-                  required
-                ></input>
-              </div>
-              <div className="form-group">
-                <label for="address">Address: </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="location"
-                  placeholder="Enter Company Address"
-                  required
-                ></input>
-              </div>
-            </div>
-            <div className="row4">
-              <div className="form-group">
-                <label htmlFor="cityState">City/State: </label>
-                <select id="cityState" name="cityState" required>
-                  <option value="">Select City/State</option>
-                  <option value="Riverside, CA">Riverside, CA</option>
-                  <option value="San Diego, CA">San Diego, CA</option>
-                  {/* Add more options as needed */}
-                </select>
-              </div>
-              <div className="form-group">
-                <label for="giftType">Gift Type: </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="giftType"
-                  placeholder="Enter gift type"
-                  required
-                ></input>
-              </div>
-            </div>
-            <div className="row5">
-              <div className="form-group">
-                <label for="locationImage">Log Link</label>
-                <input
-                  type="url"
-                  id="name"
-                  name="link"
-                  placeholder="https://example.com"
-                  required
-                ></input>
-              </div>
-              <div className="form-group">
-                <label for="locationImage">(OPTIONAL) Company Image: </label>
-                <input
-                  type="file"
-                  id="locationImage"
-                  name="locationImage"
-                ></input>
+              <div className = 'col2'>
+                <div className="contacts">
+                  <div className="form-group">
+                    <label for="poc"><b>Point of Contact (POC): </b></label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="poc"
+                        placeholder="Enter POC Name"
+                        required
+                      >
+                      </input>
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                  <label for="email"><b>Email: </b></label>
+                  <input
+                    type="email"
+                    id="name"
+                    name="email"
+                    placeholder="Enter Email"
+                    required
+                  ></input>
+                  </div>
+                
+                <div className="form-group">
+                  <label for="address"><b>Address: </b></label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="location"
+                    placeholder="Enter Company Address"
+                    required
+                  ></input>
+                </div>
+
+
+                <div className="form-group">
+                  <label for="giftType"><b>Gift Type: </b></label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="giftType"
+                    placeholder="Enter gift type"
+                    required
+                  ></input>
+                </div>
+
+
+                  <div className="form-group">
+                  <label for="locationImage"><b>[OPTIONAL] Company Image: </b></label>
+                  <input
+                    type="file"
+                    id="locationImage"
+                    name="locationImage"
+                  ></input>
+                </div>
               </div>
             </div>
             <div className="buttonContainer">
@@ -231,3 +239,189 @@ export default function NewPopup({
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+{/* <div className="row1">
+              <div className="companyName">
+                <div className="form-group">
+                  <label for="name"><b>Company Name: </b></label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="companyName"
+                    placeholder="Enter Company Name"
+                    required
+                  ></input>
+                </div>
+              </div>
+
+              <div className="contacts">
+                <div className="form-group">
+                  <label for="poc"><b>Point of Contact (POC): </b></label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="poc"
+                    placeholder="Enter POC Name"
+                    required
+                  ></input>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label for="email"><b>Email: </b></label>
+                <input
+                  type="email"
+                  id="name"
+                  name="email"
+                  placeholder="Enter Email"
+                  required
+                ></input>
+              </div>
+              <div className="form-group">
+                <label for="address"><b>Address: </b></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="location"
+                  placeholder="Enter Company Address"
+                  required
+                ></input>
+              </div>
+
+
+              <div className="form-group">
+                <label for="giftType"><b>Gift Type: </b></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="giftType"
+                  placeholder="Enter gift type"
+                  required
+                ></input>
+              </div>
+
+              <div className="form-group">
+                <label for="address"><b>Address: </b></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="location"
+                  placeholder="Enter Company Address"
+                  required
+                ></input>
+              </div>
+
+            </div>
+            
+            <div className="row2">
+              <div className="form-group">
+                <label id="phone" for="phone">
+                  <b>Phone Number:</b>
+                </label>
+                <input
+                  type="number"
+                  id="name"
+                  name="phone"
+                  placeholder="Enter Phone Number"
+                  required
+                ></input>
+              </div>
+
+              <div className="form-group">
+                <label for="email"><b>Email: </b></label>
+                <input
+                  type="email"
+                  id="name"
+                  name="email"
+                  placeholder="Enter Email"
+                  required
+                ></input>
+              </div>
+            </div>
+
+            <div className="row3">
+              <div className="form-group">
+                <label id="date" for="date">
+                  Date:
+                </label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  max={maxDate}
+                  required
+                ></input>
+              </div>
+
+              {/* <div className="form-group">
+                <label for="address"><b>Address: </b></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="location"
+                  placeholder="Enter Company Address"
+                  required
+                ></input>
+              </div> */}
+
+            //   <div className="form-group">
+            //     <label for="giftType"><b>Gift Type: </b></label>
+            //     <input
+            //       type="text"
+            //       id="name"
+            //       name="giftType"
+            //       placeholder="Enter gift type"
+            //       required
+            //     ></input>
+            //   </div>
+            // </div>
+            // <div className="row4">
+            //   <div className="form-group">
+            //     <label htmlFor="cityState"><b>City/State: </b></label>
+            //     <select id="cityState" name="cityState" required>
+            //       <option value="">Select City/State</option>
+            //       <option value="Riverside, CA">Riverside, CA</option>
+            //       <option value="San Diego, CA">San Diego, CA</option>
+            //       {/* Add more options as needed */}
+            //     </select>
+            //   </div>
+            //   {/* <div className="form-group">
+            //     <label for="giftType"><b>Gift Type: </b></label>
+            //     <input
+            //       type="text"
+            //       id="name"
+            //       name="giftType"
+            //       placeholder="Enter gift type"
+            //       required
+            //     ></input>
+            //   </div> */}
+            // </div>
+            // <div className="row5">
+            //   <div className="form-group">
+            //     <label for="locationImage"><b>Log Link</b></label>
+            //     <input
+            //       type="url"
+            //       id="name"
+            //       name="link"
+            //       placeholder="https://example.com"
+            //       required
+            //     ></input>
+            //   </div>
+            //   <div className="form-group">
+            //     <label for="locationImage"><b>[OPTIONAL] Company Image: </b></label>
+            //     <input
+            //       type="file"
+            //       id="locationImage"
+            //       name="locationImage"
+            //     ></input>
+            //   </div>
+            // </div> */}
