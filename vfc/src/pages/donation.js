@@ -1,6 +1,6 @@
 import "./donation.css";
 import { useState } from "react";
-import DonationEntry from "../app/Components/donationEntry.js";
+import DonationEntry from "../app/Components/donationEntry";
 import EntryPopup from "../app/Components/entrypopup.js";
 import Top from "../app/Components/top";
 import Navbar from "../app/Components/navbar";
