@@ -1,9 +1,9 @@
 import "./donation.css";
 import { useState } from "react";
-import DonationEntry from "../Components/donationEntry";
-import EntryPopup from "../Components/entrypopup.js";
-import Top from "../Components/top";
-import Navbar from "../Components/navbar";
+import DonationEntry from "../app/Components/donationEntry";
+import EntryPopup from "../app/Components/entrypopup.js";
+import Top from "../app/Components/top";
+import Navbar from "../app/Components/navbar";
 import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
