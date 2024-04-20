@@ -15,6 +15,10 @@ function Donation() {
   const [sortBy, setSortBy] = useState("");
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
+
+ /* working w api data */
+ const [apiData, setApiData] = useState("");
+
   var currSearchKey = null;
   var currSearchObject = null;
   var lastSearch = null;
@@ -33,12 +37,10 @@ function Donation() {
     const getReq = async () => {
       const response = await fetch('/api/hello')
       .then((response) => {
-        const a = response.json();
         console.log("adasdasasd")
-        console.log(a)
       })
       .then((data) => {
-        console.log(data)
+  
         console.log("hello api response", data);
       })
       .catch((error) => {
@@ -49,6 +51,27 @@ function Donation() {
     getReq();
     
   }, []); // The empty dependency array ensures it only runs once after the initial render
+
+  useEffect(() => {
+
+    const fetchData= async () => {
+      const response = await fetch('/api/getDonation')
+      .then((response) => {
+
+        console.log("adasdasasd")
+      })
+      .then((data) => {
+        console.log(data)
+        console.log("get donation api response", data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+
+    }
+    fetchData();
+    
+  }, []);
 
   var lastEvent = null;
   const [originalData, setOriginalData] = useState([
