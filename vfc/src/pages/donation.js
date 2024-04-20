@@ -8,7 +8,7 @@ import Navbar from "../app/Components/navbar";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import handler from "./api/hello";
-import Link from 'next/link';
+import Link from "next/link";
 
 function Donation() {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -16,8 +16,8 @@ function Donation() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
 
- /* working w api data */
- const [apiData, setApiData] = useState("");
+  /* working w api data */
+  const [apiData, setApiData] = useState("");
 
   var currSearchKey = null;
   var currSearchObject = null;
@@ -33,44 +33,36 @@ function Donation() {
   //   .catch((error) => console.error("Error fetching data:", error));
 
   useEffect(() => {
-
     const getReq = async () => {
-      const response = await fetch('/api/hello')
-      .then((response) => {
-        console.log("adasdasasd")
-      })
-      .then((data) => {
-  
-        console.log("hello api response", data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-
-    }
+      const response = await fetch("/api/hello")
+        .then((response) => {
+          console.log("adasdasasd");
+        })
+        .then((data) => {
+          console.log("hello api response", data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    };
     getReq();
-    
   }, []); // The empty dependency array ensures it only runs once after the initial render
 
   useEffect(() => {
-
-    const fetchData= async () => {
-      const response = await fetch('/api/getDonation')
-      .then((response) => {
-
-        console.log("adasdasasd")
-      })
-      .then((data) => {
-        console.log(data)
-        console.log("get donation api response", data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-
-    }
+    const fetchData = async () => {
+      const response = await fetch("/api/getDonation")
+        .then((response) => {
+          console.log("get donation api response", response.json());
+        })
+        .then((data) => {
+          console.log(data);
+          console.log("get donation api response data", data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    };
     fetchData();
-    
   }, []);
 
   var lastEvent = null;
@@ -211,7 +203,7 @@ function Donation() {
   const handleClick = (newId) => {
     setButtonId(newId);
   };
-  console.log("yo")
+  console.log("yo");
   console.log(buttonId);
 
   return (
