@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS vfc;
+DROP DATABASE IF EXISTS vfc; 
 
 CREATE DATABASE vfc;
 
@@ -16,4 +16,27 @@ INSERT INTO players(name, score) VALUES ('player 1', 0);
 
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO root;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO root;
-GRANT ALL PRIVILEGES ON DATABASE portal TO root;
+GRANT ALL PRIVILEGES ON DATABASE vfc TO root;
+
+
+CREATE TABLE inkindDonations
+(
+  donor VARCHAR(80),
+  itemsDonated VARCHAR(100),
+  itemType VARCHAR(80),
+  amount INTEGER,
+  dateDonated DATE,
+  thanked VARCHAR(200)
+
+);
+
+CREATE TABLE communityPartnerships (
+    company VARCHAR(255),
+    location VARCHAR(255),
+    cityState VARCHAR(255),
+    giftType VARCHAR(255),
+    date VARCHAR(255),
+    email VARCHAR(255),
+    poc VARCHAR(255),
+    phone VARCHAR(255),
+);
