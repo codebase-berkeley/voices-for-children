@@ -53,6 +53,7 @@ function Donation() {
       const response = await fetch("/api/getDonation")
         .then((response) => {
           console.log("get donation api response", response.json());
+          
         })
         .then((data) => {
           console.log(data);
