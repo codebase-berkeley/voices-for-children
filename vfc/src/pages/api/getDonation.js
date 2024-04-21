@@ -9,6 +9,7 @@ export default async function getDonation (req, res)  {
                     dateDonated
                     thanked
             FROM inkindDonations;
+            poc VARCHAR(100),
             `
         );
         res.send(query.rows);

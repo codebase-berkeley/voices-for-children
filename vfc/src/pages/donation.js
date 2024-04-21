@@ -27,8 +27,9 @@ function Donation() {
   //   .then((response) => console.log("hello api response", response.data))
   //   .catch((error) => console.error("Error fetching data:", error));
 
-  fetch("../pages/api/hello").then((response) => {
-    console.log("hello api response", response.data);
+  fetch("../pages/api/hello")
+    .then((response) => {
+    console.log("hello api response", response);
   });
 
   var lastEvent = null;
