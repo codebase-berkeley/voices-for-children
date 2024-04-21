@@ -28,6 +28,10 @@ function Donation() {
   //   .catch((error) => console.error("Error fetching data:", error));
 
   fetch("../pages/api/hello")
+    .then((reponse) => response.json())
+    .then((data) => {
+      console.log("hello api response", data);
+    })
     .then((response) => {
     console.log("hello api response", response);
   });
