@@ -52,13 +52,13 @@ function Donation() {
     const fetchData = async () => {
       const response = await fetch("/api/getDonation")
         .then((response) => {
-          console.log("get donation api response", response.json());
+          console.log("get don api response", response.json());
           
         })
-        .then((data) => {
-          console.log(data);
-          console.log("get donation api response data", data);
-        })
+        // .then((data) => {
+        //   console.log(data);
+        //   console.log("get donation api response data", data);
+        // })
         .catch((error) => {
           console.error("Error fetching data:", error);
         });
