@@ -16,6 +16,7 @@ function Donation() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
 
+  var inKindData = null;
   /* working w api data */
   const [apiData, setApiData] = useState("");
 
@@ -52,8 +53,8 @@ function Donation() {
     const fetchData = async () => {
       const response = await fetch("/api/getDonation")
         .then((response) => {
-          console.log("get don api response", response.json());
-          
+          inKindData = response.json();
+          console.log("get donation api response", inKindData);
         })
         // .then((data) => {
         //   console.log(data);
@@ -67,38 +68,41 @@ function Donation() {
   }, []);
 
   var lastEvent = null;
-  const [originalData, setOriginalData] = useState([
-    {
-      name: "Codebase",
-      item_type: "Tickets",
-      amount: "30",
-      stock: "Yes",
-    },
-    {
-      name: "John Doe",
-      item_type: "Tickets",
-      amount: "10",
-      stock: "No",
-    },
-    {
-      name: "John Doe",
-      item_type: "Toys",
-      amount: "100",
-      stock: "Yes",
-    },
-    {
-      name: "Codebase",
-      item_type: "Electronics",
-      amount: "10",
-      stock: "No",
-    },
-    {
-      name: "Kinton Duong",
-      item_type: "Tickets",
-      amount: "40",
-      stock: "No",
-    },
-  ]);
+  const [originalData, setOriginalData] = useState(
+
+  [
+    inKindData
+    // {
+    //   name: "Codebase",
+    //   item_type: "Tickets",
+    //   amount: "30",
+    //   stock: "Yes",
+    // },
+    // {
+    //   name: "John Doe",
+    //   item_type: "Tickets",
+    //   amount: "10",
+    //   stock: "No",
+    // },
+    // {
+    //   name: "John Doe",
+    //   item_type: "Toys",
+    //   amount: "100",
+    //   stock: "Yes",
+    // },
+    // {
+    //   name: "Codebase",
+    //   item_type: "Electronics",
+    //   amount: "10",
+    //   stock: "No",
+    // },
+    // {
+    //   name: "Kinton Duong",
+    //   item_type: "Tickets",
+    //   amount: "40",
+    //   stock: "No",
+    // },
+  ]
 
   // const [seen, setSeen] = useState(false);
   // async function show() {
@@ -106,6 +110,7 @@ function Donation() {
   //     setSeen(!seen);
   //     console.log(seen, "from inventory")
   // }
+  );
 
   const [donationData, setDonationData] = useState([...originalData]);
   const togglePopup = () => {
@@ -329,7 +334,7 @@ function Donation() {
             {donationData.map((item, index) => (
               <DonationEntry
                 key={index}
-                name={item.name}
+                name={item.donor}
                 item_type={item.item_type}
                 amount={item.amount}
                 stock={item.stock}
