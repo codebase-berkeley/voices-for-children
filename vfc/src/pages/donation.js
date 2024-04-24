@@ -1,4 +1,4 @@
-import "./donation.css";
+import "./inventory.css";
 import { useState, useEffect } from "react";
 import DonationEntry from "../app/Components/donationEntry";
 import EntryPopup from "../app/Components/entrypopup.js";
@@ -54,7 +54,7 @@ function Donation() {
       const response = await fetch("/api/getDonation")
         .then((response) => {
           console.log("get donation api response", response.json());
-          inKindData = response.json();
+          inKindData = response.json;
         })
         .then((data) => {
           console.log(data);
@@ -68,7 +68,37 @@ function Donation() {
   }, []);
 
   var lastEvent = null;
-  const [originalData, setOriginalData] = useState(inKindData);
+  const [originalData, setOriginalData] = useState([
+      {
+        name: "Codebase",
+        item_type: "Tickets",
+        amount: "30",
+        stock: "Yes",
+      },
+      {
+        name: "John Doe",
+        item_type: "Tickets",
+        amount: "10",
+        stock: "No",
+      },
+      {
+        name: "John Doe",
+        item_type: "Toys",
+        amount: "100",
+        stock: "Yes",
+      },
+      {
+        name: "Codebase",
+        item_type: "Electronics",
+        amount: "10",
+        stock: "No",
+      },
+      {
+        name: "Kinton Duong",
+        item_type: "Tickets",
+        amount: "40",
+        stock: "No",
+      }]);
 
   // [
   //   {
