@@ -27,6 +27,26 @@ function MainComPart() {
 
   console.log(year);
 
+  useEffect(() => {
+
+    const getReq = async () => {
+      const response = await fetch('/api/getPartnership')
+      .then((response) => {
+        console.log(response)
+        const a = response.json();
+        console.log("inside useffect")
+        console.log(a)
+      })
+    
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+
+    }
+    getReq();
+    
+  }, []);
+
   const month = [
     "January",
     "Feburary",
