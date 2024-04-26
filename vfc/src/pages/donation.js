@@ -1,4 +1,4 @@
-import "./donation.css";
+import "./inventory.css";
 import { useState, useEffect } from "react";
 import DonationEntry from "../app/Components/donationEntry";
 import EntryPopup from "../app/Components/entrypopup.js";
