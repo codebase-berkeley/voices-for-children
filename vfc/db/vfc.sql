@@ -12,7 +12,11 @@ CREATE TABLE players
   score INTEGER
 );
 
+
+
 INSERT INTO players(name, score) VALUES ('player 1', 0);
+
+
 
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO root;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO root;
