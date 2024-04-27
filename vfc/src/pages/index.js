@@ -38,6 +38,8 @@ function MainComPart() {
         const jsonData = await response.json();  // Properly handle the promise
         console.log("get donation api response", jsonData);
         console.log("jsonData", jsonData)
+        setData(jsonData);
+        console.log(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -61,13 +63,14 @@ function MainComPart() {
     "December",
   ];
 
-  const [data, setData] = useState(rawdata);
+  const [data, setData] = useState([]);
   const [giftType, setGiftTypes] = useState([]);
 
   useEffect(() => {
     // Extract unique gift types from the data
+    console.log("in useeffect w normalize call", data);
     const uniqueGiftTypes = [
-      ...new Set(data.map((item) => normalizeWord(item.giftType))),
+      ...new Set(data.map((item) => normalizeWord(item.gifttype))),
     ];
     setGiftTypes(uniqueGiftTypes.sort());
   }, [data]);
@@ -119,6 +122,7 @@ function MainComPart() {
 
   //function to normalize words   Ex. juSTIN --> Justin
   const normalizeWord = (sentence) => {
+    console.log(sentence, "from inside nornalize");
     const words = sentence.split(" ");
     const capitalizedWords = words.map((word) => {
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
