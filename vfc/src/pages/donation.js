@@ -9,6 +9,8 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import handler from "./api/hello";
 import Link from "next/link";
+import { json } from "react-router-dom";
+
 
 function Donation() {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -19,13 +21,55 @@ function Donation() {
   var inKindData = null;
   /* working w api data */
   const [apiData, setApiData] = useState("");
-
   var currSearchKey = null;
   var currSearchObject = null;
   var lastSearch = null;
   var currSearch = {
     [currSearchKey]: currSearchObject,
   };
+
+  const [originalData, setOriginalData] = useState(
+
+    [
+      // {
+      //   name: "Codebase",
+      //   item_type: "Tickets",
+      //   amount: "30",
+      //   stock: "Yes",
+      // },
+      // {
+      //   name: "John Doe",
+      //   item_type: "Tickets",
+      //   amount: "10",
+      //   stock: "No",
+      // },
+      // {
+      //   name: "John Doe",
+      //   item_type: "Toys",
+      //   amount: "100",
+      //   stock: "Yes",
+      // },
+      // {
+      //   name: "Codebase",
+      //   item_type: "Electronics",
+      //   amount: "10",
+      //   stock: "No",
+      // },
+      // {
+      //   name: "Kinton Duong",
+      //   item_type: "Tickets",
+      //   amount: "40",
+      //   stock: "No",
+      // },
+    ]
+  
+    // const [seen, setSeen] = useState(false);
+    // async function show() {
+    //     console.log("calling show");
+    //     setSeen(!seen);
+    //     console.log(seen, "from inventory")
+    // }
+    );
 
   // console.log("HITTING ENDPOINT");
   // axios
@@ -50,67 +94,44 @@ function Donation() {
   }, []); // The empty dependency array ensures it only runs once after the initial render
 
   useEffect(() => {
+
     const fetchData = async () => {
-      const response = await fetch("/api/getDonation")
-        .then((response) => {
-          inKindData = response.json();
-          console.log("get donation api response", inKindData);
-        })
-        // .then((data) => {
-        //   console.log(data);
-        //   console.log("get donation api response data", data);
-        // })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
+      try {
+        const response = await fetch("/api/getDonation");
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonData = await response.json();  // Properly handle the promise
+        
+        console.log("get donation api response", jsonData);
+        setOriginalData(jsonData);
+        setDonationData(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
+
+    // const fetchData = async () => {
+    //   const response = await fetch("/api/getDonation")
+    //     .then((response) => {
+    //       inKindData = response.json();
+    //       console.log("get donation api response", inKindData);
+    //       console.log(JSON.parse(inKindData));
+    //     })
+    //     // .then((data) => {
+    //     //   console.log(data);
+    //     //   console.log("get donation api response data", data);
+    //     // })
+    //     .catch((error) => {
+    //       console.error("Error fetching data:", error);
+    //     });
+    // };
     fetchData();
   }, []);
 
+
   var lastEvent = null;
-  const [originalData, setOriginalData] = useState(
-
-  [
-    inKindData
-    // {
-    //   name: "Codebase",
-    //   item_type: "Tickets",
-    //   amount: "30",
-    //   stock: "Yes",
-    // },
-    // {
-    //   name: "John Doe",
-    //   item_type: "Tickets",
-    //   amount: "10",
-    //   stock: "No",
-    // },
-    // {
-    //   name: "John Doe",
-    //   item_type: "Toys",
-    //   amount: "100",
-    //   stock: "Yes",
-    // },
-    // {
-    //   name: "Codebase",
-    //   item_type: "Electronics",
-    //   amount: "10",
-    //   stock: "No",
-    // },
-    // {
-    //   name: "Kinton Duong",
-    //   item_type: "Tickets",
-    //   amount: "40",
-    //   stock: "No",
-    // },
-  ]
-
-  // const [seen, setSeen] = useState(false);
-  // async function show() {
-  //     console.log("calling show");
-  //     setSeen(!seen);
-  //     console.log(seen, "from inventory")
-  // }
-  );
+  
 
   const [donationData, setDonationData] = useState([...originalData]);
   const togglePopup = () => {
@@ -210,7 +231,11 @@ function Donation() {
     setButtonId(newId);
   };
   console.log("yo");
+  
   console.log(buttonId);
+  useEffect(() => {
+    console.log("original", donationData);
+  }, [donationData]);
 
   return (
     <div>
@@ -335,9 +360,9 @@ function Donation() {
               <DonationEntry
                 key={index}
                 name={item.donor}
-                item_type={item.item_type}
+                item_type={item.itemtype}
                 amount={item.amount}
-                stock={item.stock}
+                stock={item.instock}
               />
             ))}
           </div>
