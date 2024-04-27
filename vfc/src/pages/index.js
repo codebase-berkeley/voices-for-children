@@ -29,21 +29,20 @@ function MainComPart() {
 
   useEffect(() => {
 
-    const getReq = async () => {
-      const response = await fetch('/api/getPartnership')
-      .then((response) => {
-        console.log(response)
-        const a = response.json();
-        console.log("inside useffect")
-        console.log(a)
-      })
-    
-      .catch((error) => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/getPartnership");
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonData = await response.json();  // Properly handle the promise
+        console.log("get donation api response", jsonData);
+        console.log("jsonData", jsonData)
+      } catch (error) {
         console.error("Error fetching data:", error);
-      });
-
-    }
-    getReq();
+      }
+    };
+    fetchData();
     
   }, []);
 
