@@ -35,7 +35,7 @@ function MainComPart() {
         console.log(response)
         const a = response.json();
         console.log("inside useffect")
-        console.log(a)
+        console.log("This is a promise" + a)
       })
     
       .catch((error) => {
