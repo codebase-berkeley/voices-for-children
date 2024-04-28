@@ -49,15 +49,13 @@ function MultipleFlipCards(props) {
             key={index}
             name={card.name}
             location={card.location}
-            cityState={card.cityState}
+            cityState={card.citystate}
             phone={card.phone}
             email={card.email}
             poc={card.poc}
             locationImage={card.locationImage}
-            // phoneImage={card.phoneImage}
-            // emailImage={card.emailImage}
             date={card.date}
-            giftType={card.giftType}
+            giftType={card.gifttype}
             link={card.link}
           />
         ))}

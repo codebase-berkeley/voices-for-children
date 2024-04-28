@@ -18,15 +18,14 @@ function MainComPart() {
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
   const locations = ["San Diego", "Riverside"];
+  const [data, setData] = useState([]);
 
   const currentYear = new Date().getFullYear();
   const year = [];
   for (let i = 2000; i <= currentYear; i++) {
     year.push(i.toString());
   }
-
-  console.log(year);
-
+  
   useEffect(() => {
 
     const fetchData = async () => {
@@ -39,13 +38,11 @@ function MainComPart() {
         console.log("get donation api response", jsonData);
         console.log("jsonData", jsonData)
         setData(jsonData);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
-    
   }, []);
 
   const month = [
@@ -63,7 +60,6 @@ function MainComPart() {
     "December",
   ];
 
-  const [data, setData] = useState([]);
   const [giftType, setGiftTypes] = useState([]);
 
   useEffect(() => {

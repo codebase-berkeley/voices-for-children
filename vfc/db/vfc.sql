@@ -31,16 +31,16 @@ CREATE TABLE inkindDonations
 );
 
 CREATE TABLE communityPartnerships (
-    company VARCHAR(255),
+    name VARCHAR(255),
     location VARCHAR(255),
-    cityState VARCHAR(255),
+    citystate VARCHAR(255),
     gifttype VARCHAR(255),
-    partnerDate DATE,
+    date DATE,
     email VARCHAR(255),
     poc VARCHAR(255),
     phone VARCHAR(255)
 );
 
-INSERT INTO communityPartnerships(company, location, cityState, gifttype, partnerDate, email, poc, phone) VALUES ('Codebase', 'San Leandro', 'California', 'tickets', DATE '2003-01-17', 'dom@gmail.com', 'Dom', '5103164766');
+INSERT INTO communityPartnerships(name, location, citystate, gifttype, date, email, poc, phone) VALUES ('Codebase', 'San Leandro', 'California', 'tickets', DATE '2003-01-17', 'dom@gmail.com', 'Dom', '5103164766');
 INSERT INTO inkindDonations(donor, itemsDonated, itemType, amount, dateDonated, thanked) VALUES ('sasha', 'legos', 'toys', 10, DATE '2015-12-23', 'thanked sasha by giving her flowers - sunflowers');
 -- INSERT INTO inkindDonations(donor, itemsDonated, itemType, amount, dateDonated, thanked) VALUES ('ant', 'hot wheels', 'toys', DATE '2015-12-23', 'thanked ant by giving him nothing');
