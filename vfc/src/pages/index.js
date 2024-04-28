@@ -118,7 +118,15 @@ function MainComPart() {
 
   //function to normalize words   Ex. juSTIN --> Justin
   const normalizeWord = (sentence) => {
+<<<<<<< HEAD
     console.log(sentence, "from inside nornalize");
+=======
+    console.log(sentence, "from inside normalize");
+>>>>>>> 2701b8b05d52ea8a6090a0d712ad6f4826f2f26e
+    if (typeof sentence !== 'string') {
+      console.error('Input is not a string');
+      return [];
+    }
     const words = sentence.split(" ");
     const capitalizedWords = words.map((word) => {
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
