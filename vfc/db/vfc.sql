@@ -43,5 +43,8 @@ CREATE TABLE communityPartnerships (
 );
 
 INSERT INTO communityPartnerships(name, location, citystate, gifttype, date, email, poc, phone, link) VALUES ('Codebase', 'San Leandro', 'California', 'tickets', '2003-01-17', 'dom@gmail.com', 'Dom', '5103164766', 'https://google.com');
+INSERT INTO communityPartnerships(name, location, citystate, gifttype, date, email, poc, phone, link) VALUES ('Codebase', 'San Leandro', 'California', 'tickets', '2003-01-17', 'dom@gmail.com', 'Dom', '5103164766', 'https://google.com');
+
+
 INSERT INTO inkindDonations(donor, itemsDonated, itemType, amount, dateDonated, thanked) VALUES ('sasha', 'legos', 'toys', 10, DATE '2015-12-23', 'thanked sasha by giving her flowers - sunflowers');
 -- INSERT INTO inkindDonations(donor, itemsDonated, itemType, amount, dateDonated, thanked) VALUES ('ant', 'hot wheels', 'toys', DATE '2015-12-23', 'thanked ant by giving him nothing');
