@@ -25,7 +25,7 @@ function MainComPart() {
   for (let i = 2000; i <= currentYear; i++) {
     year.push(i.toString());
   }
-  
+
   useEffect(() => {
 
     const fetchData = async () => {
@@ -118,11 +118,7 @@ function MainComPart() {
 
   //function to normalize words   Ex. juSTIN --> Justin
   const normalizeWord = (sentence) => {
-<<<<<<< HEAD
-    console.log(sentence, "from inside nornalize");
-=======
     console.log(sentence, "from inside normalize");
->>>>>>> 2701b8b05d52ea8a6090a0d712ad6f4826f2f26e
     if (typeof sentence !== 'string') {
       console.error('Input is not a string');
       return [];
