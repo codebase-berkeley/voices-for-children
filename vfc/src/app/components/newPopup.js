@@ -11,6 +11,43 @@ export default function NewPopup({
     console.log(newIsOpen);
   };
 
+  /*
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const inputDate = event.target.date ? event.target.date.value : "";
+
+    // Check if inputDate is not empty before splitting
+    const parts = inputDate ? inputDate.split("-") : ["", "", ""];
+
+    // Format the date if it's not empty, otherwise set it to an empty string
+    const formattedDate = inputDate
+      ? `${parts[1]}/${parts[2]}/${parts[0]}`
+      : "";
+
+
+        try {
+          const response = await fetch('/api/postPartnership', {
+            method: 'POST',
+            body: JSON.stringify({
+              name: event.target.companyName.value,
+              location: event.target.location.value,
+              citystate: event.target.cityState.value,
+              phone: event.target.phone.value,
+              email: event.target.email.value,
+              poc: event.target.poc.value,
+              date: formattedDate,
+              gifttype: event.target.giftType.value,
+              link: event.target.link.value
+            })
+          });
+          setData(response.data); // Update 'data' state with the response data
+        } catch (error) {
+          console.error('Error posting partnership:', error);
+        }
+        console.log("helli")
+      };
+
+*/
   const submitForm = (event) => {
     event.preventDefault();
 
@@ -50,6 +87,7 @@ export default function NewPopup({
       link: event.target.link.value
     };
 
+    
     // const newCard = {
     //   name: event.target.name.value,
     //   locationImage: "vfc/src/app/assets/codebase.jpg", // default img if no location img uploaded
@@ -103,7 +141,7 @@ export default function NewPopup({
         </div>
         <div className="inputs">
           {/* <form action="submit_contact_form.php"> */}
-          <form className="allInputs" onSubmit={submitForm}>
+          <form className="allInputs" onSubmit={handleSubmit}>
             <div className="row1">
               <div className="companyName">
                 <div className="form-group">
