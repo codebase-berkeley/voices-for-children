@@ -1,4 +1,4 @@
-import "../inventory.css";
+import "./inventory.css";
 import { useState, useEffect } from "react";
 import DonationEntry from "../app/Components/donationEntry";
 import EntryPopup from "../app/Components/entrypopup.js";
@@ -27,49 +27,6 @@ function Donation() {
   var currSearch = {
     [currSearchKey]: currSearchObject,
   };
-
-  const [originalData, setOriginalData] = useState(
-
-    [
-      // {
-      //   name: "Codebase",
-      //   item_type: "Tickets",
-      //   amount: "30",
-      //   stock: "Yes",
-      // },
-      // {
-      //   name: "John Doe",
-      //   item_type: "Tickets",
-      //   amount: "10",
-      //   stock: "No",
-      // },
-      // {
-      //   name: "John Doe",
-      //   item_type: "Toys",
-      //   amount: "100",
-      //   stock: "Yes",
-      // },
-      // {
-      //   name: "Codebase",
-      //   item_type: "Electronics",
-      //   amount: "10",
-      //   stock: "No",
-      // },
-      // {
-      //   name: "Kinton Duong",
-      //   item_type: "Tickets",
-      //   amount: "40",
-      //   stock: "No",
-      // },
-    ]
-  
-    // const [seen, setSeen] = useState(false);
-    // async function show() {
-    //     console.log("calling show");
-    //     setSeen(!seen);
-    //     console.log(seen, "from inventory")
-    // }
-    );
 
   // console.log("HITTING ENDPOINT");
   // axios
@@ -110,29 +67,11 @@ function Donation() {
         console.error("Error fetching data:", error);
       }
     };
-
-    // const fetchData = async () => {
-    //   const response = await fetch("/api/getDonation")
-    //     .then((response) => {
-    //       inKindData = response.json();
-    //       console.log("get donation api response", inKindData);
-    //       console.log(JSON.parse(inKindData));
-    //     })
-    //     // .then((data) => {
-    //     //   console.log(data);
-    //     //   console.log("get donation api response data", data);
-    //     // })
-    //     .catch((error) => {
-    //       console.error("Error fetching data:", error);
-    //     });
-    // };
     fetchData();
   }, []);
 
 
   var lastEvent = null;
-<<<<<<< HEAD
-  var test = ["hello"]
 
   const [originalData, setOriginalData] = useState(
 
@@ -177,9 +116,6 @@ function Donation() {
   //     console.log(seen, "from inventory")
   // }
   );
-=======
-  
->>>>>>> 245e05dabcc760d1eb61ee9ca3d317b9765dcf81
 
   const [donationData, setDonationData] = useState([...originalData]);
   const togglePopup = () => {
