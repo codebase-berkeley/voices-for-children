@@ -1,4 +1,4 @@
-import "./inventory.css";
+import "../inventory.css";
 import { useState, useEffect } from "react";
 import DonationEntry from "../app/Components/donationEntry";
 import EntryPopup from "../app/Components/entrypopup.js";
@@ -68,6 +68,7 @@ function Donation() {
   }, []);
 
   var lastEvent = null;
+  var test = ["hello"]
 
   const [originalData, setOriginalData] = useState(
 

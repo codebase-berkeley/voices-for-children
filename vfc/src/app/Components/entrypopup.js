@@ -2,6 +2,9 @@
 import { Rowdies } from 'next/font/google';
 import './entrypopup.css';
 import { useState } from 'react';
+import Donation from "/Users/saadhvi/Desktop/mentored/voices-for-children/vfc/src/app/Components/donation.js";
+
+console.log(hello)
 
 function EntryPopup ({ onClose }) {
         const handlePopupClose = () => {
@@ -15,7 +18,7 @@ function EntryPopup ({ onClose }) {
                             <button id="x" onClick={handlePopupClose}><img src="apple-touch-icon.png" alt="x img"></img></button>
                         </div>
                     </div>
-                    <form>
+                    <form id = "formData">
                         <input type="text" placeholder="Donation Name" id="names"></input>
                         <input type="text" placeholder="Donor" id="donor"></input>
                         <div className="form-container">
