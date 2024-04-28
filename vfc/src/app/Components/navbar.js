@@ -28,7 +28,7 @@ export default function Navbar(props) {
             <Link className="link" style={{ textDecoration: "none" }} to="/l">
               <p
                 id={props.onCommunity ? "goBlue" : ""}
-                onClick={() => setNavbar("community")}
+                onClick={() => setNavbar("login")}
               >
                 Login Page
               </p>

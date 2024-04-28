@@ -17,6 +17,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EntryPopup from "./Components/entrypopup";
 import Donation from "./pages/donation";
 import LoginPage from "./pages/loginpage";
+import MainFunctionX from "./pages/login_testing";
 
 export default function Home() {
   var mock = {
@@ -31,7 +32,7 @@ export default function Home() {
       <Router>
         <Routes>
         <Route path="/" element={<MainComPart />} />
-          <Route path = "/l" element = {<LoginPage />} />
+          <Route path = "/l" element = {<MainFunctionX />} />
           <Route path="/home" element={<Inventory />} />
           <Route path="/donation_log" element={<Donation />} />
         </Routes>
