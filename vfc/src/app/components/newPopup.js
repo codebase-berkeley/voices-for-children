@@ -11,57 +11,8 @@ export default function NewPopup({
     console.log(newIsOpen);
   };
 
-  /*
-  const handleSubmit = async (event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
-    const inputDate = event.target.date ? event.target.date.value : "";
-
-    // Check if inputDate is not empty before splitting
-    const parts = inputDate ? inputDate.split("-") : ["", "", ""];
-
-    // Format the date if it's not empty, otherwise set it to an empty string
-    const formattedDate = inputDate
-      ? `${parts[1]}/${parts[2]}/${parts[0]}`
-      : "";
-
-
-        try {
-          const response = await fetch('/api/postPartnership', {
-            method: 'POST',
-            body: JSON.stringify({
-              name: event.target.companyName.value,
-              location: event.target.location.value,
-              citystate: event.target.cityState.value,
-              phone: event.target.phone.value,
-              email: event.target.email.value,
-              poc: event.target.poc.value,
-              date: formattedDate,
-              gifttype: event.target.giftType.value,
-              link: event.target.link.value
-            })
-          });
-          setData(response.data); // Update 'data' state with the response data
-        } catch (error) {
-          console.error('Error posting partnership:', error);
-        }
-        console.log("helli")
-      };
-
-*/
-  const submitForm = (event) => {
-    event.preventDefault();
-
-    // const newCard = {
-    //     name: "hello",
-    //     locationImage: "vfc/src/app/assets/justinchen.jpg",
-    //     location: "NYC",
-    //     cityState: "NYC, CA",
-    //     phone: "(123)4567-8912",
-    //     email: "justinchen722@berkeley.edu",
-    //     poc: "Justin Chen",
-    //     date: "07/22/2005",
-    //     giftType: "Toys"
-    // }
 
     // Change the input date to 07/22/2005 instead of 2005-07-22
     const inputDate = event.target.date ? event.target.date.value : "";
@@ -76,50 +27,68 @@ export default function NewPopup({
 
     const newCard = {
       name: event.target.companyName.value,
-      locationImage: "vfc/src/app/assets/justinchen.jpg",
+      image: "/assets/aqua.jpg",
       location: event.target.location.value,
-      cityState: event.target.cityState.value,
+      citystate: event.target.cityState.value,
       phone: event.target.phone.value,
       email: event.target.email.value,
       poc: event.target.poc.value,
       date: formattedDate,
-      giftType: event.target.giftType.value,
-      link: event.target.link.value
+      gifttype: event.target.giftType.value,
+      link: event.target.link.value,
     };
-
-    
-    // const newCard = {
-    //   name: event.target.name.value,
-    //   locationImage: "vfc/src/app/assets/codebase.jpg", // default img if no location img uploaded
-    //   location: event.target.location.value,
-    //   cityState: event.target.cityState.value,
-    //   phone: event.target.phone.value,
-    //   email: event.target.email.value,
-    //   poc: event.target.poc.value,
-    //   date: event.target.date.value,
-    //   giftType: event.target.giftType.value,
-    // };
-
-    console.log(newCard);
 
     const reader = new FileReader();
     const locImg = event.target.locationImage.files[0];
 
+    // USE THIS PART OF THE CODE TO CHANGE THE IMAGE
     if (locImg) {
       // Read and process the file
       reader.onloadend = () => {
-        newCard.locationImage = reader.result; // If image uploaded, change location image
+        newCard.image = reader.result; // If image uploaded, change location image
         setData((prevData) => [...prevData, newCard]);
         setnewIsOpen(false);
       };
       reader.readAsDataURL(locImg);
+    //WHEN THERE IS NO IMAGE SET DEFAULT AQUA
     } else {
       // Handle the case where no image is provided
-      newCard.locationImage = "/assets/aqua.jpg"; // Set a default image path
+      newCard.image = "/assets/aqua.jpg"; // Set a default image path
       setData((prevData) => [...prevData, newCard]);
       setnewIsOpen(false);
     }
-    console.log(newCard);
+
+    console.log("newCard:" + newCard);
+
+    try {
+      // Fetch data here
+      const response = await fetch("/api/postPartnership", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: event.target.companyName.value,
+          location: event.target.location.value,
+          citystate: event.target.cityState.value,
+          phone: event.target.phone.value,
+          email: event.target.email.value,
+          poc: event.target.poc.value,
+          date: formattedDate,
+          gifttype: event.target.giftType.value,
+          link: event.target.link.value,
+          image: newCard.image,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      console.log("Form submitted successfully");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   const today = new Date();
@@ -141,7 +110,7 @@ export default function NewPopup({
         </div>
         <div className="inputs">
           {/* <form action="submit_contact_form.php"> */}
-          <form className="allInputs" onSubmit={handleSubmit}>
+          <form className="allInputs" onSubmit={submitForm}>
             <div className="row1">
               <div className="companyName">
                 <div className="form-group">

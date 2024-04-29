@@ -22,10 +22,10 @@ function MultipleFlipCards(props) {
       // Else return all items that have an attribute present in the currFilter array
     } else {
       return (
-        props.filters.includes(card.giftType.toLowerCase()) ||
+        props.filters.includes(card.gifttype.toLowerCase()) ||
         //filter ex. Given San Diego, CA it will include when checking off San Diego box
         props.filters.every((filter) =>
-          card.cityState.toLowerCase().includes(filter.toLowerCase())
+          card.citystate.toLowerCase().includes(filter.toLowerCase())
         ) ||
         props.filters.every((filter) => newDate.includes(filter.toLowerCase()))
       );
@@ -53,7 +53,7 @@ function MultipleFlipCards(props) {
             phone={card.phone}
             email={card.email}
             poc={card.poc}
-            locationImage={card.locationImage}
+            image={card.image}
             date={card.date}
             giftType={card.gifttype}
             link={card.link}

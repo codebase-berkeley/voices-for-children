@@ -23,7 +23,7 @@ export default function FlipCard(props) {
     console.log(isOpen);
   };
 
-  let image = props.locationImage;
+  let image = props.image;
 
   return (
     <div>
@@ -95,7 +95,8 @@ export default function FlipCard(props) {
         email={props.email}
         poc={props.poc}
         phone = {props.phone}
-        
+        link = {props.link}
+        image = {props.image}
       />
     </div>
   );
