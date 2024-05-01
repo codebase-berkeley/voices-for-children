@@ -37,14 +37,14 @@ export default function Navbar(props) {
               style={{ textDecoration: "none" }}
               href="/donation"
             >
-              <p
+              {/* <p
                 id={!props.onCommunity ? "goBlue" : ""}
                 onClick={() => setNavbar("donation")}
-              >
-                {/* <p
+              > */}
+                <p
                 id={navbar === "donation" ? "goBlue" : ""}
                 onClick={() => setNavbar("donation")}
-              > */}
+              >
                 In-Kind Donation
               </p>
             </Link>

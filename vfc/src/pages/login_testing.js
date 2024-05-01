@@ -1,6 +1,6 @@
-import { PublicClientApplication } from "@azure/msal-browser";
-import { PublicClientApplication } from "@azure/msal-browser";
+import { PublicClientApplication, EventType } from "@azure/msal-browser";
 import { MsalProvider } from "@azure/msal-react";
+import { msalConfig } from "../app/authConfig";
 
 export const msalInstance = new PublicClientApplication(msalConfig);
 

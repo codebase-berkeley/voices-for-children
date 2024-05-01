@@ -1,11 +1,11 @@
 // "use client";
 import { Rowdies } from "next/font/google";
 import "./inventory.css";
-import InventoryEntry from "../app/Components/inventoryentry";
+import InventoryEntry from "../app/components/inventoryentry";
 // import { Link } from "react-router-dom";
-import EntryPopup from "../app/Components/entrypopup.js";
+import EntryPopup from "../app/components/entrypopup.js";
 import { useState } from "react";
-import Navbar from "../app/Components/navbar";
+import Navbar from "../app/components/navbar";
 // import Top from "../app/Components/top";
 import TextField from "@mui/material/TextField";
 
