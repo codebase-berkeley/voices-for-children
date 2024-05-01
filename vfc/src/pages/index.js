@@ -383,6 +383,7 @@ function MainComPart() {
             input={inputText}
             filters={currFilters}
             data={data}
+            setData={setData}
           />
           {newIsOpen ? (
             <NewPopup

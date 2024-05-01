@@ -30,6 +30,7 @@ CREATE TABLE inkindDonations
 );
 
 CREATE TABLE communityPartnerships (
+    id SERIAL PRIMARY KEY, 
     name VARCHAR(255),
     location VARCHAR(255),
     citystate VARCHAR(255),

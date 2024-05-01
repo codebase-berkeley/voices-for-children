@@ -46,6 +46,7 @@ function MultipleFlipCards(props) {
       <div className="card-container">
         {searchedData.map((card, index) => (
           <FlipCard
+            id={card.id}
             key={index}
             name={card.name}
             location={card.location}
@@ -57,6 +58,8 @@ function MultipleFlipCards(props) {
             date={card.date}
             giftType={card.gifttype}
             link={card.link}
+            data={props.data}
+            setData={props.setData}
           />
         ))}
       </div>

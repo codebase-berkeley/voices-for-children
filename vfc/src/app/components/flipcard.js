@@ -85,6 +85,7 @@ export default function FlipCard(props) {
         </div>
       </ReactCardFlip>
       <Modal
+        id={props.id}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         company={props.name}
@@ -97,6 +98,8 @@ export default function FlipCard(props) {
         phone = {props.phone}
         link = {props.link}
         image = {props.image}
+        data = {props.data}
+        setData = {props.setData}
       />
     </div>
   );
