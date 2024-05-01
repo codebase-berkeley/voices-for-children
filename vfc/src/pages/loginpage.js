@@ -2,7 +2,7 @@
 import "./loginpage.css";
 import { useEffect, useState } from 'react';
 import { useMsal } from '@azure/msal-react';
-import { loginRequest } from "../authConfig";
+import { loginRequest } from "../app/authConfig";
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 
 function LoginPage() {

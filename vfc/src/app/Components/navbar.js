@@ -48,6 +48,22 @@ export default function Navbar(props) {
                 In-Kind Donation
               </p>
             </Link>
+            <Link
+              className="link"
+              style={{ textDecoration: "none" }}
+              href="/loginpage"
+            >
+              {/* <p
+                id={!props.onCommunity ? "goBlue" : ""}
+                onClick={() => setNavbar("donation")}
+              > */}
+                <p
+                id={navbar === "donation" ? "goBlue" : ""}
+                onClick={() => setNavbar("loginPage")}
+              >
+                Login Page
+              </p>
+            </Link>
           </div>
         </div>
       </div>
