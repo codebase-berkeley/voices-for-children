@@ -41,6 +41,8 @@ export default function Edit({
   const submitForm = async (event) => {
     event.preventDefault();
 
+    console.log("before edit data: ", data);
+
     // Change the input date to 07/22/2005 instead of 2005-07-22
     const inputDate = event.target.date ? event.target.date.value : "";
 
@@ -53,7 +55,7 @@ export default function Edit({
       : "";
 
     const newCard = {
-      id : id,
+      id: id,
       name: event.target.companyName.value,
       image: "/assets/aqua.jpg",
       location: event.target.location.value,
@@ -87,7 +89,9 @@ export default function Edit({
     } else {
       // Handle the case where no image is provided
       newCard.image = "/assets/aqua.jpg"; // Set a default image path
+      console.log("edit card: ", newCard);
       const index = data.findIndex((card) => card.id === id);
+      console.log("edit index: ", index);
       setData((prevData) => {
         const newData = [...prevData];
         newData[index] = newCard;
@@ -100,37 +104,35 @@ export default function Edit({
     console.log("newCard:" + newCard);
     console.log(data);
 
-  //fetch data
-  try {
-    const response = await fetch('/api/editPartnership', {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: id,
-        name: event.target.companyName.value,
-        location: event.target.location.value,
-        citystate: event.target.cityState.value,
-        date: formattedDate,
-        email: event.target.email.value,
-        poc: event.target.poc.value,
-        phone: event.target.phone.value,
-        gifttype: event.target.giftType.value,
-        link: event.target.link.value,
-        image: newCard.image,
-      }),
-    });
+    //fetch data
+    try {
+      const response = await fetch("/api/editPartnership", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: id,
+          name: event.target.companyName.value,
+          location: event.target.location.value,
+          citystate: event.target.cityState.value,
+          date: formattedDate,
+          email: event.target.email.value,
+          poc: event.target.poc.value,
+          phone: event.target.phone.value,
+          gifttype: event.target.giftType.value,
+          link: event.target.link.value,
+          image: newCard.image,
+        }),
+      });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
     }
-
-  } catch (error) {
-    console.error("Error submitting form:", error);
-  }
-}
-  
+  };
 
   const today = new Date();
   const year = today.getFullYear() + 100;

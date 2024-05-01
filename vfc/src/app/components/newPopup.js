@@ -40,27 +40,27 @@ export default function NewPopup({
     };
 
     const reader = new FileReader();
-    const locImg = event.target.locationImage.files[0];
+    // const locImg = event.target.locationImage.files[0];
 
-    // USE THIS PART OF THE CODE TO CHANGE THE IMAGE
-    if (locImg) {
-      // Read and process the file
-      reader.onloadend = () => {
-        newCard.image = reader.result; // If image uploaded, change location image
-        setData((prevData) => [...prevData, newCard]);
-        setnewIsOpen(false);
-        console.log(newCard);
-      };
-      reader.readAsDataURL(locImg);
-    //WHEN THERE IS NO IMAGE SET DEFAULT AQUA
-    } else {
-      // Handle the case where no image is provided
-      newCard.image = "/assets/aqua.jpg"; // Set a default image path
-      setData((prevData) => [...prevData, newCard]);
-      setnewIsOpen(false);
-    }
+    // // USE THIS PART OF THE CODE TO CHANGE THE IMAGE
+    // if (locImg) {
+    //   // Read and process the file
+    //   reader.onloadend = () => {
+    //     newCard.image = reader.result; // If image uploaded, change location image
+    //     setData((prevData) => [...prevData, newCard]);
+    //     setnewIsOpen(false);
+    //     console.log(newCard);
+    //   };
+    //   reader.readAsDataURL(locImg);
+    //   //WHEN THERE IS NO IMAGE SET DEFAULT AQUA
+    // } else {
+    //   // Handle the case where no image is provided
+    //   newCard.image = "/assets/aqua.jpg"; // Set a default image path
+    //   setData((prevData) => [...prevData, newCard]);
+    //   setnewIsOpen(false);
+    // }
 
-    console.log("newCard:" + newCard);
+    // console.log("newCard:" + newCard);
 
     try {
       // Fetch data here
@@ -79,18 +79,60 @@ export default function NewPopup({
           date: formattedDate,
           gifttype: event.target.giftType.value,
           link: event.target.link.value,
-          image: newCard.image,
+          image: "/assets/aqua.jpg",  // TODO: un-hard-code
         }),
       });
 
       const { id } = await response.json();
-      newCard.id = id;
+
+      const locImg = event.target.locationImage.files[0];
+
+      const newCard = {
+        id: id,
+        name: event.target.companyName.value,
+        image: "/assets/aqua.jpg",
+        location: event.target.location.value,
+        citystate: event.target.cityState.value,
+        phone: event.target.phone.value,
+        email: event.target.email.value,
+        poc: event.target.poc.value,
+        date: formattedDate,
+        gifttype: event.target.giftType.value,
+        link: event.target.link.value,
+      };
+
+    // USE THIS PART OF THE CODE TO CHANGE THE IMAGE
+      if (locImg) {
+        // Read and process the file
+        reader.onloadend = () => {
+          newCard.image = reader.result; // If image uploaded, change location image
+          // setData((prevData) => [...prevData, newCard]);
+          // setnewIsOpen(false);
+          // console.log(newCard);
+        };
+        reader.readAsDataURL(locImg);
+        //WHEN THERE IS NO IMAGE SET DEFAULT AQUA
+      } 
+      // else {
+        // Handle the case where no image is provided
+        // newCard.image = "/assets/aqua.jpg"; // Set a default image path
+        // setData((prevData) => [...prevData, newCard]);
+        // setnewIsOpen(false);
+      // }
+
+      setData((prevData) => [...prevData, newCard]);
+      setnewIsOpen(false);
+      console.log(newCard);
+
+      console.log("newCard:" + newCard);
+
+      // newCard.id = id;
       console.log("posted new id: ", id);
+      console.log("frontend data: ", prevData);
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
     } catch (error) {
       console.error("Error submitting form:", error);
     }
