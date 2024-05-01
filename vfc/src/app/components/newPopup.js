@@ -48,6 +48,7 @@ export default function NewPopup({
         newCard.image = reader.result; // If image uploaded, change location image
         setData((prevData) => [...prevData, newCard]);
         setnewIsOpen(false);
+        console.log(newCard);
       };
       reader.readAsDataURL(locImg);
     //WHEN THERE IS NO IMAGE SET DEFAULT AQUA
