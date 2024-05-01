@@ -1,15 +1,17 @@
-import { PublicClientApplication, EventType } from "@azure/msal-browser";
-import { MsalProvider } from "@azure/msal-react";
-import { msalConfig } from "../app/authConfig";
+// import { PublicClientApplication, EventType } from "@azure/msal-browser";
+// import { MsalProvider } from "@azure/msal-react";
+// import { msalConfig } from "../app/authConfig";
 
-export const msalInstance = new PublicClientApplication(msalConfig);
+// export const msalInstance = new PublicClientApplication(msalConfig);
 
-export default MainFunctionX({ Component, pageProps }); {
-    console.log('MainFunctionX()');
+// MainFunctionX({ Component, pageProps }); {
+//     console.log('MainFunctionX()');
 
-    return (
-        <MsalProvider instance={{msalInstance}}>
-            <Component {...pageProps} />
-        </MsalProvider>
-    )
-}
+//     return (
+//         <MsalProvider instance={{msalInstance}}>
+//             <Component {...pageProps}/>
+//         </MsalProvider>
+//     )
+// }
+
+// export default MainFunctionX;

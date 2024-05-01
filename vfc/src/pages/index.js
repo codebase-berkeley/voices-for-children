@@ -5,7 +5,7 @@ import MultipleFlipCards from "../app/components/flipcardPage";
 import TextField from "@mui/material/TextField";
 import NewPopup from "../app/components/newPopup";
 import rawdata from "./rawdata.json";
-import Navbar from "../app/Components/navbar";
+import Navbar from "../app/components/navbar";
 import { Nav } from "react-bootstrap";
 
 // import Data from "./rawdata";

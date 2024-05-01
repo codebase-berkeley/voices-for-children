@@ -1,22 +1,58 @@
 "use client";
 import "./loginpage.css";
 import { useEffect, useState } from 'react';
-import { useMsal } from '@azure/msal-react';
-import { loginRequest } from "../app/authConfig";
+import { PublicClientApplication, EventType, InteractionStatus } from "@azure/msal-browser";
+import { MsalProvider, useMsal, useIsAuthenticated } from '@azure/msal-react';
+import { authScopes, msalConfig } from "../app/authConfig";
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 
-function LoginPage() {
-  const {instance} = useMsal();
+const msalInstance = new PublicClientApplication(msalConfig);
+
+function Login() {
+  const isAuthenticated = useIsAuthenticated();
+  const {instance, accounts, inProgress} = useMsal();
   const [accountDetails, setAccountDetails] = useState(null);
 
-  function handleLogin() {
-    instance.loginPopup(loginRequest).catch(e => {
-      console.log('Error loggin in', e);
-    }).then((response) => {
-      console.log('Login returned', response);
+  useEffect(async() => {
+    if (!isAuthenticated && inProgress === InteractionStatus.None) {
+      console.log("inside use effect");
+      await instance.loginPopup();
+    }
+}, [isAuthenticated, inProgress, instance]);
 
-      setAccountDetials({ name: resopnse?.account?.name })
-    })
+  if (accounts.length > 0) {
+    console.log('accounts', accounts);
+  }
+
+  async function handleLogin() {
+    console.log('accounts', instance)
+
+    // await instance.loginPopup;
+
+    instance.loginPopup(authScopes).then(response => {
+        console.log("login successful!", response);
+
+        instance.setActiveAccount(response.account);
+    }).catch(e => {
+        console.log(e);
+    });
+}
+
+function handleLogout() {
+    instance.logoutPopup(authScopes).then(response => {
+
+    }).catch(e => {
+        console.log(e);
+    });
+  }
+
+   async function sasha() {
+    if (!isAuthenticated && inProgress === InteractionStatus.None) {
+      console.log("Login process not in progress. Initiating login...");
+      console.log("inside sasha function");
+      console.log("what is inprogress", inProgress)
+      await handleLogin();
+  }
   }
   return (
     <div className = "login"> <div class = "logo">
@@ -30,20 +66,28 @@ function LoginPage() {
             />
     </div>
       <div className="login-container">
-        <AuthenticatedTemplate className="login-form">
+        {/* <AuthenticatedTemplate className="login-form">
           <h6>You're logged in!</h6>
 
           <button onClick={() => handleLogout()}>Logout</button>
-        </AuthenticatedTemplate>
+        </AuthenticatedTemplate> */}
 
         <UnauthenticatedTemplate>
           <h6>You're logged out!</h6>
 
-          <button onClick={() => handleLogin()}>Logout</button>
+          <button onClick={() => sasha()}>Login</button>
         </UnauthenticatedTemplate>
       </div>
     </div>
     );
 };
 
-export default LoginPage
+function LoginPage() {
+  return (
+    <MsalProvider instance={msalInstance}>
+      <Login />
+    </MsalProvider>
+  )
+}
+
+export default LoginPage;
