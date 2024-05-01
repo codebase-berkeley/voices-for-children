@@ -1,5 +1,5 @@
 import "./donation.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DonationEntry from "../app/Components/donationEntry";
 import EntryPopup from "../app/Components/entrypopup.js";
 import Top from "../app/Components/top";
@@ -28,36 +28,6 @@ function Donation() {
   const [originalData, setOriginalData] = useState(
 
     [
-      // {
-      //   name: "Codebase",
-      //   item_type: "Tickets",
-      //   amount: "30",
-      //   stock: "Yes",
-      // },
-      // {
-      //   name: "John Doe",
-      //   item_type: "Tickets",
-      //   amount: "10",
-      //   stock: "No",
-      // },
-      // {
-      //   name: "John Doe",
-      //   item_type: "Toys",
-      //   amount: "100",
-      //   stock: "Yes",
-      // },
-      // {
-      //   name: "Codebase",
-      //   item_type: "Electronics",
-      //   amount: "10",
-      //   stock: "No",
-      // },
-      // {
-      //   name: "Kinton Duong",
-      //   item_type: "Tickets",
-      //   amount: "40",
-      //   stock: "No",
-      // },
     ]
   
     // const [seen, setSeen] = useState(false);

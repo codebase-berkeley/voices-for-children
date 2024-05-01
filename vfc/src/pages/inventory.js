@@ -4,7 +4,7 @@ import "./inventory.css";
 import InventoryEntry from "../app/Components/inventoryentry";
 // import { Link } from "react-router-dom";
 import EntryPopup from "../app/Components/entrypopup.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../app/Components/navbar";
 import Top from "../app/Components/top";
 import TextField from "@mui/material/TextField";
@@ -22,50 +22,27 @@ function Inventory() {
   };
   var lastEvent = null;
   const [originalData, setOriginalData] = useState([
-    {
-      donor: "Codebase",
-      item_donated: "Cal x Auburn Football",
-      item_type: "Tickets",
-      amount: 3,
-      date: "3/4/2024",
-      thanked: "Thanked. Thanked at banquet on 3/4",
-    },
-    {
-      donor: "Kinton Duong",
-      item_donated: "Cal x USC Basketball",
-      item_type: "Tickets",
-      amount: 4,
-      date: "3/4/2024",
-      thanked: "Thanked. Thanked at banquet on 3/4",
-    },
-
-    {
-      donor: "Codebase",
-      item_donated: "Stuffed Teddy Bear",
-      item_type: "Toys",
-      amount: 2,
-      date: "2/6/2024",
-      thanked: "Thanked. Thanked at banquet on 3/4",
-    },
-
-    {
-      donor: "John Doe",
-      item_donated: "Cal x Stanford Tickets",
-      item_type: "Tickets",
-      amount: 1,
-      date: "12/24/2023",
-      thanked: "Thanked. Thanked at banquet on 3/4",
-    },
-
-    {
-      donor: "John Doe",
-      item_donated: "2020 Macbook Pro",
-      item_type: "Electronics",
-      amount: 5,
-      date: "1/9/2024",
-      thanked: "Thanked. Thanked at banquet on 3/4",
-    },
   ]);
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/getInventory");
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonDataInventory = await response.json();  // Properly handle the promise
+        
+        console.log("get donation api response", jsonDataInventory);
+        setOriginalData(jsonDataInventory);
+        setDonationData(jsonDataInventory);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   // const [seen, setSeen] = useState(false);
   // async function show() {
