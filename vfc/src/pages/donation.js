@@ -4,16 +4,20 @@ import DonationEntry from "../app/Components/donationEntry";
 import EntryPopup from "../app/Components/entrypopup.js";
 import Top from "../app/Components/top";
 import Navbar from "../app/Components/navbar";
-import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
-import handler from "./api/hello";
+import Link from "next/link";
+import { json } from "react-router-dom";
 
 function Donation() {
   const [popupVisible, setPopupVisible] = useState(false);
   const [sortBy, setSortBy] = useState("");
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
+
+  var inKindData = null;
+  /* working w api data */
+  const [apiData, setApiData] = useState("");
   var currSearchKey = null;
   var currSearchObject = null;
   var lastSearch = null;
@@ -21,62 +25,111 @@ function Donation() {
     [currSearchKey]: currSearchObject,
   };
 
+  const [originalData, setOriginalData] = useState(
+
+    [
+      // {
+      //   name: "Codebase",
+      //   item_type: "Tickets",
+      //   amount: "30",
+      //   stock: "Yes",
+      // },
+      // {
+      //   name: "John Doe",
+      //   item_type: "Tickets",
+      //   amount: "10",
+      //   stock: "No",
+      // },
+      // {
+      //   name: "John Doe",
+      //   item_type: "Toys",
+      //   amount: "100",
+      //   stock: "Yes",
+      // },
+      // {
+      //   name: "Codebase",
+      //   item_type: "Electronics",
+      //   amount: "10",
+      //   stock: "No",
+      // },
+      // {
+      //   name: "Kinton Duong",
+      //   item_type: "Tickets",
+      //   amount: "40",
+      //   stock: "No",
+      // },
+    ]
+  
+    // const [seen, setSeen] = useState(false);
+    // async function show() {
+    //     console.log("calling show");
+    //     setSeen(!seen);
+    //     console.log(seen, "from inventory")
+    // }
+    );
+
   // console.log("HITTING ENDPOINT");
   // axios
   //   .get("./api/hello")
   //   .then((response) => console.log("hello api response", response.data))
   //   .catch((error) => console.error("Error fetching data:", error));
 
-  fetch("../pages/api/hello")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("hello api response", data);
-      return data;
-    })
-    .then((response) => {
-    console.log("hello api response", response);
-  });
+  useEffect(() => {
+    const getReq = async () => {
+      const response = await fetch("/api/hello")
+        .then((response) => {
+          console.log("adasdasasd");
+        })
+        .then((data) => {
+          console.log("hello api response", data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    };
+    getReq();
+  }, []); // The empty dependency array ensures it only runs once after the initial render
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/getDonation");
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonData = await response.json();  // Properly handle the promise
+        
+        console.log("get donation api response", jsonData);
+        setOriginalData(jsonData);
+        setDonationData(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    // const fetchData = async () => {
+    //   const response = await fetch("/api/getDonation")
+    //     .then((response) => {
+    //       inKindData = response.json();
+    //       console.log("get donation api response", inKindData);
+    //       console.log(JSON.parse(inKindData));
+    //     })
+    //     // .then((data) => {
+    //     //   console.log(data);
+    //     //   console.log("get donation api response data", data);
+    //     // })
+    //     .catch((error) => {
+    //       console.error("Error fetching data:", error);
+    //     });
+    // };
+    fetchData();
+  }, []);
+
+
 
   var lastEvent = null;
-  const [originalData, setOriginalData] = useState([
-    {
-      name: "Codebase",
-      item_type: "Tickets",
-      amount: "30",
-      stock: "Yes",
-    },
-    {
-      name: "John Doe",
-      item_type: "Tickets",
-      amount: "10",
-      stock: "No",
-    },
-    {
-      name: "John Doe",
-      item_type: "Toys",
-      amount: "100",
-      stock: "Yes",
-    },
-    {
-      name: "Codebase",
-      item_type: "Electronics",
-      amount: "10",
-      stock: "No",
-    },
-    {
-      name: "Kinton Duong",
-      item_type: "Tickets",
-      amount: "40",
-      stock: "No",
-    },
-  ]);
-
-  // const [seen, setSeen] = useState(false);
-  // async function show() {
-  //     console.log("calling show");
-  //     setSeen(!seen);
-  //     console.log(seen, "from inventory")
-  // }
+  
 
   const [donationData, setDonationData] = useState([...originalData]);
   const togglePopup = () => {
@@ -175,8 +228,12 @@ function Donation() {
   const handleClick = (newId) => {
     setButtonId(newId);
   };
-
+  console.log("yo");
+  
   console.log(buttonId);
+  useEffect(() => {
+    console.log("original", donationData);
+  }, [donationData]);
 
   return (
     <div>
@@ -185,7 +242,7 @@ function Donation() {
         <div className="inventoryContainer">
           <h1 className="name">In-Kind Donation</h1>
           <div className="flipSwitch">
-            <Link
+            {/* <Link
               className="link"
               style={{ textDecoration: "none" }}
               to="/home"
@@ -210,7 +267,7 @@ function Donation() {
               >
                 Donation Log
               </button>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
@@ -300,10 +357,10 @@ function Donation() {
             {donationData.map((item, index) => (
               <DonationEntry
                 key={index}
-                name={item.name}
-                item_type={item.item_type}
+                name={item.donor}
+                item_type={item.itemtype}
                 amount={item.amount}
-                stock={item.stock}
+                stock={item.instock}
               />
             ))}
           </div>

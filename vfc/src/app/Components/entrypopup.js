@@ -4,6 +4,38 @@ import './entrypopup.css';
 import { useState } from 'react';
 
 function EntryPopup ({ onClose }) {
+        
+        const postData = async () => {  
+            var name = document.getElementById("name").value;
+            var donor = document.getElementById("donor").value;
+            var type = document.getElementById("type").value;
+            var amt = document.getElementById("amt").value;
+            var date = document.getElementById("date").value;
+            var desc = document.getElementById("desc").value;
+            var instock = null;
+            if (amt > 0) {
+                instock = 'Yes';
+            } else {
+                instock = 'No'
+            }
+        
+            // console.log(name, donor, type)
+            const response = await fetch("/api/postDonation", {
+            method: "POST",
+            body: JSON.stringify(
+                name,
+                donor,
+                type,
+                amt,
+                date,
+                desc,
+                instock,
+            ),
+            });
+            return response.json();
+            
+        };
+    
         const handlePopupClose = () => {
             onClose(); // Call the onClose function passed from Inventory to close the popup test
         };
