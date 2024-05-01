@@ -26,6 +26,7 @@ export default function NewPopup({
       : "";
 
     const newCard = {
+      id: prevData.length + 1,
       name: event.target.companyName.value,
       image: "/assets/aqua.jpg",
       location: event.target.location.value,
@@ -82,11 +83,14 @@ export default function NewPopup({
         }),
       });
 
+      const { id } = await response.json();
+      newCard.id = id;
+      console.log("posted new id: ", id);
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
 
-      console.log("Form submitted successfully");
     } catch (error) {
       console.error("Error submitting form:", error);
     }

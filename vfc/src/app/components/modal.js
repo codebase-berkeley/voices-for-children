@@ -21,7 +21,31 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
     setEdit(!edit);
   };
 
+  async function deleteCard() {
+    try {
+      const response = await fetch("/api/deletePartnership", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: props.id,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      props.data = props.data.filter((entry) => entry.id != props.id);
+      props.setData(props.data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+
+    handleClick();
+  }
+
   console.log("hello" + props.id);
+  console.log(props.data);
 
   return (
     <div className="loloverlay">
@@ -57,8 +81,8 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
             <button className="LEAVE" onClick={openEdit}>
               Edit
             </button>
-            <button onClick={handleClick} className="LEAVE">
-              Exit Here
+            <button onClick={deleteCard} className="LEAVE">
+              Delete
             </button>
           </div>
         </div>
