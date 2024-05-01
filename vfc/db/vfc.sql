@@ -22,13 +22,15 @@ GRANT ALL PRIVILEGES ON DATABASE vfc TO root;
 CREATE TABLE inkindDonations
 (
   donor VARCHAR(80),
-  itemsDonated VARCHAR(100),
-  itemType VARCHAR(80),
+  item_donated VARCHAR(100),
+  item_type VARCHAR(80),
   amount INTEGER,
-  dateDonated DATE,
+  date DATE,
   thanked VARCHAR(200)
 
 );
+
+INSERT INTO inkinddonations(donor, item_donated, item_type, amount, date, thanked) VALUES ('sasha', 10000, 'toys', 10, DATE '2015-12-23', 'yes');
 
 
 CREATE TABLE communityPartnerships(
@@ -43,14 +45,14 @@ CREATE TABLE communityPartnerships(
 );
 
 
-<div className="poc"><b>Point of Contact :</b> {props.poc}</div>
-    <div className="email"><b>Email :</b> {props.email}</div>
-    <div className="phone-number"><b>Phone Number :</b> {props.phone}</div>
-    <div className="date-joined"><b>Date Joined :</b> {props.date}</div>
-    <div className="gifts"><b>Gifts :</b> {props.giftType}</div>
-  </div>
-  <div className="halfDivider">
-    <div className="modalAddress"><b>Address :</b> {props.location}</div>
-    <div className="cityState"><b>City/State :</b> {props.cityState}</div>
-    <div className="Ticket Log Link"><b>Ticket Log Link :</b> <a id="logLink" href={"http://" + props.link} target="_blank" rel="noopener noreferrer">{props.link}</a></div>
-  </div>
+-- <div className="poc"><b>Point of Contact :</b> {props.poc}</div>
+--     <div className="email"><b>Email :</b> {props.email}</div>
+--     <div className="phone-number"><b>Phone Number :</b> {props.phone}</div>
+--     <div className="date-joined"><b>Date Joined :</b> {props.date}</div>
+--     <div className="gifts"><b>Gifts :</b> {props.giftType}</div>
+--   </div>
+--   <div className="halfDivider">
+--     <div className="modalAddress"><b>Address :</b> {props.location}</div>
+--     <div className="cityState"><b>City/State :</b> {props.cityState}</div>
+--     <div className="Ticket Log Link"><b>Ticket Log Link :</b> <a id="logLink" href={"http://" + props.link} target="_blank" rel="noopener noreferrer">{props.link}</a></div>
+--   </div>

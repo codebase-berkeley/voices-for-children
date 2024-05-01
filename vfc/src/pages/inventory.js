@@ -36,7 +36,7 @@ function Inventory() {
         
         console.log("get donation api response", jsonDataInventory);
         setOriginalData(jsonDataInventory);
-        setDonationData(jsonDataInventory);
+        setInventoryData(jsonDataInventory);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -65,6 +65,7 @@ function Inventory() {
     }
 
     const sortedData = [...inventoryData].sort((a, b) => {
+      console.log(a)
       if (selectedOption === "amount") {
         return a.amount - b.amount;
       } else if (selectedOption === "date") {
