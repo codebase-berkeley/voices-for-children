@@ -118,7 +118,7 @@ function Donation() {
       if (selectedOption === "amount") {
         return a.amount - b.amount;
       } else if (selectedOption === "name") {
-        return a.name.localeCompare(b.name);
+        return a.item_donated.localeCompare(b.item_donated);
       } else if (selectedOption === "item_type") {
         return a.item_type.localeCompare(b.item_type);
       } else if (selectedOption === "stock") {
@@ -139,7 +139,7 @@ function Donation() {
     if (currentSearch) {
       filteredData = filteredData.filter(
         (item) =>
-          item.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
+          item.item_donated.toLowerCase().includes(currentSearch.toLowerCase()) ||
           item.item_type.toLowerCase().includes(currentSearch.toLowerCase())
       );
     }
@@ -171,7 +171,7 @@ function Donation() {
     } else {
       const filteredData = originalData.filter((item) => {
         return (
-          item.name.toLowerCase().includes(search.toLowerCase()) ||
+          item.item_donated.toLowerCase().includes(search.toLowerCase()) ||
           item.amount.toLowerCase().includes(search.toLowerCase()) ||
           item.item_type.toLowerCase().includes(search.toLowerCase())
         );

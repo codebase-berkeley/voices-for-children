@@ -70,7 +70,7 @@ function Inventory() {
         return a.amount - b.amount;
       } else if (selectedOption === "date") {
         return new Date(a.date) - new Date(b.date);
-      } else if (selectedOption === "donor") {
+      } else if (selectedOption === "name") {
         return a.donor.localeCompare(b.donor);
       } else if (selectedOption === "item_type") {
         return a.item_type.localeCompare(b.item_type);

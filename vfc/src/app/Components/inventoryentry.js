@@ -4,6 +4,7 @@ import React from "react";
 
 function InventoryEntry(props) {
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleMouseEnter = () => {
     setIsTooltipVisible(true);
@@ -11,6 +12,10 @@ function InventoryEntry(props) {
 
   const handleMouseLeave = () => {
     setIsTooltipVisible(false);
+  };
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
   };
 
   return (
@@ -34,6 +39,20 @@ function InventoryEntry(props) {
         <h2 className="entry">{props.thanked}</h2>
         {isTooltipVisible && <div className="tooltip">{props.thanked}</div>}
       </div>
+
+      <div className="box">
+        <button className="action-button" onClick={togglePopup}>...</button>
+        {showPopup && (
+          <div className="popup">
+            <button className="popup-button" onClick={() => console.log('Edit clicked')}>Edit</button>
+            <button className="popup-button" onClick={() => console.log('Delete clicked')}>Delete</button>
+            <button className="popup-button" onClick={togglePopup}>Close</button>
+          </div>
+        )}
+      </div>
+
+
+
     </div>
   );
 }

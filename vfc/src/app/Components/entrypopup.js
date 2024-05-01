@@ -58,7 +58,7 @@ function EntryPopup ({ onClose }) {
                         <div className="desc-container">
                             <span className="popup-text">Description</span>
                             <input type="text" placeholder="Thank you details, item usage, etc." id="desc"></input>
-                            <div className="submit"><input type="submit" id = "submit"></input></div>
+                            <div className="submit"><input type="submit" id = "submit" onClick={postData}></input></div>
                         </div>
                     </form>
                 </div>  
