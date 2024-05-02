@@ -94,7 +94,6 @@ function InventoryEntry(props) {
         <button className="action-button" onClick={togglePopup}>...</button>
         {showPopup && (
           <div className="edit-popup">
-            <button className="edit-popup-button" onClick={() => console.log('Edit clicked')}>Edit</button>
             <button className="edit-popup-button" onClick={() => setShowDeleteConfirm(true)}>Delete</button>
             <button className="edit-popup-button" onClick={togglePopup}>Close</button>
           </div>
@@ -107,6 +106,12 @@ function InventoryEntry(props) {
               <button className="confirmation-button" onClick={() => setShowDeleteConfirm(false)}>No</button>
             </div>
           </div>
+        )}
+        {showDeleteConfirm && (
+          <div
+            className={`overlay ${showDeleteConfirm ? "show" : ""}`}
+            onClick={() => setShowDeleteConfirm(false)}
+          ></div>
         )}
       </div>
     </div>
