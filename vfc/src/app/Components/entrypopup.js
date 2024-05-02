@@ -73,7 +73,7 @@ function EntryPopup(props) {
                     <span className="popup-text">Description</span>
                     <input type="text" placeholder="Thank you details, item usage, etc." id="desc" name="thanked" value={desc} onChange={e => setDesc(e.target.value)}></input>
                 </div>
-                <button className="submit" id="submit" type="submit">submit</button>
+                <button className="submit" id="submit" type="submit">Submit</button>
             </form>
         </div>
     );

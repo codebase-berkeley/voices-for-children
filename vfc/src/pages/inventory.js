@@ -212,7 +212,7 @@ function Inventory() {
                   onChange={handleSort}
                 >
                   <option value="">Sort By</option>
-                  <option value="donor">Donor</option>
+                  <option value="name">Donor</option>
                   <option value="item_donated">Items Donated</option>
                   <option value="item_type">Item Type</option>
                   <option value="amount">Amount</option>

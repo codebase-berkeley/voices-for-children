@@ -292,7 +292,7 @@ function Donation() {
               <div className="sort-by">
                 <select name="sort-by" className="SELECT" onChange={handleSort}>
                   <option value="">Sort By</option>
-                  <option value="sort">Name</option>
+                  <option value="name">Name</option>
                   <option value="item_type">Item Type</option>
                   <option value="amount">Amount</option>
                   <option value="stock">In Stock</option>
