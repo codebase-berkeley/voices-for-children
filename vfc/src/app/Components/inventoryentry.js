@@ -112,5 +112,6 @@ function InventoryEntry(props) {
     </div>
   );
 }
-
 export default InventoryEntry;
+
+
