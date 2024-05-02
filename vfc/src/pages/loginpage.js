@@ -13,6 +13,8 @@ import {
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
 import Donation from "./donation";
+import MainComPart from ".";
+import { Main } from "next/document";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -59,6 +61,12 @@ function Login( {Component} ) {
       });
   }
 
+  function LogoutButton() {
+    return (
+      <button onClick={() => handleLogout()}>Logout</button>
+    );
+  }
+
   async function sasha() {
     if (!isAuthenticated && inProgress === InteractionStatus.None) {
       console.log("Login process not in progress. Initiating login...");
@@ -83,22 +91,21 @@ function Login( {Component} ) {
             />
           </div>
           <div className="login-container">
-            <h6>You're logged out!</h6>
-
             <button onClick={() => sasha()}>Login</button>
           </div>
         </UnauthenticatedTemplate>
         <AuthenticatedTemplate>
           <Component />
+          <LogoutButton />
         </AuthenticatedTemplate>
       </div>
   );
 }
 
-function LoginPage() {
+function LoginPage( {Component}) {
   return (
     <MsalProvider instance={msalInstance}>
-      <Login Component={Donation}/>
+      <Login Component={MainComPart}/>
     </MsalProvider>
   );
 }

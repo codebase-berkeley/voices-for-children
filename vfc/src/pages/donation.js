@@ -7,6 +7,7 @@ import Navbar from "../app/Components/navbar";
 // import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Login from "./loginpage";
+import LogoutButton from "./loginpage";
 
 // Login imports
 import {
@@ -209,7 +210,7 @@ function Donation() {
     <MsalProvider instance={msalInstance}>
       <div>
         <UnauthenticatedTemplate>
-          <Login />
+          <LoginPage Component={Donation} />
         </UnauthenticatedTemplate>
         <AuthenticatedTemplate>
           <div className="bigContainer">
@@ -341,6 +342,7 @@ function Donation() {
               </div>
             </div>
           </div>
+          <LogoutButton />
         </AuthenticatedTemplate>
       </div>
     </MsalProvider>

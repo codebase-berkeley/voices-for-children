@@ -7,6 +7,22 @@ import NewPopup from "../app/components/newPopup";
 import rawdata from "./rawdata.json";
 import Navbar from "../app/components/navbar";
 import { Nav } from "react-bootstrap";
+// Login imports
+import {
+  PublicClientApplication,
+  EventType,
+  InteractionStatus,
+} from "@azure/msal-browser";
+import { MsalProvider, useMsal, useIsAuthenticated } from "@azure/msal-react";
+import { authScopes, msalConfig } from "../app/authConfig";
+import {
+  AuthenticatedTemplate,
+  UnauthenticatedTemplate,
+} from "@azure/msal-react";
+import Donation from "./donation";
+import LoginPage from "./loginpage";
+
+const msalInstance = new PublicClientApplication(msalConfig);
 
 // import Data from "./rawdata";
 
@@ -137,245 +153,250 @@ function MainComPart() {
 
   return (
     <div>
-      {/* top of page */}
-      <Navbar onCommunity={true} />
-      {/* bottom of page */}
-      <div class="bottom-of-page">
-        {/* side bar of ALL filters */}
-        <div class="all-filters">
-          {/* start of filter */}
-          <div class="each-filter">
-            <button onClick={() => setIsOpen((prev) => !prev)} className="dropdown">
-              {!isOpen ? (
-                <img
-                  src="https://static.thenounproject.com/png/551749-200.png"
-                  style={{ width: "1.7vh", height: "1.2vh" }}
-                />
-              ) : (
-                <img
-                  src="https://static.thenounproject.com/png/1240272-200.png"
-                  style={{ width: "1.7vh", height: "1.2vh" }}
-                />
+      <AuthenticatedTemplate>
+        {/* top of page */}
+        <Navbar onCommunity={true} />
+        {/* bottom of page */}
+        <div class="bottom-of-page">
+          {/* side bar of ALL filters */}
+          <div class="all-filters">
+            {/* start of filter */}
+            <div class="each-filter">
+              <button onClick={() => setIsOpen((prev) => !prev)} className="dropdown">
+                {!isOpen ? (
+                  <img
+                    src="https://static.thenounproject.com/png/551749-200.png"
+                    style={{ width: "1.7vh", height: "1.2vh" }}
+                  />
+                ) : (
+                  <img
+                    src="https://static.thenounproject.com/png/1240272-200.png"
+                    style={{ width: "1.7vh", height: "1.2vh" }}
+                  />
+                )}
+                <h5> Location </h5>
+              </button>
+
+              {isOpen && (
+                <div class="list">
+                  {locations.map((location, index) => (
+                    <div key={index} className="list-item">
+                      <input
+                        value={`${location}`}
+                        type="checkbox"
+                        id={`location-${index}`}
+                        onChange={handleChange}
+                      />
+                      <label
+                        htmlFor={`location-${index}`}
+                        style={{ marginLeft: "8px" }}
+                      >
+                        {normalizeWord(location)}
+                      </label>
+                    </div>
+                  ))}
+                </div>
               )}
-              <h5> Location </h5>
-            </button>
-
-            {isOpen && (
-              <div class="list">
-                {locations.map((location, index) => (
-                  <div key={index} className="list-item">
-                    <input
-                      value={`${location}`}
-                      type="checkbox"
-                      id={`location-${index}`}
-                      onChange={handleChange}
-                    />
-                    <label
-                      htmlFor={`location-${index}`}
-                      style={{ marginLeft: "8px" }}
-                    >
-                      {normalizeWord(location)}
-                    </label>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-          {/* end of filter */}
-
-          {/* start of filter */}
-          <div class="each-filter">
-            <button onClick={() => setIsOpen1((prev) => !prev)} class="button">
-              {!isOpen1 ? (
-                <img
-                  src="https://static.thenounproject.com/png/551749-200.png"
-                  style={{ width: "1.7vh", height: "1.2vh" }}
-                />
-              ) : (
-                <img
-                  src="https://static.thenounproject.com/png/1240272-200.png"
-                  style={{ width: "1.7vh", height: "1.2vh" }}
-                />
-              )}{" "}
-              <h5>Year</h5>
-            </button>
-
-            {isOpen1 && (
-              <div class="list">
-                {year.map((year, index) => (
-                  <div key={index} className="list-item">
-                    <input
-                      value={`${year}`}
-                      type="checkbox"
-                      id={`year-${index}`}
-                      onChange={handleChange}
-                    />
-                    <label
-                      htmlFor={`year-${index}`}
-                      style={{ marginLeft: "8px" }}
-                    >
-                      {year}
-                    </label>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-          {/* end of filter */}
-
-          {/* start of filter */}
-          <div class="each-filter">
-            <button onClick={() => setIsOpen2((prev) => !prev)} class="button">
-              {!isOpen2 ? (
-                <img
-                  src="https://static.thenounproject.com/png/551749-200.png"
-                  style={{ width: "1.7vh", height: "1.2vh" }}
-                />
-              ) : (
-                <img
-                  src="https://static.thenounproject.com/png/1240272-200.png"
-                  style={{ width: "1.7vh", height: "1.2vh" }}
-                />
-              )}{" "}
-              <h5>Month</h5>
-            </button>
-
-            {isOpen2 && (
-              <div class="list">
-                {month.map((month, index) => (
-                  <div key={index} className="list-item">
-                    <input
-                      value={`${month}`}
-                      type="checkbox"
-                      id={`month-${index}`}
-                      onChange={handleChange}
-                    />
-                    <label
-                      htmlFor={`month-${index}`}
-                      style={{ marginLeft: "8px" }}
-                    >
-                      {month}
-                    </label>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-          {/* end of filter */}
-
-          {/* start of filter */}
-          <div class="each-filter">
-            <button onClick={() => setIsOpen3((prev) => !prev)} class="button">
-              {!isOpen3 ? (
-                <img
-                  src="https://static.thenounproject.com/png/551749-200.png"
-                  style={{ width: "1.7vh", height: "1.2vh" }}
-                />
-              ) : (
-                <img
-                  src="https://static.thenounproject.com/png/1240272-200.png"
-                  style={{ width: "1.7vh", height: "1.2vh" }}
-                />
-              )}{" "}
-              <h5>Gift Type</h5>
-            </button>
-
-            {isOpen3 && (
-              <div class="list">
-                {giftType.map((giftType, index) => (
-                  <div key={index} className="list-item">
-                    <input
-                      value={`${giftType}`}
-                      type="checkbox"
-                      id={`giftType-${index}&nbsp;`}
-                      onChange={handleChange}
-                    />
-                    <label
-                      htmlFor={`giftType-${index}`}
-                      style={{ marginLeft: "8px" }}
-                    >
-                      {normalizeWord(giftType)}
-                    </label>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-          {/* end of filter */}
-
-          <div>
-            {/* <button class="apply-button" onClick={showFilters}>
-              {" "}
-              Show Filters{" "}
-            </button> */}
-            {/* {isDisplayed && currFilters} */}
-          </div>
-        </div>
-
-        {/* end of ALL filter */}
-
-        <div class="main-card-box">
-          <div className="createNewContainer">
-            <div className="SEARCH">
-              <div class="searchbar">
-                <TextField
-                  id="outlined-basic"
-                  onKeyDown={inputHandler}
-                  variant="outlined"
-                  label="Search"
-                  InputLabelProps={{
-                    sx: { color: "black", "&.Mui-focused": { color: "black" } },
-                  }}
-                />
-              </div>
             </div>
-            <select className="sortBy" value={selectedValue} onChange={sortBy}>
-              <option value="">Sort By</option>
-              <option value="az">A - Z</option>
-              <option value="za">Z - A</option>
-              <option value="old">Oldest - Newest</option>
-              <option value="new">Newest - Oldest</option>
-            </select>
-            <button className="createNew" onClick={handleNewChange}>
-              +
-            </button>
-          </div>
-          <div class="card-box-top">
-            {isDisplayed && (
-              <div class="filter-buttons-container">
-                {currFilters.map((filter, index) => (
-                  <button
-                    key={index}
-                    class="small-filter-button"
-                    onClick={() => removeFilter(filter)}
-                  >
-                    {filter} <span class="close-icon">x</span>
-                  </button>
-                ))}
-              </div>
-            )}
+            {/* end of filter */}
+
+            {/* start of filter */}
+            <div class="each-filter">
+              <button onClick={() => setIsOpen1((prev) => !prev)} class="button">
+                {!isOpen1 ? (
+                  <img
+                    src="https://static.thenounproject.com/png/551749-200.png"
+                    style={{ width: "1.7vh", height: "1.2vh" }}
+                  />
+                ) : (
+                  <img
+                    src="https://static.thenounproject.com/png/1240272-200.png"
+                    style={{ width: "1.7vh", height: "1.2vh" }}
+                  />
+                )}{" "}
+                <h5>Year</h5>
+              </button>
+
+              {isOpen1 && (
+                <div class="list">
+                  {year.map((year, index) => (
+                    <div key={index} className="list-item">
+                      <input
+                        value={`${year}`}
+                        type="checkbox"
+                        id={`year-${index}`}
+                        onChange={handleChange}
+                      />
+                      <label
+                        htmlFor={`year-${index}`}
+                        style={{ marginLeft: "8px" }}
+                      >
+                        {year}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {/* end of filter */}
+
+            {/* start of filter */}
+            <div class="each-filter">
+              <button onClick={() => setIsOpen2((prev) => !prev)} class="button">
+                {!isOpen2 ? (
+                  <img
+                    src="https://static.thenounproject.com/png/551749-200.png"
+                    style={{ width: "1.7vh", height: "1.2vh" }}
+                  />
+                ) : (
+                  <img
+                    src="https://static.thenounproject.com/png/1240272-200.png"
+                    style={{ width: "1.7vh", height: "1.2vh" }}
+                  />
+                )}{" "}
+                <h5>Month</h5>
+              </button>
+
+              {isOpen2 && (
+                <div class="list">
+                  {month.map((month, index) => (
+                    <div key={index} className="list-item">
+                      <input
+                        value={`${month}`}
+                        type="checkbox"
+                        id={`month-${index}`}
+                        onChange={handleChange}
+                      />
+                      <label
+                        htmlFor={`month-${index}`}
+                        style={{ marginLeft: "8px" }}
+                      >
+                        {month}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {/* end of filter */}
+
+            {/* start of filter */}
+            <div class="each-filter">
+              <button onClick={() => setIsOpen3((prev) => !prev)} class="button">
+                {!isOpen3 ? (
+                  <img
+                    src="https://static.thenounproject.com/png/551749-200.png"
+                    style={{ width: "1.7vh", height: "1.2vh" }}
+                  />
+                ) : (
+                  <img
+                    src="https://static.thenounproject.com/png/1240272-200.png"
+                    style={{ width: "1.7vh", height: "1.2vh" }}
+                  />
+                )}{" "}
+                <h5>Gift Type</h5>
+              </button>
+
+              {isOpen3 && (
+                <div class="list">
+                  {giftType.map((giftType, index) => (
+                    <div key={index} className="list-item">
+                      <input
+                        value={`${giftType}`}
+                        type="checkbox"
+                        id={`giftType-${index}&nbsp;`}
+                        onChange={handleChange}
+                      />
+                      <label
+                        htmlFor={`giftType-${index}`}
+                        style={{ marginLeft: "8px" }}
+                      >
+                        {normalizeWord(giftType)}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {/* end of filter */}
+
+            <div>
+              {/* <button class="apply-button" onClick={showFilters}>
+                {" "}
+                Show Filters{" "}
+              </button> */}
+              {/* {isDisplayed && currFilters} */}
+            </div>
           </div>
 
-          {/*this is where the cards will go */}
-          <MultipleFlipCards
-            input={inputText}
-            filters={currFilters}
-            data={data}
-          />
-          {newIsOpen ? (
-            <NewPopup
-              newIsOpen={newIsOpen}
-              setnewIsOpen={setnewIsOpen}
-              prevData={data}
-              setData={setData}
-              giftType={giftType}
+          {/* end of ALL filter */}
+
+          <div class="main-card-box">
+            <div className="createNewContainer">
+              <div className="SEARCH">
+                <div class="searchbar">
+                  <TextField
+                    id="outlined-basic"
+                    onKeyDown={inputHandler}
+                    variant="outlined"
+                    label="Search"
+                    InputLabelProps={{
+                      sx: { color: "black", "&.Mui-focused": { color: "black" } },
+                    }}
+                  />
+                </div>
+              </div>
+              <select className="sortBy" value={selectedValue} onChange={sortBy}>
+                <option value="">Sort By</option>
+                <option value="az">A - Z</option>
+                <option value="za">Z - A</option>
+                <option value="old">Oldest - Newest</option>
+                <option value="new">Newest - Oldest</option>
+              </select>
+              <button className="createNew" onClick={handleNewChange}>
+                +
+              </button>
+            </div>
+            <div class="card-box-top">
+              {isDisplayed && (
+                <div class="filter-buttons-container">
+                  {currFilters.map((filter, index) => (
+                    <button
+                      key={index}
+                      class="small-filter-button"
+                      onClick={() => removeFilter(filter)}
+                    >
+                      {filter} <span class="close-icon">x</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/*this is where the cards will go */}
+            <MultipleFlipCards
+              input={inputText}
+              filters={currFilters}
+              data={data}
             />
-          ) : (
-            <></>
-          )}
+            {newIsOpen ? (
+              <NewPopup
+                newIsOpen={newIsOpen}
+                setnewIsOpen={setnewIsOpen}
+                prevData={data}
+                setData={setData}
+                giftType={giftType}
+              />
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
-      </div>
-      {/* end bottom of page */}
+        {/* end bottom of page */}
+      </AuthenticatedTemplate>
+      <UnauthenticatedTemplate>
+        <LoginPage Component={MainComPart}/>
+      </UnauthenticatedTemplate>
     </div>
   );
 }
