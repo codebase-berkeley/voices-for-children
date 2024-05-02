@@ -78,6 +78,7 @@ function MainComPart() {
     if (e.key === "Enter") {
       // Convert input to lowercase
       var lowercase = e.target.value.toLowerCase();
+
       setInputText(lowercase);
       // Perform search with the lowercase value
       console.log("Search triggered with:", lowercase);
@@ -89,14 +90,22 @@ function MainComPart() {
   function handleChange(e) {
     if (e.target.checked) {
       // If the checkbox is checked, add its value to the currFilters array
-      setCurrFilters([...currFilters, e.target.value.toLowerCase()]);
+      console.log("e target CLASS", e.target.className)
+      console.log(e.target.className == "location-filter")
+      const filter = {
+        filtername: e.target.value.toLowerCase(),
+        filtertype: e.target.className
+      }
+      console.log(filter)
+       
+      setCurrFilters([...currFilters, filter]);
     } else {
       // If the checkbox is unchecked, remove its value from the currFilters array
       setCurrFilters(
         currFilters.filter((item) => item !== e.target.value.toLowerCase())
       );
     }
-    console.log(currFilters);
+    console.log("current filters", currFilters);
   }
 
   //removes filter when it is clicked in the card box area
@@ -190,6 +199,7 @@ function MainComPart() {
                       value={`${location}`}
                       type="checkbox"
                       id={`location-${index}`}
+                      className = "location-filter"
                       onChange={handleChange}
                     />
                     <label
@@ -231,6 +241,7 @@ function MainComPart() {
                       type="checkbox"
                       id={`year-${index}`}
                       onChange={handleChange}
+                      className = "year-filter"
                     />
                     <label
                       htmlFor={`year-${index}`}
@@ -271,6 +282,7 @@ function MainComPart() {
                       type="checkbox"
                       id={`month-${index}`}
                       onChange={handleChange}
+                      className = "month-filter"
                     />
                     <label
                       htmlFor={`month-${index}`}
@@ -311,6 +323,7 @@ function MainComPart() {
                       type="checkbox"
                       id={`giftType-${index}&nbsp;`}
                       onChange={handleChange}
+                      className = "gifttype-filter"
                     />
                     <label
                       htmlFor={`giftType-${index}`}
