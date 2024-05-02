@@ -50,7 +50,15 @@ function InventoryEntry(props) {
       // } else {
       //   throw new Error('Failed to delete the item');
       // }
-      return response.json();
+      if (!response.ok) {
+        const text = await response.text();  // Get response as text
+        throw new Error('Failed to delete the item: ' + text);
+      }
+      
+      const data = await response.json();
+      console.log('Item successfully deleted', data);
+
+      // return data;
     } catch (error) {
       console.error('Error deleting item:', error);
     }
