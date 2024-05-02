@@ -4,7 +4,7 @@ import './entrypopup.css';
 import { useState } from 'react';
 
 
-function EntryPopup({ onClose }) {
+function EntryPopup(props) {
     // Define states for each form input
     const [name, setName] = useState('');
     const [donor, setDonor] = useState('');
@@ -18,7 +18,6 @@ function EntryPopup({ onClose }) {
         
         var instock = amt > 0 ? 'Yes' : 'No';
         console.log("amount", amt)
-        console.log("TRYING TO POST INVISIBLE ERROR", name, donor, type);
         const response = await fetch("/api/postDonation", {
             method: "POST",
             headers: {
@@ -34,12 +33,22 @@ function EntryPopup({ onClose }) {
                 instock
             }),
         });
-        return response.json();
+        // return response.json();
+        const data = await response.json();
+        if (data.success) {
+            props.onDataSubmitted();  // Call this on successful post
+            handlePopupClose();
+        } else {
+            console.error('Failed to post data:', data.message);
+        }
+        
     };
 
     const handlePopupClose = () => {
-        onClose();
+        props.onClose();
     };
+
+ 
 
     return (
         <div className="popup">
@@ -65,7 +74,7 @@ function EntryPopup({ onClose }) {
                     <span className="popup-text">Description</span>
                     <input type="text" placeholder="Thank you details, item usage, etc." id="desc" name="thanked" value={desc} onChange={e => setDesc(e.target.value)}></input>
                 </div>
-                <button className="submit" id="submit" type="submit">submit button</button>
+                <button className="submit" id="submit" type="submit">submit</button>
             </form>
         </div>
     );

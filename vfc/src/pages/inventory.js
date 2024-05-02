@@ -14,6 +14,12 @@ function Inventory() {
   const [sortBy, setSortBy] = useState("");
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
+  const [refreshData, setRefreshData] = useState(false);
+  
+  const handleDataSubmitted = () => {
+    setRefreshData(!refreshData);  // Toggle to trigger useEffect
+  };
+
   var currSearchKey = null;
   var currSearchObject = null;
   var lastSearch = null;
@@ -42,7 +48,7 @@ function Inventory() {
       }
     };
     fetchData();
-  }, []);
+  }, [refreshData]);
 
   // const [seen, setSeen] = useState(false);
   // async function show() {
@@ -268,7 +274,7 @@ function Inventory() {
             ))}
           </div>
           <div className="create-form">
-            {popupVisible && <EntryPopup onClose={togglePopup} />}
+            {popupVisible && <EntryPopup onClose={togglePopup} onDataSubmitted={handleDataSubmitted}/>}
             {/* {seen && <EntryPopup  />} */}
           </div>
         </div>
