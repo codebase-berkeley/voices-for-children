@@ -19,6 +19,12 @@ function MainComPart() {
   const [isOpen3, setIsOpen3] = useState(false);
   const locations = ["San Diego", "Riverside"];
   const [data, setData] = useState([]);
+  const [stagData, setStagData] = useState([]);
+
+  const [locFilters, setLocFilters] = useState([]);
+  const [monthFilters, setMonthFilters] = useState([]);
+  const [yearFilters, setYearFilters] = useState([]);
+  const [giftFilters, setGiftFilters] = useState([]);
 
   const currentYear = new Date().getFullYear();
   const year = [];
@@ -37,6 +43,7 @@ function MainComPart() {
         console.log("get donation api response", jsonData);
         console.log("jsonData", jsonData)
         setData(jsonData);
+        setStagData(jsonData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -99,16 +106,31 @@ function MainComPart() {
       console.log(filter)
        
       setCurrFilters([...currFilters, filter]);
+      if (filter.filtertype == "location-filter") {
+        setLocFilters([...locFilters, filter.filtername])
+      } else if (filter.filtertype == "year-filter") {
+        setYearFilters([...yearFilters, filter.filtername])
+      } else if (filter.filtertype == "month-filter") {
+        setMonthFilters([...giftFilters, filter.filtername])
+      } else if (filter.filtertype == "gifttype-filter") {
+        console.log("appending to gift filters", filter.filtername)
+        setGiftFilters([...giftFilters, filter.filtername])
+      }
+
+      console.log("location array: ", locFilters)
+      console.log("year array: ", yearFilters)
+      console.log("month array: ", monthFilters)
+      console.log("gift array: ", giftFilters)
+
+
     } else {
       // If the checkbox is unchecked, remove its value from the currFilters array
-      setCurrFilters(
-        currFilters.filter((item) => item !== e.target.value.toLowerCase())
-      );
+      setCurrFilters(prevFilters => prevFilters.filter(item => item.filtername !== e.target.value.toLowerCase()));
     }
     console.log("current filters", currFilters);
   }
 
-  //removes filter when it is clicked in the card box area
+  //removes filter when it is clicked in the card box area  
   const removeFilter = (filterToRemove) => {
     setCurrFilters(currFilters.filter((filter) => filter !== filterToRemove));
   };
@@ -395,9 +417,15 @@ function MainComPart() {
           <MultipleFlipCards
             input={inputText}
             filters={currFilters}
+            locFilters={locFilters}
+            giftFilters={giftFilters}
+            yearFilters={yearFilters}
+            monthFilters={monthFilters}
             data={data}
             setData={setData}
+            stagData={stagData}
           />
+
           {newIsOpen ? (
             <NewPopup
               newIsOpen={newIsOpen}

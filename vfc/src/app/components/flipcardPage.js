@@ -21,12 +21,26 @@ function MultipleFlipCards(props) {
         newDate
     ];
 
+    const filterArrays = [
+      props.locFilters,
+      props.giftFilters,
+      props.yearFilters,
+      props.monthFilters
+    ]
+
     // Return true if there are no filters, else check each filter on all relevant attributes
-    return props.filters.length === 0 || props.filters.every((filter) => {
-      console.log(filter);
-        const lowerCaseFilter = filter.filtername.toLowerCase();
-        console.log("lowere case filter", lowerCaseFilter);
-        return cardAttributes.some(attribute => attribute.includes(lowerCaseFilter));
+    console.log("gift filters", props.giftFilters);
+    return props.filters.length === 0 || filterArrays.every((filter) => {
+      console.log("filter",filter);
+      return filter.every((attribute) => {
+        // console.log("attribute", attribute);
+        const lowerCaseAttribute = attribute.toLowerCase();
+        //console.log("attribute", attribute);
+       // console.log("lowere case filter", lowerCaseAttribute);
+        console.log("cardAttributes", cardAttributes)
+        console.log("lowerCaseAttribute", lowerCaseAttribute)
+        return cardAttributes.some(cardAttribute => cardAttribute.includes(lowerCaseAttribute));
+      })
     });
 });
   // Filters through data by searching
