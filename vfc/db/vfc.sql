@@ -43,6 +43,9 @@ CREATE TABLE communityPartnerships (
     image VARCHAR(255)
 );
 
+ALTER TABlE communityPartnerships
+ALTER COLUMN image TYPE BYTEA USING image::bytea;
+
 INSERT INTO communityPartnerships(name, location, citystate, gifttype, date, email, poc, phone, link, image) VALUES ('Codebase', 'San Leandro', 'California', 'tickets', '2003-01-17', 'dom@gmail.com', 'Dom', '5103164766', 'https://google.com', '/assets/aqua.jpg');
 INSERT INTO communityPartnerships(name, location, citystate, gifttype, date, email, poc, phone, link, image) VALUES ('Codebase', 'San Leandro', 'California', 'tickets', '2003-01-17', 'dom@gmail.com', 'Dom', '5103164766', 'https://google.com', '/assets/aqua.jpg');
 

@@ -43,17 +43,6 @@ export default function Edit({
 
     console.log("before edit data: ", data);
 
-    // Change the input date to 07/22/2005 instead of 2005-07-22
-    const inputDate = event.target.date ? event.target.date.value : "";
-
-    // Check if inputDate is not empty before splitting
-    const parts = inputDate ? inputDate.split("-") : ["", "", ""];
-
-    // Format the date if it's not empty, otherwise set it to an empty string
-    const formattedDate = inputDate
-      ? `${parts[1]}/${parts[2]}/${parts[0]}`
-      : "";
-
     const newCard = {
       id: id,
       name: event.target.companyName.value,
@@ -63,7 +52,7 @@ export default function Edit({
       phone: event.target.phone.value,
       email: event.target.email.value,
       poc: event.target.poc.value,
-      date: formattedDate,
+      date: event.target.date.value,
       gifttype: event.target.giftType.value,
       link: event.target.link.value,
     };
@@ -116,7 +105,7 @@ export default function Edit({
           name: event.target.companyName.value,
           location: event.target.location.value,
           citystate: event.target.cityState.value,
-          date: formattedDate,
+          date: event.target.date.value,
           email: event.target.email.value,
           poc: event.target.poc.value,
           phone: event.target.phone.value,

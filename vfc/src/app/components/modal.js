@@ -21,6 +21,10 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
     setEdit(!edit);
   };
 
+  const parts = props.date ? props.date.split("-") : ["", "", ""];
+
+  const formattedDate = props.date ? `${parts[1]}/${parts[2]}/${parts[0]}` : "";
+
   async function deleteCard() {
     try {
       const response = await fetch("/api/deletePartnership", {
@@ -56,13 +60,13 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
           </div>
         </div>
         <div className="titleContainer">
-          <div className="company">CONTACT INFO : {props.company}</div>
+          <div className="company">Contact info : {props.company}</div>
         </div>
         <div className="middle">
           <div className="poc">Point of Contact : {props.poc}</div>
           <div className="email">Email : {props.email}</div>
           <div className="phone-number">Phone Number : {props.phone}</div>
-          <div className="date-joined">Date Joined : {props.date}</div>
+          <div className="date-joined">Date Joined : {formattedDate}</div>
           <div className="gifts">Gifts : {props.giftType}</div>
           <div className="modalAddress">Address : {props.location}</div>
           <div className="cityState">City/State : {props.cityState}</div>
@@ -70,7 +74,7 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
             Ticket Log Link :{" "}
             <a
               id="logLink"
-              href={"http://" + props.link}
+              href={props.link}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -104,6 +108,7 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
           data={props.data}
           setData={props.setData}
           handleClick={handleClick}
+          image={props.image}
         />
       ) : (
         <></>

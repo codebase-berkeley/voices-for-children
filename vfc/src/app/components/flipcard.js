@@ -25,6 +25,11 @@ export default function FlipCard(props) {
 
   let image = props.image;
 
+
+  const parts = props.date ? props.date.split("-") : ["", "", ""];
+
+  const formattedDate = props.date ? `${parts[1]}/${parts[2]}/${parts[0]}` : "";
+
   return (
     <div>
       <ReactCardFlip>
@@ -47,7 +52,7 @@ export default function FlipCard(props) {
               </div>
               <div className="iconWrapper">
                 <Image src={calendarIcon} className="calendarIcon" />
-                <div>{props.date}</div>
+                <div>{formattedDate}</div>
               </div>
             </div>
             <div className="bottom-bottom-row">
