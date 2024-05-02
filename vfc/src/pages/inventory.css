@@ -39,16 +39,17 @@
     margin-left: 30px;
 }
 
-#search {
-    background-color: lightgray;
-    border-radius: 20px;
+#outlined-basic {
+    background-color: white;
+    border-radius: 25px;
+    border-color: black;
     width: 50vw;
-    height: 2.5vw;
+    height: 1vw;
     padding: 10px;
 }
 
 #search::placeholder {
-    font-size: 13px;
+    font-size: 10px;
     opacity: 85%;
     font-style: italic;
 }
