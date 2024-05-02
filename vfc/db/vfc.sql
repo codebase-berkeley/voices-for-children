@@ -21,6 +21,7 @@ GRANT ALL PRIVILEGES ON DATABASE vfc TO root;
 
 CREATE TABLE inkindDonations
 (
+  key SERIAL PRIMARY KEY
   donor VARCHAR(80),
   item_donated VARCHAR(100),
   item_type VARCHAR(80),
