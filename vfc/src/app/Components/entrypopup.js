@@ -42,9 +42,9 @@ function EntryPopup ({ onClose }) {
         return (
                 <div className="popup">
                     <div className="create-new-bar">
-                        <b><h1 className="create-new-text">New Donation</h1></b>
+                        <b><div className="create-new-text">New Donation</div></b>
                         <div className="close">
-                            <button id="x" onClick={handlePopupClose}><img src="apple-touch-icon.png" alt="x img"></img></button>
+                            <button id="x" onClick={handlePopupClose}><img src="apple-touch-icon.png" alt="x img" id="img"></img></button>
                         </div>
                     </div>
                     <form onSubmit={postData}>

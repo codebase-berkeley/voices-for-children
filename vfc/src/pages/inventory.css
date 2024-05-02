@@ -6,8 +6,8 @@
 
 
 #title {
-    font-size: 1.5vw;
-    font-weight: 600;
+    font-size: 1vw;
+    font-weight: 300;
 }
 
 @media screen and (max-width: 768px) {
@@ -37,14 +37,15 @@
     height: auto;
     align-content: flex-end;
     margin-left: 30px;
+    padding-bottom: 5px;
 }
 
-#outlined-basic {
+#search {
     background-color: white;
     border-radius: 25px;
     border-color: black;
     width: 50vw;
-    height: 1vw;
+    height: 2.5vw;
     padding: 10px;
 }
 
@@ -81,7 +82,7 @@
 } */
 
 .SELECT {
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     border-radius: 5px;
     width: 12vw;
     height: 55px;
@@ -119,7 +120,7 @@
 /* Create New Button */
 #create-new {
     border-radius: 26px;
-    background-color: #00aeffbf;
+    background-color: #68b5dabf;
     color: white;
     width: 10vw;
     height: 2.5vw;
@@ -129,15 +130,14 @@
 }
 
 #create-new {
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     border-radius: 5px;
     width: 12vw;
     height: 55px;
     padding: 5px;
-    background-color: #00aeffbf; 
+    background-color: #68b5dabf; 
     color: black; 
     font-size: 14px;
-    cursor: pointer; 
     margin-left: 20px;
 }
 
@@ -148,21 +148,6 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
 }
 
-/* Style for dropdown options */
-#create-new option {
-    background-color: white; /* Background color */
-    color: black; /* Text color */
-    font-size: 14px; /* Font size */
-}
-
-/* Style for dropdown arrow */
-#create-new::after {
-    content: "\25BC"; /* Unicode character for downward arrow */
-    position: absolute;
-    /* right: 10px; */
-    top: 50%;
-    transform: translateY(-50%);
-}
 
 
 
@@ -182,14 +167,19 @@
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
+    padding-bottom: 15px;
     flex-direction: row;
-    border-top: solid .1vh #8E8787;
     border-bottom: solid .1vh #8E8787;
-    height: 10vh;
+    height: 5vh;
     background-color: white;
     color: black;
     overflow: hidden;
+    font-size: 15px;
     /* margin-top: 0; */
+}
+
+.create-form {
+  
 }
 
 .inv-col-head {
@@ -198,8 +188,9 @@
     /* margin-left: 3vw; */
     /* opacity: default; */
     /* width: 10vw; */
-    font-style: bolder;
+    /* font-style: bold; */
     align-items: center;
+    font-size: 15px;
 }
 
 .table-form {
@@ -213,4 +204,12 @@
     width: 25vw;
 }
 
+.box {
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+
+}
 

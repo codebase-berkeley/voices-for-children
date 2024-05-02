@@ -207,8 +207,9 @@ function Donation() {
 
   return (
     <div>
-      <div className="bigContainer">
-        <Navbar buttonId={buttonId} setButtonId={setButtonId}></Navbar>
+      <Top></Top>
+      {/* <div className="bigContainer">
+        {/* <Navbar buttonId={buttonId} setButtonId={setButtonId}></Navbar> 
         <div className="inventoryContainer">
           <h1 className="name">In-Kind Donation</h1>
           <div className="flipSwitch">
@@ -237,10 +238,10 @@ function Donation() {
               >
                 Donation Log
               </button>
-            </Link> */}
+            </Link> 
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="inventory-page">
         <div className="search-wrapper">
           <div className="filterContainer">

@@ -48,7 +48,6 @@ function Inventory() {
   // async function show() {
   //     console.log("calling show");
   //     setSeen(!seen);
-  //     console.log(seen, "from inventory")
   // }
 
   const [inventoryData, setInventoryData] = useState([...originalData]);
@@ -167,17 +166,17 @@ function Inventory() {
                 ></input> */}
                 <div className="searchbar">
                   <TextField
-                    id="outlined-basic"
+                    id="search"
                     onChange={handleChange}
                     onKeyDown={(e) => handleKeyPress(e)}
-                    variant="outlined"
+                    // variant="outlined"
                     label="Search"
-                    InputLabelProps={{
-                      sx: {
-                        color: "black",
-                        "&.Mui-focused": { color: "black" },
-                      },
-                    }}
+                    // InputLabelProps={{
+                    //   sx: {
+                    //     color: "black",
+                    //     "&.Mui-focused": { color: "black" },
+                    //   },
+                    // }}
                   />
                 </div>
               </form>
@@ -251,6 +250,10 @@ function Inventory() {
               <div className="box">
                 <h2 id="title" className="inv-col-head">
                   Thanked
+                </h2>
+              </div>
+              <div className="box">
+                <h2 id="title" className="inv-col-head">
                 </h2>
               </div>
             </div>
