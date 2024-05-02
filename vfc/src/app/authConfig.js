@@ -45,9 +45,10 @@ export const msalConfig = {
         authority: b2cPolicies.authorities.signUpSignIn.authority, // Choose SUSI as your default authority.
         knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
         redirectUri: 'http://localhost:3000/donation', // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
-        postLogoutRedirectUri: 'http://localhost:3000/', // Indicates the page to navigate after logout.
+        postLogoutRedirectUri: 'https://localhost:3000/', // Indicates the page to navigate after logout.
         navigateToLoginRequestUrl: false, // If "true", will navigate back to the original request location before processing the auth code response.
-        authorityMetadata: b2cPolicies.authorityMetadata
+        authorityMetadata: b2cPolicies.authorityMetadata,
+        client_secret: "Sgp8Q~YV.ZFSxW6uexUT9FyzRtA.VPnoWo7.wcPB"
     },
     cache: {
         cacheLocation: 'sessionStorage', // Configures cache location. "sessionStorage" is more secure, but "localStorage" gives you SSO between tabs.
