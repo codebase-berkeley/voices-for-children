@@ -57,6 +57,7 @@ function InventoryEntry(props) {
       
       const data = await response.json();
       console.log('Item successfully deleted', data);
+      props.onDelete();
 
       // return data;
     } catch (error) {
