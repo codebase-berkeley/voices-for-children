@@ -21,7 +21,7 @@ GRANT ALL PRIVILEGES ON DATABASE vfc TO root;
 
 CREATE TABLE inkindDonations
 (
-  key SERIAL PRIMARY KEY
+  key SERIAL PRIMARY KEY,
   donor VARCHAR(80),
   item_donated VARCHAR(100),
   item_type VARCHAR(80),
@@ -32,7 +32,7 @@ CREATE TABLE inkindDonations
 
 );
 
-INSERT INTO inkinddonations(donor, item_donated, item_type, amount, date, thanked, stock) VALUES ('sasha', 'teddy', 'toys', 10, '2015-12-23', 'yes', 'yes');
+INSERT INTO inkindDonations(donor, item_donated, item_type, amount, date, thanked, stock) VALUES ('sasha', 'teddy', 'toys', 10, '2015-12-23', 'yes', 'yes');
 
 
 CREATE TABLE communityPartnerships(

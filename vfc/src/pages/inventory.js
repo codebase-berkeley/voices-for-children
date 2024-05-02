@@ -1,12 +1,12 @@
 "use client";
 import { Rowdies } from "next/font/google";
 import "./inventory.css";
-import InventoryEntry from "../app/Components/inventoryentry";
+import InventoryEntry from "../app/components/inventoryentry";
 // import { Link } from "react-router-dom";
-import EntryPopup from "../app/Components/entrypopup.js";
+import EntryPopup from "../app/components/entrypopup.js";
 import { useState, useEffect } from "react";
 import Navbar from "../app/Components/navbar";
-import Top from "../app/Components/top";
+import Top from "../app/components/top";
 import TextField from "@mui/material/TextField";
 
 function Inventory() {
@@ -14,6 +14,12 @@ function Inventory() {
   const [sortBy, setSortBy] = useState("");
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
+  const [refreshData, setRefreshData] = useState(false);
+
+  const handleDataSubmitted = () => {
+    setRefreshData(!refreshData);  // Toggle to trigger useEffect
+  };
+
   var currSearchKey = null;
   var currSearchObject = null;
   var lastSearch = null;
@@ -42,7 +48,7 @@ function Inventory() {
       }
     };
     fetchData();
-  }, []);
+  }, [refreshData]);
 
   // const [seen, setSeen] = useState(false);
   // async function show() {
@@ -267,11 +273,13 @@ function Inventory() {
                 amount={item.amount}
                 date={item.date}
                 thanked={item.thanked}
+                realKey = {item.key}
+                onDelete = {handleDataSubmitted}
               />
             ))}
           </div>
           <div className="create-form">
-            {popupVisible && <EntryPopup onClose={togglePopup} />}
+            {popupVisible && <EntryPopup onClose={togglePopup} onDataSubmitted={handleDataSubmitted}/>}
             {/* {seen && <EntryPopup  />} */}
           </div>
         </div>
