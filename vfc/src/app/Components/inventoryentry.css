@@ -51,23 +51,66 @@
 }
 
 
-.popup {
+.edit-popup {
     position: absolute;
-    background-color: rgb(214, 16, 16);
+    border: 1px solid black; /* Adds a black border */
     z-index: 10;
-    right: 5vh;
-  }
-  
-  .popup-button {
+    right: 5vh; /* Adjust this value if needed to align it better horizontally */
+    margin-bottom: 3vh; /* Moves the popup up; adjust this value as needed */
+    background-color: white; /* Ensures the popup stands out against any background */
+    padding: 5px; /* Adds some padding inside the popup */
+    border-radius: 5px; /* Optional: adds rounded corners */
+}
+
+.edit-popup-button {
+    display: flex;
+    flex-direction: column;
     margin: 2px;
     font-size: 12px;
-    width: 100%; 
-  }
-  
-  .action-button {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    background: linear-gradient(to right, red 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: background-position 0.1s ease-out;
+}
+
+.edit-popup-button:hover {
+    background-position: left bottom;
+}
+
+
+.action-button {
     padding: 3px 5px;
     font-size: 12px;
-  }
+}
+
+
+.delete-popup {
+    position: fixed; /* or 'absolute' depending on your layout */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vh; /* Adjust size as needed */
+    height: 10vh;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    background: white;
+    z-index: 100; /* Ensure it's above other content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirmation-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
   
   
   

@@ -3,8 +3,9 @@ import { useState } from "react";
 import React from "react";
 
 function InventoryEntry(props) {
-  const [isTooltipVisible, setIsTooltipVisible] = React.useState(false);
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const handleMouseEnter = () => {
     setIsTooltipVisible(true);
@@ -16,6 +17,13 @@ function InventoryEntry(props) {
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
+  };
+
+  const handleDelete = () => {
+    // Handle the deletion logic here
+    console.log("Item deleted");
+    setShowDeleteConfirm(false); // Close the delete confirmation popup
+    setShowPopup(false); // Close the main popup
   };
 
   return (
@@ -43,16 +51,22 @@ function InventoryEntry(props) {
       <div className="box">
         <button className="action-button" onClick={togglePopup}>...</button>
         {showPopup && (
-          <div className="popup">
-            <button className="popup-button" onClick={() => console.log('Edit clicked')}>Edit</button>
-            <button className="popup-button" onClick={() => console.log('Delete clicked')}>Delete</button>
-            <button className="popup-button" onClick={togglePopup}>Close</button>
+          <div className="edit-popup">
+            <button className="edit-popup-button" onClick={() => console.log('Edit clicked')}>Edit</button>
+            <button className="edit-popup-button" onClick={() => setShowDeleteConfirm(true)}>Delete</button>
+            <button className="edit-popup-button" onClick={togglePopup}>Close</button>
+          </div>
+        )}
+        {showDeleteConfirm && (
+          <div className="delete-popup">
+            <div className="delete-confirmation">
+              Are you sure you want to delete?
+              <button className="confirmation-button" onClick={handleDelete}>Yes</button>
+              <button className="confirmation-button" onClick={() => setShowDeleteConfirm(false)}>No</button>
+            </div>
           </div>
         )}
       </div>
-
-
-
     </div>
   );
 }
