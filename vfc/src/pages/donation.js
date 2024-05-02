@@ -210,7 +210,7 @@ function Donation() {
     <MsalProvider instance={msalInstance}>
       <div>
         <UnauthenticatedTemplate>
-          <LoginPage Component={Donation} />
+          <Login Component={Donation} />
         </UnauthenticatedTemplate>
         <AuthenticatedTemplate>
           <div className="bigContainer">
@@ -342,7 +342,6 @@ function Donation() {
               </div>
             </div>
           </div>
-          <LogoutButton />
         </AuthenticatedTemplate>
       </div>
     </MsalProvider>

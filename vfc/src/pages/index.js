@@ -7,6 +7,8 @@ import NewPopup from "../app/components/newPopup";
 import rawdata from "./rawdata.json";
 import Navbar from "../app/components/navbar";
 import { Nav } from "react-bootstrap";
+import Login from "./loginpage";
+import LogoutButton from "./loginpage";
 // Login imports
 import {
   PublicClientApplication,
@@ -395,7 +397,7 @@ function MainComPart() {
         {/* end bottom of page */}
       </AuthenticatedTemplate>
       <UnauthenticatedTemplate>
-        <LoginPage Component={MainComPart}/>
+        <Login Component={MainComPart}/>
       </UnauthenticatedTemplate>
     </div>
   );
