@@ -5,13 +5,13 @@ import { useState } from 'react';
 
 function EntryPopup ({ onClose }) {
         
-        const postData = async () => {  
-            var name = document.getElementById("name").value;
-            var donor = document.getElementById("donor").value;
-            var type = document.getElementById("type").value;
-            var amt = document.getElementById("amt").value;
-            var date = document.getElementById("date").value;
-            var desc = document.getElementById("desc").value;
+        const postData = async (event) => {  
+            var name = event.target.name.value;
+            var donor = document.donor.value;
+            var type = document.type.value;
+            var amt = document.amt.value;
+            var date = document.date.value;
+            var desc = document.thanked.value;
             var instock = null;
             if (amt > 0) {
                 instock = 'Yes';
@@ -47,18 +47,18 @@ function EntryPopup ({ onClose }) {
                             <button id="x" onClick={handlePopupClose}><img src="apple-touch-icon.png" alt="x img"></img></button>
                         </div>
                     </div>
-                    <form>
-                        <input type="text" placeholder="Donation Name" id="names"></input>
-                        <input type="text" placeholder="Donor" id="donor"></input>
+                    <form onSubmit={postData}>
+                        <input type="text" placeholder="Donation Name" id="name" name="name"></input>
+                        <input type="text" placeholder="Donor" id="donor" name="donor"></input>
                         <div className="form-container">
-                            <input type="text" placeholder="Donation Type" id="type"></input>
-                            <input type="text" placeholder="Amount" id="amt"></input>
-                            <input type="date" placeholder="Date" id="dates"></input>
+                            <input type="text" placeholder="Donation Type" id="type" name="type"></input>
+                            <input type="text" placeholder="Amount" id="amt" name="amt"></input>
+                            <input type="date" placeholder="Date" id="date" name="date"></input>
                         </div>
                         <div className="desc-container">
                             <span className="popup-text">Description</span>
-                            <input type="text" placeholder="Thank you details, item usage, etc." id="desc"></input>
-                            <div className="submit"><input type="submit" id = "submit" onClick={postData}></input></div>
+                            <input type="text" placeholder="Thank you details, item usage, etc." id="desc" name="thanked"></input>
+                            <div className="submit"><input type="submit" id = "submit"></input></div>
                         </div>
                     </form>
                 </div>  
