@@ -12,10 +12,11 @@ import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
+import Donation from "./donation";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
-function Login() {
+function Login( {Component} ) {
   const isAuthenticated = useIsAuthenticated();
   const { instance, accounts, inProgress } = useMsal();
   const [accountDetails, setAccountDetails] = useState(null);
@@ -33,7 +34,7 @@ function Login() {
 
   async function handleLogin() {
     console.log("accounts", instance);
-    console.log("this one's for Sasha");
+    console
 
     // await instance.loginPopup;
 
@@ -67,40 +68,37 @@ function Login() {
     }
   }
   return (
-    <div className="login">
-      {" "}
-      <div class="logo">
-        <img
-          src="https://www.speakupnow.org/wp-content/uploads/2021/05/voices-for-children-logo-color.png"
-          alt="My Image Description"
-          style={{
-            display: "flex",
-            width: "20vh",
-            height: "auto",
-          }}
-        />
-      </div>
-      <div className="login-container">
-        <AuthenticatedTemplate className="login-form">
-          <h6>You're logged in!</h6>
-
-          <button onClick={() => handleLogout()}>Logout</button>
-        </AuthenticatedTemplate>
-
+      <div className="login">
         <UnauthenticatedTemplate>
-          <h6>You're logged out!</h6>
+          {" "}
+          <div class="logo">
+            <img
+              src="https://www.speakupnow.org/wp-content/uploads/2021/05/voices-for-children-logo-color.png"
+              alt="My Image Description"
+              style={{
+                display: "flex",
+                width: "20vh",
+                height: "auto",
+              }}
+            />
+          </div>
+          <div className="login-container">
+            <h6>You're logged out!</h6>
 
-          <button onClick={() => sasha()}>Login</button>
+            <button onClick={() => sasha()}>Login</button>
+          </div>
         </UnauthenticatedTemplate>
+        <AuthenticatedTemplate>
+          <Component />
+        </AuthenticatedTemplate>
       </div>
-    </div>
   );
 }
 
 function LoginPage() {
   return (
     <MsalProvider instance={msalInstance}>
-      <Login />
+      <Login Component={Donation}/>
     </MsalProvider>
   );
 }

@@ -6,6 +6,7 @@ import Top from "../app/Components/top";
 import Navbar from "../app/Components/navbar";
 // import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
+import Login from "./loginpage";
 
 // Login imports
 import {
@@ -19,6 +20,7 @@ import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
+import LoginPage from "./loginpage";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -207,7 +209,7 @@ function Donation() {
     <MsalProvider instance={msalInstance}>
       <div>
         <UnauthenticatedTemplate>
-          You are currently not logged in!
+          <Login />
         </UnauthenticatedTemplate>
         <AuthenticatedTemplate>
           <div className="bigContainer">
