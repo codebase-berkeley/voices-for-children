@@ -47,7 +47,7 @@ export default function Edit({
     const newCard = {
       id: id,
       name: event.target.companyName.value,
-      image: "/assets/aqua.jpg",
+      // image: "/assets/aqua.jpg",
       location: event.target.location.value,
       citystate: event.target.cityState.value,
       phone: event.target.phone.value,
@@ -78,7 +78,7 @@ export default function Edit({
       //WHEN THERE IS NO IMAGE SET DEFAULT AQUA
     } else {
       // Handle the case where no image is provided
-      newCard.image = "/assets/aqua.jpg"; // Set a default image path
+      // newCard.image = "/assets/aqua.jpg"; // Set a default image path
       console.log("edit card: ", newCard);
       const index = data.findIndex((card) => card.id === id);
       console.log("edit index: ", index);

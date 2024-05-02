@@ -15,39 +15,7 @@ export default function NewPopup({
   const submitForm = async (event) => {
     event.preventDefault();
 
-    // Change the input date to 07/22/2005 instead of 2005-07-22
-    const inputDate = event.target.date ? event.target.date.value : "";
-
-    // Check if inputDate is not empty before splitting
-    const parts = inputDate ? inputDate.split("-") : ["", "", ""];
-
-    // Format the date if it's not empty, otherwise set it to an empty string
-    const formattedDate = inputDate
-      ? `${parts[1]}/${parts[2]}/${parts[0]}`
-      : "";
-
     const reader = new FileReader();
-    // const locImg = event.target.locationImage.files[0];
-
-    // // USE THIS PART OF THE CODE TO CHANGE THE IMAGE
-    // if (locImg) {
-    //   // Read and process the file
-    //   reader.onloadend = () => {
-    //     newCard.image = reader.result; // If image uploaded, change location image
-    //     setData((prevData) => [...prevData, newCard]);
-    //     setnewIsOpen(false);
-    //     console.log(newCard);
-    //   };
-    //   reader.readAsDataURL(locImg);
-    //   //WHEN THERE IS NO IMAGE SET DEFAULT AQUA
-    // } else {
-    //   // Handle the case where no image is provided
-    //   newCard.image = "/assets/aqua.jpg"; // Set a default image path
-    //   setData((prevData) => [...prevData, newCard]);
-    //   setnewIsOpen(false);
-    // }
-
-    // console.log("newCard:" + newCard);
 
     try {
       // Fetch data here
