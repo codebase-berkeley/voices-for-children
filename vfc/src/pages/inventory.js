@@ -271,6 +271,7 @@ function Inventory() {
                 date={item.date}
                 thanked={item.thanked}
                 realKey = {item.key}
+                onDelete = {handleDataSubmitted}
               />
             ))}
           </div>
