@@ -42,6 +42,8 @@ img {
     display: flex;
     padding: 30px;
     flex-direction: column;
+    justify-content: left;
+    align-items: left;
 }
 
 .name {
@@ -56,20 +58,21 @@ img {
 }
 
 .BUTTON {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 15px;
     color: gray;
-    padding-right: 20px;
-    border-bottom: 3px rgba(128, 128, 128, 0.5) solid;
+    font-weight: 200px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px rgba(128, 128, 128, 0.5) solid;
 }
 
 .BUTTON:hover {
     border-color: black;
     color: black; 
-    font-weight: bold; 
 }
 
 #clicked {
     color: black;
-    border-bottom: 3px black solid;
+    border-bottom: 2px black solid;
 }
