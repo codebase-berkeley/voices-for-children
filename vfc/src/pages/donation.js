@@ -6,9 +6,21 @@ import Top from "../app/Components/top";
 import Navbar from "../app/Components/navbar";
 // import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
-import axios from "axios";
-import handler from "./api/hello";
-import Link from 'next/link';
+
+// Login imports
+import {
+  PublicClientApplication,
+  EventType,
+  InteractionStatus,
+} from "@azure/msal-browser";
+import { MsalProvider, useMsal, useIsAuthenticated } from "@azure/msal-react";
+import { authScopes, msalConfig } from "../app/authConfig";
+import {
+  AuthenticatedTemplate,
+  UnauthenticatedTemplate,
+} from "@azure/msal-react";
+
+const msalInstance = new PublicClientApplication(msalConfig);
 
 function Donation() {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -192,137 +204,144 @@ function Donation() {
   console.log(buttonId);
 
   return (
-    <div>
-      <div className="bigContainer">
-        <Navbar buttonId={buttonId} setButtonId={setButtonId}></Navbar>
-        <div className="inventoryContainer">
-          <h1 className="name">In-Kind Donation</h1>
-          <div className="flipSwitch">
-            {/* <Link
-              className="link"
-              style={{ textDecoration: "none" }}
-              to="/home"
-            >
-              <button
-                className="BUTTON"
-                id={buttonId === "Inventory" ? "clicked" : null}
-                onClick={() => handleClick("Inventory")}
-              >
-                Inventory
-              </button>
-            </Link>
-            <Link
-              className="link"
-              style={{ textDecoration: "none" }}
-              to="/donation_log"
-            >
-              <button
-                className="BUTTON"
-                id={buttonId === "Donation_log" ? "clicked" : null}
-                onClick={() => handleClick("Donation_log")}
-              >
-                Donation Log
-              </button>
-            </Link> */}
-          </div>
-        </div>
-      </div>
-      <div className="inventory-page">
-        <div className="search-wrapper">
-          <div className="filterContainer">
-            <div className="search">
-              <form>
-                {/* <input
-                  type="text"
-                  value={search}
-                  onChange={handleChange}
-                  onKeyPress={(e) => handleKeyPress(e)}
-                  placeholder="Search..."
-                  id="search"
-                ></input> */}
-                <div className="searchbar">
-                  <TextField
-                    id="outlined-basic"
-                    onChange={handleChange}
-                    onKeyDown={(e) => handleKeyPress(e)}
-                    variant="outlined"
-                    label="Search"
-                    InputLabelProps={{
-                      sx: {
-                        color: "black",
-                        "&.Mui-focused": { color: "black" },
-                      },
-                    }}
-                  />
-                </div>
-              </form>
-            </div>
-            <div className="filter-wrappers">
-              <div className="filter-by">
-                <select
-                  value={filter}
-                  name="filter-by"
-                  // id="filter"
-                  className="SELECT"
-                  placeholder="Filter By"
-                  onChange={(e) => handleFilter(e)}
+    <MsalProvider instance={msalInstance}>
+      <div>
+        <UnauthenticatedTemplate>
+          You are currently not logged in!
+        </UnauthenticatedTemplate>
+        <AuthenticatedTemplate>
+          <div className="bigContainer">
+            <Navbar buttonId={buttonId} setButtonId={setButtonId}></Navbar>
+            <div className="inventoryContainer">
+              <h1 className="name">In-Kind Donation</h1>
+              <div className="flipSwitch">
+                {/* <Link
+                  className="link"
+                  style={{ textDecoration: "none" }}
+                  to="/home"
                 >
-                  <option value="">Filter By</option>
-                  <option value="Tickets">Tickets</option>
-                  <option value="Toys">Toys</option>
-                  <option value="Electronics">Electronics</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div className="sort-by">
-                <select name="sort-by" className="SELECT" onChange={handleSort}>
-                  <option value="">Sort By</option>
-                  <option value="sort">Name</option>
-                  <option value="item_type">Item Type</option>
-                  <option value="amount">Amount</option>
-                  <option value="stock">In Stock</option>
-                </select>
+                  <button
+                    className="BUTTON"
+                    id={buttonId === "Inventory" ? "clicked" : null}
+                    onClick={() => handleClick("Inventory")}
+                  >
+                    Inventory
+                  </button>
+                </Link>
+                <Link
+                  className="link"
+                  style={{ textDecoration: "none" }}
+                  to="/donation_log"
+                >
+                  <button
+                    className="BUTTON"
+                    id={buttonId === "Donation_log" ? "clicked" : null}
+                    onClick={() => handleClick("Donation_log")}
+                  >
+                    Donation Log
+                  </button>
+                </Link> */}
               </div>
             </div>
           </div>
-        </div>
-        <div className="table-form">
-          <div className="inventory-wrapper">
-            <div className="inventory-header">
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Name
-                </h2>
-              </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Type
-                </h2>
-              </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Amount
-                </h2>
-              </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  In Stock
-                </h2>
+          <div className="inventory-page">
+            <div className="search-wrapper">
+              <div className="filterContainer">
+                <div className="search">
+                  <form>
+                    {/* <input
+                      type="text"
+                      value={search}
+                      onChange={handleChange}
+                      onKeyPress={(e) => handleKeyPress(e)}
+                      placeholder="Search..."
+                      id="search"
+                    ></input> */}
+                    <div className="searchbar">
+                      <TextField
+                        id="outlined-basic"
+                        onChange={handleChange}
+                        onKeyDown={(e) => handleKeyPress(e)}
+                        variant="outlined"
+                        label="Search"
+                        InputLabelProps={{
+                          sx: {
+                            color: "black",
+                            "&.Mui-focused": { color: "black" },
+                          },
+                        }}
+                      />
+                    </div>
+                  </form>
+                </div>
+                <div className="filter-wrappers">
+                  <div className="filter-by">
+                    <select
+                      value={filter}
+                      name="filter-by"
+                      // id="filter"
+                      className="SELECT"
+                      placeholder="Filter By"
+                      onChange={(e) => handleFilter(e)}
+                    >
+                      <option value="">Filter By</option>
+                      <option value="Tickets">Tickets</option>
+                      <option value="Toys">Toys</option>
+                      <option value="Electronics">Electronics</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div className="sort-by">
+                    <select name="sort-by" className="SELECT" onChange={handleSort}>
+                      <option value="">Sort By</option>
+                      <option value="sort">Name</option>
+                      <option value="item_type">Item Type</option>
+                      <option value="amount">Amount</option>
+                      <option value="stock">In Stock</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
-            {donationData.map((item, index) => (
-              <DonationEntry
-                key={index}
-                name={item.name}
-                item_type={item.item_type}
-                amount={item.amount}
-                stock={item.stock}
-              />
-            ))}
+            <div className="table-form">
+              <div className="inventory-wrapper">
+                <div className="inventory-header">
+                  <div className="box">
+                    <h2 id="title" className="inv-col-head">
+                      Name
+                    </h2>
+                  </div>
+                  <div className="box">
+                    <h2 id="title" className="inv-col-head">
+                      Type
+                    </h2>
+                  </div>
+                  <div className="box">
+                    <h2 id="title" className="inv-col-head">
+                      Amount
+                    </h2>
+                  </div>
+                  <div className="box">
+                    <h2 id="title" className="inv-col-head">
+                      In Stock
+                    </h2>
+                  </div>
+                </div>
+                {donationData.map((item, index) => (
+                  <DonationEntry
+                    key={index}
+                    name={item.name}
+                    item_type={item.item_type}
+                    amount={item.amount}
+                    stock={item.stock}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        </AuthenticatedTemplate>
       </div>
-    </div>
+    </MsalProvider>
   );
 }
 

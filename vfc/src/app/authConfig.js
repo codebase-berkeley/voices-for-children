@@ -44,8 +44,8 @@ export const msalConfig = {
         clientId: clientId, // This is the ONLY mandatory field that you need to supply.
         authority: b2cPolicies.authorities.signUpSignIn.authority, // Choose SUSI as your default authority.
         knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
-        redirectUri: '/', // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
-        postLogoutRedirectUri: '/', // Indicates the page to navigate after logout.
+        redirectUri: 'http://localhost:3000/donation', // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
+        postLogoutRedirectUri: 'http://localhost:3000/', // Indicates the page to navigate after logout.
         navigateToLoginRequestUrl: false, // If "true", will navigate back to the original request location before processing the auth code response.
         authorityMetadata: b2cPolicies.authorityMetadata
     },
@@ -89,5 +89,5 @@ export const msalConfig = {
  */
 
 export const authScopes = {
-    scopes: []
+    scopes: ["https://codebaseedu.onmicrosoft.com/8344aaf4-acb6-4631-9fe3-577d90475877/VoicesForChildren"]
 };
