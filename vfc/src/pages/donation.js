@@ -1,8 +1,8 @@
 import "./donation.css";
 import { useState, useEffect } from "react";
-import DonationEntry from "../app/Components/donationEntry";
-import EntryPopup from "../app/Components/entrypopup.js";
-import Top from "../app/Components/top";
+import DonationEntry from "../app/components/donationEntry";
+import EntryPopup from "../app/components/entrypopup.js";
+import Top from "../app/components/top";
 import Navbar from "../app/Components/navbar";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
