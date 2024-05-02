@@ -25,13 +25,13 @@ CREATE TABLE inkindDonations
   item_donated VARCHAR(100),
   item_type VARCHAR(80),
   amount INTEGER,
-  date DATE,
+  date VARCHAR(80),
   thanked VARCHAR(200),
   stock VARCHAR(80)
 
 );
 
-INSERT INTO inkinddonations(donor, item_donated, item_type, amount, date, thanked, stock) VALUES ('sasha', 'teddy', 'toys', 10, DATE '2015-12-23', 'yes', 'yes');
+INSERT INTO inkinddonations(donor, item_donated, item_type, amount, date, thanked, stock) VALUES ('sasha', 'teddy', 'toys', 10, '2015-12-23', 'yes', 'yes');
 
 
 CREATE TABLE communityPartnerships(

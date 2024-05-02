@@ -327,10 +327,11 @@ function Donation() {
             {donationData.map((item, index) => (
               <DonationEntry
                 key={index}
-                name={item.donor}
-                item_type={item.itemtype}
+                name={item.item_donated}
+                item_type={item.item_type}
                 amount={item.amount}
-                stock={item.instock}
+                stock={item.stock}
+                
               />
             ))}
           </div>
