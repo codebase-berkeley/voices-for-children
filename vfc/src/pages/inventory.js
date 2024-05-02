@@ -15,7 +15,7 @@ function Inventory() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
   const [refreshData, setRefreshData] = useState(false);
-  
+
   const handleDataSubmitted = () => {
     setRefreshData(!refreshData);  // Toggle to trigger useEffect
   };
@@ -270,6 +270,7 @@ function Inventory() {
                 amount={item.amount}
                 date={item.date}
                 thanked={item.thanked}
+                realKey = {item.key}
               />
             ))}
           </div>

@@ -19,13 +19,47 @@ function InventoryEntry(props) {
     setShowPopup(!showPopup);
   };
 
-  const handleDelete = () => {
-    // Handle the deletion logic here
-    console.log("Item deleted");
+  // const handleDelete = () => {
+  //   // Handle the deletion logic here
+  //   console.log("Item deleted");
+  //   setShowDeleteConfirm(false); // Close the delete confirmation popup
+  //   setShowPopup(false); // Close the main popup
+  // };
+
+
+  const handleDelete = async () => {
+
+    const itemId = props.realKey;
+    console.log(itemId);
+    var bod = {id: itemId};
+    console.log("body", JSON.stringify({itemId}));
+    try {
+      console.log("trying to delete a row", itemId);
+      const response = await fetch('/api/deleteInventory', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({itemId})
+      });
+  
+      // if (response.ok) {
+      //   console.log('Item successfully deleted');
+      //   // Optionally, trigger a refresh of the inventory list in the parent component
+      //   props.onDelete(); // You'll need to pass this method as a prop from the parent component
+      // } else {
+      //   throw new Error('Failed to delete the item');
+      // }
+      return response.json();
+    } catch (error) {
+      console.error('Error deleting item:', error);
+    }
+  
     setShowDeleteConfirm(false); // Close the delete confirmation popup
     setShowPopup(false); // Close the main popup
   };
 
+  
   return (
     <div className="entry-wrapper">
       <div className="box">
