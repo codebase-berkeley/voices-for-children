@@ -58,7 +58,6 @@ function EntryPopup(props) {
                     <button id="x" onClick={handlePopupClose}><img src="apple-touch-icon.png" alt="x img"></img></button>
                 </div>
             </div>
-            <button onClick={postData}>trial button</button>
             <form onSubmit={(event) => {
                 event.preventDefault();
                 postData();
