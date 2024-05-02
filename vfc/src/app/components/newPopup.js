@@ -1,3 +1,4 @@
+
 import "./newPopup.css";
 
 export default function NewPopup({
@@ -13,39 +14,112 @@ export default function NewPopup({
 
   const submitForm = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target); // Use FormData to handle data submission including files
+
+    // Change the input date to 07/22/2005 instead of 2005-07-22
+    const inputDate = event.target.date ? event.target.date.value : "";
+
+    // Check if inputDate is not empty before splitting
+    const parts = inputDate ? inputDate.split("-") : ["", "", ""];
+
+    // Format the date if it's not empty, otherwise set it to an empty string
+    const formattedDate = inputDate
+      ? `${parts[1]}/${parts[2]}/${parts[0]}`
+      : "";
+
+    const reader = new FileReader();
+    // const locImg = event.target.locationImage.files[0];
+
+    // // USE THIS PART OF THE CODE TO CHANGE THE IMAGE
+    // if (locImg) {
+    //   // Read and process the file
+    //   reader.onloadend = () => {
+    //     newCard.image = reader.result; // If image uploaded, change location image
+    //     setData((prevData) => [...prevData, newCard]);
+    //     setnewIsOpen(false);
+    //     console.log(newCard);
+    //   };
+    //   reader.readAsDataURL(locImg);
+    //   //WHEN THERE IS NO IMAGE SET DEFAULT AQUA
+    // } else {
+    //   // Handle the case where no image is provided
+    //   newCard.image = "/assets/aqua.jpg"; // Set a default image path
+    //   setData((prevData) => [...prevData, newCard]);
+    //   setnewIsOpen(false);
+    // }
+
+    // console.log("newCard:" + newCard);
 
     try {
+      // Fetch data here
       const response = await fetch("/api/postPartnership", {
         method: "POST",
-        body: formData, // Send formData directly
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: event.target.companyName.value,
+          location: event.target.location.value,
+          citystate: event.target.cityState.value,
+          phone: event.target.phone.value,
+          email: event.target.email.value,
+          poc: event.target.poc.value,
+          date: event.target.date.value,
+          gifttype: event.target.giftType.value,
+          link: event.target.link.value,
+          image: "/assets/aqua.jpg",  // TODO: un-hard-code
+        }),
       });
+
+      const { id } = await response.json();
+
+      const locImg = event.target.locationImage.files[0];
+
+      const newCard = {
+        id: id,
+        name: event.target.companyName.value,
+        image: "/assets/aqua.jpg",
+        location: event.target.location.value,
+        citystate: event.target.cityState.value,
+        phone: event.target.phone.value,
+        email: event.target.email.value,
+        poc: event.target.poc.value,
+        date: event.target.date.value,
+        gifttype: event.target.giftType.value,
+        link: event.target.link.value,
+      };
+
+    // USE THIS PART OF THE CODE TO CHANGE THE IMAGE
+      if (locImg) {
+        // Read and process the file
+        reader.onloadend = () => {
+          newCard.image = reader.result; // If image uploaded, change location image
+          // setData((prevData) => [...prevData, newCard]);
+          // setnewIsOpen(false);
+          // console.log(newCard);
+        };
+        reader.readAsDataURL(locImg);
+        //WHEN THERE IS NO IMAGE SET DEFAULT AQUA
+      } 
+      // else {
+        // Handle the case where no image is provided
+        // newCard.image = "/assets/aqua.jpg"; // Set a default image path
+        // setData((prevData) => [...prevData, newCard]);
+        // setnewIsOpen(false);
+      // }
+
+      setData((prevData) => [...prevData, newCard]);
+      setnewIsOpen(false);
+      console.log(newCard);
+
+      console.log("newCard:" + newCard);
+
+      // newCard.id = id;
+      console.log("posted new id: ", id);
+      console.log("frontend data: ", prevData);
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
-      const result = await response.json();
-      console.log("posted new id: ", result.id);
-
-      // Update local state to include new partnership card
-      const newCard = {
-        id: result.id,
-        name: formData.get("companyName"),
-        location: formData.get("location"),
-        citystate: formData.get("cityState"),
-        phone: formData.get("phone"),
-        email: formData.get("email"),
-        poc: formData.get("poc"),
-        date: formData.get("date"),
-        gifttype: formData.get("giftType"),
-        link: formData.get("link"),
-        image: result.image,
-      };
-
-      setData((prevData) => [...prevData, newCard]);
-      setnewIsOpen(false);
-      console.log("frontend data: ", prevData);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -169,7 +243,7 @@ export default function NewPopup({
             </div>
             <div className="row5">
               <div className="form-group">
-                <label htmlFor="link">Log Link</label>
+                <label for="locationImage">Log Link</label>
                 <input
                   type="url"
                   id="name"
@@ -179,14 +253,11 @@ export default function NewPopup({
                 ></input>
               </div>
               <div className="form-group">
-                <label htmlFor="locationImage">
-                  (OPTIONAL) Company Image:{" "}
-                </label>
+                <label for="locationImage">(OPTIONAL) Company Image: </label>
                 <input
                   type="file"
                   id="locationImage"
-                  name="image" // Changed from 'locationImage' to 'image'
-                  accept="image/*"
+                  name="locationImage"
                 ></input>
               </div>
             </div>

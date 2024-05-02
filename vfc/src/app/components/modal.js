@@ -9,6 +9,11 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
     console.log(isOpen);
   };
 
+  const parts = props.date ? props.date.split("-") : ["", "", ""];
+
+  // Format the date if it's not empty, otherwise set it to an empty string
+  const formattedDate = props.date ? `${parts[1]}/${parts[2]}/${parts[0]}` : "";
+
   if (!isOpen) return null;
 
   useEffect(() => {
@@ -20,10 +25,6 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
   const openEdit = () => {
     setEdit(!edit);
   };
-
-  const parts = props.date ? props.date.split("-") : ["", "", ""];
-
-  const formattedDate = props.date ? `${parts[1]}/${parts[2]}/${parts[0]}` : "";
 
   async function deleteCard() {
     try {
@@ -60,7 +61,7 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
           </div>
         </div>
         <div className="titleContainer">
-          <div className="company">Contact info : {props.company}</div>
+          <div className="company">CONTACT INFO : {props.company}</div>
         </div>
         <div className="middle">
           <div className="poc">Point of Contact : {props.poc}</div>
@@ -74,7 +75,7 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
             Ticket Log Link :{" "}
             <a
               id="logLink"
-              href={props.link}
+              href={"http://" + props.link}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -108,7 +109,6 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
           data={props.data}
           setData={props.setData}
           handleClick={handleClick}
-          image={props.image}
         />
       ) : (
         <></>

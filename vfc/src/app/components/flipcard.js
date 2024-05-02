@@ -1,3 +1,4 @@
+
 "use client";
 import Image from "next/image";
 import React from "react";
@@ -25,9 +26,9 @@ export default function FlipCard(props) {
 
   let image = props.image;
 
-
   const parts = props.date ? props.date.split("-") : ["", "", ""];
 
+  // Format the date if it's not empty, otherwise set it to an empty string
   const formattedDate = props.date ? `${parts[1]}/${parts[2]}/${parts[0]}` : "";
 
   return (

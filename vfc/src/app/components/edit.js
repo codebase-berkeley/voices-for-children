@@ -27,6 +27,7 @@ export default function Edit({
   const [giftTypeE, setGiftTypes] = useState(giftType);
   const [locationE, setLocation] = useState(location);
   const [linkE, setLink] = useState(link);
+  const [cityStateE, setCityState] = useState(cityState);
 
   const handleNewClick = () => {
     setEdit(!edit);
@@ -233,7 +234,7 @@ export default function Edit({
             <div className="row4">
               <div className="form-group">
                 <label htmlFor="cityState">City/State: </label>
-                <select id="cityState" name="cityState" required>
+                <select id="cityState" name="cityState" value={cityStateE} onChange={(e) => setCityState(e.target.value)} required>
                   <option value="">Select City/State</option>
                   <option value="Riverside, CA">Riverside, CA</option>
                   <option value="San Diego, CA">San Diego, CA</option>
