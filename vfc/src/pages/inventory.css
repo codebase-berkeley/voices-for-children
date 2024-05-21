@@ -1,72 +1,71 @@
 .App {
-    /* background-color: white; */
-    color: black;
+  /* background-color: white; */
+  color: black;
 }
 
-
-
 #title {
-    font-size: 1vw;
-    font-weight: 300;
+  font-size: 1vw;
+  /* font-weight: 300; */
 }
 
 @media screen and (max-width: 768px) {
-    #title {
-        font-size: 2vw;
-    }
+  #title {
+    font-size: 2vw;
+  }
 }
 
 .inventory-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 5vh;
 }
 
 /* Search Bar */
 .search-wrapper {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: auto;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  justify-content: center;
 }
 
 .filterContainer {
-    display: flex;
-    width: 100%;
-    height: auto;
-    align-content: flex-end;
-    margin-left: 30px;
-    padding-bottom: 5px;
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-content: flex-end;
+  margin-left: 30px;
+  padding-bottom: 5px;
 }
 
 #search {
-    background-color: white;
-    border-radius: 25px;
-    border-color: black;
-    width: 50vw;
-    height: 2.5vw;
-    padding: 10px;
+  background-color: white;
+  border-radius: 25px;
+  border-color: black;
+  width: 50vw;
+  height: 2.5vw;
+  padding: 10px;
 }
 
 #search::placeholder {
-    font-size: 10px;
-    opacity: 85%;
-    font-style: italic;
+  font-size: 10px;
+  opacity: 85%;
+  font-style: italic;
 }
 
 /* Filter Boxes */
 
 .filter-wrappers {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin-right: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 30px;
 }
 
 .filter-by {
-    font-size: 1rem; 
+  font-size: 1rem;
 }
 
 /* .SELECT {
@@ -82,134 +81,123 @@
 } */
 
 .SELECT {
-    border: 1px solid lightgrey;
-    border-radius: 5px;
-    width: 12vw;
-    height: 55px;
-    padding: 5px;
-    background-color: white; 
-    color: black; 
-    font-size: 14px;
-    cursor: pointer; 
-    margin-left: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 12vw;
+  height: 55px;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 20px;
 }
 
 /* Style for when the dropdown is open */
 .SELECT:focus,
 .SELECT:hover {
-    outline: none; /* Remove default outline */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
 }
 
 /* Style for dropdown options */
 .SELECT option {
-    background-color: white; /* Background color */
-    color: black; /* Text color */
-    font-size: 14px; /* Font size */
+  background-color: white; /* Background color */
+  color: black; /* Text color */
+  font-size: 14px; /* Font size */
 }
 
 /* Style for dropdown arrow */
 .SELECT::after {
-    content: "\25BC"; /* Unicode character for downward arrow */
-    position: absolute;
-    /* right: 10px; */
-    top: 50%;
-    transform: translateY(-50%);
+  content: "\25BC"; /* Unicode character for downward arrow */
+  position: absolute;
+  /* right: 10px; */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* Create New Button */
 #create-new {
-    border-radius: 26px;
-    background-color: #68b5dabf;
-    color: white;
-    width: 10vw;
-    height: 2.5vw;
-    font-size: 1vw;
-    padding: 0;
-    border: none;
+  border-radius: 26px;
+  background-color: #68b5dabf;
+  color: white;
+  width: 10vw;
+  height: 2.5vw;
+  font-size: 1vw;
+  padding: 0;
+  border: none;
 }
 
 #create-new {
-    border: 1px solid lightgrey;
-    border-radius: 5px;
-    width: 12vw;
-    height: 55px;
-    padding: 5px;
-    background-color: #68b5dabf; 
-    color: black; 
-    font-size: 14px;
-    margin-left: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 12vw;
+  height: 55px;
+  padding: 5px;
+  background-color: #68b5dabf;
+  color: black;
+  font-size: 14px;
+  margin-left: 20px;
 }
 
 /* Style for when the dropdown is open */
 #create-new:focus,
 #create-new:hover {
-    outline: none; /* Remove default outline */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
 }
 
-
-
-
 @media screen and (max-width: 768px) {
-    #create-new {
-        font-size: 2vw;
-        width: 15%; 
-    }
+  #create-new {
+    font-size: 2vw;
+    width: 15%;
+  }
 }
 
 /* Inventory Table Header */
 .inventory-wrapper {
-    width: 100%;
+  width: 100%;
 }
 
 .inventory-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    padding-bottom: 15px;
-    flex-direction: row;
-    border-bottom: solid .1vh #8E8787;
-    height: 5vh;
-    background-color: white;
-    color: black;
-    overflow: hidden;
-    font-size: 15px;
-    /* margin-top: 0; */
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  padding-bottom: 15px;
+  flex-direction: row;
+  border-bottom: solid 0.1vh #8e8787;
+  height: 5vh;
+  background-color: white;
+  color: black;
+  overflow: hidden;
+  font-size: 15px;
+  /* margin-top: 0; */
 }
 
 .create-form {
-  
-}
-
-.inv-col-head {
-    display: flex;
-    flex-wrap: nowrap;
-    /* margin-left: 3vw; */
-    /* opacity: default; */
-    /* width: 10vw; */
-    /* font-style: bold; */
-    align-items: center;
-    font-size: 15px;
 }
 
 .table-form {
-    display: flex;
-    flex-direction: row;
-    padding: 30px;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  width: 100%;
 }
 
 .MuiTextField-root {
-    width: 25vw;
+  width: 25vw;
 }
 
-.box {
-    font-size: 15px;
-    font-weight: bold;
-    display: flex;
-    align-items: left;
-    justify-content: left;
-
+.inv-col-head {
+  font-size: 15px;
+  font-weight: 300;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "Inter", sans-serif;
 }
-

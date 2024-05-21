@@ -1,4 +1,4 @@
-import "./donation.css";
+import "./inventory.css";
 import { useState, useEffect } from "react";
 import DonationEntry from "../app/components/donationEntry";
 import EntryPopup from "../app/components/entrypopup.js";
@@ -8,6 +8,21 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import Link from "next/link";
 import { json } from "react-router-dom";
+import {
+  PublicClientApplication,
+  EventType,
+  InteractionStatus,
+} from "@azure/msal-browser";
+import Login from "./loginpage";
+import { MsalProvider, useMsal, useIsAuthenticated } from "@azure/msal-react";
+import { authScopes, msalConfig } from "../app/authConfig";
+import {
+  AuthenticatedTemplate,
+  UnauthenticatedTemplate,
+} from "@azure/msal-react";
+import LoginPage from "./loginpage";
+// import Data from "./rawdata";
+const msalInstance = new PublicClientApplication(msalConfig);
 
 function Donation() {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -26,17 +41,15 @@ function Donation() {
   };
 
   const [originalData, setOriginalData] = useState(
+    []
 
-    [
-    ]
-  
     // const [seen, setSeen] = useState(false);
     // async function show() {
     //     console.log("calling show");
     //     setSeen(!seen);
     //     console.log(seen, "from inventory")
     // }
-    );
+  );
 
   // console.log("HITTING ENDPOINT");
   // axios
@@ -61,15 +74,14 @@ function Donation() {
   }, []); // The empty dependency array ensures it only runs once after the initial render
 
   useEffect(() => {
-
     const fetchData = async () => {
       try {
         const response = await fetch("/api/getDonation");
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
-        const jsonData = await response.json();  // Properly handle the promise
-        
+        const jsonData = await response.json(); // Properly handle the promise
+
         console.log("get donation api response", jsonData);
         setOriginalData(jsonData);
         setDonationData(jsonData);
@@ -96,10 +108,7 @@ function Donation() {
     fetchData();
   }, []);
 
-
-
   var lastEvent = null;
-  
 
   const [donationData, setDonationData] = useState([...originalData]);
   const togglePopup = () => {
@@ -139,7 +148,9 @@ function Donation() {
     if (currentSearch) {
       filteredData = filteredData.filter(
         (item) =>
-          item.item_donated.toLowerCase().includes(currentSearch.toLowerCase()) ||
+          item.item_donated
+            .toLowerCase()
+            .includes(currentSearch.toLowerCase()) ||
           item.item_type.toLowerCase().includes(currentSearch.toLowerCase())
       );
     }
@@ -199,7 +210,7 @@ function Donation() {
     setButtonId(newId);
   };
   console.log("yo");
-  
+
   console.log(buttonId);
   useEffect(() => {
     console.log("original", donationData);
@@ -207,8 +218,8 @@ function Donation() {
 
   return (
     <div>
-      <Top></Top>
-      {/* <div className="bigContainer">
+        {/* <Top></Top> */}
+        {/* <div className="bigContainer">
         {/* <Navbar buttonId={buttonId} setButtonId={setButtonId}></Navbar> 
         <div className="inventoryContainer">
           <h1 className="name">In-Kind Donation</h1>
@@ -242,12 +253,12 @@ function Donation() {
           </div>
         </div>
       </div> */}
-      <div className="inventory-page">
-        <div className="search-wrapper">
-          <div className="filterContainer">
-            <div className="search">
-              <form>
-                {/* <input
+        <div className="inventory-page">
+          <div className="search-wrapper">
+            <div className="filterContainer">
+              <div className="search">
+                <form>
+                  {/* <input
                   type="text"
                   value={search}
                   onChange={handleChange}
@@ -255,89 +266,84 @@ function Donation() {
                   placeholder="Search..."
                   id="search"
                 ></input> */}
-                <div className="searchbar">
-                  <TextField
-                    id="outlined-basic"
-                    onChange={handleChange}
-                    onKeyDown={(e) => handleKeyPress(e)}
-                    variant="outlined"
-                    label="Search"
-                    InputLabelProps={{
-                      sx: {
-                        color: "black",
-                        "&.Mui-focused": { color: "black" },
-                      },
-                    }}
-                  />
+                  <div className="searchbar">
+                    <TextField
+                      id="outlined-basic"
+                      onChange={handleChange}
+                      onKeyDown={(e) => handleKeyPress(e)}
+                      variant="outlined"
+                      label="Search"
+                      InputLabelProps={{
+                        sx: {
+                          color: "black",
+                          "&.Mui-focused": { color: "black" },
+                        },
+                      }}
+                    />
+                  </div>
+                </form>
+              </div>
+              <div className="filter-wrappers">
+                <div className="filter-by">
+                  <select
+                    value={filter}
+                    name="filter-by"
+                    // id="filter"
+                    className="SELECT"
+                    placeholder="Filter By"
+                    onChange={(e) => handleFilter(e)}
+                  >
+                    <option value="">Filter By</option>
+                    <option value="Tickets">Tickets</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
-              </form>
-            </div>
-            <div className="filter-wrappers">
-              <div className="filter-by">
-                <select
-                  value={filter}
-                  name="filter-by"
-                  // id="filter"
-                  className="SELECT"
-                  placeholder="Filter By"
-                  onChange={(e) => handleFilter(e)}
-                >
-                  <option value="">Filter By</option>
-                  <option value="Tickets">Tickets</option>
-                  <option value="Toys">Toys</option>
-                  <option value="Electronics">Electronics</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div className="sort-by">
-                <select name="sort-by" className="SELECT" onChange={handleSort}>
-                  <option value="">Sort By</option>
-                  <option value="name">Name</option>
-                  <option value="item_type">Item Type</option>
-                  <option value="amount">Amount</option>
-                  <option value="stock">In Stock</option>
-                </select>
+                <div className="sort-by">
+                  <select
+                    name="sort-by"
+                    className="SELECT"
+                    onChange={handleSort}
+                  >
+                    <option value="">Sort By</option>
+                    <option value="name">Name</option>
+                    <option value="item_type">Item Type</option>
+                    <option value="amount">Amount</option>
+                    <option value="stock">In Stock</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="table-form">
-          <div className="inventory-wrapper">
-            <div className="inventory-header">
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Name
-                </h2>
+          <div className="table-form">
+            <div className="inventory-wrapper">
+              <div className="inventory-header">
+                <div className="inv-col-head">
+                  <h2 id="title">Name</h2>
+                </div>
+                <div className="inv-col-head">
+                  <h2 id="title">Type</h2>
+                </div>
+                <div className="inv-col-head">
+                  <h2 id="title">Amount</h2>
+                </div>
+                <div className="inv-col-head">
+                  <h2 id="title">In Stock</h2>
+                </div>
               </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Type
-                </h2>
-              </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Amount
-                </h2>
-              </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  In Stock
-                </h2>
-              </div>
+              {donationData.map((item, index) => (
+                <DonationEntry
+                  key={index}
+                  name={item.item_donated}
+                  item_type={item.item_type}
+                  amount={item.amount}
+                  stock={item.stock}
+                />
+              ))}
             </div>
-            {donationData.map((item, index) => (
-              <DonationEntry
-                key={index}
-                name={item.item_donated}
-                item_type={item.item_type}
-                amount={item.amount}
-                stock={item.stock}
-                
-              />
-            ))}
           </div>
         </div>
-      </div>
     </div>
   );
 }

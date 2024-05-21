@@ -8,7 +8,21 @@ import { useState, useEffect } from "react";
 import Navbar from "../app/Components/navbar";
 import Top from "../app/components/top";
 import TextField from "@mui/material/TextField";
-
+import {
+  PublicClientApplication,
+  EventType,
+  InteractionStatus,
+} from "@azure/msal-browser";
+import Login from "./loginpage";
+import { MsalProvider, useMsal, useIsAuthenticated } from "@azure/msal-react";
+import { authScopes, msalConfig } from "../app/authConfig";
+import {
+  AuthenticatedTemplate,
+  UnauthenticatedTemplate,
+} from "@azure/msal-react";
+import LoginPage from "./loginpage";
+// import Data from "./rawdata";
+const msalInstance = new PublicClientApplication(msalConfig);
 function Inventory() {
   const [popupVisible, setPopupVisible] = useState(false);
   const [sortBy, setSortBy] = useState("");
@@ -17,7 +31,7 @@ function Inventory() {
   const [refreshData, setRefreshData] = useState(false);
 
   const handleDataSubmitted = () => {
-    setRefreshData(!refreshData);  // Toggle to trigger useEffect
+    setRefreshData(!refreshData); // Toggle to trigger useEffect
   };
 
   var currSearchKey = null;
@@ -27,19 +41,17 @@ function Inventory() {
     [currSearchKey]: currSearchObject,
   };
   var lastEvent = null;
-  const [originalData, setOriginalData] = useState([
-  ]);
+  const [originalData, setOriginalData] = useState([]);
 
   useEffect(() => {
-
     const fetchData = async () => {
       try {
         const response = await fetch("/api/getInventory");
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
-        const jsonDataInventory = await response.json();  // Properly handle the promise
-        
+        const jsonDataInventory = await response.json(); // Properly handle the promise
+
         console.log("get donation api response", jsonDataInventory);
         setOriginalData(jsonDataInventory);
         setInventoryData(jsonDataInventory);
@@ -70,7 +82,7 @@ function Inventory() {
     }
 
     const sortedData = [...inventoryData].sort((a, b) => {
-      console.log(a)
+      console.log(a);
       if (selectedOption === "amount") {
         return a.amount - b.amount;
       } else if (selectedOption === "date") {
@@ -156,7 +168,7 @@ function Inventory() {
 
   return (
     <div>
-      <Top></Top>
+      {/* <Top></Top> */}
       <div className="inventory-page">
         <div className="search-wrapper">
           <div className="filterContainer">
@@ -228,39 +240,26 @@ function Inventory() {
         <div className="table-form">
           <div className="inventory-wrapper">
             <div className="inventory-header">
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Donor
-                </h2>
+              <div className="inv-col-head">
+                <h2 id="title">Donor</h2>
               </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Items Donated
-                </h2>
+              <div className="inv-col-head">
+                <h2 id="title">Items Donated</h2>
               </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Item Type
-                </h2>
+              <div className="inv-col-head">
+                <h2 id="title">Item Type</h2>
               </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Amount
-                </h2>
+              <div className="inv-col-head">
+                <h2 id="title">Amount</h2>
               </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Date Donated
-                </h2>
+              <div className="inv-col-head">
+                <h2 id="title">Date Donated</h2>
               </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Thanked
-                </h2>
+              <div className="inv-col-head">
+                <h2 id="title">Thanked</h2>
               </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                </h2>
+              <div className="inv-col-head">
+                <h2 id="title"></h2>
               </div>
             </div>
 
@@ -273,13 +272,18 @@ function Inventory() {
                 amount={item.amount}
                 date={item.date}
                 thanked={item.thanked}
-                realKey = {item.key}
-                onDelete = {handleDataSubmitted}
+                realKey={item.key}
+                onDelete={handleDataSubmitted}
               />
             ))}
           </div>
           <div className="create-form">
-            {popupVisible && <EntryPopup onClose={togglePopup} onDataSubmitted={handleDataSubmitted}/>}
+            {popupVisible && (
+              <EntryPopup
+                onClose={togglePopup}
+                onDataSubmitted={handleDataSubmitted}
+              />
+            )}
             {/* {seen && <EntryPopup  />} */}
           </div>
         </div>
