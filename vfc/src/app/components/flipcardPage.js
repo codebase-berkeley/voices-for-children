@@ -47,24 +47,9 @@ function MultipleFlipCards(props) {
     ]
 
     // Return true if there are no filters, else check each filter on all relevant attributes
-<<<<<<< HEAD
-    console.log("gift filters", props.giftFilters);
-    return props.filters.length === 0 || filterArrays.every((filter) => {
-      console.log("filter",filter);
-      return filter.every((attribute) => {
-        // console.log("attribute", attribute);
-        const lowerCaseAttribute = attribute.toLowerCase();
-        //console.log("attribute", attribute);
-       // console.log("lowere case filter", lowerCaseAttribute);
-        console.log("cardAttributes", cardAttributes)
-        console.log("lowerCaseAttribute", lowerCaseAttribute)
-        return cardAttributes.some(cardAttribute => cardAttribute.includes(lowerCaseAttribute));
-      })
-=======
     return props.filters.length === 0 || props.filters.every((filter) => {
         const lowerCaseFilter = filter.toLowerCase();
         return cardAttributes.some(attribute => attribute.includes(lowerCaseFilter));
->>>>>>> d87c85c7ffd4b285d145b3abcb97203586251bc9
     });
 });
   // Filters through data by searching

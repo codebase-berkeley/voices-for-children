@@ -41,88 +41,69 @@ export default function Edit({
 
   const submitForm = async (event) => {
     event.preventDefault();
-
+  
     console.log("before edit data: ", data);
-
-    const newCard = {
-      id: id,
-      name: event.target.companyName.value,
-      // image: "/assets/aqua.jpg",
-      location: event.target.location.value,
-      citystate: event.target.cityState.value,
-      phone: event.target.phone.value,
-      email: event.target.email.value,
-      poc: event.target.poc.value,
-      date: event.target.date.value,
-      gifttype: event.target.giftType.value,
-      link: event.target.link.value,
-    };
-
-    const reader = new FileReader();
+  
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("companyName", event.target.companyName.value);
+    formData.append("location", event.target.location.value);
+    formData.append("cityState", event.target.cityState.value);
+    formData.append("phone", event.target.phone.value);
+    formData.append("email", event.target.email.value);
+    formData.append("poc", event.target.poc.value);
+    formData.append("date", event.target.date.value);
+    formData.append("giftType", event.target.giftType.value);
+    formData.append("link", event.target.link.value);
+  
     const locImg = event.target.locationImage.files[0];
-
-    // USE THIS PART OF THE CODE TO CHANGE THE IMAGE
     if (locImg) {
-      // Read and process the file
-      reader.onloadend = () => {
-        newCard.image = reader.result; // If image uploaded, change location image
-        const index = data.findIndex((card) => card.id === id);
-        setData((prevData) => {
-          const newData = [...prevData];
-          newData[index] = newCard;
-          return newData;
-        });
-        setEdit(false);
-      };
-      reader.readAsDataURL(locImg);
-      //WHEN THERE IS NO IMAGE SET DEFAULT AQUA
+      formData.append("image", locImg);
     } else {
-      // Handle the case where no image is provided
-      // newCard.image = "/assets/aqua.jpg"; // Set a default image path
-      console.log("edit card: ", newCard);
-      const index = data.findIndex((card) => card.id === id);
-      console.log("edit index: ", index);
-      setData((prevData) => {
-        const newData = [...prevData];
-        newData[index] = newCard;
-        return newData;
-      });
-      setEdit(false);
-      handleBothClicks();
+      formData.append("image", image)
     }
-
-    console.log("newCard:" + newCard);
-    console.log(data);
-
-    //fetch data
+  
     try {
       const response = await fetch("/api/editPartnership", {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: id,
-          name: event.target.companyName.value,
-          location: event.target.location.value,
-          citystate: event.target.cityState.value,
-          date: event.target.date.value,
-          email: event.target.email.value,
-          poc: event.target.poc.value,
-          phone: event.target.phone.value,
-          gifttype: event.target.giftType.value,
-          link: event.target.link.value,
-          image: newCard.image,
-        }),
+        body: formData,
       });
-
+  
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        const errorResponse = await response.json();
+        throw new Error(`Network response was not ok: ${errorResponse.error}`);
       }
+  
+      const result = await response.json();
+  
+      const updatedCard = {
+        id: result.id,
+        name: event.target.companyName.value,
+        image: result.image,
+        location: event.target.location.value,
+        citystate: event.target.cityState.value,
+        phone: event.target.phone.value,
+        email: event.target.email.value,
+        poc: event.target.poc.value,
+        date: event.target.date.value,
+        gifttype: event.target.giftType.value,
+        link: event.target.link.value,
+      };
+  
+      const index = data.findIndex((card) => card.id === id);
+      setData((prevData) => {
+        const newData = [...prevData];
+        newData[index] = updatedCard;
+        return newData;
+      });
+  
+      setEdit(false);
+      handleBothClicks();
     } catch (error) {
       console.error("Error submitting form:", error);
     }
-  };
+  };  
+  
 
   const today = new Date();
   const year = today.getFullYear() + 100;
@@ -234,7 +215,13 @@ export default function Edit({
             <div className="row4">
               <div className="form-group">
                 <label htmlFor="cityState">City/State: </label>
-                <select id="cityState" name="cityState" value={cityStateE} onChange={(e) => setCityState(e.target.value)} required>
+                <select
+                  id="cityState"
+                  name="cityState"
+                  value={cityStateE}
+                  onChange={(e) => setCityState(e.target.value)}
+                  required
+                >
                   <option value="">Select City/State</option>
                   <option value="Riverside, CA">Riverside, CA</option>
                   <option value="San Diego, CA">San Diego, CA</option>

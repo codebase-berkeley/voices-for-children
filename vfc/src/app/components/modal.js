@@ -109,6 +109,7 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
           data={props.data}
           setData={props.setData}
           handleClick={handleClick}
+          image={props.image}
         />
       ) : (
         <></>
