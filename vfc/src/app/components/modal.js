@@ -9,6 +9,11 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
     console.log(isOpen);
   };
 
+  const parts = props.date ? props.date.split("-") : ["", "", ""];
+
+  // Format the date if it's not empty, otherwise set it to an empty string
+  const formattedDate = props.date ? `${parts[1]}/${parts[2]}/${parts[0]}` : "";
+
   if (!isOpen) return null;
 
   useEffect(() => {
@@ -62,7 +67,7 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
           <div className="poc">Point of Contact : {props.poc}</div>
           <div className="email">Email : {props.email}</div>
           <div className="phone-number">Phone Number : {props.phone}</div>
-          <div className="date-joined">Date Joined : {props.date}</div>
+          <div className="date-joined">Date Joined : {formattedDate}</div>
           <div className="gifts">Gifts : {props.giftType}</div>
           <div className="modalAddress">Address : {props.location}</div>
           <div className="cityState">City/State : {props.cityState}</div>

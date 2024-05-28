@@ -27,6 +27,7 @@ export default function Edit({
   const [giftTypeE, setGiftTypes] = useState(giftType);
   const [locationE, setLocation] = useState(location);
   const [linkE, setLink] = useState(link);
+  const [cityStateE, setCityState] = useState(cityState);
 
   const handleNewClick = () => {
     setEdit(!edit);
@@ -43,27 +44,16 @@ export default function Edit({
 
     console.log("before edit data: ", data);
 
-    // Change the input date to 07/22/2005 instead of 2005-07-22
-    const inputDate = event.target.date ? event.target.date.value : "";
-
-    // Check if inputDate is not empty before splitting
-    const parts = inputDate ? inputDate.split("-") : ["", "", ""];
-
-    // Format the date if it's not empty, otherwise set it to an empty string
-    const formattedDate = inputDate
-      ? `${parts[1]}/${parts[2]}/${parts[0]}`
-      : "";
-
     const newCard = {
       id: id,
       name: event.target.companyName.value,
-      image: "/assets/aqua.jpg",
+      // image: "/assets/aqua.jpg",
       location: event.target.location.value,
       citystate: event.target.cityState.value,
       phone: event.target.phone.value,
       email: event.target.email.value,
       poc: event.target.poc.value,
-      date: formattedDate,
+      date: event.target.date.value,
       gifttype: event.target.giftType.value,
       link: event.target.link.value,
     };
@@ -88,7 +78,7 @@ export default function Edit({
       //WHEN THERE IS NO IMAGE SET DEFAULT AQUA
     } else {
       // Handle the case where no image is provided
-      newCard.image = "/assets/aqua.jpg"; // Set a default image path
+      // newCard.image = "/assets/aqua.jpg"; // Set a default image path
       console.log("edit card: ", newCard);
       const index = data.findIndex((card) => card.id === id);
       console.log("edit index: ", index);
@@ -116,7 +106,7 @@ export default function Edit({
           name: event.target.companyName.value,
           location: event.target.location.value,
           citystate: event.target.cityState.value,
-          date: formattedDate,
+          date: event.target.date.value,
           email: event.target.email.value,
           poc: event.target.poc.value,
           phone: event.target.phone.value,
@@ -244,7 +234,7 @@ export default function Edit({
             <div className="row4">
               <div className="form-group">
                 <label htmlFor="cityState">City/State: </label>
-                <select id="cityState" name="cityState" required>
+                <select id="cityState" name="cityState" value={cityStateE} onChange={(e) => setCityState(e.target.value)} required>
                   <option value="">Select City/State</option>
                   <option value="Riverside, CA">Riverside, CA</option>
                   <option value="San Diego, CA">San Diego, CA</option>
