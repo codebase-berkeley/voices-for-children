@@ -338,7 +338,7 @@ function Inventory() {
                   name={item.item_donated}
                   item_type={item.item_type}
                   amount={item.total_amount}
-                  stock={item.stock}
+                  stock={item.total_amount > 0 ? 'Yes' : 'No'}
                 />
               ))}
             </div>

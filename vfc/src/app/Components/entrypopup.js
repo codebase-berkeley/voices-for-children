@@ -15,8 +15,8 @@ function EntryPopup(props) {
     
     const postData = async () => {
         console.log("INSIDE POST DATA");
-        
-        var instock = amt > 0 ? 'Yes' : 'No';
+    
+        var stock = amt > 0 ? 'Yes' : 'No';
         console.log("amount", amt)
         const response = await fetch("/api/postDonation", {
             method: "POST",
@@ -30,7 +30,7 @@ function EntryPopup(props) {
                 amt,
                 date,
                 desc,
-                instock
+                stock,
             }),
         });
         // return response.json();
