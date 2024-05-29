@@ -47,10 +47,11 @@ function MultipleFlipCards(props) {
     ]
 
     // Return true if there are no filters, else check each filter on all relevant attributes
-    return props.filters.length === 0 || props.filters.every((filter) => {
-        const lowerCaseFilter = filter.toLowerCase();
-        return cardAttributes.some(attribute => attribute.includes(lowerCaseFilter));
-    });
+    return props.filters.length === 0 || filterArrays.every(filterArray => 
+      filterArray.length === 0 || filterArray.some(filter => 
+        cardAttributes.some(attribute => attribute.includes(filter))
+      )
+    );
 });
   // Filters through data by searching
   const searchedData = filteredData.filter((card) => {
