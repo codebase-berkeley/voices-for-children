@@ -24,23 +24,20 @@ export default function Inkind() {
   return (
     <div>
       <MsalProvider instance={msalInstance}></MsalProvider>
-      <UnauthenticatedTemplate>hello unauthenticated</UnauthenticatedTemplate>
-      <AuthenticatedTemplate>
-        <Navbar />
-        <Tabs>
-          <TabList className="tab-list">
-            <Tab>Donation log</Tab>
-            <Tab>Inventory log</Tab>
-          </TabList>
+      <Navbar />
+      <Tabs>
+        <TabList className="tab-list">
+          <Tab>Donation log</Tab>
+          <Tab>Inventory log</Tab>
+        </TabList>
 
-          <TabPanel>
-            <Donation />
-          </TabPanel>
-          <TabPanel>
-            <Inventory />
-          </TabPanel>
-        </Tabs>
-      </AuthenticatedTemplate>
+        <TabPanel>
+          <Donation />
+        </TabPanel>
+        <TabPanel>
+          <Inventory />
+        </TabPanel>
+      </Tabs>
     </div>
   );
 }
