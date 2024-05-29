@@ -12,7 +12,7 @@ import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
-import Donation from "./donation";
+import Donation from "./inventory";
 import MainComPart from ".";
 import { Main } from "next/document";
 
