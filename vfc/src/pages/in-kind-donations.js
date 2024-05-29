@@ -2,8 +2,8 @@ import Navbar from "@/app/Components/navbar";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./in-kind-donations.css";
 import "react-tabs/style/react-tabs.css";
-import Donation from "./donation";
-import Inventory from "./inventory";
+import Donation from "./inventory";
+import Inventory from "./donation";
 import {
   PublicClientApplication,
   EventType,
@@ -27,8 +27,8 @@ export default function Inkind() {
       <Navbar />
       <Tabs>
         <TabList className="tab-list">
-          <Tab>Donation log</Tab>
           <Tab>Inventory log</Tab>
+          <Tab>Donation log</Tab>
         </TabList>
 
         <TabPanel>
