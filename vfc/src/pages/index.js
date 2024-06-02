@@ -95,14 +95,14 @@ function MainComPart() {
   //adds the filters to a list to be applied and displayed on the screen top
 
   function handleChange(e) {
+    const filter = {
+      filtername: e.target.value.toLowerCase(),
+      filtertype: e.target.className
+    }
     if (e.target.checked) {
       // If the checkbox is checked, add its value to the currFilters array
       console.log("e target CLASS", e.target.className)
       console.log(e.target.className == "location-filter")
-      const filter = {
-        filtername: e.target.value.toLowerCase(),
-        filtertype: e.target.className
-      }
       console.log(filter)
        
       setCurrFilters([...currFilters, filter]);
@@ -111,7 +111,7 @@ function MainComPart() {
       } else if (filter.filtertype == "year-filter") {
         setYearFilters([...yearFilters, filter.filtername])
       } else if (filter.filtertype == "month-filter") {
-        setMonthFilters([...giftFilters, filter.filtername])
+        setMonthFilters([...monthFilters, filter.filtername])
       } else if (filter.filtertype == "gifttype-filter") {
         console.log("appending to gift filters", filter.filtername)
         setGiftFilters([...giftFilters, filter.filtername])
@@ -126,6 +126,16 @@ function MainComPart() {
     } else {
       // If the checkbox is unchecked, remove its value from the currFilters array
       setCurrFilters(prevFilters => prevFilters.filter(item => item.filtername !== e.target.value.toLowerCase()));
+      if (filter.filtertype === "location-filter") {
+        setLocFilters(prev => prev.filter(item => item !== filter.filtername));
+      } else if (filter.filtertype === "year-filter") {
+        setYearFilters(prev => prev.filter(item => item !== filter.filtername));
+      } else if (filter.filtertype === "month-filter") {
+        setMonthFilters(prev => prev.filter(item => item !== filter.filtername));
+      } else if (filter.filtertype === "gifttype-filter") {
+        setGiftFilters(prev => prev.filter(item => item !== filter.filtername));
+      }
+      
     }
     console.log("current filters", currFilters);
   }
