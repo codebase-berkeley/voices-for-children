@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "./community_partnerships.css";
-import MultipleFlipCards from "../app/Components/flipcardPage";
+import MultipleFlipCards from "../app/components/flipcardPage";
 import TextField from "@mui/material/TextField";
-import NewPopup from "../app/Components/newPopup";
+import NewPopup from "../app/components/newPopup";
 import rawdata from "./rawdata.json";
-import Navbar from "../app/Components/navbar";
+import Navbar from "../app/components/navbar";
 import {
   PublicClientApplication,
   EventType,
