@@ -5,7 +5,7 @@ import InventoryEntry from "../app/components/inventoryentry";
 // import { Link } from "react-router-dom";
 import EntryPopup from "../app/components/entrypopup.js";
 import { useState, useEffect } from "react";
-import Navbar from "../app/Components/navbar";
+import Navbar from "../app/components/navbar";
 import Top from "../app/components/top";
 import TextField from "@mui/material/TextField";
 import {
