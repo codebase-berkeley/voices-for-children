@@ -208,7 +208,7 @@ function MainComPart() {
         <div class="all-filters">
           {/* start of filter */}
           <div class="each-filter">
-            <button onClick={() => setIsOpen((prev) => !prev)} className="dropdown">
+            <button onClick={() => setIsOpen((prev) => !prev)} className="button">
               {!isOpen ? (
                 <img
                   src="https://static.thenounproject.com/png/551749-200.png"

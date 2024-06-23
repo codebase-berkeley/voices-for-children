@@ -57,7 +57,7 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
       <div className="lolcontainer">
         <div className="modal-top">
           <div className="exit-button" onClick={handleClick}>
-            X
+          X
           </div>
         </div>
         <div className="titleContainer">

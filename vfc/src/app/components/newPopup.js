@@ -62,7 +62,7 @@ export default function NewPopup({
       <div className="newContainer">
         <div className="containerTop">
           <p className="x" onClick={handleNewCick}>
-            X
+          ✕
           </p>
         </div>
         <div className="titleContainer">
