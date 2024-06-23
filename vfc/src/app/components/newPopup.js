@@ -86,7 +86,7 @@ export default function NewPopup({
               </div>
               <div className="contacts">
                 <div className="form-group">
-                  <label for="poc">POC: </label>
+                  <label for="poc">Point of Contact (POC): </label>
                   <input
                     type="text"
                     id="name"
