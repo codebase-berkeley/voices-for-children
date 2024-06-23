@@ -35,7 +35,7 @@ export default function Navbar(props) {
             <Link
               className="link"
               style={{ textDecoration: "none" }}
-              href="/donation"
+              href="/in-kind-donations"
             >
               <p
                 id={!props.onCommunity ? "goBlue" : ""}
