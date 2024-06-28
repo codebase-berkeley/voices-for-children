@@ -55,7 +55,9 @@ function EntryPopup(props) {
             <div className="create-new-bar">
                 <h1 className="create-new-text"><b>New Donation</b></h1>
                 <div className="close">
-                    <button id="x" onClick={handlePopupClose}><img src="apple-touch-icon.png" alt="x img"></img></button>
+                <button id="x" onClick={handlePopupClose}>
+                    <img src="apple-touch-icon.png" alt="x img" />
+                </button>
                 </div>
             </div>
             <form onSubmit={(event) => {
