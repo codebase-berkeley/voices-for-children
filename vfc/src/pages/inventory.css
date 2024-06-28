@@ -118,26 +118,18 @@
 
 /* Create New Button */
 #create-new {
-  border-radius: 26px;
-  background-color: #68b5dabf;
-  color: white;
-  width: 10vw;
-  height: 2.5vw;
-  font-size: 1vw;
-  padding: 0;
-  border: none;
-}
-
-#create-new {
-  border: 1px solid lightgrey;
   border-radius: 5px;
-  width: 12vw;
-  height: 55px;
-  padding: 5px;
   background-color: #68b5dabf;
   color: black;
+  width: 12vw;
+  height: 55px;
   font-size: 14px;
   margin-left: 20px;
+  display: flex;          /* Add this line */
+  align-items: center;    /* Add this line */
+  justify-content: center;/* Add this line */
+  padding: 0;             /* Ensure padding is set to 0 */
+  border: 1px solid lightgrey;
 }
 
 /* Style for when the dropdown is open */
