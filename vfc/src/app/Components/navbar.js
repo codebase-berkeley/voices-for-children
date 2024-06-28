@@ -1,6 +1,6 @@
 import "./navbar.css";
 // import TextField from "@mui/material/TextField";
-import Link from "next/link";
+import Link from 'next/link'
 import { useState } from "react";
 // import { Nav } from "react-bootstrap";
 // import { useRouter } from "next/router";
@@ -14,11 +14,11 @@ export default function Navbar(props) {
     <div class="navbarTop">
       <div className="navbarTip">
         <div className="list">
-          <img
-            src="https://www.speakupnow.org/wp-content/uploads/2021/05/voices-for-children-logo-color.png"
-            alt="My Image Description"
-            className="voices-for-children-logo"
-          />
+            <img
+              src="https://www.speakupnow.org/wp-content/uploads/2021/05/voices-for-children-logo-color.png"
+              alt="My Image Description"
+              className="voices-for-children-logo"
+            />
         </div>
         <div className="navbar-things">
           <div className="clist">
@@ -29,7 +29,7 @@ export default function Navbar(props) {
               >
                 Community Partnerships
               </p>
-            </Link>
+            </Link>          
           </div>
           <div className="lists">
             <Link
@@ -49,7 +49,6 @@ export default function Navbar(props) {
               </p>
             </Link>
           </div>
-          
         </div>
       </div>
     </div>

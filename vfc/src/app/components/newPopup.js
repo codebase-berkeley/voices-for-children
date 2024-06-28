@@ -11,77 +11,44 @@ export default function NewPopup({
     console.log(newIsOpen);
   };
 
-  const submitForm = (event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
+    const formData = new FormData(event.target); // Use FormData to handle data submission including files
 
-    // const newCard = {
-    //     name: "hello",
-    //     locationImage: "vfc/src/app/assets/justinchen.jpg",
-    //     location: "NYC",
-    //     cityState: "NYC, CA",
-    //     phone: "(123)4567-8912",
-    //     email: "justinchen722@berkeley.edu",
-    //     poc: "Justin Chen",
-    //     date: "07/22/2005",
-    //     giftType: "Toys"
-    // }
+    try {
+      const response = await fetch("/api/postPartnership", {
+        method: "POST",
+        body: formData, // Send formData directly
+      });
 
-    // Change the input date to 07/22/2005 instead of 2005-07-22
-    const inputDate = event.target.date ? event.target.date.value : "";
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-    // Check if inputDate is not empty before splitting
-    const parts = inputDate ? inputDate.split("-") : ["", "", ""];
+      const result = await response.json();
+      console.log("posted new id: ", result.id);
 
-    // Format the date if it's not empty, otherwise set it to an empty string
-    const formattedDate = inputDate
-      ? `${parts[1]}/${parts[2]}/${parts[0]}`
-      : "";
-
-    const newCard = {
-      name: event.target.companyName.value,
-      locationImage: "vfc/src/app/assets/justinchen.jpg",
-      location: event.target.location.value,
-      cityState: event.target.cityState.value,
-      phone: event.target.phone.value,
-      email: event.target.email.value,
-      poc: event.target.poc.value,
-      date: formattedDate,
-      giftType: event.target.giftType.value,
-      link: event.target.link.value
-    };
-
-    // const newCard = {
-    //   name: event.target.name.value,
-    //   locationImage: "vfc/src/app/assets/codebase.jpg", // default img if no location img uploaded
-    //   location: event.target.location.value,
-    //   cityState: event.target.cityState.value,
-    //   phone: event.target.phone.value,
-    //   email: event.target.email.value,
-    //   poc: event.target.poc.value,
-    //   date: event.target.date.value,
-    //   giftType: event.target.giftType.value,
-    // };
-
-    console.log(newCard);
-
-    const reader = new FileReader();
-    const locImg = event.target.locationImage.files[0];
-
-    if (locImg) {
-      // Read and process the file
-      reader.onloadend = () => {
-        newCard.locationImage = reader.result; // If image uploaded, change location image
-        setData((prevData) => [...prevData, newCard]);
-        setnewIsOpen(false);
+      // Update local state to include new partnership card
+      const newCard = {
+        id: result.id,
+        name: formData.get("companyName"),
+        location: formData.get("location"),
+        citystate: formData.get("cityState"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        poc: formData.get("poc"),
+        date: formData.get("date"),
+        gifttype: formData.get("giftType"),
+        link: formData.get("link"),
+        image: result.image,
       };
-      reader.readAsDataURL(locImg);
-    } else {
-      // Handle the case where no image is provided
-      newCard.locationImage = "/assets/aqua.jpg"; // Set a default image path
+
       setData((prevData) => [...prevData, newCard]);
       setnewIsOpen(false);
+      console.log("frontend data: ", prevData);
+    } catch (error) {
+      console.error("Error submitting form:", error);
     }
-    console.log(newCard);
   };
 
   const today = new Date();
@@ -95,7 +62,7 @@ export default function NewPopup({
       <div className="newContainer">
         <div className="containerTop">
           <p className="x" onClick={handleNewCick}>
-            X
+          ✕
           </p>
         </div>
         <div className="titleContainer">
@@ -133,9 +100,7 @@ export default function NewPopup({
                 </div>
 
                 <div className="form-group">
-                  <label id="date" for="date">
-                    Date:
-                  </label>
+                  <label for="poc">Point of Contact (POC): </label>
                   <input
                     type="date"
                     id="date"
@@ -168,176 +133,8 @@ export default function NewPopup({
 
               </div>
 
-              <div className = 'col2'>
-                <div className="contacts">
-                  <div className="form-group">
-                    <label for="poc"><b>Point of Contact (POC): </b></label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="poc"
-                        placeholder="Enter POC Name"
-                        required
-                      >
-                      </input>
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                  <label for="email"><b>Email: </b></label>
-                  <input
-                    type="email"
-                    id="name"
-                    name="email"
-                    placeholder="Enter Email"
-                    required
-                  ></input>
-                  </div>
-                
-                <div className="form-group">
-                  <label for="address"><b>Address: </b></label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="location"
-                    placeholder="Enter Company Address"
-                    required
-                  ></input>
-                </div>
-
-
-                <div className="form-group">
-                  <label for="giftType"><b>Gift Type: </b></label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="giftType"
-                    placeholder="Enter gift type"
-                    required
-                  ></input>
-                </div>
-
-
-                  <div className="form-group">
-                  <label for="locationImage"><b>[OPTIONAL] Company Image: </b></label>
-                  <input
-                    type="file"
-                    id="locationImage"
-                    name="locationImage"
-                  ></input>
-                </div>
-              </div>
-            </div>
-            <div className="buttonContainer">
-              <button id="submitButton" type="submit">
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-
-
-
-
-
-
-
-
-
-{/* <div className="row1">
-              <div className="companyName">
-                <div className="form-group">
-                  <label for="name"><b>Company Name: </b></label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="companyName"
-                    placeholder="Enter Company Name"
-                    required
-                  ></input>
-                </div>
-              </div>
-
-              <div className="contacts">
-                <div className="form-group">
-                  <label for="poc"><b>Point of Contact (POC): </b></label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="poc"
-                    placeholder="Enter POC Name"
-                    required
-                  ></input>
-                </div>
-              </div>
-
               <div className="form-group">
-                <label for="email"><b>Email: </b></label>
-                <input
-                  type="email"
-                  id="name"
-                  name="email"
-                  placeholder="Enter Email"
-                  required
-                ></input>
-              </div>
-              <div className="form-group">
-                <label for="address"><b>Address: </b></label>
-                <input
-                  type="text"
-                  id="name"
-                  name="location"
-                  placeholder="Enter Company Address"
-                  required
-                ></input>
-              </div>
-
-
-              <div className="form-group">
-                <label for="giftType"><b>Gift Type: </b></label>
-                <input
-                  type="text"
-                  id="name"
-                  name="giftType"
-                  placeholder="Enter gift type"
-                  required
-                ></input>
-              </div>
-
-              <div className="form-group">
-                <label for="address"><b>Address: </b></label>
-                <input
-                  type="text"
-                  id="name"
-                  name="location"
-                  placeholder="Enter Company Address"
-                  required
-                ></input>
-              </div>
-
-            </div>
-            
-            <div className="row2">
-              <div className="form-group">
-                <label id="phone" for="phone">
-                  <b>Phone Number:</b>
-                </label>
-                <input
-                  type="number"
-                  id="name"
-                  name="phone"
-                  placeholder="Enter Phone Number"
-                  required
-                ></input>
-              </div>
-
-              <div className="form-group">
-                <label for="email"><b>Email: </b></label>
+                <label for="email">Email: </label>
                 <input
                   type="email"
                   id="name"
@@ -347,7 +144,6 @@ export default function NewPopup({
                 ></input>
               </div>
             </div>
-
             <div className="row3">
               <div className="form-group">
                 <label id="date" for="date">
@@ -361,9 +157,8 @@ export default function NewPopup({
                   required
                 ></input>
               </div>
-
-              {/* <div className="form-group">
-                <label for="address"><b>Address: </b></label>
+              <div className="form-group">
+                <label for="address">Address: </label>
                 <input
                   type="text"
                   id="name"
@@ -371,57 +166,60 @@ export default function NewPopup({
                   placeholder="Enter Company Address"
                   required
                 ></input>
-              </div> */}
-
-            //   <div className="form-group">
-            //     <label for="giftType"><b>Gift Type: </b></label>
-            //     <input
-            //       type="text"
-            //       id="name"
-            //       name="giftType"
-            //       placeholder="Enter gift type"
-            //       required
-            //     ></input>
-            //   </div>
-            // </div>
-            // <div className="row4">
-            //   <div className="form-group">
-            //     <label htmlFor="cityState"><b>City/State: </b></label>
-            //     <select id="cityState" name="cityState" required>
-            //       <option value="">Select City/State</option>
-            //       <option value="Riverside, CA">Riverside, CA</option>
-            //       <option value="San Diego, CA">San Diego, CA</option>
-            //       {/* Add more options as needed */}
-            //     </select>
-            //   </div>
-            //   {/* <div className="form-group">
-            //     <label for="giftType"><b>Gift Type: </b></label>
-            //     <input
-            //       type="text"
-            //       id="name"
-            //       name="giftType"
-            //       placeholder="Enter gift type"
-            //       required
-            //     ></input>
-            //   </div> */}
-            // </div>
-            // <div className="row5">
-            //   <div className="form-group">
-            //     <label for="locationImage"><b>Log Link</b></label>
-            //     <input
-            //       type="url"
-            //       id="name"
-            //       name="link"
-            //       placeholder="https://example.com"
-            //       required
-            //     ></input>
-            //   </div>
-            //   <div className="form-group">
-            //     <label for="locationImage"><b>[OPTIONAL] Company Image: </b></label>
-            //     <input
-            //       type="file"
-            //       id="locationImage"
-            //       name="locationImage"
-            //     ></input>
-            //   </div>
-            // </div> */}
+              </div>
+            </div>
+            <div className="row4">
+              <div className="form-group">
+                <label htmlFor="cityState">City/State: </label>
+                <select id="cityState" name="cityState" required>
+                  <option value="">Select City/State</option>
+                  <option value="Riverside, CA">Riverside, CA</option>
+                  <option value="San Diego, CA">San Diego, CA</option>
+                  {/* Add more options as needed */}
+                </select>
+              </div>
+              <div className="form-group">
+                <label for="giftType">Gift Type: </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="giftType"
+                  placeholder="Enter gift type"
+                  required
+                ></input>
+              </div>
+            </div>
+            <div className="row5">
+              <div className="form-group">
+                <label htmlFor="link">Log Link</label>
+                <input
+                  type="url"
+                  id="name"
+                  name="link"
+                  placeholder="https://example.com"
+                  required
+                ></input>
+              </div>
+              <div className="form-group">
+                <label htmlFor="locationImage">
+                  (OPTIONAL) Company Image:{" "}
+                </label>
+                <input
+                  type="file"
+                  id="locationImage"
+                  name="image" // Changed from 'locationImage' to 'image'
+                  accept="image/*"
+                ></input>
+              </div>
+            </div>
+            <div className="buttonContainer">
+              <button id="submitButton" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}

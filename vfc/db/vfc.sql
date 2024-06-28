@@ -34,27 +34,26 @@ CREATE TABLE inkindDonations
 
 INSERT INTO inkindDonations(donor, item_donated, item_type, amount, date, thanked, stock) VALUES ('sasha', 'teddy', 'toys', 10, '2015-12-23', 'yes', 'yes');
 
-
-CREATE TABLE communityPartnerships(
-  poc VARCHAR(100),
-  email VARCHAR(320),
-  phone INTEGER,
-  dateJoined DATE,
-  giftType VARCHAR(80),
-  companyAddress VARCHAR(500),
-  cityState VARCHAR(250),
-  loglink VARCHAR(2048)
+CREATE TABLE communityPartnerships (
+    id SERIAL PRIMARY KEY, 
+    name VARCHAR(255),
+    location VARCHAR(255),
+    citystate VARCHAR(255),
+    gifttype VARCHAR(255),
+    date VARCHAR(255),
+    email VARCHAR(255),
+    poc VARCHAR(255),
+    phone VARCHAR(255),
+    link VARCHAR(255),
+    image VARCHAR(255)
 );
 
+ALTER TABlE communityPartnerships
+ALTER COLUMN image TYPE BYTEA USING image::bytea;
 
--- <div className="poc"><b>Point of Contact :</b> {props.poc}</div>
---     <div className="email"><b>Email :</b> {props.email}</div>
---     <div className="phone-number"><b>Phone Number :</b> {props.phone}</div>
---     <div className="date-joined"><b>Date Joined :</b> {props.date}</div>
---     <div className="gifts"><b>Gifts :</b> {props.giftType}</div>
---   </div>
---   <div className="halfDivider">
---     <div className="modalAddress"><b>Address :</b> {props.location}</div>
---     <div className="cityState"><b>City/State :</b> {props.cityState}</div>
---     <div className="Ticket Log Link"><b>Ticket Log Link :</b> <a id="logLink" href={"http://" + props.link} target="_blank" rel="noopener noreferrer">{props.link}</a></div>
---   </div>
+INSERT INTO communityPartnerships(name, location, citystate, gifttype, date, email, poc, phone, link, image) VALUES ('Codebase', 'San Leandro', 'California', 'tickets', '2003-01-17', 'dom@gmail.com', 'Dom', '5103164766', 'https://google.com', '/assets/aqua.jpg');
+INSERT INTO communityPartnerships(name, location, citystate, gifttype, date, email, poc, phone, link, image) VALUES ('Codebase', '4321 addresss', 'Riverside, CA', 'toys', '2024-05-01', 'dom@gmail.com', 'Dom', '5103164766', 'https://google.com', '/assets/aqua.jpg');
+
+
+INSERT INTO inkindDonations(donor, itemsDonated, itemType, amount, dateDonated, thanked) VALUES ('sasha', 'legos', 'toys', 10, DATE '2015-12-23', 'thanked sasha by giving her flowers - sunflowers');
+-- INSERT INTO inkindDonations(donor, itemsDonated, itemType, amount, dateDonated, thanked) VALUES ('ant', 'hot wheels', 'toys', DATE '2015-12-23', 'thanked ant by giving him nothing');

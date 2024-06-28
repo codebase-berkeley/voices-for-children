@@ -19,7 +19,7 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
       <div className="container" style={{ backgroundImage: `url(${props.locationImage})` }}>
         <div className="modal-top">
           <div className="exit-button" onClick={handleClick}>
-            X
+          ✕
           </div>
         </div>
         <div className="titleContainer">

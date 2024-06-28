@@ -1,9 +1,12 @@
+// "use client";
+import { Rowdies } from "next/font/google";
 import "./inventory.css";
 import { useState, useEffect } from "react";
 import DonationEntry from "../app/components/donationEntry";
 import EntryPopup from "../app/components/entrypopup.js";
 import Top from "../app/components/top";
 import Navbar from "../app/Components/navbar";
+// import Top from "../app/Components/top";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import Link from "next/link";
@@ -218,47 +221,14 @@ function Inventory() {
 
   return (
     <div>
-        {/* <Top></Top> */}
-        {/* <div className="bigContainer">
-        {/* <Navbar buttonId={buttonId} setButtonId={setButtonId}></Navbar> 
-        <div className="inventoryContainer">
-          <h1 className="name">In-Kind Donation</h1>
-          <div className="flipSwitch">
-            {/* <Link
-              className="link"
-              style={{ textDecoration: "none" }}
-              to="/home"
-            >
-              <button
-                className="BUTTON"
-                id={buttonId === "Inventory" ? "clicked" : null}
-                onClick={() => handleClick("Inventory")}
-              >
-                Inventory
-              </button>
-            </Link>
-            <Link
-              className="link"
-              style={{ textDecoration: "none" }}
-              to="/donation_log"
-            >
-              <button
-                className="BUTTON"
-                id={buttonId === "Donation_log" ? "clicked" : null}
-                onClick={() => handleClick("Donation_log")}
-              >
-                Donation Log
-              </button>
-            </Link> 
-          </div>
-        </div>
-      </div> */}
-        <div className="inventory-page">
-          <div className="search-wrapper">
-            <div className="filterContainer">
-              <div className="search">
-                <form>
-                  {/* <input
+
+      {/* <Top></Top> */}
+      <div className="inventory-page">
+        <div className="search-wrapper">
+          <div className="filterContainer">
+            <div className="search">
+              <form>
+                {/* <input
                   type="text"
                   value={search}
                   onChange={handleChange}

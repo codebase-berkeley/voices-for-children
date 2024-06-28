@@ -12,7 +12,7 @@ function MultipleFlipCards(props) {
     return date.toLocaleDateString("en-US", options);
   };
 
-  // // Filters through data from filters checked
+  // Filters through data from filters checked
   // const filteredData = props.data.filter((card) => {
   //   //changes 07/22/2005 to July 22, 2005
   //   const newDate = formatDate(card.date).toLowerCase();
@@ -22,10 +22,10 @@ function MultipleFlipCards(props) {
   //     // Else return all items that have an attribute present in the currFilter array
   //   } else {
   //     return (
-  //       props.filters.includes(card.giftType.toLowerCase()) ||
+  //       props.filters.includes(card.gifttype.toLowerCase()) ||
   //       //filter ex. Given San Diego, CA it will include when checking off San Diego box
   //       props.filters.every((filter) =>
-  //         card.cityState.toLowerCase().includes(filter.toLowerCase())
+  //         card.citystate.toLowerCase().includes(filter.toLowerCase())
   //       ) ||
   //       props.filters.every((filter) => newDate.includes(filter.toLowerCase()))
   //     );
@@ -34,22 +34,25 @@ function MultipleFlipCards(props) {
   const filteredData = props.data.filter((card) => {
     const newDate = formatDate(card.date).toLowerCase();
     const cardAttributes = [
-      card.giftType.toLowerCase(),
-      card.cityState.toLowerCase(),
-      newDate,
+        card.gifttype.toLowerCase(),
+        card.citystate.toLowerCase(),
+        newDate
     ];
 
+    const filterArrays = [
+      props.locFilters,
+      props.giftFilters,
+      props.yearFilters,
+      props.monthFilters
+    ]
+
     // Return true if there are no filters, else check each filter on all relevant attributes
-    return (
-      props.filters.length === 0 ||
-      props.filters.every((filter) => {
-        const lowerCaseFilter = filter.toLowerCase();
-        return cardAttributes.some((attribute) =>
-          attribute.includes(lowerCaseFilter)
-        );
-      })
+    return props.filters.length === 0 || filterArrays.every(filterArray => 
+      filterArray.length === 0 || filterArray.some(filter => 
+        cardAttributes.some(attribute => attribute.includes(filter))
+      )
     );
-  });
+});
   // Filters through data by searching
   const searchedData = filteredData.filter((card) => {
     //if nothing in the input, return everything
@@ -65,19 +68,20 @@ function MultipleFlipCards(props) {
       <div className="card-container">
         {searchedData.map((card, index) => (
           <FlipCard
+            id={card.id}
             key={index}
             name={card.name}
             location={card.location}
-            cityState={card.cityState}
+            cityState={card.citystate}
             phone={card.phone}
             email={card.email}
             poc={card.poc}
-            locationImage={card.locationImage}
-            // phoneImage={card.phoneImage}
-            // emailImage={card.emailImage}
+            image={card.image}
             date={card.date}
-            giftType={card.giftType}
+            giftType={card.gifttype}
             link={card.link}
+            data={props.data}
+            setData={props.setData}
           />
         ))}
       </div>

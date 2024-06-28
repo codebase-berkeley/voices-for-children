@@ -14,6 +14,7 @@
     z-index: 9999999999;
 }
 
+
 .newContainer {
     background-color: white;
     color: black;
@@ -21,7 +22,7 @@
     margin-bottom: 2vh;
     border: solid black;
     width: 700px;
-    height: 650px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     overflow: auto; 
@@ -37,7 +38,7 @@
 .x {
     position: absolute;
     width: 80px; 
-    height: 50px;
+    height: 58px;
     border-radius: 0px 8px 0px 0px;
     display: flex;
     justify-content: center;
