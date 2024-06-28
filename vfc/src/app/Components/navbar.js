@@ -49,6 +49,7 @@ export default function Navbar(props) {
               </p>
             </Link>
           </div>
+          
         </div>
       </div>
     </div>
