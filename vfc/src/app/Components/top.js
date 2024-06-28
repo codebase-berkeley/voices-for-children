@@ -17,9 +17,9 @@ function Top() {
     <div className="bigContainer">
       <Navbar onCommunity={false}></Navbar>
       <div className="inventoryContainer">
-        <h1 className="name">In-Kind Donation</h1>
+        <h1 className="donation-heading">In-Kind Donation</h1>
         <div className="flipSwitch">
-          <Link className="link" style={{ textDecoration: "none" }} to="/home">
+          {/* <Link className="link" style={{ textDecoration: "none" }} to="/home">
             <button
               className="BUTTON"
               id={buttonId === "Inventory" ? "clicked" : null}
@@ -27,8 +27,8 @@ function Top() {
             >
               Inventory
             </button>
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             className="link"
             style={{ textDecoration: "none" }}
             to="/donation_log"
@@ -40,7 +40,7 @@ function Top() {
             >
               Donation Log
             </button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

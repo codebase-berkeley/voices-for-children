@@ -15,8 +15,8 @@ function EntryPopup(props) {
     
     const postData = async () => {
         console.log("INSIDE POST DATA");
-        
-        var instock = amt > 0 ? 'Yes' : 'No';
+    
+        var stock = amt > 0 ? 'Yes' : 'No';
         console.log("amount", amt)
         const response = await fetch("/api/postDonation", {
             method: "POST",
@@ -30,7 +30,7 @@ function EntryPopup(props) {
                 amt,
                 date,
                 desc,
-                instock
+                stock,
             }),
         });
         // return response.json();
@@ -73,7 +73,7 @@ function EntryPopup(props) {
                     <span className="popup-text">Description</span>
                     <input type="text" placeholder="Thank you details, item usage, etc." id="desc" name="thanked" value={desc} onChange={e => setDesc(e.target.value)}></input>
                 </div>
-                <button className="submit" id="submit" type="submit">submit</button>
+                <button className="submit" id="submit" type="submit">Submit</button>
             </form>
         </div>
     );

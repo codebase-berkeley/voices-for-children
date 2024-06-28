@@ -13,7 +13,7 @@ export default async function postDonation(req, res) {
         body.amt,
         body.date,
         body.desc,
-        body.instock,
+        body.stock,
     ]
     );
 

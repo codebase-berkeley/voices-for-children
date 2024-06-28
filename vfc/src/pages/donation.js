@@ -1,107 +1,74 @@
-import "./donation.css";
-import { useState, useEffect } from "react";
-import DonationEntry from "../app/components/donationEntry";
+"use client";
+import { Rowdies } from "next/font/google";
+import "./inventory.css";
+import InventoryEntry from "../app/components/inventoryentry";
+// import { Link } from "react-router-dom";
 import EntryPopup from "../app/components/entrypopup.js";
+import { useState, useEffect } from "react";
+import Navbar from "../app/components/navbar";
 import Top from "../app/components/top";
-import Navbar from "../app/Components/navbar";
 import TextField from "@mui/material/TextField";
-import axios from "axios";
-import Link from "next/link";
-import { json } from "react-router-dom";
-
+import {
+  PublicClientApplication,
+  EventType,
+  InteractionStatus,
+} from "@azure/msal-browser";
+import Login from "./loginpage";
+import { MsalProvider, useMsal, useIsAuthenticated } from "@azure/msal-react";
+import { authScopes, msalConfig } from "../app/authConfig";
+import {
+  AuthenticatedTemplate,
+  UnauthenticatedTemplate,
+} from "@azure/msal-react";
+import LoginPage from "./loginpage";
+// import Data from "./rawdata";
+const msalInstance = new PublicClientApplication(msalConfig);
 function Donation() {
   const [popupVisible, setPopupVisible] = useState(false);
   const [sortBy, setSortBy] = useState("");
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
+  const [refreshData, setRefreshData] = useState(false);
 
-  var inKindData = null;
-  /* working w api data */
-  const [apiData, setApiData] = useState("");
+  const handleDataSubmitted = () => {
+    setRefreshData(!refreshData); // Toggle to trigger useEffect
+  };
+
   var currSearchKey = null;
   var currSearchObject = null;
   var lastSearch = null;
   var currSearch = {
     [currSearchKey]: currSearchObject,
   };
-
-  const [originalData, setOriginalData] = useState(
-
-    [
-    ]
-  
-    // const [seen, setSeen] = useState(false);
-    // async function show() {
-    //     console.log("calling show");
-    //     setSeen(!seen);
-    //     console.log(seen, "from inventory")
-    // }
-    );
-
-  // console.log("HITTING ENDPOINT");
-  // axios
-  //   .get("./api/hello")
-  //   .then((response) => console.log("hello api response", response.data))
-  //   .catch((error) => console.error("Error fetching data:", error));
+  var lastEvent = null;
+  const [originalData, setOriginalData] = useState([]);
 
   useEffect(() => {
-    const getReq = async () => {
-      const response = await fetch("/api/hello")
-        .then((response) => {
-          console.log("adasdasasd");
-        })
-        .then((data) => {
-          console.log("hello api response", data);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    };
-    getReq();
-  }, []); // The empty dependency array ensures it only runs once after the initial render
-
-  useEffect(() => {
-
     const fetchData = async () => {
       try {
         const response = await fetch("/api/getDonation");
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
-        const jsonData = await response.json();  // Properly handle the promise
-        
-        console.log("get donation api response", jsonData);
-        setOriginalData(jsonData);
-        setDonationData(jsonData);
+        const jsonDataInventory = await response.json(); // Properly handle the promise
+
+        console.log("get donation api response", jsonDataInventory);
+        setOriginalData(jsonDataInventory);
+        setInventoryData(jsonDataInventory);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
-    // const fetchData = async () => {
-    //   const response = await fetch("/api/getDonation")
-    //     .then((response) => {
-    //       inKindData = response.json();
-    //       console.log("get donation api response", inKindData);
-    //       console.log(JSON.parse(inKindData));
-    //     })
-    //     // .then((data) => {
-    //     //   console.log(data);
-    //     //   console.log("get donation api response data", data);
-    //     // })
-    //     .catch((error) => {
-    //       console.error("Error fetching data:", error);
-    //     });
-    // };
     fetchData();
-  }, []);
+  }, [refreshData]);
 
+  // const [seen, setSeen] = useState(false);
+  // async function show() {
+  //     console.log("calling show");
+  //     setSeen(!seen);
+  // }
 
-
-  var lastEvent = null;
-  
-
-  const [donationData, setDonationData] = useState([...originalData]);
+  const [inventoryData, setInventoryData] = useState([...originalData]);
   const togglePopup = () => {
     setPopupVisible(!popupVisible);
   };
@@ -110,22 +77,25 @@ function Donation() {
     setSortBy(selectedOption);
 
     if (selectedOption === "") {
-      setDonationData([...originalData]);
+      setInventoryData([...originalData]);
       return;
     }
 
-    const sortedData = [...donationData].sort((a, b) => {
+    const sortedData = [...inventoryData].sort((a, b) => {
+      console.log(a);
       if (selectedOption === "amount") {
         return a.amount - b.amount;
+      } else if (selectedOption === "date") {
+        return new Date(a.date) - new Date(b.date);
       } else if (selectedOption === "name") {
         return a.donor.localeCompare(b.donor);
       } else if (selectedOption === "item_type") {
         return a.item_type.localeCompare(b.item_type);
-      } else if (selectedOption === "stock") {
-        return a.stock.localeCompare(b.stock);
+      } else if (selectedOption === "item_donated") {
+        return a.item_donated.localeCompare(b.item_donated);
       }
     });
-    setDonationData(sortedData);
+    setInventoryData(sortedData);
   };
 
   const applyFilters = (currentSearch, currentFilter) => {
@@ -139,12 +109,15 @@ function Donation() {
     if (currentSearch) {
       filteredData = filteredData.filter(
         (item) =>
-          item.item_donated.toLowerCase().includes(currentSearch.toLowerCase()) ||
+          item.donor.toLowerCase().includes(currentSearch.toLowerCase()) ||
+          item.item_donated
+            .toLowerCase()
+            .includes(currentSearch.toLowerCase()) ||
           item.item_type.toLowerCase().includes(currentSearch.toLowerCase())
       );
     }
 
-    setDonationData(filteredData);
+    setInventoryData(filteredData);
   };
 
   // const handleChange = (event) => {
@@ -167,16 +140,16 @@ function Donation() {
     lastSearch = event.target.value;
     lastEvent = event;
     if (search === "") {
-      setDonationData([...originalData]);
+      setInventoryData([...originalData]);
     } else {
       const filteredData = originalData.filter((item) => {
         return (
+          item.donor.toLowerCase().includes(search.toLowerCase()) ||
           item.item_donated.toLowerCase().includes(search.toLowerCase()) ||
-          item.amount.toLowerCase().includes(search.toLowerCase()) ||
           item.item_type.toLowerCase().includes(search.toLowerCase())
         );
       });
-      setDonationData(filteredData);
+      setInventoryData(filteredData);
     }
   };
 
@@ -193,55 +166,9 @@ function Donation() {
     }
   };
 
-  const [buttonId, setButtonId] = useState("Donation_log");
-
-  const handleClick = (newId) => {
-    setButtonId(newId);
-  };
-  console.log("yo");
-  
-  console.log(buttonId);
-  useEffect(() => {
-    console.log("original", donationData);
-  }, [donationData]);
-
   return (
     <div>
-      <Top></Top>
-      {/* <div className="bigContainer">
-        {/* <Navbar buttonId={buttonId} setButtonId={setButtonId}></Navbar> 
-        <div className="inventoryContainer">
-          <h1 className="name">In-Kind Donation</h1>
-          <div className="flipSwitch">
-            {/* <Link
-              className="link"
-              style={{ textDecoration: "none" }}
-              to="/home"
-            >
-              <button
-                className="BUTTON"
-                id={buttonId === "Inventory" ? "clicked" : null}
-                onClick={() => handleClick("Inventory")}
-              >
-                Inventory
-              </button>
-            </Link>
-            <Link
-              className="link"
-              style={{ textDecoration: "none" }}
-              to="/donation_log"
-            >
-              <button
-                className="BUTTON"
-                id={buttonId === "Donation_log" ? "clicked" : null}
-                onClick={() => handleClick("Donation_log")}
-              >
-                Donation Log
-              </button>
-            </Link> 
-          </div>
-        </div>
-      </div> */}
+      {/* <Top></Top> */}
       <div className="inventory-page">
         <div className="search-wrapper">
           <div className="filterContainer">
@@ -257,17 +184,17 @@ function Donation() {
                 ></input> */}
                 <div className="searchbar">
                   <TextField
-                    id="outlined-basic"
+                    id="search"
                     onChange={handleChange}
                     onKeyDown={(e) => handleKeyPress(e)}
-                    variant="outlined"
+                    // variant="outlined"
                     label="Search"
-                    InputLabelProps={{
-                      sx: {
-                        color: "black",
-                        "&.Mui-focused": { color: "black" },
-                      },
-                    }}
+                    // InputLabelProps={{
+                    //   sx: {
+                    //     color: "black",
+                    //     "&.Mui-focused": { color: "black" },
+                    //   },
+                    // }}
                   />
                 </div>
               </form>
@@ -275,14 +202,14 @@ function Donation() {
             <div className="filter-wrappers">
               <div className="filter-by">
                 <select
+                  className="SELECT"
                   value={filter}
                   name="filter-by"
-                  // id="filter"
-                  className="SELECT"
+                  id="filter"
                   placeholder="Filter By"
                   onChange={(e) => handleFilter(e)}
                 >
-                  <option value="">Filter By</option>
+                  <option value="">All Categories</option>
                   <option value="Tickets">Tickets</option>
                   <option value="Toys">Toys</option>
                   <option value="Electronics">Electronics</option>
@@ -290,51 +217,74 @@ function Donation() {
                 </select>
               </div>
               <div className="sort-by">
-                <select name="sort-by" className="SELECT" onChange={handleSort}>
+                <select
+                  className="SELECT"
+                  name="sort-by"
+                  id="sort"
+                  onChange={handleSort}
+                >
                   <option value="">Sort By</option>
-                  <option value="sort">Name</option>
+                  <option value="name">Donor</option>
+                  <option value="item_donated">Items Donated</option>
                   <option value="item_type">Item Type</option>
                   <option value="amount">Amount</option>
-                  <option value="stock">In Stock</option>
+                  <option value="date">Date Donated</option>
                 </select>
               </div>
+              <button id="create-new" onClick={togglePopup}>
+                Create New
+              </button>
             </div>
           </div>
         </div>
         <div className="table-form">
           <div className="inventory-wrapper">
             <div className="inventory-header">
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Name
-                </h2>
+              <div className="inv-col-head">
+                <h2 id="title">Donor</h2>
               </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Type
-                </h2>
+              <div className="inv-col-head">
+                <h2 id="title">Items Donated</h2>
               </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  Amount
-                </h2>
+              <div className="inv-col-head">
+                <h2 id="title">Item Type</h2>
               </div>
-              <div className="box">
-                <h2 id="title" className="inv-col-head">
-                  In Stock
-                </h2>
+              <div className="inv-col-head">
+                <h2 id="title">Amount</h2>
+              </div>
+              <div className="inv-col-head">
+                <h2 id="title">Date Donated</h2>
+              </div>
+              <div className="inv-col-head">
+                <h2 id="title">Thanked</h2>
+              </div>
+              <div className="inv-col-head">
+                <h2 id="title"></h2>
               </div>
             </div>
-            {donationData.map((item, index) => (
-              <DonationEntry
+
+            {inventoryData.map((item, index) => (
+              <InventoryEntry
                 key={index}
-                name={item.item_donated}
+                donor={item.donor}
+                item_donated={item.item_donated}
                 item_type={item.item_type}
-                amount={item.amount}
-                stock={item.stock}
-                
+                amount={item.amount} 
+                date={item.date}
+                thanked={item.thanked}
+                realKey={item.key}
+                onDelete={handleDataSubmitted}
               />
             ))}
+          </div>
+          <div className="create-form">
+            {popupVisible && (
+              <EntryPopup
+                onClose={togglePopup}
+                onDataSubmitted={handleDataSubmitted}
+              />
+            )}
+            {/* {seen && <EntryPopup  />} */}
           </div>
         </div>
       </div>

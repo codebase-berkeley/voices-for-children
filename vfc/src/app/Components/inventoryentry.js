@@ -26,23 +26,21 @@ function InventoryEntry(props) {
   //   setShowPopup(false); // Close the main popup
   // };
 
-
   const handleDelete = async () => {
-
     const itemId = props.realKey;
     console.log(itemId);
-    var bod = {id: itemId};
-    console.log("body", JSON.stringify({itemId}));
+    var bod = { id: itemId };
+    console.log("body", JSON.stringify({ itemId }));
     try {
       console.log("trying to delete a row", itemId);
-      const response = await fetch('/api/deleteInventory', {
-        method: 'DELETE',
+      const response = await fetch("/api/deleteInventory", {
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({itemId})
+        body: JSON.stringify({ itemId }),
       });
-  
+
       // if (response.ok) {
       //   console.log('Item successfully deleted');
       //   // Optionally, trigger a refresh of the inventory list in the parent component
@@ -51,24 +49,23 @@ function InventoryEntry(props) {
       //   throw new Error('Failed to delete the item');
       // }
       if (!response.ok) {
-        const text = await response.text();  // Get response as text
-        throw new Error('Failed to delete the item: ' + text);
+        const text = await response.text(); // Get response as text
+        throw new Error("Failed to delete the item: " + text);
       }
-      
+
       const data = await response.json();
-      console.log('Item successfully deleted', data);
+      console.log("Item successfully deleted", data);
       props.onDelete();
 
       // return data;
     } catch (error) {
-      console.error('Error deleting item:', error);
+      console.error("Error deleting item:", error);
     }
-  
+
     setShowDeleteConfirm(false); // Close the delete confirmation popup
     setShowPopup(false); // Close the main popup
   };
 
-  
   return (
     <div className="entry-wrapper">
       <div className="box">
@@ -86,25 +83,45 @@ function InventoryEntry(props) {
       <div className="box">
         <h2 className="entry">{props.date}</h2>
       </div>
-      <div className="box" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div
+        className="box"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <h2 className="entry">{props.thanked}</h2>
         {isTooltipVisible && <div className="tooltip">{props.thanked}</div>}
       </div>
 
       <div className="box">
-        <button className="action-button" onClick={togglePopup}>...</button>
+        <div className="action-button" onClick={togglePopup}>
+          ...
+        </div>
         {showPopup && (
           <div className="edit-popup">
-            <button className="edit-popup-button" onClick={() => setShowDeleteConfirm(true)}>Delete</button>
-            <button className="edit-popup-button" onClick={togglePopup}>Close</button>
+            <button
+              className="edit-popup-button"
+              onClick={() => setShowDeleteConfirm(true)}
+            >
+              Delete
+            </button>
+            <button className="edit-popup-button" onClick={togglePopup}>
+              Close
+            </button>
           </div>
         )}
         {showDeleteConfirm && (
           <div className="delete-popup">
             <div className="delete-confirmation">
               Are you sure you want to delete?
-              <button className="confirmation-button" onClick={handleDelete}>Yes</button>
-              <button className="confirmation-button" onClick={() => setShowDeleteConfirm(false)}>No</button>
+              <button className="confirmation-button" onClick={handleDelete}>
+                Yes
+              </button>
+              <button
+                className="confirmation-button"
+                onClick={() => setShowDeleteConfirm(false)}
+              >
+                No
+              </button>
             </div>
           </div>
         )}
@@ -119,5 +136,3 @@ function InventoryEntry(props) {
   );
 }
 export default InventoryEntry;
-
-
