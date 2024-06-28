@@ -5,10 +5,7 @@
     background-color: white;
     font-family: "Inter", sans-serif;
     font-style: italic;
-    /* box-shadow: 1px 1px 1px 1px #D9D9D9; */
     border: black;
-    /* align-items: left;
-    justify-content: left; */
     margin-left: 3vw;
     padding: 2%;
 }
@@ -25,6 +22,18 @@
 #x {
     width: 30%;
     align-self: center;
+    background-color: transparent; /* Ensure button background is transparent */
+    border: none; /* Remove any border if present */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+/* Explicitly reset styles for the image inside the button */
+#x img {
+    height: 30px; /* Set a fixed height */
+    width: 30px;  /* Set a fixed width */
+    background-color: transparent; /* Ensure image background is transparent */
+    display: block; /* Ensure the image is displayed as a block */
 }
 
 #amt {
@@ -101,57 +110,29 @@ input::placeholder {
 
 .create-new-bar {
     display: flex;
-    /* flex-direction: row; */
-    /* align-items: center; */
-    /* align-content: flex-start; */
-    /* margin-bottom: 5px 0px; */
-    /* background-color: red; */
+    align-items: center; /* Align items vertically */
+    justify-content: space-between;
 }
 
-#x {
-    /* border-bottom: none;
-    color: none;
-    object-fit: cover;
-    border-bottom: none;
-    color: none;
-    padding: none;
-    margin-right: none; */
-}
-
-/* .close {
+.close {
     display: flex;
-    width: 20vw;
-    margin: 3vw;
-    /* height: 5vh; 
-    
-    /* width: 5vh; */
-    /* width: 10vw; */
-    /* background-color: blue; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: right; */
-    /* justify-content: right; */
-    /* background-color: green;
-
-} */
+    align-items: center; /* Align items vertically */
+    background-color: transparent;
+}
 
 #img {
-    max-width: 300px; /* Set the width to 200 pixels */
-    height: 2.5vh; 
-    /* object-fit: cover; */
+    max-width: 300px;
+    height: 2.5vh;
 }
 
 .create-new-text {
     display: flex;
     font-size: 20px;
     font-style: normal;
-    /* margin-top: 3px; */
     margin-right: 13vw;
-    /* margin-left: 3px; */
     width: 80%;
     justify-content: space-between;
     align-content: center;
-    /* background-color: aqua; */
 }
 
 .desc-container {
@@ -181,4 +162,11 @@ input::placeholder {
     margin-top: 2vh;
 }
 
-
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    outline: none;
+}
