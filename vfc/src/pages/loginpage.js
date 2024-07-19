@@ -100,7 +100,7 @@ function Login({ Component }) {
           <div className="vfc-text">Voices for <span class="bold-text">Children.</span></div>
         
             {/* <div className="login-text-header">Login</div> */}
-            <div className = "login-text">Please sign in with an administrative account to access additional features</div>
+            <div className = "login-text">Please sign in with an administrative account to access additional features.</div>
           <button className = "login-button" onClick={() => sasha()}>
           <img src="/assets/microsoftlogo.svg" alt="Microsoft logo" class="microsoft-logo"></img>
           <span className="button-text">Sign in with Microsoft</span>
