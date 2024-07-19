@@ -1,8 +1,3 @@
-/*
- * Copyright (c) Microsoft Corporation. All rights reserved.
- * Licensed under the MIT License.
- */
-
 import { LogLevel } from "@azure/msal-browser";
 
 /**
@@ -11,12 +6,13 @@ import { LogLevel } from "@azure/msal-browser";
  * To learn more about custom policies, visit: https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-overview
  */
 
-const clientId = "8344aaf4-acb6-4631-9fe3-577d90475877";
-const tenantName = "Codebase Voices for Children ";
+const clientId = "707264da-64b1-46e6-9def-ab0ee1fcdd88";
+const tenantName = "38dd4560-f33c-487e-8521-eb1177794e49"; 
+const displayName = "Voices For Children";
 
 const flows = {
-  localAccSignIn: "B2C_1_main_flow", //e.g., B2C_1_main_flow
-  msid: "B2C_1_msid",
+  localAccSignIn: "B2C_1_main_flow", // Example user flow, ensure this matches Jose's setup
+  msid: "B2C_1_msid", // Example, ensure this matches Jose's setup
 };
 
 const activeFlow = flows.localAccSignIn;
@@ -94,6 +90,6 @@ export const msalConfig = {
 
 export const authScopes = {
   scopes: [
-    "https://codebaseedu.onmicrosoft.com/8344aaf4-acb6-4631-9fe3-577d90475877/VoicesForChildren",
+    "https://38dd4560-f33c-487e-8521-eb1177794e49.onmicrosoft.com/707264da-64b1-46e6-9def-ab0ee1fcdd88/VoicesForChildren",
   ],
 };

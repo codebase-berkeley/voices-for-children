@@ -15,6 +15,7 @@ import {
 import Donation from "./inventory";
 import MainComPart from ".";
 import { Main } from "next/document";
+import microsoftLogo from "/public/assets/microsoftlogo.svg";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -90,7 +91,21 @@ function Login({ Component }) {
           />
         </div>
         <div className="login-container">
-          <button onClick={() => sasha()}>Login</button>
+          {/* <div className="login-container-left">
+          <img src="/assets/voices-for-children-logo-color.g" alt="VFC logo" class="vfc-logo"></img>
+          <div className="vfc-text">Voices for</div>
+          <div className="vfc-text-2">Children</div>
+          </div> */}
+          <div className = "login-container-right">
+          <div className="vfc-text">Voices for <span class="bold-text">Children.</span></div>
+        
+            {/* <div className="login-text-header">Login</div> */}
+            <div className = "login-text">Please sign in with an administrative account to access additional features</div>
+          <button className = "login-button" onClick={() => sasha()}>
+          <img src="/assets/microsoftlogo.svg" alt="Microsoft logo" class="microsoft-logo"></img>
+          <span className="button-text">Sign in with Microsoft</span>
+            </button>
+          </div>
         </div>
       </UnauthenticatedTemplate>
       <AuthenticatedTemplate>
