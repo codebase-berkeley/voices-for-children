@@ -6,19 +6,18 @@ export default function NewPopup({
   prevData,
   setData,
 }) {
-  const handleNewCick = () => {
+  const handleNewClick = () => {
     setnewIsOpen(!newIsOpen);
-    console.log(newIsOpen);
   };
 
   const submitForm = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target); // Use FormData to handle data submission including files
+    const formData = new FormData(event.target);
 
     try {
       const response = await fetch("/api/postPartnership", {
         method: "POST",
-        body: formData, // Send formData directly
+        body: formData,
       });
 
       if (!response.ok) {
@@ -28,7 +27,6 @@ export default function NewPopup({
       const result = await response.json();
       console.log("posted new id: ", result.id);
 
-      // Update local state to include new partnership card
       const newCard = {
         id: result.id,
         name: formData.get("companyName"),
@@ -45,7 +43,6 @@ export default function NewPopup({
 
       setData((prevData) => [...prevData, newCard]);
       setnewIsOpen(false);
-      console.log("frontend data: ", prevData);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -53,165 +50,128 @@ export default function NewPopup({
 
   const today = new Date();
   const year = today.getFullYear() + 100;
-  const month = String(today.getMonth() + 1).padStart(2, "0"); // Ensure two digits for month
-  const day = String(today.getDate()).padStart(2, "0"); // Ensure two digits for day
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
   const maxDate = `${year}-${month}-${day}`;
 
   return (
-    <div className="newOverlay">
-      <div className="newContainer">
+    <div className="popupOverlay">
+      <div className="popupContainer">
         <div className="containerTop">
-          <p className="x" onClick={handleNewCick}>
-          ✕
+          <p className="popupTitle">Add New Partnership</p>
+          <p className="x" onClick={handleNewClick}>
+            ✕
           </p>
         </div>
-        <div className="titleContainer">
-          <p className="newTitle">Add New Partnership</p>
-        </div>
         <div className="inputs">
-          {/* <form action="submit_contact_form.php"> */}
           <form className="allInputs" onSubmit={submitForm}>
-            <div className='columns'>
-              <div className = 'col1'>
-                <div className="companyName">
-                    <div className="form-group">
-                      <label for="name"><b>Company Name: </b></label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="companyName"
-                        placeholder="Enter Company Name"
-                        required
-                      ></input>
-                    </div>
-                </div>
-
-                <div className="form-group">
-                  <label id="phone" for="phone">
-                    <b>Phone Number:</b>
-                  </label>
-                  <input
-                    type="number"
-                    id="name"
-                    name="phone"
-                    placeholder="Enter Phone Number"
-                    required
-                  ></input>
-                </div>
-
-                <div className="form-group">
-                  <label for="poc">Point of Contact (POC): </label>
-                  <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    max={maxDate}
-                    required
-                  ></input>
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="cityState"><b>City/State: </b></label>
-                  <select id="cityState" name="cityState" required>
-                    <option value="">Select City/State</option>
-                    <option value="Riverside, CA">Riverside, CA</option>
-                    <option value="San Diego, CA">San Diego, CA</option>
-                    {/* Add more options as needed */}
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label for="locationImage"><b>Log Link</b></label>
-                  <input
-                    type="url"
-                    id="name"
-                    name="link"
-                    placeholder="https://example.com"
-                    required
-                  ></input>
-                </div>
-
-              </div>
-
-              <div className="form-group">
-                <label for="email">Email: </label>
-                <input
-                  type="email"
-                  id="name"
-                  name="email"
-                  placeholder="Enter Email"
-                  required
-                ></input>
-              </div>
+            <div className="form-group">
+              <label htmlFor="companyName">Company Name:</label>
+              <input
+                type="text"
+                id="companyName"
+                name="companyName"
+                placeholder="Enter Company Name"
+                required
+              />
             </div>
-            <div className="row3">
-              <div className="form-group">
-                <label id="date" for="date">
-                  Date:
-                </label>
-                <input
-                  type="date"
-                  id="date"
-                  name="date"
-                  max={maxDate}
-                  required
-                ></input>
-              </div>
-              <div className="form-group">
-                <label for="address">Address: </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="location"
-                  placeholder="Enter Company Address"
-                  required
-                ></input>
-              </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter Email"
+                required
+              />
             </div>
-            <div className="row4">
-              <div className="form-group">
-                <label htmlFor="cityState">City/State: </label>
-                <select id="cityState" name="cityState" required>
-                  <option value="">Select City/State</option>
-                  <option value="Riverside, CA">Riverside, CA</option>
-                  <option value="San Diego, CA">San Diego, CA</option>
-                  {/* Add more options as needed */}
-                </select>
-              </div>
-              <div className="form-group">
-                <label for="giftType">Gift Type: </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="giftType"
-                  placeholder="Enter gift type"
-                  required
-                ></input>
-              </div>
+
+            <div className="form-group">
+              <label htmlFor="phone">Phone Number:</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter Phone Number"
+                required
+              />
             </div>
-            <div className="row5">
-              <div className="form-group">
-                <label htmlFor="link">Log Link</label>
-                <input
-                  type="url"
-                  id="name"
-                  name="link"
-                  placeholder="https://example.com"
-                  required
-                ></input>
-              </div>
-              <div className="form-group">
-                <label htmlFor="locationImage">
-                  (OPTIONAL) Company Image:{" "}
-                </label>
-                <input
-                  type="file"
-                  id="locationImage"
-                  name="image" // Changed from 'locationImage' to 'image'
-                  accept="image/*"
-                ></input>
-              </div>
+
+            <div className="form-group">
+              <label htmlFor="poc">Point of Contact (POC):</label>
+              <input
+                type="date"
+                id="poc"
+                name="poc"
+                max={maxDate}
+                required
+              />
             </div>
+
+            <div className="form-group">
+              <label htmlFor="cityState">City/State:</label>
+              <select id="cityState" name="cityState" required>
+                <option value="">Select City/State</option>
+                <option value="Riverside, CA">Riverside, CA</option>
+                <option value="San Diego, CA">San Diego, CA</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="link">Log Link:</label>
+              <input
+                type="url"
+                id="link"
+                name="link"
+                placeholder="https://example.com"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="date">Date:</label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                max={maxDate}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="location">Address:</label>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Enter Company Address"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="giftType">Gift Type:</label>
+              <input
+                type="text"
+                id="giftType"
+                name="giftType"
+                placeholder="Enter Gift Type"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="companyImage">(OPTIONAL) Company Image:</label>
+              <input
+                type="file"
+                id="companyImage"
+                name="image"
+                accept="image/*"
+              />
+            </div>
+
             <div className="buttonContainer">
               <button id="submitButton" type="submit">
                 Submit

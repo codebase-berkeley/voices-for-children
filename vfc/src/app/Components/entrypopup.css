@@ -22,18 +22,17 @@
 #x {
     width: 30%;
     align-self: center;
-    background-color: transparent; /* Ensure button background is transparent */
-    border: none; /* Remove any border if present */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
+    background-color: transparent;
+    border: none; 
+    padding: 0; 
+    margin: 0;
 }
 
-/* Explicitly reset styles for the image inside the button */
 #x img {
-    height: 30px; /* Set a fixed height */
-    width: 30px;  /* Set a fixed width */
-    background-color: transparent; /* Ensure image background is transparent */
-    display: block; /* Ensure the image is displayed as a block */
+    height: 30px; 
+    width: 30px;
+    background-color: transparent;
+    display: block; 
 }
 
 #amt {
@@ -110,13 +109,13 @@ input::placeholder {
 
 .create-new-bar {
     display: flex;
-    align-items: center; /* Align items vertically */
+    align-items: center; 
     justify-content: space-between;
 }
 
 .close {
     display: flex;
-    align-items: center; /* Align items vertically */
+    align-items: center; 
     background-color: transparent;
 }
 
