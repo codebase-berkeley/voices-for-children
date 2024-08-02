@@ -1,6 +1,5 @@
 {
   "dependencies": {
     "@azure/msal-browser": "^3.17.0"
-  },
-  "start": "next start -p $PORT"
+  }
 }
