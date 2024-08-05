@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
-import MultipleFlipCards from "../app/components/flipcardPage";
+import MultipleFlipCards from "@/app/Components/flipcardPage";
 import TextField from "@mui/material/TextField";
-import NewPopup from "../app/components/newPopup";
+import NewPopup from "@/app/Components/newPopup";
 import rawdata from "./rawdata.json";
-import Navbar from "../app/components/navbar";
+import Navbar from "@/app/Components/navbar";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 import Login from "./loginpage";
