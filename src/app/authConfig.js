@@ -11,8 +11,8 @@ import { LogLevel } from "@azure/msal-browser";
  * To learn more about custom policies, visit: https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-overview
  */
 
-const clientId = "a996fefe-7a6c-40ae-9a71-51a828a8f3f8";
-const tenantName = "voicesforchildren";
+const clientId = "211309f2-3954-47ff-8e9f-0ee00cab0514";
+const tenantName = "vfc";
 
 const flows = {
   localAccSignIn: "B2C_1_Main_Flow_VFC", // e.g., B2C_1_main_flow
