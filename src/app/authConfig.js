@@ -94,6 +94,6 @@ export const msalConfig = {
 
 export const authScopes = {
   scopes: [
-    "https://codebaseedu.onmicrosoft.com/8344aaf4-acb6-4631-9fe3-577d90475877/VoicesForChildren",
+    "https://voicesforchildren.onmicrosoft.com/a996fefe-7a6c-40ae-9a71-51a828a8f3f8/Files.Read",
   ],
 };
