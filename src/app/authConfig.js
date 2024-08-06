@@ -47,7 +47,7 @@ export const b2cPolicies = {
 export const msalConfig = {
   auth: {
     clientId: clientId, // This is the ONLY mandatory field that you need to supply.
-    authority: "https://login.microsoftonline.com/common", // Common endpoint to support multiple account types
+    authority: b2cPolicies.authorities.signUpSignIn.authority, // Choose SUSI as your default authority.
     knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
     redirectUri: "https://voices-for-children-cb-2b944e8d4187.herokuapp.com/donation", // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
     postLogoutRedirectUri: "https://voices-for-children-cb-2b944e8d4187.herokuapp.com/", // Indicates the page to navigate after logout.
