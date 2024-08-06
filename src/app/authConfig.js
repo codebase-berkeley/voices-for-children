@@ -12,10 +12,10 @@ import { LogLevel } from "@azure/msal-browser";
  */
 
 const clientId = "a996fefe-7a6c-40ae-9a71-51a828a8f3f8";
-const tenantName = "Codebase Voices for Children ";
+const tenantName = "Voices for Children ";
 
 const flows = {
-  localAccSignIn: "B2C_1_main_flow", //e.g., B2C_1_main_flow
+  localAccSignIn: "B2C_1_Main_Flow_VFC", //e.g., B2C_1_main_flow
   msid: "B2C_1_msid",
 };
 
