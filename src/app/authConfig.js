@@ -11,7 +11,7 @@ import { LogLevel } from "@azure/msal-browser";
  * To learn more about custom policies, visit: https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-overview
  */
 
-const clientId = "8344aaf4-acb6-4631-9fe3-577d90475877";
+const clientId = "a996fefe-7a6c-40ae-9a71-51a828a8f3f8";
 const tenantName = "Codebase Voices for Children ";
 
 const flows = {
