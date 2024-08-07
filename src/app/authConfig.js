@@ -11,8 +11,8 @@ import { LogLevel } from "@azure/msal-browser";
  * To learn more about custom policies, visit: https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-overview
  */
 
-const clientId = "a996fefe-7a6c-40ae-9a71-51a828a8f3f8";
-const tenantName = "voicesforchildren";
+const clientId = "86a9a461-817e-4735-8766-edfac1beedd4";
+const tenantName = "vfcspeakupnow";
 
 const flows = {
   localAccSignIn: "B2C_1_Main_Flow_VFC", //e.g., B2C_1_main_flow
@@ -49,8 +49,8 @@ export const msalConfig = {
     clientId: clientId, // This is the ONLY mandatory field that you need to supply.
     authority: b2cPolicies.authorities.signUpSignIn.authority, // Choose SUSI as your default authority.
     knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
-    redirectUri: "https://voices-for-children-cb-2b944e8d4187.herokuapp.com/donation", // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
-    postLogoutRedirectUri: "https://voices-for-children-cb-2b944e8d4187.herokuapp.com/", // Indicates the page to navigate after logout.
+    redirectUri: "http://localhost:3000/", // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
+    postLogoutRedirectUri: "http://localhost:3000/", // Indicates the page to navigate after logout.
     navigateToLoginRequestUrl: false, // If "true", will navigate back to the original request location before processing the auth code response.
     authorityMetadata: b2cPolicies.authorityMetadata,
   },
@@ -94,6 +94,6 @@ export const msalConfig = {
 
 export const authScopes = {
   scopes: [
-    "https://voicesforchildren.onmicrosoft.com/a996fefe-7a6c-40ae-9a71-51a828a8f3f8/Files.Read",
+    "https://vfcspeakupnow.onmicrosoft.com/86a9a461-817e-4735-8766-edfac1beedd4/Files.Read",
   ],
 };
