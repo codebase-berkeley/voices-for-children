@@ -15,7 +15,7 @@ const clientId = "86a9a461-817e-4735-8766-edfac1beedd4";
 const tenantName = "vfcspeakupnow";
 
 const flows = {
-  localAccSignIn: "B2C_1_Main_Flow_VFC", //e.g., B2C_1_main_flow
+  localAccSignIn: "B2C_1_Main_Flow_VFC", // e.g., B2C_1_main_flow
   msid: "B2C_1_msid",
 };
 
