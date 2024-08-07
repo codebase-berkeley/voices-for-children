@@ -3,14 +3,9 @@ import "./index.css";
 import MultipleFlipCards from "@/app/Components/flipcardPage";
 import TextField from "@mui/material/TextField";
 import NewPopup from "@/app/Components/newPopup";
-import rawdata from "./rawdata.json";
 import Navbar from "@/app/Components/navbar";
-import { PublicClientApplication } from "@azure/msal-browser";
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 import Login from "./loginpage";
-import { authScopes, msalConfig } from "../app/authConfig";
-
-const msalInstance = new PublicClientApplication(msalConfig);
 
 function MainComPart() {
   const [currFilters, setCurrFilters] = useState([]);
@@ -332,8 +327,7 @@ function MainComPart() {
                 <option value="za">Z - A</option>
                 <option value="old">Oldest - Newest</option>
                 <option value="new">Newest - Oldest</option>
-              </select>
-              <button className="createNew" onClick={handleNewChange}>
+              </select><button className="createNew" onClick={handleNewChange}>
                 +
               </button>
             </div>
@@ -378,7 +372,7 @@ function MainComPart() {
         </div>
       </AuthenticatedTemplate>
       <UnauthenticatedTemplate>
-        <Login Component={MainComPart} />
+        <Login />
       </UnauthenticatedTemplate>
     </div>
   );
