@@ -11,8 +11,8 @@ import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
-import MainComPart from "./index"; // Correctly import MainComPart
-import microsoftLogo from "/public/assets/microsoftlogo.svg";
+import MainComPart from "./index";
+import microsoftLogo from '../../public/assets/microsoftlogo.svg';
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -66,9 +66,9 @@ function Login() {
             <div className="login-text">
               Please sign in with an administrative account to access additional features.
             </div>
-            <button className="login-button" onClick={handleLogin}>
+            <button className="login-button-lp" onClick={handleLogin}>
               <img
-                src={microsoftLogo}
+                src={"/assets/microsoftlogo.svg"}
                 alt="Microsoft logo"
                 className="microsoft-logo"
               />
