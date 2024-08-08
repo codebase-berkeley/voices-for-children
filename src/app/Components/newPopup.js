@@ -101,10 +101,10 @@ export default function NewPopup({
             <div className="form-group">
               <label htmlFor="poc">Point of Contact (POC):</label>
               <input
-                type="date"
+                type="text"
                 id="poc"
                 name="poc"
-                max={maxDate}
+                placeholder="POC information"
                 required
               />
             </div>
