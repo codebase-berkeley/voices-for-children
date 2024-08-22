@@ -1,6 +1,8 @@
 // const { Pool } = require("pg");
 // const pool = new Pool({ database: "vfc" });
 
+import { collectGenerateParams } from "next/dist/build/utils";
+
 // export default async function postDonation(req, res) {
 //   try {
 //     const body = req.body;
@@ -30,15 +32,14 @@ export default async function postDonation(req, res) {
     const query = await pool.query(
       `INSERT INTO players(name, score) VALUES ($1, 0);`
     );
+    console.log("DID TEST QUERY CORRECTLY");
     res.status(200).json({ success: true, message: "successful test query" });
   } catch (error) {
     console.error("Error executing query", error.stack);
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "not successful test query",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "not successful test query",
+      error: error.message,
+    });
   }
 }
