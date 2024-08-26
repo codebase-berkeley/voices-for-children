@@ -1,4 +1,3 @@
-
 "use client";
 import Image from "next/image";
 import React from "react";
@@ -15,6 +14,8 @@ import phoneIcon from "/public/assets/phoneIcon.png";
 import pocIcon from "/public/assets/point-of-contact.png";
 
 export default function FlipCard(props) {
+  console.log("inside flipcard", props.number);
+  console.log("location inside flipcard", props.cityState);
   // Takes in props: email, poc name, phone number test
   const [isOpen, setIsOpen] = useState(false);
   // console.log(isFlipped);
@@ -42,7 +43,7 @@ export default function FlipCard(props) {
             cursor: "pointer",
           }}
         >
-          <div className="top" style={{ backgroundImage: `url(${image})`}}>
+          <div className="top" style={{ backgroundImage: `url(${image})` }}>
             <div className="title">{props.name}</div>
           </div>
           <div className="bottom">
@@ -91,22 +92,23 @@ export default function FlipCard(props) {
         </div>
       </ReactCardFlip>
       <Modal
+        number={props.number}
         id={props.id}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         company={props.name}
         location={props.location}
-        cityState = {props.cityState}
-        giftType = {props.giftType}
+        cityState={props.cityState}
+        giftType={props.giftType}
         date={props.date}
         email={props.email}
         poc={props.poc}
-        phone = {props.phone}
-        link = {props.link}
-        locationImage = {props.locationImage}
-        image = {props.image}
-        data = {props.data}
-        setData = {props.setData}
+        phone={props.phone}
+        link={props.link}
+        locationImage={props.locationImage}
+        image={props.image}
+        data={props.data}
+        setData={props.setData}
       />
     </div>
   );

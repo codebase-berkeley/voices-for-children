@@ -1,91 +1,150 @@
 "use client";
-import { Rowdies } from 'next/font/google';
-import './entrypopup.css';
-import { useState } from 'react';
-
+import { Rowdies } from "next/font/google";
+import "./entrypopup.css";
+import { useState } from "react";
+import InventoryEntry from "./inventoryentry";
+import json from "./data";
 
 function EntryPopup(props) {
-    // Define states for each form input
-    const [name, setName] = useState('');
-    const [donor, setDonor] = useState('');
-    const [type, setType] = useState('');
-    const [amt, setAmt] = useState('');
-    const [date, setDate] = useState('');
-    const [desc, setDesc] = useState('');
-    
-    const postData = async () => {
-        console.log("INSIDE POST DATA");
-    
-        var stock = amt > 0 ? 'Yes' : 'No';
-        console.log("amount", amt)
-        const response = await fetch("/api/postDonation", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name,
-                donor,
-                type,
-                amt,
-                date,
-                desc,
-                stock,
-            }),
-        });
-        // return response.json();
-        const data = await response.json();
-        if (data.success) {
-            props.onDataSubmitted();  // Call this on successful post
-            handlePopupClose();
-        } else {
-            console.error('Failed to post data:', data.message);
-        }
-        
-    };
+  // Define states for each form input
+  const [name, setName] = useState("");
+  const [donor, setDonor] = useState("");
+  const [type, setType] = useState("");
+  const [amt, setAmt] = useState("");
+  const [date, setDate] = useState("");
+  const [desc, setDesc] = useState("");
 
-    const handlePopupClose = () => {
-        props.onClose();
-    };
+  const postData = async () => {
+    var stock = amt > 0 ? "Yes" : "No";
+    console.log("amount", amt);
+    const response = await fetch("/api/postDonation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        donor,
+        type,
+        amt,
+        date,
+        desc,
+        stock,
+      }),
+    });
+    // return response.json();
+    // console.log("INSIDE POST DONATION DATA");
+    // var newEntry = {
+    //   key: Date.now(), // Unique key
+    //   donor, // Name of the donor
+    //   name, // Item donated
+    //   type, // Type of item
+    //   amt, // Quantity of the item
+    //   date, // Date of donation
+    //   desc, // Whether the donor has been thanked
+    // };
+    // console.log(newEntry);
+    // console.log("add new entry to data json");
+    // props.onAdd(newEntry);
 
- 
+    const data = await response.json();
+    if (data.success) {
+      console.log("SUCCESSFUL POST");
+      props.onDataSubmitted(); // Call this on successful post
+      handlePopupClose();
+    } else {
+      console.error("Failed to post data:", data.error);
+    }
+  };
 
-    return (
-        <div className="popup">
-            <div className="create-new-bar">
-                <h1 className="create-new-text"><b>New Donation</b></h1>
-                <div className="close">
-                <button id="x" onClick={handlePopupClose}>
-                    <img src="apple-touch-icon.png" alt="x img" />
-                </button>
-                </div>
-            </div>
-            <form onSubmit={(event) => {
-                event.preventDefault();
-                postData();
-            }}>
-                <input type="text" placeholder="Donation Name" id="name" name="name" value={name} onChange={e => setName(e.target.value)}></input>
-                <input type="text" placeholder="Donor" id="donor" name="donor" value={donor} onChange={e => setDonor(e.target.value)}></input>
-                <div className="form-container">
-                    <input type="text" placeholder="Donation Type" id="type" name="type" value={type} onChange={e => setType(e.target.value)}></input>
-                    <input type="text" placeholder="Amount" id="amt" name="amt" value={amt} onChange={e => setAmt(e.target.value)}></input>
-                    <input type="date" placeholder="Date" id="date" name="date" value={date} onChange={e => setDate(e.target.value)}></input>
-                </div>
-                <div className="desc-container">
-                    <span className="popup-text">Description</span>
-                    <input type="text" placeholder="Thank you details, item usage, etc." id="desc" name="thanked" value={desc} onChange={e => setDesc(e.target.value)}></input>
-                </div>
-                <button className="submit" id="submit" type="submit">Submit</button>
-            </form>
+  const handlePopupClose = () => {
+    props.onClose();
+  };
+
+  return (
+    <div className="popup">
+      <div className="create-new-bar">
+        <h1 className="create-new-text">
+          <b>New Donation</b>
+        </h1>
+        <div className="close">
+          <button id="x" onClick={handlePopupClose}>
+            <img src="apple-touch-icon.png" alt="x img" />
+          </button>
         </div>
-    );
+      </div>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          postData();
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Donation Name"
+          id="name"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        ></input>
+        <input
+          type="text"
+          placeholder="Donor"
+          id="donor"
+          name="donor"
+          value={donor}
+          onChange={(e) => setDonor(e.target.value)}
+        ></input>
+        <div className="form-container">
+          <input
+            type="text"
+            placeholder="Donation Type"
+            id="type"
+            name="type"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+          ></input>
+          <input
+            type="text"
+            placeholder="Amount"
+            id="amt"
+            name="amt"
+            value={amt}
+            onChange={(e) => setAmt(e.target.value)}
+          ></input>
+          <input
+            type="date"
+            placeholder="Date"
+            id="date"
+            name="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          ></input>
+        </div>
+        <div className="desc-container">
+          <span className="popup-text">Description</span>
+          <input
+            type="text"
+            placeholder="Thank you details, item usage, etc."
+            id="desc"
+            name="thanked"
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          ></input>
+        </div>
+        <button className="submit" id="submit" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
 }
 
 export default EntryPopup;
 
 // function EntryPopup ({ onClose }) {
-        
-//         const postData = async (event) => {  
+
+//         const postData = async (event) => {
 //             console.log("INSIDE POST DATA");
 //             var name = event.target.name.value;
 //             var donor = document.donor.value;
@@ -99,7 +158,7 @@ export default EntryPopup;
 //             } else {
 //                 instock = 'No'
 //             }
-        
+
 //             console.log("TRYING TO POST INVISIBLE ERROR");
 //             console.log(name, donor, type);
 //             const response = await fetch("/api/postDonation", {
@@ -115,13 +174,13 @@ export default EntryPopup;
 //             ),
 //             });
 //             return response.json();
-            
+
 //         };
 
 //         // function postData() {
 //         //     console.log("trying post");
 //         // }
-    
+
 //         const handlePopupClose = () => {
 //             onClose(); // Call the onClose function passed from Inventory to close the popup test
 //         };
@@ -149,7 +208,7 @@ export default EntryPopup;
 //                         </div>
 //                     </form>
 //                     <button className="submit" id = "submit" onClick={postData}>submit button</button>
-//                 </div>  
+//                 </div>
 //         )
 // }
 

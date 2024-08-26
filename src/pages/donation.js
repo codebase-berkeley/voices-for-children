@@ -21,7 +21,6 @@ import {
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
 import LoginPage from "./loginpage";
-// import Data from "./rawdata";
 const msalInstance = new PublicClientApplication(msalConfig);
 function Donation() {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -29,6 +28,7 @@ function Donation() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
   const [refreshData, setRefreshData] = useState(false);
+  const [hardCodedData, setHardCodedData] = useState([]);
 
   const handleDataSubmitted = () => {
     setRefreshData(!refreshData); // Toggle to trigger useEffect
@@ -43,13 +43,24 @@ function Donation() {
   var lastEvent = null;
   const [originalData, setOriginalData] = useState([]);
 
+  const addEntry = (newEntry) => {
+    setHardCodedData((hardCodedData) => [...hardCodedData, newEntry]);
+    // setOriginalData((hardCodedData) => [...hardCodedData, newEntry]);
+    // setInventoryData((hardCodedData) => [...hardCodedData, newEntry]);
+    console.log("hard coded data after new add");
+    console.log(hardCodedData);
+    setRefreshData(!refreshData);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log("calling get donation endpoint");
         const response = await fetch("/api/getDonation");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
+        console.log("done calling get donation api");
         const jsonDataInventory = await response.json(); // Properly handle the promise
 
         console.log("get donation api response", jsonDataInventory);
@@ -58,6 +69,13 @@ function Donation() {
       } catch (error) {
         console.error("Error fetching data:", error);
       }
+
+      // console.log("inside use effect adding to lists");
+      // setOriginalData(hardCodedData);
+      // setInventoryData(hardCodedData);
+      // console.log("after adding in use effect");
+      // console.log(originalData);
+      // console.log(inventoryData);
     };
     fetchData();
   }, [refreshData]);
@@ -269,7 +287,7 @@ function Donation() {
                 donor={item.donor}
                 item_donated={item.item_donated}
                 item_type={item.item_type}
-                amount={item.amount} 
+                amount={item.amount}
                 date={item.date}
                 thanked={item.thanked}
                 realKey={item.key}
@@ -282,6 +300,7 @@ function Donation() {
               <EntryPopup
                 onClose={togglePopup}
                 onDataSubmitted={handleDataSubmitted}
+                onAdd={addEntry}
               />
             )}
             {/* {seen && <EntryPopup  />} */}

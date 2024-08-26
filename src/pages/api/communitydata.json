@@ -1,0 +1,28 @@
+[
+  {
+    "key": 1,
+    "name": "Jane Smith",
+    "location": "Books",
+    "citystate": "Literature",
+    "gifttype": 10,
+    "date": "2024-08-20",
+    "email": "sasha@berk.com",
+    "poc": "sasha",
+    "phone": "12345",
+    "link": "hello.link",
+    "image": "image.link"
+  },
+  {
+    "key": 1724632500673,
+    "name": "Wayu Health",
+    "location": "2400 Durant Ave",
+    "citystate": "Riverside, CA",
+    "gifttype": "hello",
+    "date": "2024-08-13",
+    "email": "sasha_singh@berkeley.edu",
+    "poc": "jonah",
+    "phone": "6027107314",
+    "link": "https://localhost:3000",
+    "image": ""
+  }
+]

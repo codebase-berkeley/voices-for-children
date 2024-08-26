@@ -6,6 +6,7 @@ import Modal from "./modal.js";
 import { Andada_Pro } from "next/font/google/index.js";
 
 function MultipleFlipCards(props) {
+  console.log("multiple flip cards", props.data);
   const formatDate = (dateString) => {
     let date = new Date(dateString);
     const options = { month: "long", year: "numeric" };
@@ -34,25 +35,30 @@ function MultipleFlipCards(props) {
   const filteredData = props.data.filter((card) => {
     const newDate = formatDate(card.date).toLowerCase();
     const cardAttributes = [
-        card.gifttype.toLowerCase(),
-        card.citystate.toLowerCase(),
-        newDate
+      toString(card.gifttype).toLowerCase(), // Ensure card.gifttype is a string
+      toString(card.citystate).toLowerCase(),
+      newDate,
     ];
 
     const filterArrays = [
       props.locFilters,
       props.giftFilters,
       props.yearFilters,
-      props.monthFilters
-    ]
+      props.monthFilters,
+    ];
 
     // Return true if there are no filters, else check each filter on all relevant attributes
-    return props.filters.length === 0 || filterArrays.every(filterArray => 
-      filterArray.length === 0 || filterArray.some(filter => 
-        cardAttributes.some(attribute => attribute.includes(filter))
+    return (
+      props.filters.length === 0 ||
+      filterArrays.every(
+        (filterArray) =>
+          filterArray.length === 0 ||
+          filterArray.some((filter) =>
+            cardAttributes.some((attribute) => attribute.includes(filter))
+          )
       )
     );
-});
+  });
   // Filters through data by searching
   const searchedData = filteredData.filter((card) => {
     //if nothing in the input, return everything
@@ -63,13 +69,15 @@ function MultipleFlipCards(props) {
       return card.name.toLowerCase().includes(props.input);
     }
   });
+  console.log("searched data in multiple flip cards", searchedData);
+  searchedData.map((card, index) => console.log("mapping", card.key));
   return (
     <div className="app">
       <div className="card-container">
         {searchedData.map((card, index) => (
           <FlipCard
             id={card.id}
-            key={index}
+            number={card.key}
             name={card.name}
             location={card.location}
             cityState={card.citystate}

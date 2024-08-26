@@ -1,4 +1,5 @@
 import "./newPopup.css";
+import { useState } from "react";
 
 export default function NewPopup({
   newIsOpen,
@@ -6,18 +7,45 @@ export default function NewPopup({
   prevData,
   setData,
 }) {
+  const [companyName, setCompanyName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [cityState, setCityState] = useState("");
+  const [date, setDate] = useState("");
+  const [giftType, setGiftType] = useState("");
+  const [poc, setPoc] = useState("");
+  const [link, setLink] = useState("");
+  const [location, setLocation] = useState("");
+
   const handleNewClick = () => {
     setnewIsOpen(!newIsOpen);
   };
 
   const submitForm = async (event) => {
     event.preventDefault();
+    console.log("INSIDE SUBMIT FORM");
     const formData = new FormData(event.target);
 
     try {
+      console.log("trying to add partnership");
+      var body = JSON.stringify({
+        companyName,
+        email,
+        phone,
+        poc,
+        link,
+        cityState,
+        location,
+        giftType,
+        date,
+      });
+      console.log("body", body);
       const response = await fetch("/api/postPartnership", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: body,
       });
 
       if (!response.ok) {
@@ -25,23 +53,23 @@ export default function NewPopup({
       }
 
       const result = await response.json();
-      console.log("posted new id: ", result.id);
+      console.log("POSTED NEW PARTNERSHIP");
 
-      const newCard = {
-        id: result.id,
-        name: formData.get("companyName"),
-        location: formData.get("location"),
-        citystate: formData.get("cityState"),
-        phone: formData.get("phone"),
-        email: formData.get("email"),
-        poc: formData.get("poc"),
-        date: formData.get("date"),
-        gifttype: formData.get("giftType"),
-        link: formData.get("link"),
-        image: result.image,
-      };
+      // const newCard = {
+      //   id: result.id,
+      //   name: formData.get("companyName"),
+      //   location: formData.get("location"),
+      //   citystate: formData.get("cityState"),
+      //   phone: formData.get("phone"),
+      //   email: formData.get("email"),
+      //   poc: formData.get("poc"),
+      //   date: formData.get("date"),
+      //   gifttype: formData.get("giftType"),
+      //   link: formData.get("link"),
+      //   image: result.image,
+      // };
 
-      setData((prevData) => [...prevData, newCard]);
+      // setData((prevData) => [...prevData, newCard]);
       setnewIsOpen(false);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -73,6 +101,8 @@ export default function NewPopup({
                 name="companyName"
                 placeholder="Enter Company Name"
                 required
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
               />
             </div>
 
@@ -82,6 +112,8 @@ export default function NewPopup({
                 type="email"
                 id="email"
                 name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter Email"
                 required
               />
@@ -93,6 +125,8 @@ export default function NewPopup({
                 type="tel"
                 id="phone"
                 name="phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 placeholder="Enter Phone Number"
                 required
               />
@@ -104,6 +138,8 @@ export default function NewPopup({
                 type="text"
                 id="poc"
                 name="poc"
+                value={poc}
+                onChange={(e) => setPoc(e.target.value)}
                 placeholder="POC information"
                 required
               />
@@ -111,7 +147,13 @@ export default function NewPopup({
 
             <div className="form-group">
               <label htmlFor="cityState">City/State:</label>
-              <select id="cityState" name="cityState" required>
+              <select
+                id="cityState"
+                name="cityState"
+                value={cityState}
+                onChange={(e) => setCityState(e.target.value)}
+                required
+              >
                 <option value="">Select City/State</option>
                 <option value="Riverside, CA">Riverside, CA</option>
                 <option value="San Diego, CA">San Diego, CA</option>
@@ -124,6 +166,8 @@ export default function NewPopup({
                 type="url"
                 id="link"
                 name="link"
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
                 placeholder="https://example.com"
                 required
               />
@@ -136,6 +180,8 @@ export default function NewPopup({
                 id="date"
                 name="date"
                 max={maxDate}
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
                 required
               />
             </div>
@@ -146,6 +192,8 @@ export default function NewPopup({
                 type="text"
                 id="location"
                 name="location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
                 placeholder="Enter Company Address"
                 required
               />
@@ -157,6 +205,8 @@ export default function NewPopup({
                 type="text"
                 id="giftType"
                 name="giftType"
+                value={giftType}
+                onChange={(e) => setGiftType(e.target.value)}
                 placeholder="Enter Gift Type"
                 required
               />
