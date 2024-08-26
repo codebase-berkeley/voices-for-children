@@ -24,12 +24,17 @@ function MainComPart() {
   const [monthFilters, setMonthFilters] = useState([]);
   const [yearFilters, setYearFilters] = useState([]);
   const [giftFilters, setGiftFilters] = useState([]);
+  const [refreshData, setRefreshData] = useState(false);
 
   const currentYear = new Date().getFullYear();
   const year = [];
   for (let i = 2000; i <= currentYear; i++) {
     year.push(i.toString());
   }
+
+  const handleDataSubmitted = () => {
+    setRefreshData(!refreshData); // Toggle to trigger useEffect
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +48,7 @@ function MainComPart() {
       }
     };
     fetchData();
-  }, []);
+  }, [refreshData]);
 
   const month = [
     "January",
@@ -403,6 +408,7 @@ function MainComPart() {
               prevData={data}
               setData={setData}
               giftType={giftType}
+              onSubmit={handleDataSubmitted}
             />
           ) : (
             <></>

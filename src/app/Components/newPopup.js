@@ -1,11 +1,13 @@
 import "./newPopup.css";
 import { useState } from "react";
+import { propagateServerField } from "next/dist/server/lib/render-server";
 
 export default function NewPopup({
   newIsOpen,
   setnewIsOpen,
   prevData,
   setData,
+  props,
 }) {
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
@@ -51,7 +53,7 @@ export default function NewPopup({
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
+      props.onSubmit();
       const result = await response.json();
       console.log("POSTED NEW PARTNERSHIP");
 
