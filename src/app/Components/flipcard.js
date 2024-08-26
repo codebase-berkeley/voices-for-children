@@ -107,6 +107,7 @@ export default function FlipCard(props) {
         image={props.image}
         data={props.data}
         setData={props.setData}
+        onDelete = {props.onDelete}
       />
     </div>
   );

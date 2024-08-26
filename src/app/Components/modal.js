@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./modal.css";
 import { useState } from "react";
 
-export default function Popup({ isOpen, setIsOpen, ...props }) {
+export default function Popup({ isOpen, setIsOpen, onDelete, ...props }) {
   const handleClick = () => {
     setIsOpen(!isOpen);
     console.log(isOpen);
@@ -34,7 +34,8 @@ export default function Popup({ isOpen, setIsOpen, ...props }) {
 
       const data = await response.json();
       console.log("Item successfully deleted", data);
-      handleClick()
+      onDelete();
+      handleClick();
       // return data;
     } catch (error) {
       console.error("Error deleting item:", error);

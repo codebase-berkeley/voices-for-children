@@ -88,6 +88,7 @@ function MultipleFlipCards(props) {
             link={card.link}
             data={props.data}
             setData={props.setData}
+            onDelete = {props.onDelete}
           />
         ))}
       </div>

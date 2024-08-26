@@ -401,6 +401,7 @@ function MainComPart() {
             monthFilters={monthFilters}
             data={data}
             setData={setData}
+            onDelete={handleDataSubmitted}
             stagData={stagData}
           />
           {newIsOpen ? (
