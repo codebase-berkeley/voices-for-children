@@ -92,7 +92,7 @@ export default function NewPopup({
           </p>
         </div>
         <div className="inputs">
-          <form className="allInputs" onSubmit={submitForm}>
+          <form className="allInputs">
             <div className="form-group">
               <label htmlFor="companyName">Company Name:</label>
               <input
