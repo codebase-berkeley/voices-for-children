@@ -22,13 +22,12 @@ export default function NewPopup({
     setnewIsOpen(!newIsOpen);
   };
 
-  const submitForm = async (event) => {
+  const addPartnership = async (event) => {
     event.preventDefault();
-    console.log("INSIDE SUBMIT FORM");
+    console.log("inside add new partnershuo");
     const formData = new FormData(event.target);
 
     try {
-      console.log("trying to add partnership");
       var body = JSON.stringify({
         companyName,
         email,
@@ -224,7 +223,7 @@ export default function NewPopup({
             </div>
 
             <div className="buttonContainer">
-              <button id="submitButton" type="submit">
+              <button id="submitButton" type="submit" onClick={addPartnership}>
                 Submit
               </button>
             </div>
