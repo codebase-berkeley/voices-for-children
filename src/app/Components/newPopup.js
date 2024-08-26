@@ -25,7 +25,6 @@ export default function NewPopup({
   const addPartnership = async (event) => {
     event.preventDefault();
     console.log("inside add new partnershuo");
-    const formData = new FormData(event.target);
 
     try {
       var body = JSON.stringify({
