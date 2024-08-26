@@ -1,6 +1,7 @@
 // const { Pool } = require("pg");
 // const pool = new Pool({ database: "vfc" });
 import json from "./communitydata.json";
+import fs from "fs";
 
 export default async function getPartnership(req, res) {
   try {
