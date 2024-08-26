@@ -1,14 +1,12 @@
 // const { Pool } = require("pg");
 // const pool = new Pool({ database: "vfc" });
 import json from "./data.json";
-import fs from "fs";
 import path from "path";
-const dataFilePath = path.join(process.cwd(), "data.json");
+import fs from "fs";
 
 export default async function getDonation(req, res) {
   console.log("IN GET DONATION");
   try {
-    console.log("inside get donation endpoint");
     // const query = await pool.query("select * from inkindDonations;");
     // const data = JSON.parse(json);
     // fs.readFile(dataFilePath, "utf-8", (err, data) => {
@@ -19,6 +17,7 @@ export default async function getDonation(req, res) {
     //   const jsonData = JSON.parse(data);
     //   res.status(200).json(jsonData);
     // });
+    let json = JSON.parse(fs.readFileSync("src/pages/api/data.json", "utf-8"));
     res.send(json);
     // res.send(query.rows);
   } catch (error) {
