@@ -50,5 +50,18 @@
     "phone": "6027107314",
     "link": "https://localhost:3000",
     "image": ""
+  },
+  {
+    "key": 1724642738240,
+    "name": "arizona",
+    "location": "2400 Durant Ave",
+    "citystate": "San Diego, CA",
+    "gifttype": "hello",
+    "date": "2024-08-08",
+    "email": "sasha_singh@berkeley.edu",
+    "poc": "jonah",
+    "phone": "6027107314",
+    "link": "https://localhost:3000",
+    "image": ""
   }
 ]

@@ -6,7 +6,6 @@ import Modal from "./modal.js";
 import { Andada_Pro } from "next/font/google/index.js";
 
 function MultipleFlipCards(props) {
-  console.log("multiple flip cards", props.data);
   const formatDate = (dateString) => {
     let date = new Date(dateString);
     const options = { month: "long", year: "numeric" };
@@ -70,7 +69,6 @@ function MultipleFlipCards(props) {
     }
   });
   console.log("searched data in multiple flip cards", searchedData);
-  searchedData.map((card, index) => console.log("mapping", card.key));
   return (
     <div className="app">
       <div className="card-container">

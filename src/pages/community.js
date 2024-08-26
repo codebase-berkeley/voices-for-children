@@ -34,6 +34,7 @@ function MainComPart() {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log("getting partnerships");
       try {
         const response = await fetch("/api/getPartnership");
         const jsonData = await response.json();
