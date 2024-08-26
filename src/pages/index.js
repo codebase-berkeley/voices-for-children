@@ -187,8 +187,8 @@ function MainComPart() {
       <Navbar onCommunity={true} />
       <div className="bottom-of-page">
         <div className="all-filters">
-          <div className="each-filter">
-            <button
+          {/* <div className="each-filter"> */}
+          {/* <button
               onClick={() => setIsOpen((prev) => !prev)}
               className="button"
             >
@@ -226,7 +226,7 @@ function MainComPart() {
                 ))}
               </div>
             )}
-          </div>
+          </div> */}
           <div className="each-filter">
             <button
               onClick={() => setIsOpen1((prev) => !prev)}
@@ -307,7 +307,7 @@ function MainComPart() {
               </div>
             )}
           </div>
-          <div className="each-filter">
+          {/* <div className="each-filter">
             <button
               onClick={() => setIsOpen3((prev) => !prev)}
               className="button"
@@ -346,7 +346,7 @@ function MainComPart() {
                 ))}
               </div>
             )}
-          </div>
+          </div> */}
         </div>
         <div className="main-card-box">
           <div className="createNewContainer">
