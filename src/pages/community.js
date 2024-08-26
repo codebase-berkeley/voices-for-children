@@ -24,6 +24,7 @@ function MainComPart() {
   const [monthFilters, setMonthFilters] = useState([]);
   const [yearFilters, setYearFilters] = useState([]);
   const [giftFilters, setGiftFilters] = useState([]);
+  const [refreshData, setRefreshData] = useState(false);
 
   const currentYear = new Date().getFullYear();
   const year = [];
@@ -43,7 +44,7 @@ function MainComPart() {
       }
     };
     fetchData();
-  }, []);
+  }, [refreshData]);
 
   const month = [
     "January",
@@ -77,6 +78,11 @@ function MainComPart() {
       const lowercase = e.target.value.toLowerCase();
       setInputText(lowercase);
     }
+  };
+
+  const handleDataSubmitted = () => {
+    console.log("toggling for community");
+    setRefreshData(!refreshData); // Toggle to trigger useEffect
   };
 
   function handleChange(e) {
@@ -403,6 +409,7 @@ function MainComPart() {
               prevData={data}
               setData={setData}
               giftType={giftType}
+              onSubmit={handleDataSubmitted}
             />
           ) : (
             <></>

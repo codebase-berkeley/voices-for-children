@@ -6,6 +6,7 @@ export default function NewPopup({
   setnewIsOpen,
   prevData,
   setData,
+  onSubmit,
 }) {
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
@@ -51,7 +52,7 @@ export default function NewPopup({
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
+      onSubmit();
       const result = await response.json();
       console.log("POSTED NEW PARTNERSHIP");
 

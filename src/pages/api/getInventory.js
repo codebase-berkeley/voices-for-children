@@ -15,6 +15,7 @@ export default async function getInventory(req, res) {
       fs.readFileSync("src/pages/api/data.json", "utf-8")
     );
     const groupedData = jsonData.reduce((acc, item) => {
+      const amount = parseInt(item.amount, 10);
       const key = `${item.item_donated}-${item.item_type}`;
       if (!acc[key]) {
         acc[key] = {
@@ -23,7 +24,7 @@ export default async function getInventory(req, res) {
           total_amount: 0,
         };
       }
-      acc[key].total_amount += item.amount;
+      acc[key].total_amount += amount;
       return acc;
     }, {});
     const result = Object.values(groupedData);
